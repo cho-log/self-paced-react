@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./Header.jsx";
 import CategoryFilter from "./CategoryFilter.jsx";
+import RestaurantList from "./RestaurantList.jsx";
 
 function App() {
     return (
@@ -8,6 +9,7 @@ function App() {
             <Header/>
             <main>
                 <CategoryFilter/>
+                <RestaurantList/>
             </main>
         </>
     );
