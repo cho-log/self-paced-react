@@ -1,3 +1,5 @@
+import "./RestaurantList.css"
+
 function RestaurantList() {
     return (
         <>
