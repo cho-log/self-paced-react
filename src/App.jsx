@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./Header.jsx";
 import CategoryFilter from "./CategoryFilter.jsx";
 import RestaurantList from "./RestaurantList.jsx";
+import RestaurantDetailModal from "./RestaurantDetailModal.jsx";
 
 function App() {
     return (
@@ -11,6 +12,9 @@ function App() {
                 <CategoryFilter/>
                 <RestaurantList/>
             </main>
+            <aside>
+                <RestaurantDetailModal/>
+            </aside>
         </>
     );
 }
