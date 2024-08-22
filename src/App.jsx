@@ -1,13 +1,13 @@
 import "./App.css";
 import Header from "./Containers/Header.jsx";
-import Main from "./Containers/Main.jsx";
+import MainBody from "./Containers/MainBody.jsx";
 import Aside from "./Containers/Aside.jsx";
 
 function App() {
     return (
         <>
             <Header/>
-            <Main/>
+            <MainBody/>
             <Aside/>
         </>
     );

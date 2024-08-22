@@ -3,7 +3,7 @@ import RestaurantList from "../components/RestaurantList.jsx";
 import {useState} from "react";
 import {restaurantsInfo} from "../data/datas.js";
 
-const Main = () => {
+const MainBody = () => {
     const [category,setCategory] = useState("전체");
     const onCategoryChange = (e) => {
         setCategory(e.target.value);
@@ -20,7 +20,7 @@ const Main = () => {
     }
     /*방법2 - 삼항연산자 사용*/
     /*
-        filteredRestaurants= category === "전체" ?
+        const filteredRestaurants= category === "전체" ?
         restaurantsInfo:
         restaurantsInfo.filter(restaurant => restaurant.category === category);
      */
@@ -32,4 +32,4 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default MainBody;
