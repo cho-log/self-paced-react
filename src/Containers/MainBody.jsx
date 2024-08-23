@@ -2,9 +2,16 @@ import Category from "../components/Category.jsx";
 import RestaurantList from "../components/RestaurantList.jsx";
 import {useState} from "react";
 import {restaurantsInfo} from "../data/datas.js";
+import RestaurantInfoModal from "../components/RestaurantInfoModal.jsx";
 
 const MainBody = () => {
     const [category,setCategory] = useState("전체");
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [restaurantInfo, setRestaurantInfo] = useState({
+        title: "",
+        description: "",
+    });
+
     const onCategoryChange = (e) => {
         setCategory(e.target.value);
     }
@@ -27,7 +34,12 @@ const MainBody = () => {
     return (
         <>
             <Category category={category} onCategoryChange={onCategoryChange}/>
-            <RestaurantList restaurants={filteredRestaurants}/>
+            {
+                isModalOpen && (
+                    <RestaurantInfoModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} RestaurantInfo={restaurantInfo}/>
+                )
+            }
+            <RestaurantList restaurants={filteredRestaurants} setIsModalOpen={setIsModalOpen} setRestaurantInfo={setRestaurantInfo}/>
         </>
     );
 };

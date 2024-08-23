@@ -1,14 +1,8 @@
 import styles from "../css/AboutRestaurants.module.css";
-import categoryKorean from "../../templates/category-korean.png";
-import categoryAsian from "../../templates/category-asian.png";
-import categoryEtc from "../../templates/category-etc.png";
-import categoryJapanese from "../../templates/category-japanese.png";
-import categoryWestern from "../../templates/category-western.png";
-import categoryChinese from "../../templates/category-chinese.png";
 import Restaurant from "./Restaurant.jsx";
 
 
-const RestaurantList = ({restaurants}) => {
+const RestaurantList = ({restaurants,setIsModalOpen,setRestaurantInfo}) => {
     return (
         <section className={styles[`restaurant-list-container`]}>
            <ul className={styles[`restaurants-list`]}>
@@ -18,6 +12,8 @@ const RestaurantList = ({restaurants}) => {
                      image={restaurant.image}
                      title={restaurant.title}
                      description={restaurant.description}
+                     setIsModalOpen={setIsModalOpen}
+                     setRestaurantInfo={setRestaurantInfo}
                    />
                ))}
            </ul>

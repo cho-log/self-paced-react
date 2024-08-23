@@ -1,17 +1,20 @@
 import styles from "../css/Modal.module.css"
+
 const categories = [
-    { value: '', label: '선택해 주세요' },
-    { value: '한식', label: '한식' },
-    { value: '중식', label: '중식' },
-    { value: '일식', label: '일식' },
-    { value: '양식', label: '양식' },
-    { value: '아시안', label: '아시안' },
-    { value: '기타', label: '기타' }
+    {value: '', label: '선택해 주세요'},
+    {value: '한식', label: '한식'},
+    {value: '중식', label: '중식'},
+    {value: '일식', label: '일식'},
+    {value: '양식', label: '양식'},
+    {value: '아시안', label: '아시안'},
+    {value: '기타', label: '기타'}
 ];
 const RestaurantAddModal = () => {
     return (
         <div className={`${styles.modal} ${styles.modalOpen}`}>
-            <div className={styles.modalBackdrop}></div>
+            <div className={styles.modalBackdrop}
+
+            ></div>
             <div className={styles.modalContainer}>
                 <h2 className={`${styles.modalTitle} text-title`}>새로운 음식점</h2>
                 <form>

@@ -49,7 +49,7 @@
     color: var(--primary-color);
 }
 
-.restaurant__description {
+.restaurantInfo__description {
     display: -webkit-box;
 
     padding-top: 8px;
