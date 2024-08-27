@@ -208,14 +208,14 @@ body {
   margin-bottom: 36px;
 }
 
-.form-item {
+.formItem {
   display: flex;
   flex-direction: column;
 
   margin-bottom: 36px;
 }
 
-.form-item label {
+.formItem label {
   color: var(--grey-400);
   font-size: 14px;
 }
@@ -227,13 +227,13 @@ body {
   content: "*";
 }
 
-.form-item .help-text {
+.formItem .help-text {
   color: var(--grey-300);
 }
 
-.form-item input,
-.form-item textarea,
-.form-item select {
+.formItem input,
+.formItem textarea,
+.formItem select {
   padding: 8px;
   margin: 6px 0;
 
@@ -243,11 +243,11 @@ body {
   font-size: 16px;
 }
 
-.form-item textarea {
+.formItem textarea {
   resize: none;
 }
 
-.form-item select {
+.formItem select {
   height: 44px;
 
   padding: 8px;
