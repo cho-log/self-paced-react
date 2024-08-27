@@ -1,6 +1,7 @@
 import styles from "../../css/Category.module.css";
-import {options} from "../../datas/restaurantData.js";
 /* 카테고리/정렬 필터 */
+
+const options = ["전체", "한식", "중식", "일식", "양식", "아시안", "기타"];
 
 const CategoryFilter = ({setCategory}) => {
     return (

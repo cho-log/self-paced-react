@@ -31,32 +31,32 @@
     margin-bottom: 36px;
 }
 
-.form-item {
+.formItem {
     display: flex;
     flex-direction: column;
 
     margin-bottom: 36px;
 }
 
-.form-item label {
+.formItem label {
     color: var(--grey-400);
     font-size: 14px;
 }
 
-.form-item--required label::after {
+.formItemRequired label::after {
     padding-left: 4px;
 
     color: var(--primary-color);
     content: "*";
 }
 
-.form-item .help-text {
+.formItem .help-text {
     color: var(--grey-300);
 }
 
-.form-item input,
-.form-item textarea,
-.form-item select {
+.formItem input,
+.formItem textarea,
+.formItem select {
     padding: 8px;
     margin: 6px 0;
 
@@ -66,11 +66,11 @@
     font-size: 16px;
 }
 
-.form-item textarea {
+.formItem textarea {
     resize: none;
 }
 
-.form-item select {
+.formItem select {
     height: 44px;
 
     padding: 8px;
@@ -86,7 +86,7 @@ input[name="link"] {
     height: 44px;
 }
 
-.button-container {
+.buttonContainer {
     display: flex;
 }
 
@@ -107,19 +107,19 @@ input[name="link"] {
     margin-right: 0;
 }
 
-.button--secondary {
+.buttonSecondary {
     border: 1px solid var(--grey-300);
     background: transparent;
 
     color: var(--grey-300);
 }
 
-.button--primary {
+.buttonPrimary {
     background: var(--primary-color);
 
     color: var(--grey-100);
 }
 
-.restaurant-info {
+.restaurantInfo {
     margin-bottom: 24px;
 }

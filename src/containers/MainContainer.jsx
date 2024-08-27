@@ -1,9 +1,9 @@
 import MainBody from "../components/mainbody/MainBody.jsx";
 
-const MainContainer = ({setIsModal}) => {
+const MainContainer = ({setIsModal,restaurants}) => {
     return (
         <>
-            <MainBody setIsModal={setIsModal} />
+            <MainBody setIsModal={setIsModal} restaurants={restaurants} />
         </>
     );
 };
