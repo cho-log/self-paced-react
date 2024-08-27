@@ -9,7 +9,7 @@ import CategoryETC from "../../../templates/category-etc.png";
 
 const options = ["전체", "한식", "중식", "일식", "양식", "아시안", "기타"];
 
-const AddRestaurantModal = ({ setIsAddModal, restaurants, setRestaurants }) => {
+const AddRestaurantModal = ({ setIsAddModal }) => {
     const onCloseAddModal = () => {
         setIsAddModal(false);
     }
@@ -52,8 +52,18 @@ const AddRestaurantModal = ({ setIsAddModal, restaurants, setRestaurants }) => {
             description,
             icon,
         };
+        const fetchData = async() => {
+            const response = await fetch("http://localhost:3000/restaurants",{
+                method: "POST",
+                headers:{
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(newRestaurant),
+            })
+            console.log(response);
+        }
 
-        setRestaurants([...restaurants, newRestaurant]);
+        void fetchData();
         onCloseAddModal();
     };
 
