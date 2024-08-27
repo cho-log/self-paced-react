@@ -12,11 +12,16 @@ function App() {
             description:"",
         }
     });
+    const [isAddModal, setIsAddModal] = useState(false);
     return (
         <>
-            <HeaderContainer/>
+            <HeaderContainer setIsAddModal={setIsAddModal} />
             <MainContainer setIsModal={setIsModal} />
-            <AsideContainer isModal={isModal} setIsModal={setIsModal} />
+            <AsideContainer
+                isModal={isModal}
+                setIsModal={setIsModal}
+                isAddModal={isAddModal}
+                setIsAddModal={setIsAddModal} />
         </>
     );
 }
