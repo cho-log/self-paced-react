@@ -1,13 +1,12 @@
 import styles from "../../css/Restaurant.module.css";
 import RestaurantInfo from "./RestaurantInfo.jsx";
-import { restaurants } from "../../datas/restaurantData.js";
 
-const RestaurantList = () => {
+const RestaurantList = ({filteredRestaurants}) => {
     return (
         <section className={styles.restaurantListContainer}>
             <ul>
-                {restaurants.map((restaurant,index) => (
-                    <RestaurantInfo key={index} restaurant={restaurant} />
+                {filteredRestaurants.map((restaurant) => (
+                    <RestaurantInfo key={restaurant.id} restaurant={restaurant} />
                 ))}
             </ul>
         </section>
