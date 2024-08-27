@@ -1,4 +1,5 @@
 import Modal from './Modal';
+import styles from "../../css/Modal.module.css";
 import CategoryKorean from "../../../templates/category-korean.png";
 import CategoryChinese from "../../../templates/category-chinese.png";
 import CategoryJapanese from "../../../templates/category-japanese.png";
@@ -59,23 +60,30 @@ const AddRestaurantModal = ({ setIsAddModal, restaurants, setRestaurants }) => {
     return (
         <Modal title="새로운 음식점" onClose={onCloseAddModal}>
             <form onSubmit={onAddRestaurant}>
-                <div>
-                    <label>카테고리</label>
+                <div className={`${styles.formItem} ${styles.formItemRequired}`}>
+                    <label className="text-caption">카테고리</label>
                     <select name="category" required>
                         {options.map((option) => (
                             <option key={option} value={option}>{option}</option>
                         ))}
                     </select>
                 </div>
-                <div>
-                    <label>이름</label>
-                    <input type="text" name="name" required />
+                <div className={`${styles.formItem} ${styles.formItemRequired}`}>
+                    <label htmlFor="name" className="text-caption">이름</label>
+                    <input type="text" name="name" required/>
                 </div>
-                <div>
-                    <label>설명</label>
-                    <textarea name="description" rows="5"></textarea>
+                <div className={styles.formItem}>
+                    <label htmlFor="description" className="text-caption">설명</label>
+                    <textarea name="description" id="description" cols="30" rows="5"></textarea>
+                    <span className={`${styles.helpText} text-caption`}>메뉴 등 추가 정보를 입력해 주세요.</span>
                 </div>
-                <button type="submit">추가하기</button>
+                <div className={styles.buttonContainer}>
+                    <button
+                        type="submit"
+                        className={`${styles.button} ${styles.buttonPrimary} text-caption}`}
+                    >추가하기
+                    </button>
+                </div>
             </form>
         </Modal>
     );
