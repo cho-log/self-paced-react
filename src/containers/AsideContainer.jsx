@@ -1,11 +1,9 @@
 
 import Aside from "../components/aside/Aside.jsx";
 
-const AsideContainer = () => {
+const AsideContainer = ({isModal,setIsModal}) => {
     return (
-        <>
-            <Aside/>
-        </>
+        <Aside isModal={isModal} setIsModal={setIsModal} />
     );
 };
 

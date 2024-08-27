@@ -1,9 +1,9 @@
 import MainBody from "../components/mainbody/MainBody.jsx";
 
-const MainContainer = () => {
+const MainContainer = ({setIsModal}) => {
     return (
         <>
-            <MainBody/>
+            <MainBody setIsModal={setIsModal} />
         </>
     );
 };
