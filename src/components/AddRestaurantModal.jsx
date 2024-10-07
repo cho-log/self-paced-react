@@ -1,3 +1,5 @@
+import "../styles/AddRestaurantModalStyle.css";
+
 function AddRestaurantModal() {
   return (
     <>

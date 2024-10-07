@@ -1,3 +1,5 @@
+import "../styles/CategoryFilterStyle.css";
+
 function CategoryFilter() {
   return (
     <>

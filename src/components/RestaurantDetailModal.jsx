@@ -1,3 +1,5 @@
+import "../styles/RestaurantDetailModalStyle.css";
+
 function RestaurantDetailModal() {
   return (
     <>
