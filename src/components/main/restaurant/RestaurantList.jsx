@@ -1,21 +1,20 @@
-import { RESTAURANTS } from '../../constants/Restaurants';
 import styles from '../../../css/Restaurant.module.css';
 import RestaurantCard from './RestaurantCard';
-const RestaurantList = () => {
+const RestaurantList = ({ restaurants }) => {
   return (
     <section className={`${styles.restaurantListContainer}`}>
       <ul className={`${styles.restaurantList}`}>
-        {RESTAURANTS.map((item) => {
-          return (
-            <RestaurantCard
-              key={item.id}
-              category_image={item.categoryIcon}
-              image_alt={item.category}
-              restaurant_name={item.name}
-              restaurant_description={item.description}
-            />
-          );
-        })}
+        {restaurants.length > 0 &&
+          restaurants.map((item) => {
+            return (
+              <RestaurantCard
+                key={item.id}
+                alt={item.category}
+                name={item.name}
+                description={item.description}
+              />
+            );
+          })}
       </ul>
     </section>
   );
