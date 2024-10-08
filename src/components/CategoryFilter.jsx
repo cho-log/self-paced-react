@@ -1,6 +1,11 @@
 import "../styles/CategoryFilterStyle.css";
 
-function CategoryFilter() {
+function CategoryFilter({ category, onChangeCategory }) {
+  function handleChange(event) {
+    onChangeCategory(event.target.value);
+  }
+  console.log(category);
+
   return (
     <>
       <section className="restaurant-filter-container">
@@ -9,6 +14,8 @@ function CategoryFilter() {
           id="category-filter"
           className="restaurant-filter"
           aria-label="음식점 카테고리 필터"
+          value={category}
+          onChange={handleChange}
         >
           <option value="전체">전체</option>
           <option value="한식">한식</option>
