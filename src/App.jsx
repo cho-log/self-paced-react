@@ -9,7 +9,6 @@ import { useState, useEffect } from "react";
 function App() {
   const [category, setCategory] = useState("전체");
   const [filteredRestaurants, SetFilteredRestaurants] = useState([]);
-  const [categoryImg, SetCategoryImg] = useState("/");
 
   const restaurants = [
     {
