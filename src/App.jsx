@@ -4,27 +4,13 @@ import CategoryFilter from './components/main/categoryFilter/CategoryFilter';
 import RestaurantList from './components/main/restaurant/RestaurantList';
 import AddRestaurantModal from './components/aside/AddRestaurantModal';
 import RestaurantDetailModal from './components/aside/RestaurantDetailModal';
-import { useState } from 'react';
-import { restaurants } from './components/constants/Restaurants';
-
 function App() {
-  const [category, setCategory] = useState('전체');
-  let filteredRestaurants = [];
-  if (category === '전체') {
-    filteredRestaurants = restaurants;
-  } else {
-    restaurants.map((item) => {
-      if (item.category === category) {
-        filteredRestaurants.push(item);
-      }
-    });
-  }
   return (
     <>
       <Header />
       <main>
-        <CategoryFilter category={category} onChangeCategory={setCategory} />
-        <RestaurantList restaurants={filteredRestaurants} />
+        <CategoryFilter />
+        <RestaurantList />
       </main>
       <aside>
         <RestaurantDetailModal />
