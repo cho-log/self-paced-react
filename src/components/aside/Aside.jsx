@@ -1,7 +1,6 @@
 const Aside = () => {
     return (
         <aside>
-
         </aside>
     );
 };
