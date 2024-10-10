@@ -4,6 +4,7 @@ import CategoryFilter from './components/main/categoryFilter/CategoryFilter';
 import RestaurantList from './components/main/restaurant/RestaurantList';
 import AddRestaurantModal from './components/aside/AddRestaurantModal';
 import RestaurantDetailModal from './components/aside/RestaurantDetailModal';
+
 function App() {
   return (
     <>
@@ -19,4 +20,5 @@ function App() {
     </>
   );
 }
+
 export default App;

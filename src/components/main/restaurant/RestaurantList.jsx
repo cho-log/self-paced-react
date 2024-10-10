@@ -1,6 +1,7 @@
 import { RESTAURANTS } from '../../constants/Restaurants';
 import styles from '../../../css/Restaurant.module.css';
 import RestaurantCard from './RestaurantCard';
+
 const RestaurantList = () => {
   return (
     <section className={`${styles.restaurantListContainer}`}>
@@ -9,10 +10,10 @@ const RestaurantList = () => {
           return (
             <RestaurantCard
               key={item.id}
-              category_image={item.categoryIcon}
-              image_alt={item.category}
-              restaurant_name={item.name}
-              restaurant_description={item.description}
+              image={item.categoryIcon}
+              alt={item.category}
+              name={item.name}
+              description={item.description}
             />
           );
         })}
@@ -20,4 +21,5 @@ const RestaurantList = () => {
     </section>
   );
 };
+
 export default RestaurantList;

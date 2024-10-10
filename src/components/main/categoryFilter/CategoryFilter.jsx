@@ -1,7 +1,7 @@
 import styles from '../../../css/Category.module.css';
 import { CATEGORYOPTION } from '../../constants/CategoryOption';
+
 const CategoryFilter = () => {
-  console.log(CATEGORYOPTION);
   return (
     <main>
       <section className={styles.restaurantFilterContainer}>
