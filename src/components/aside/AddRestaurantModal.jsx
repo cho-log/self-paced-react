@@ -1,5 +1,6 @@
 import styles from '../../css/Modal.module.css';
 import { CATEGORYOPTION } from '../constants/CategoryOption';
+
 const AddRestaurantModal = () => {
   return (
     <div className={`${styles.modal} ${styles.modalOpen}`}>

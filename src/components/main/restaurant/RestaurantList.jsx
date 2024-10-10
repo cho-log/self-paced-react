@@ -1,5 +1,6 @@
 import styles from '../../../css/Restaurant.module.css';
 import RestaurantCard from './RestaurantCard';
+
 const RestaurantList = ({ restaurants }) => {
   return (
     <section className={`${styles.restaurantListContainer}`}>
@@ -19,4 +20,5 @@ const RestaurantList = ({ restaurants }) => {
     </section>
   );
 };
+
 export default RestaurantList;

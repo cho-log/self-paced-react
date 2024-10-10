@@ -6,28 +6,26 @@ import EtcIcon from '../../../assets/category/category-etc.png';
 import JapaneseIcon from '../../../assets/category/category-japanese.png';
 import WesternIcon from '../../../assets/category/category-western.png';
 
-const RestaurantCard = ({ alt, name, description }) => {
-  let image;
+const getCategoryIcon = (alt) => {
   switch (alt) {
     case '한식':
-      image = KoreanIcon;
-      break;
+      return KoreanIcon;
     case '중식':
-      image = ChineseIcon;
-      break;
+      return ChineseIcon;
     case '아시안':
-      image = AsianIcon;
-      break;
+      return AsianIcon;
     case '일식':
-      image = JapaneseIcon;
-      break;
+      return JapaneseIcon;
     case '양식':
-      image = WesternIcon;
-      break;
+      return WesternIcon;
     case '기타':
-      image = EtcIcon;
-      break;
+      return EtcIcon;
   }
+};
+
+const RestaurantCard = ({ alt, name, description }) => {
+  const image = getCategoryIcon(alt);
+
   return (
     <li className={styles.restaurant}>
       <div className={styles.restaurant__category}>
@@ -42,4 +40,5 @@ const RestaurantCard = ({ alt, name, description }) => {
     </li>
   );
 };
+
 export default RestaurantCard;
