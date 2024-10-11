@@ -15,9 +15,11 @@ const CategoryFilter = ({ category, onChangeCategory }) => {
         >
           <option value="전체">전체</option>
           {CATEGORYOPTION.map((option, idx) => {
-            <option key={idx} value={option}>
-              {option}
-            </option>;
+            return (
+              <option key={idx} value={option}>
+                {option}
+              </option>
+            );
           })}
         </select>
       </section>
