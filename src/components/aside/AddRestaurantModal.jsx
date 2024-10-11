@@ -15,11 +15,9 @@ const AddRestaurantModal = () => {
             <select name="category" id="category" required>
               <option value="">선택해 주세요</option>
               {CATEGORYOPTION.map((option, idx) => {
-                return (
-                  <option key={idx} value={option}>
-                    {option}
-                  </option>
-                );
+                <option key={idx} value={option}>
+                  {option}
+                </option>;
               })}
             </select>
           </div>
