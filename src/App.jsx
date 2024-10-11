@@ -12,12 +12,10 @@ function App() {
   let filteredRestaurants = [];
   if (category === '전체') {
     filteredRestaurants = restaurants;
-  } else {
-    restaurants.map((item) => {
-      if (item.category === category) {
-        filteredRestaurants.push(item);
-      }
-    });
+  } else if (category !== '전체') {
+    filteredRestaurants = restaurants.filter(
+      (restaurant) => restaurant.category === category
+    );
   }
   return (
     <>
