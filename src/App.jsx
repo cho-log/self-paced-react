@@ -1,7 +1,16 @@
 import "./App.css";
+import HeaderContainer from "./containers/HeaderContainer.jsx";
+import MainContainer from "./containers/MainContainer.jsx";
+import AsideContainer from "./containers/AsideContainer.jsx";
 
 function App() {
-  return <h1>Self-Paced React</h1>;
+  return (
+      <>
+        <HeaderContainer/>
+        <MainContainer/>
+        <AsideContainer/>
+      </>
+  );
 }
 
 export default App;
