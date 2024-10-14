@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Header from "./components/Header";
 import CategoryFilter from "./components/CategoryFilter";
 import RestaurantList from "./components/RestaurantList";
@@ -9,15 +9,18 @@ import restaurantsData from "./data/restaurantsData";
 
 function App() {
   const [category, setCategory] = useState("전체");
-  const [filteredRestaurants, SetFilteredRestaurants] = useState([]);
 
-  useEffect(() => {
-    if (category === "전체") SetFilteredRestaurants(restaurantsData);
-    else
-      SetFilteredRestaurants(
-        restaurantsData.filter((restaurant) => restaurant.category === category)
-      );
-  }, [category]);
+  const filterRestaurants = (category) => {
+    console.log("카테고리:", category);
+    console.log("음식점 리스트:", restaurantsData);
+
+    console.log(filteredRestaurants);
+    if (category === "전체") return restaurantsData;
+    else return restaurantsData.filter((restaurant) => restaurant.category === category);
+  };
+
+  const filteredRestaurants = filterRestaurants(category);
+  console.log(filteredRestaurants);
 
   return (
     <>
