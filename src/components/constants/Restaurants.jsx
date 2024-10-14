@@ -1,3 +1,4 @@
+
 export const restaurants = [
   {
     id: 'a01',
@@ -37,5 +38,6 @@ export const restaurants = [
     name: '도스타코스 선릉점',
     description: '멕시칸 캐주얼 그릴',
     category: '기타',
+
   },
 ];

@@ -1,3 +1,4 @@
+
 import styles from '../../../css/Restaurant.module.css';
 import RestaurantCard from './RestaurantCard';
 
@@ -16,6 +17,7 @@ const RestaurantList = ({ restaurants }) => {
               />
             );
           })}
+
       </ul>
     </section>
   );
