@@ -1,6 +1,6 @@
 import styles from "../css/CategoryFilter.module.css";  
 
-export function CategoryFilter() {
+function CategoryFilter() {
   return (
     <section className={styles.restaurantFilterContainer}>
       <select
@@ -20,3 +20,4 @@ export function CategoryFilter() {
     </section>
   );
 }
+export default CategoryFilter;

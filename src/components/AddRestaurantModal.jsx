@@ -1,6 +1,6 @@
-import styles from "../css/RestrauntDetailModal.module.css";
+import styles from "../css/RestaurantDetailModal.module.css";
 
-export function AddRestrauntModal() {
+function AddRestaurantModal() {
   return (
     <div className={`${styles.modal} ${styles.modalOpen}`}>
       <div className={styles.modalBackdrop}></div>
@@ -45,3 +45,5 @@ export function AddRestrauntModal() {
     </div>
   );
 }
+
+export default AddRestaurantModal;

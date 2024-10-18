@@ -1,6 +1,6 @@
-import styles from "../css/RestrauntList.module.css";
+import styles from "../css/RestaurantList.module.css";
 
-export function RestrauntList() {
+function RestaurantList() {
   return (
     <>
       <section className={styles.restaurantFilterContainer}>
@@ -141,3 +141,5 @@ export function RestrauntList() {
     </>
   );
 }
+
+export default RestaurantList;
