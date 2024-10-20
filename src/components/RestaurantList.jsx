@@ -10,7 +10,7 @@ function RestaurantList({ restaurants }) {
             <li key={restaurant.id} className="restaurant">
               <div className="restaurant__category">
                 <img
-                  src={`/category-${categoryInEnglish[restaurant.category]}.png`}
+                  src={`../../templates/category-${categoryInEnglish[restaurant.category]}.png`}
                   alt="한식"
                   className="category-icon"
                 />
