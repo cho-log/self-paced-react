@@ -1,9 +1,9 @@
 import "./App.css";
-import Header from "./components/Header.jsx";
-import CategoryFilter from "./components/CategoryFilter.jsx";
-import RestaurantList from "./components/RestaurantList.jsx";
-import RestaurantDetailModal from "./components/RestaurantDetailModal.jsx";
-import AddRestaurantModal from "./components/AddRestaurantModal.jsx";
+import Header from "./header/Header.jsx";
+import CategoryFilter from "./mainbody/CategoryFilter.jsx";
+import RestaurantList from "./mainbody/RestaurantList.jsx";
+import RestaurantDetailModal from "./aside/RestaurantDetailModal.jsx";
+import AddRestaurantModal from "./aside/AddRestaurantModal.jsx";
 
 
 function App() {
