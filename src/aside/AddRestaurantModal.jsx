@@ -1,5 +1,5 @@
 import styles from "../css/RestaurantDetailModal.module.css";
-
+import { options } from "../datas/RestaurantData";
 function AddRestaurantModal() {
   return (
     <div className={`${styles.modal} ${styles.modalOpen}`}>
@@ -11,13 +11,11 @@ function AddRestaurantModal() {
           <div className={`${styles.formItem} ${styles.formItemRequired}`}>
             <label htmlFor="category" className="text-caption">카테고리</label>
             <select name="category" id="category" required>
-              <option value="">선택해 주세요</option>
-              <option value="한식">한식</option>
-              <option value="중식">중식</option>
-              <option value="일식">일식</option>
-              <option value="양식">양식</option>
-              <option value="아시안">아시안</option>
-              <option value="기타">기타</option>
+            {options.map((option, index) => (
+              <option key={index} value={option}>
+            {option}
+          </option>
+        ))}
             </select>
           </div>
 
