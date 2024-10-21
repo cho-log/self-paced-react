@@ -1,7 +1,7 @@
 import styles from "../css/RestaurantList.module.css";
-import { restaurants } from "../datas/RestaurantData";
 
-function RestaurantList() {
+
+function RestaurantList({restaurants}) {
   return (
     <>
       <section className={styles["restaurant-list-container"]}>
