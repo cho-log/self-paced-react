@@ -1,5 +1,5 @@
 import "../styles/CategoryFilterStyle.css";
-import { categoryData } from "../data/categoryData";
+import { CATEGORY_DATA } from "../data/categoryData";
 
 function CategoryFilter({ category, onChangeCategory }) {
   function handleChange(event) {
@@ -17,7 +17,7 @@ function CategoryFilter({ category, onChangeCategory }) {
           value={category}
           onChange={handleChange}
         >
-          {categoryData.map((category) => (
+          {CATEGORY_DATA.map((category) => (
             <option key={category}>{category}</option>
           ))}
         </select>

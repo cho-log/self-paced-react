@@ -1,5 +1,13 @@
 import "../styles/RestaurantListStyle.css";
-import { categoryInEnglish } from "../data/categoryData";
+
+const CATEGORY_IN_ENGLISH = Object.freeze({
+  한식: "korean",
+  중식: "chinese",
+  일식: "japanese",
+  양식: "western",
+  아시안: "asian",
+  기타: "etc",
+});
 
 function RestaurantList({ restaurants }) {
   return (
@@ -10,7 +18,7 @@ function RestaurantList({ restaurants }) {
             <li key={restaurant.id} className="restaurant">
               <div className="restaurant__category">
                 <img
-                  src={`../../templates/category-${categoryInEnglish[restaurant.category]}.png`}
+                  src={`../../templates/category-${CATEGORY_IN_ENGLISH[restaurant.category]}.png`}
                   alt="한식"
                   className="category-icon"
                 />

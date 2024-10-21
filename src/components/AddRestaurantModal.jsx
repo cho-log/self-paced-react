@@ -1,5 +1,5 @@
 import "../styles/AddRestaurantModalStyle.css";
-import { categoryData } from "../data/categoryData";
+import { CATEGORY_DATA } from "../data/categoryData";
 
 function AddRestaurantModal() {
   return (
@@ -13,7 +13,7 @@ function AddRestaurantModal() {
             <label htmlFor="category text-caption">카테고리</label>
             <select name="category" id="category" required>
               <option value="">선택해 주세요</option>
-              {categoryData.map((category) => (
+              {CATEGORY_DATA.map((category) => (
                 <option key={category}>{category}</option>
               ))}
             </select>
