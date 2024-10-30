@@ -10,7 +10,7 @@ import { restaurants } from "./datas/RestaurantData";
 function App() {
   const [category,setCategory] = useState("전체");
 
-  let filteredRestaurants= category==="전체" ? restaurants : restaurants.filter((restaurant)=>restaurant.category===category);
+  const filteredRestaurants= category==="전체" ? restaurants : restaurants.filter((restaurant)=>restaurant.category===category);
   
   const handleCategoryChange = (newCategory) => {
     console.log("Selected category:", newCategory); // 카테고리가 변경될 때 출력
