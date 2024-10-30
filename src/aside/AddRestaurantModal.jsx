@@ -1,5 +1,6 @@
 import styles from "../css/RestaurantDetailModal.module.css";
 import { options } from "../datas/RestaurantData";
+
 function AddRestaurantModal() {
   return (
     <div className={`${styles.modal} ${styles.modalOpen}`}>
