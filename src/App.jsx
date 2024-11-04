@@ -21,9 +21,11 @@ function App() {
   const [restaurantName, setRestaurantName] = useState("");
   const [restaurantInfo, setRestaurantInfo] = useState("");
 
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
   return (
     <>
-      <Header />
+      <Header setIsAddModalOpen={setIsAddModalOpen} />
       <main>
         <CategoryFilter category={category} onChangeCategory={setCategory} />
         <RestaurantList
@@ -41,7 +43,7 @@ function App() {
             restaurantInfo={restaurantInfo}
           />
         )}
-        {/* <AddRestaurantModal /> */}
+        {isAddModalOpen && <AddRestaurantModal setIsAddModalOpen={setIsAddModalOpen} />}
       </aside>
     </>
   );

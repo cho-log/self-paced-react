@@ -1,10 +1,14 @@
 import "../styles/AddRestaurantModalStyle.css";
 import { CATEGORY_DATA } from "../data/categoryData";
 
-function AddRestaurantModal() {
+function AddRestaurantModal({ setIsAddModalOpen }) {
+  const handleClick = () => {
+    setIsAddModalOpen(false);
+  };
+
   return (
     <div className="modal modal--open">
-      <div className="modal-backdrop"></div>
+      <div className="modal-backdrop" onClick={handleClick}></div>
       <div className="modal-container">
         <h2 className="modal-title text-title">새로운 음식점</h2>
         <form>
