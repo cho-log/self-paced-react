@@ -8,7 +8,7 @@ function RestaurantDetailModal({ SetIsModalOpen, restaurantName, restaurantInfo 
   return (
     <>
       <div className="modal modal--open">
-        <div className="modal-backdrop"></div>
+        <div className="modal-backdrop" onClick={handleClick}></div>
         <div className="modal-container">
           <h2 className="modal-title text-title">{restaurantName}</h2>
           <div className="restaurant-info">
