@@ -17,16 +17,31 @@ function App() {
 
   const filteredRestaurants = filterRestaurants(category);
 
+  const [isModalOpen, SetIsModalOpen] = useState(false);
+  const [restaurantName, setRestaurantName] = useState("");
+  const [restaurantInfo, setRestaurantInfo] = useState("");
+
   return (
     <>
       <Header />
       <main>
         <CategoryFilter category={category} onChangeCategory={setCategory} />
-        <RestaurantList restaurants={filteredRestaurants} />
+        <RestaurantList
+          restaurants={filteredRestaurants}
+          SetIsModalOpen={SetIsModalOpen}
+          setRestaurantName={setRestaurantName}
+          setRestaurantInfo={setRestaurantInfo}
+        />
       </main>
       <aside>
-        <RestaurantDetailModal />
-        <AddRestaurantModal />
+        {isModalOpen && (
+          <RestaurantDetailModal
+            SetIsModalOpen={SetIsModalOpen}
+            restaurantName={restaurantName}
+            restaurantInfo={restaurantInfo}
+          />
+        )}
+        {/* <AddRestaurantModal /> */}
       </aside>
     </>
   );

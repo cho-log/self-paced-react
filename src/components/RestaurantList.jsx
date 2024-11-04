@@ -9,13 +9,19 @@ const CATEGORY_IN_ENGLISH = Object.freeze({
   기타: "etc",
 });
 
-function RestaurantList({ restaurants }) {
+function RestaurantList({ restaurants, SetIsModalOpen, setRestaurantName, setRestaurantInfo }) {
+  const handleClick = (restaurant) => {
+    SetIsModalOpen(true);
+    setRestaurantName(restaurant.name);
+    setRestaurantInfo(restaurant.description);
+  };
+
   return (
     <>
       <section className="restaurant-list-container">
         <ul className="restaurant-list">
           {restaurants.map((restaurant) => (
-            <li key={restaurant.id} className="restaurant">
+            <li key={restaurant.id} className="restaurant" onClick={() => handleClick(restaurant)}>
               <div className="restaurant__category">
                 <img
                   src={`../../templates/category-${CATEGORY_IN_ENGLISH[restaurant.category]}.png`}
