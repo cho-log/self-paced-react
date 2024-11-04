@@ -25,7 +25,7 @@ function RestaurantList({ restaurants, SetIsModalOpen, setRestaurantName, setRes
               <div className="restaurant__category">
                 <img
                   src={`../../templates/category-${CATEGORY_IN_ENGLISH[restaurant.category]}.png`}
-                  alt="한식"
+                  alt=""
                   className="category-icon"
                 />
               </div>
