@@ -1,10 +1,6 @@
 import "../styles/HeaderStyle.css";
 
 function Header({ setIsAddModalOpen }) {
-  const handleClick = () => {
-    setIsAddModalOpen(true);
-  };
-
   return (
     <>
       <header className="gnb">
@@ -13,7 +9,7 @@ function Header({ setIsAddModalOpen }) {
           type="button"
           className="gnb__button"
           aria-label="음식점 추가"
-          onClick={handleClick}
+          onClick={() => setIsAddModalOpen(true)}
         >
           <img src="../../templates/add-button.png" alt="음식점 추가" />
         </button>

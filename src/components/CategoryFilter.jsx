@@ -2,10 +2,6 @@ import "../styles/CategoryFilterStyle.css";
 import { CATEGORY_DATA } from "../data/categoryData";
 
 function CategoryFilter({ category, onChangeCategory }) {
-  function handleChange(event) {
-    onChangeCategory(event.target.value);
-  }
-
   return (
     <>
       <section className="restaurant-filter-container">
@@ -15,7 +11,7 @@ function CategoryFilter({ category, onChangeCategory }) {
           className="restaurant-filter"
           aria-label="음식점 카테고리 필터"
           value={category}
-          onChange={handleChange}
+          onChange={() => onChangeCategory(event.target.value)}
         >
           {CATEGORY_DATA.map((category) => (
             <option key={category}>{category}</option>
