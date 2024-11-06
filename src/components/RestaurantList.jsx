@@ -9,9 +9,9 @@ const CATEGORY_IN_ENGLISH = Object.freeze({
   기타: "etc",
 });
 
-function RestaurantList({ restaurants, SetIsModalOpen, setRestaurantName, setRestaurantInfo }) {
+function RestaurantList({ restaurants, setIsModalOpen, setRestaurantName, setRestaurantInfo }) {
   const handleClick = (restaurant) => {
-    SetIsModalOpen(true);
+    setIsModalOpen(true);
     setRestaurantName(restaurant.name);
     setRestaurantInfo(restaurant.description);
   };

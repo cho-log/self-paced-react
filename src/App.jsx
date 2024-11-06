@@ -28,7 +28,7 @@ function App() {
         <CategoryFilter category={category} onChangeCategory={setCategory} />
         <RestaurantList
           restaurants={filteredRestaurants}
-          SetIsModalOpen={setIsModalOpen}
+          setIsModalOpen={setIsModalOpen}
           setRestaurantName={setRestaurantName}
           setRestaurantInfo={setRestaurantInfo}
         />
