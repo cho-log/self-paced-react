@@ -17,30 +17,24 @@ function App() {
 
   const filteredRestaurants = filterRestaurants(category);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [restaurantName, setRestaurantName] = useState("");
-  const [restaurantInfo, setRestaurantInfo] = useState("");
+  const [modal, setModal] = useState({
+    isOpen: false,
+    restaurant: {
+      name: "",
+      description: "",
+    },
+  });
+  console.log(modal.isOpen);
 
   return (
     <>
       <Header />
       <main>
         <CategoryFilter category={category} onChangeCategory={setCategory} />
-        <RestaurantList
-          restaurants={filteredRestaurants}
-          setIsModalOpen={setIsModalOpen}
-          setRestaurantName={setRestaurantName}
-          setRestaurantInfo={setRestaurantInfo}
-        />
+        <RestaurantList restaurants={filteredRestaurants} setModal={setModal} modal={modal} />
       </main>
       <aside>
-        {isModalOpen && (
-          <RestaurantDetailModal
-            setIsModalOpen={setIsModalOpen}
-            restaurantName={restaurantName}
-            restaurantInfo={restaurantInfo}
-          />
-        )}
+        {modal.isOpen && <RestaurantDetailModal setModal={setModal} modal={modal} />}
         {/* <AddRestaurantModal /> */}
       </aside>
     </>
