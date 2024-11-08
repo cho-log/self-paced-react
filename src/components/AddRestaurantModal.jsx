@@ -16,8 +16,8 @@ function AddRestaurantModal() {
                 <option key={category}>{category}</option>
               ))}
             </select>
-          </div>
 
+          </div>
           <div className="form-item form-item--required">
             <label htmlFor="name text-caption">이름</label>
             <input type="text" name="name" id="name" required />

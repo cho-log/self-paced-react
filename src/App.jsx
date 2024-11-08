@@ -16,7 +16,7 @@ function App() {
   };
 
   const filteredRestaurants = filterRestaurants(category);
-
+  
   const [modal, setModal] = useState({
     isOpen: false,
     restaurant: {
