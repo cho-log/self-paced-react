@@ -24,7 +24,6 @@ function App() {
       description: "",
     },
   });
-  console.log(modal.isOpen);
 
   return (
     <>
