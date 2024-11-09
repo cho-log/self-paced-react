@@ -1,25 +1,19 @@
 import "../styles/AddRestaurantModalStyle.css";
 import { CATEGORY_DATA } from "../data/categoryData";
-import restaurantsData from "../data/restaurantsData";
 import { useState } from "react";
 
-function AddRestaurantModal({ setIsAddModalOpen }) {
-  const [selectedCategory, setSelectedCategory] = useState("");
+function AddRestaurantModal({ setIsAddModalOpen, handleAddRestaurant }) {
+  const [newRestaurant, setNewRestaurant] = useState({
+    id: Date.now(),
+    name: "",
+    description: "",
+    category: "",
+  });
 
   const handleAddBtnClick = () => {
-    event.preventDefault();
-
-    restaurantsData.push({
-      id: Date.now(),
-      name: restaurantName,
-      description: restaurantInfo,
-      category: selectedCategory,
-    });
+    handleAddRestaurant(newRestaurant);
     setIsAddModalOpen(false);
   };
-
-  const [restaurantName, setRestaurantName] = useState("");
-  const [restaurantInfo, setRestaurantInfo] = useState("");
 
   return (
     <div className="modal modal--open">
@@ -33,7 +27,9 @@ function AddRestaurantModal({ setIsAddModalOpen }) {
               name="category"
               id="category"
               required
-              onChange={(selected) => setSelectedCategory(selected.target.value)}
+              onChange={(event) =>
+                setNewRestaurant({ ...newRestaurant, category: event.target.value })
+              }
             >
               <option value="">선택해 주세요</option>
               {CATEGORY_DATA.slice(1).map((category) => (
@@ -49,7 +45,7 @@ function AddRestaurantModal({ setIsAddModalOpen }) {
               name="name"
               id="name"
               required
-              onChange={(input) => setRestaurantName(input.target.value)}
+              onChange={(event) => setNewRestaurant({ ...newRestaurant, name: event.target.value })}
             />
           </div>
 
@@ -60,7 +56,10 @@ function AddRestaurantModal({ setIsAddModalOpen }) {
               id="description"
               cols="30"
               rows="5"
-              onChange={(input) => setRestaurantInfo(input.target.value)}
+              value={newRestaurant.description}
+              onChange={(event) =>
+                setNewRestaurant({ ...newRestaurant, description: event.target.value })
+              }
             ></textarea>
             <span className="help-text text-caption">메뉴 등 추가 정보를 입력해 주세요.</span>
           </div>
