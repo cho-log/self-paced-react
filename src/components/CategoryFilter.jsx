@@ -11,7 +11,7 @@ function CategoryFilter({ category, onChangeCategory }) {
           className="restaurant-filter"
           aria-label="음식점 카테고리 필터"
           value={category}
-          onChange={() => onChangeCategory(event.target.value)}
+          onChange={(event) => onChangeCategory(event.target.value)}
         >
           {CATEGORY_DATA.map((category) => (
             <option key={category}>{category}</option>
