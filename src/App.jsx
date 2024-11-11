@@ -5,7 +5,7 @@ import CategoryFilter from "./components/CategoryFilter.jsx";
 import RestaurantList from "./components/RestaurantList.jsx";
 import AddRestaurantModal from "./components/AddRestaurantModal.jsx";
 import RestaurantDetailModal from "./components/RestaurantDetailModal.jsx";
-import { getRestaurantList, addRestaurant } from "./api/restaurantAPI";
+import { getRestaurantList } from "./api/restaurantAPI";
 
 function App() {
   const [category, setCategory] = useState("전체");
@@ -32,7 +32,6 @@ function App() {
   });
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const handleAddRestaurant = (newRestaurant) => addRestaurant(newRestaurant);
 
   return (
     <>
@@ -43,12 +42,7 @@ function App() {
       </main>
       <aside>
         {modal.isOpen && <RestaurantDetailModal setModal={setModal} modal={modal} />}
-        {isAddModalOpen && (
-          <AddRestaurantModal
-            setIsAddModalOpen={setIsAddModalOpen}
-            handleAddRestaurant={handleAddRestaurant}
-          />
-        )}
+        {isAddModalOpen && <AddRestaurantModal setIsAddModalOpen={setIsAddModalOpen} />}
       </aside>
     </>
   );

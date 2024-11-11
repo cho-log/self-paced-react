@@ -1,5 +1,6 @@
 import "../styles/AddRestaurantModalStyle.css";
 import { CATEGORY_DATA } from "../data/categoryData";
+import { addRestaurant } from "../api/restaurantAPI";
 import { useState } from "react";
 
 function AddRestaurantModal({ setIsAddModalOpen, handleAddRestaurant }) {
@@ -11,7 +12,7 @@ function AddRestaurantModal({ setIsAddModalOpen, handleAddRestaurant }) {
   });
 
   const handleAddBtnClick = () => {
-    handleAddRestaurant(newRestaurant);
+    addRestaurant(newRestaurant);
     setIsAddModalOpen(false);
   };
 
