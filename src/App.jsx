@@ -15,7 +15,7 @@ function App() {
     getRestaurantList().then((data) => {
       setRestaurantList(data);
     });
-  }, [restaurantList]);
+  }, []);
 
   const filterRestaurants = (category) => {
     if (category === "전체") return restaurantList;
