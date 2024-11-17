@@ -1,9 +1,9 @@
 import "../styles/AddRestaurantModalStyle.css";
 import { CATEGORY_DATA } from "../data/categoryData";
-import { getRestaurantList, addRestaurant } from "../api/restaurantAPI";
+import { addRestaurant } from "../api/restaurantAPI";
 import { useState } from "react";
 
-function AddRestaurantModal({ setIsAddModalOpen }) {
+function AddRestaurantModal({ setIsAddModalOpen, updateRestaurantList }) {
   const [newRestaurant, setNewRestaurant] = useState({
     id: Date.now(),
     name: "",
@@ -11,10 +11,11 @@ function AddRestaurantModal({ setIsAddModalOpen }) {
     category: "",
   });
 
-  const handleAddBtnClick = () => {
-    addRestaurant(newRestaurant);
+  const handleAddBtnClick = async () => {
+    await addRestaurant(newRestaurant);
+    updateRestaurantList(newRestaurant);
+
     setIsAddModalOpen(false);
-    location.reload();
   };
 
   return (

@@ -33,6 +33,9 @@ function App() {
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
+  const updateRestaurantList = (newRestaurant) =>
+    setRestaurantList((prevList) => [...prevList, newRestaurant]);
+
   return (
     <>
       <Header setIsAddModalOpen={setIsAddModalOpen} />
@@ -42,7 +45,12 @@ function App() {
       </main>
       <aside>
         {modal.isOpen && <RestaurantDetailModal setModal={setModal} modal={modal} />}
-        {isAddModalOpen && <AddRestaurantModal setIsAddModalOpen={setIsAddModalOpen} />}
+        {isAddModalOpen && (
+          <AddRestaurantModal
+            setIsAddModalOpen={setIsAddModalOpen}
+            updateRestaurantList={updateRestaurantList}
+          />
+        )}
       </aside>
     </>
   );
