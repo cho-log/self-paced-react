@@ -1,8 +1,9 @@
 import "../styles/AddRestaurantModalStyle.css";
 import { CATEGORY_DATA } from "../data/categoryData";
+import { addRestaurant } from "../api/restaurantAPI";
 import { useState } from "react";
 
-function AddRestaurantModal({ setIsAddModalOpen, handleAddRestaurant }) {
+function AddRestaurantModal({ setIsAddModalOpen, updateRestaurantList }) {
   const [newRestaurant, setNewRestaurant] = useState({
     id: Date.now(),
     name: "",
@@ -10,8 +11,10 @@ function AddRestaurantModal({ setIsAddModalOpen, handleAddRestaurant }) {
     category: "",
   });
 
-  const handleAddBtnClick = () => {
-    handleAddRestaurant(newRestaurant);
+  const handleAddBtnClick = async () => {
+    await addRestaurant(newRestaurant);
+    updateRestaurantList();
+
     setIsAddModalOpen(false);
   };
 
@@ -65,7 +68,11 @@ function AddRestaurantModal({ setIsAddModalOpen, handleAddRestaurant }) {
           </div>
 
           <div className="button-container">
-            <button className="button button--primary text-caption" onClick={handleAddBtnClick}>
+            <button
+              className="button button--primary text-caption"
+              type="button"
+              onClick={handleAddBtnClick}
+            >
               추가하기
             </button>
           </div>
