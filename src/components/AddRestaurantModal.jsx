@@ -13,7 +13,7 @@ function AddRestaurantModal({ setIsAddModalOpen, updateRestaurantList }) {
 
   const handleAddBtnClick = async () => {
     await addRestaurant(newRestaurant);
-    updateRestaurantList(newRestaurant);
+    updateRestaurantList();
 
     setIsAddModalOpen(false);
   };
@@ -68,7 +68,11 @@ function AddRestaurantModal({ setIsAddModalOpen, updateRestaurantList }) {
           </div>
 
           <div className="button-container">
-            <button className="button button--primary text-caption" onClick={handleAddBtnClick}>
+            <button
+              className="button button--primary text-caption"
+              type="button"
+              onClick={handleAddBtnClick}
+            >
               추가하기
             </button>
           </div>
