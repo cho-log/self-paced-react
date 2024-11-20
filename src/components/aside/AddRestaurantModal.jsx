@@ -2,8 +2,10 @@ import { useState } from 'react';
 import styles from '../../css/Modal.module.css';
 import { CATEGORYOPTION } from '../constants/CategoryOption';
 import Modal from '../common/modal/Modal';
+import { postRestaurant } from '../../api/restaurant';
+import { getRestaurant } from '../../api/restaurant';
 
-const AddRestaurantModal = ({ onSubmit, setIsAddModalOpen }) => {
+const AddRestaurantModal = ({ setRestaurantsList, setIsAddModalOpen }) => {
   const [category, setCategory] = useState('');
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -24,15 +26,26 @@ const AddRestaurantModal = ({ onSubmit, setIsAddModalOpen }) => {
     return true;
   };
 
-  const submitFormHandler = () => {
-    const newRestaurant = {
-      id: Date.now(),
-      category: category,
-      name: name,
-      description: description,
-    };
+  const newRestaurant = {
+    id: Date.now(),
+    category: category,
+    name: name,
+    description: description,
+  };
 
-    onSubmit((prev) => [...prev, newRestaurant]);
+  const submitFormHandler = async () => {
+    try {
+      const response = await postRestaurant(newRestaurant);
+
+      if (response.ok) {
+        await getRestaurant(setRestaurantsList);
+        setIsAddModalOpen(false);
+      } else {
+        console.log(response);
+      }
+    } catch (error) {
+      console.error('Error posting restaurants', error);
+    }
   };
 
   const checkFormHandler = (e) => {
@@ -41,6 +54,7 @@ const AddRestaurantModal = ({ onSubmit, setIsAddModalOpen }) => {
 
     if (isFilledoutAll) {
       submitFormHandler();
+      setIsAddModalOpen(false);
     }
   };
 
@@ -97,6 +111,7 @@ const AddRestaurantModal = ({ onSubmit, setIsAddModalOpen }) => {
         </div>
         <div className={styles.buttonContainer}>
           <button
+            type="submit"
             className={`${styles.button} ${styles.buttonPrimary} text-caption`}
           >
             추가하기
