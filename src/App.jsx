@@ -4,11 +4,12 @@ import CategoryFilter from "./components/Main/CategoryFilter.jsx";
 import RestaurantDetailModal from "./components/Aside/RestaurantDetailModal.jsx";
 import AddRestaurantModal from "./components/Aside/AddRestaurantModal.jsx";
 import RestaurantList from "./components/Main/RestaurantList.jsx"
-import getRestaurants from "./data/Restaurant.js";
 import { useState } from "react";
+import { useRestaurants } from "./hooks/useRestaurants.js";
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
-  const [ restaurantList, setRestaurantList ] = useState(getRestaurants());
+  const { restaurants, addRestaurant } = useRestaurants();
   const [ category, setCategory ] = useState("전체");
   const [ clickedRestaurantItem, setClickedRestaurantItem ] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState({
@@ -16,17 +17,22 @@ function App() {
     add: false,
   });
 
-  const filteredRestaurants = category === "전체" ? restaurantList : restaurantList.filter(
+  const filteredRestaurants = category === "전체" ? restaurants : restaurants.filter(
     (restaurant) => restaurant.category === category
   );
 
-  const toggleModal = (modalType, isOpen, restaurantData = null) => {
+  const toggleModal = (modalType, isOpen, detailData = null, event = null) => {
     setIsModalOpen((prev) => ({ ...prev, [modalType]: isOpen }));
 
-    if (modalType === "detail" && isOpen && restaurantData) {
-      setClickedRestaurantItem(restaurantData);
-    } else if (modalType === "add" && !isOpen && restaurantData) {
-      addRestaurant(restaurantData);
+    if (modalType === "detail" && isOpen && detailData) {
+      setClickedRestaurantItem(detailData);
+    } else if (modalType === "add" && !isOpen && event) {
+      addRestaurant({
+        id: uuidv4(),
+        name: event.name,
+        description: event.description,
+        category: event.category
+      });
     }
   };
 
@@ -51,24 +57,14 @@ function App() {
           />
         }
         {isModalOpen.add && 
-          <AddRestaurantModal 
-            onFormSubmit={(event) => toggleModal("add", false, event)}
+          <AddRestaurantModal
+            onFormSubmit={(event) => toggleModal("add", false, null, event)}
             onChangeAddModal={() => toggleModal("add", false)}
           />
         }
       </aside>
     </>
   );
-
-  function addRestaurant(restaurant) {
-    const newRestaurant = {
-      id: Date.now(),
-      name: restaurant.name,
-      description: restaurant.description,
-      category: restaurant.category
-    };
-    setRestaurantList([...restaurantList, newRestaurant]);
-  }
 }
 
 export default App;
