@@ -1,4 +1,4 @@
-import "/src/styles/Header.css"
+import "/src/styles/Head.css"
 import Header from "./Header.jsx"
 
 export default function HeadContainer() {
