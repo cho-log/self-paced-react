@@ -1,7 +1,7 @@
 import styles from "./Modal.module.css";
 import categories from "../../data/categories";
 
-export default function AddRestaurantModal() {
+const AddRestaurantModal = () => {
     return (
         <div className={`${styles.modal} ${styles["modal--open"]}`}>
             <div className={styles["modal-backdrop"]}></div>
@@ -36,4 +36,6 @@ export default function AddRestaurantModal() {
             </div>
         </div>
     );
-}
+};
+
+export default AddRestaurantModal;

@@ -1,6 +1,6 @@
 import styles from "./Modal.module.css";
 
-export default function RestaurantDetailModal() {
+const RestaurantDetailModal = () => {
     return (
         <div className={`${styles.modal} ${styles["modal--open"]}`}>
             <div className={styles["modal-backdrop"]}></div>
@@ -15,4 +15,6 @@ export default function RestaurantDetailModal() {
             </div>
         </div>
     );
-}
+};
+
+export default RestaurantDetailModal;

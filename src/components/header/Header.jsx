@@ -1,7 +1,7 @@
 import styles from "./Header.module.css";
 import addButton from "../../assets/add-button.png";
 
-export default function Header() {
+const Header = () => {
     return(
     <header className={styles.gnb}>
         <h1 className={`${styles.gnb__title} text-title`}>점심 뭐 먹지</h1>
@@ -14,4 +14,6 @@ export default function Header() {
         </button>
     </header>
     );
-}
+};
+
+export default Header;

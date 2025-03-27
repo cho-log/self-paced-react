@@ -1,7 +1,7 @@
 import styles from "./css/CategoryFilter.module.css";
 import categories from "../../data/categories";
 
-export default function CategoryFilter() {
+const CategoryFilter = () => {
     return (
         <section className={styles["restaurant-filter-container"]}>
         <select 
@@ -18,4 +18,6 @@ export default function CategoryFilter() {
         </select>
     </section>
     );
-}
+};
+
+export default CategoryFilter;

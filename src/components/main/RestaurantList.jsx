@@ -1,7 +1,7 @@
 import styles from "./css/RestaurantList.module.css";
 import restaurants from "../../data/restaurants";
 
-export default function RestaurantList() {
+const RestaurantList = () => {
     return (
         <section className={styles["restaurant-list-container"]}>
         <ul className={styles["restaurant-list"]}>
@@ -27,4 +27,6 @@ export default function RestaurantList() {
         </ul>
     </section>
     );
-}
+};
+
+export default RestaurantList;
