@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../css/Modal.module.css";
+import textStyles from "../../css/Text.module.css";
 
 const AddRestaurantModal = () => {
     return (
@@ -33,7 +34,7 @@ const AddRestaurantModal = () => {
               </div>
     
               <div className={styles["button-container"]}>
-                <button className={`${styles["button"]} ${styles["button--primary"]} ${styles["text-caption"]}`}>추가하기</button>
+                <button className={`${styles["button"]} ${styles["button--primary"]} ${textStyles["text-caption"]}`}>추가하기</button>
               </div>
             </form>
           </div>
