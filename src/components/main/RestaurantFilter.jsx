@@ -1,8 +1,15 @@
-export default function RestaurantFilter() {
+import styles from "/src/styles/Main.module.css"
+
+export default function RestaurantFilter( { selectedCategory, setselectedCategory}) {
+    const handleChange = (event) => {
+        setselectedCategory(event.target.value);
+    }
+
     return (
         <>
-            <section className="restaurant-filter-container">
-                <select name="category" id="category-filter" className="restaurant-filter" aria-label="음식점 카테고리 필터">
+            <section className={styles["restaurant-filter-container"]}>
+                <select name="category" id="category-filter" className={styles["restaurant-filter"]}
+                        aria-label="음식점 카테고리 필터" value={selectedCategory} onChange={handleChange}>
                     <option value="전체">전체</option>
                     <option value="한식">한식</option>
                     <option value="중식">중식</option>
