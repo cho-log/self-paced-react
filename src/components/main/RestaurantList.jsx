@@ -1,12 +1,11 @@
 import styles from "./css/RestaurantList.module.css";
-import restaurants from "../../data/restaurants";
 
-const RestaurantList = () => {
+const RestaurantList = ({restaurants}) => {
     return (
         <section className={styles["restaurant-list-container"]}>
         <ul className={styles["restaurant-list"]}>
         {restaurants.map((restaurant) => (
-            <li className={styles.restaurant} key={restaurant.name}>
+            <li className={styles.restaurant} key={restaurant.id}>
                 <div className={styles["restaurant__category"]}>
                     <img
                     src={restaurant.image}
