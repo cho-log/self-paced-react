@@ -3,7 +3,7 @@ import styles from "./Header.module.css";
 function Header() {
   return (
     <header className={styles.gnb}>
-      <h1 className={styles.gnb__title}>점심 뭐 먹지</h1>
+      <h1 className={`${styles.gnb__title} text-title`}>점심 뭐 먹지</h1>
       <button
         type="button"
         className={styles.gnb__button}
