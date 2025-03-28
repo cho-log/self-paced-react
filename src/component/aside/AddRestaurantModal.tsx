@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../../css/Modal.module.css";
-import textStyles from "../../css/Text.module.css";
 
 const AddRestaurantModal = () => {
     return (
@@ -30,11 +29,11 @@ const AddRestaurantModal = () => {
               <div className={styles["form-item"]}>
                 <label htmlFor="description text-caption">설명</label>
                 <textarea name="description" id="description" cols={30} rows={5}></textarea>
-                <span className={`${styles["help-text"]} ${styles["text-caption"]}`}>메뉴 등 추가 정보를 입력해 주세요.</span>
+                <span className={`${styles["help-text"]} text-caption`}>메뉴 등 추가 정보를 입력해 주세요.</span>
               </div>
     
               <div className={styles["button-container"]}>
-                <button className={`${styles["button"]} ${styles["button--primary"]} ${textStyles["text-caption"]}`}>추가하기</button>
+                <button className={`${styles["button"]} ${styles["button--primary"]} text-caption`}>추가하기</button>
               </div>
             </form>
           </div>
