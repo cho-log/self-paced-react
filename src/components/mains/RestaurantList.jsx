@@ -7,13 +7,15 @@ function RestaurantList() {
         <li className={styles["restaurant"]}>
           <div className={styles["restaurant__category"]}>
             <img
-              src="./category-korean.png"
+              src="/templates/category-korean.png"
               alt="한식"
               className={styles["category-icon"]}
             />
           </div>
           <div className={styles["restaurant__info"]}>
-            <h3 className={styles["restaurant__name text-subtitle"]}>피양콩할마니</h3>
+            <h3 className={styles["restaurant__name text-subtitle"]}>
+              피양콩할마니
+            </h3>
             <p className={styles["restaurant__description text-body"]}>
               평양 출신의 할머니가 수십 년간 운영해온 비지 전문점 피양콩 할마니.
               두부를 빼지 않은 되비지를 맛볼 수 있는 곳으로, ‘피양’은 평안도
@@ -30,7 +32,7 @@ function RestaurantList() {
         <li className={styles["restaurant"]}>
           <div className={styles["restaurant__category"]}>
             <img
-              src="./category-chinese.png"
+              src="/templates/category-chinese.png"
               alt="중식"
               className={styles["category-icon"]}
             />
@@ -47,7 +49,7 @@ function RestaurantList() {
         <li className={styles["restaurant"]}>
           <div className={styles["restaurant__category"]}>
             <img
-              src="./category-japanese.png"
+              src="/templates/category-japanese.png"
               alt="일식"
               className={styles["category-icon"]}
             />
@@ -65,13 +67,15 @@ function RestaurantList() {
         <li className={styles["restaurant"]}>
           <div className={styles["restaurant__category"]}>
             <img
-              src="./category-western.png"
+              src="/templates/category-western.png"
               alt="양식"
               className={styles["category-icon"]}
             />
           </div>
           <div className={styles["restaurant__info"]}>
-            <h3 className={styles["restaurant__name text-subtitle"]}>이태리키친</h3>
+            <h3 className={styles["restaurant__name text-subtitle"]}>
+              이태리키친
+            </h3>
             <p className={styles["restaurant__description text-body"]}>
               늘 변화를 추구하는 이태리키친입니다.
             </p>
@@ -81,13 +85,15 @@ function RestaurantList() {
         <li className={styles["restaurant"]}>
           <div className={styles["restaurant__category"]}>
             <img
-              src="./category-asian.png"
+              src="/templates/category-asian.png"
               alt="아시안"
               className={styles["category-icon"]}
             />
           </div>
           <div className={styles["restaurant__info"]}>
-            <h3 className={styles["restaurant__name text-subtitle"]}>호아빈 삼성점</h3>
+            <h3 className={styles["restaurant__name text-subtitle"]}>
+              호아빈 삼성점
+            </h3>
             <p className={styles["restaurant__description text-body"]}>
               푸짐한 양에 국물이 일품인 쌀국수
             </p>
@@ -97,14 +103,18 @@ function RestaurantList() {
         <li className={styles["restaurant"]}>
           <div className={styles["restaurant__category"]}>
             <img
-              src="./category-etc.png"
+              src="/templates/category-etc.png"
               alt="기타"
               className={styles["category-icon"]}
             />
           </div>
           <div className={styles["restaurant__info"]}>
-            <h3 className={styles["restaurant__name text-subtitle"]}>도스타코스 선릉점</h3>
-            <p className={styles["restaurant__description text-body"]}>멕시칸 캐주얼 그릴</p>
+            <h3 className={styles["restaurant__name text-subtitle"]}>
+              도스타코스 선릉점
+            </h3>
+            <p className={styles["restaurant__description text-body"]}>
+              멕시칸 캐주얼 그릴
+            </p>
           </div>
         </li>
       </ul>
