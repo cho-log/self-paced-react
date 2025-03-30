@@ -13,10 +13,17 @@ function App() {
   return (
     <>
       <Gnb />
-      <RestaurantCategoryFilter categoryFilters={categoryFilters} />
-      <RestaurantList restaurants={restaurants} categoryIcons={categoryIcons} />
-      <RestaurantInfoModal />
-      <AddRestaurantModal categoryOptions={categoryOptions} />
+      <main>
+        <RestaurantCategoryFilter categoryFilters={categoryFilters} />
+        <RestaurantList
+          restaurants={restaurants}
+          categoryIcons={categoryIcons}
+        />
+      </main>
+      <aside>
+        <RestaurantInfoModal />
+        <AddRestaurantModal categoryOptions={categoryOptions} />
+      </aside>
     </>
   );
 }
