@@ -1,6 +1,8 @@
 import styles from "./CategoryFilter.module.css";
 
 function CategoryFilter() {
+  const categories = ["전체", "한식", "중식", "일식", "양식", "아시안", "기타"];
+
   return (
     <section className={styles["restaurant-filter-container"]}>
       <select
@@ -9,13 +11,11 @@ function CategoryFilter() {
         className={styles["restaurant-filter"]}
         aria-label="음식점 카테고리 필터"
       >
-        <option value="전체">전체</option>
-        <option value="한식">한식</option>
-        <option value="중식">중식</option>
-        <option value="일식">일식</option>
-        <option value="양식">양식</option>
-        <option value="아시안">아시안</option>
-        <option value="기타">기타</option>
+        {categories.map((category, index) => (
+          <option key={index} value={category}>
+            {category}
+          </option>
+        ))}
       </select>
     </section>
   );

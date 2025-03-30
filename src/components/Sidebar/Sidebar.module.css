@@ -3,7 +3,7 @@
 }
 
 .modal--open {
-  display: block;
+  display: none;
 }
 
 .modal-backdrop {
