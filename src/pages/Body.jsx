@@ -4,8 +4,8 @@ import RestaurantList from "../component/body/RestaurantList";
 const Body = () => {
     return (
         <>
-            <CategorySortFilter></CategorySortFilter>
-            <RestaurantList></RestaurantList>
+            <CategorySortFilter />
+            <RestaurantList />
         </>
     )
 }
