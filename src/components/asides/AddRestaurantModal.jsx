@@ -1,6 +1,6 @@
 import styles from "./RestaurantModal.module.css";
 
-function AddRestaurantModal() {
+function AddRestaurantModal({ categoryOptions }) {
   return (
     <div className={`${styles["modal"]} ${styles["modal--open"]}`}>
       <div className={styles["modal-backdrop"]}></div>
@@ -16,13 +16,9 @@ function AddRestaurantModal() {
               카테고리
             </label>
             <select name="category" id="category" required>
-              <option value="">선택해 주세요</option>
-              <option value="한식">한식</option>
-              <option value="중식">중식</option>
-              <option value="일식">일식</option>
-              <option value="양식">양식</option>
-              <option value="아시안">아시안</option>
-              <option value="기타">기타</option>
+              {categoryOptions.map((option) => (
+                <option key={option.value}>{option.label}</option>
+              ))}
             </select>
           </div>
 

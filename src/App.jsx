@@ -4,15 +4,19 @@ import RestaurantCategoryFilter from "./components/mains/RestaurantCategoryFilte
 import RestaurantList from "./components/mains/RestaurantList.jsx";
 import RestaurantInfoModal from "./components/asides/RestaurantInfoModal.jsx";
 import AddRestaurantModal from "./components/asides/AddRestaurantModal.jsx";
+import restaurants from "./data/restaurants.js";
+import categoryIcons from "./data/categoryIcons.js";
+import categoryOptions from "./data/categoryOptions.js";
+import categoryFilters from "./data/categoryFilters.js";
 
 function App() {
   return (
     <>
       <Gnb />
-      <RestaurantCategoryFilter />
-      <RestaurantList />
+      <RestaurantCategoryFilter categoryFilters={categoryFilters} />
+      <RestaurantList restaurants={restaurants} categoryIcons={categoryIcons} />
       <RestaurantInfoModal />
-      <AddRestaurantModal />
+      <AddRestaurantModal categoryOptions={categoryOptions} />
     </>
   );
 }
