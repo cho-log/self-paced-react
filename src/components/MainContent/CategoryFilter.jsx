@@ -1,5 +1,5 @@
 import styles from "./CategoryFilter.module.css";
-import { categories } from "../Data/Data.jsx";
+import { categories } from "../../Data/Data.jsx";
 
 function CategoryFilter({ category, onChangeCategory }) {
   return (
