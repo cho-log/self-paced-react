@@ -22,8 +22,6 @@ function MainContent() {
         onChangeCategory={handleCategoryChange}
       />
       <RestaurantList restaurants={filteredRestaurants} />
-      {/* <CategoryFilter />
-      <RestaurantList /> */}
     </>
   );
 }
