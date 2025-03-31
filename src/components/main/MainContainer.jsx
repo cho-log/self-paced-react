@@ -4,14 +4,12 @@ import RestaurantList from "./RestaurantList";
 import { restaurants } from "./restaurants";
 
 export default function MainContainer() {
-    const [selectedCategory, setselectedCategory] = useState('전체');
+    const [selectedCategory, setSelectedCategory] = useState('전체');
 
     return (
-        <>
-            <main>
-                <RestaurantFilter selectedCategory={selectedCategory} setselectedCategory={setselectedCategory} />
-                <RestaurantList restaurants={restaurants} selectedCategory={selectedCategory}/>
-            </main>
-        </>
+        <main>
+            <RestaurantFilter selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+            <RestaurantList restaurants={restaurants} selectedCategory={selectedCategory} />
+        </main>
     )
 }
