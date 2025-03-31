@@ -5,7 +5,7 @@ import RestaurantList from './components/main/RestaurantList';
 import RestaurantDetailModal from './components/aside/RestaurantDetailModal';
 import AddRestaurantModal from './components/aside/AddRestaurantModal';
 
-function App() {
+const App = () => {
   return (
     <>
       <Header />
@@ -19,6 +19,6 @@ function App() {
       </aside>
     </>
   );
-}
+};
 
 export default App;

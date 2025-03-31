@@ -1,14 +1,16 @@
 import styles from './Modal.module.css';
 import categories from '../../data/categories';
 
-function AddRestaurantModal() {
+const AddRestaurantModal = () => {
   return (
     <div className={`${styles.modal} ${styles['modal--open']}`}>
       <div className={styles['modal-backdrop']} />
       <div className={styles['modal-container']}>
         <h2 className={`${styles['modal-title']} text-title`}>새로운 음식점</h2>
         <form>
-          <div className={`${styles['form-item']} ${styles['form-item--required']}`}>
+          <div
+            className={`${styles['form-item']} ${styles['form-item--required']}`}
+          >
             <label htmlFor="category" className="text-caption">
               카테고리
             </label>
@@ -20,7 +22,9 @@ function AddRestaurantModal() {
               ))}
             </select>
           </div>
-          <div className={`${styles['form-item']} ${styles['form-item--required']}`}>
+          <div
+            className={`${styles['form-item']} ${styles['form-item--required']}`}
+          >
             <label htmlFor="name" className="text-caption">
               이름
             </label>
@@ -49,6 +53,6 @@ function AddRestaurantModal() {
       </div>
     </div>
   );
-}
+};
 
 export default AddRestaurantModal;

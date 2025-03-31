@@ -1,13 +1,15 @@
 import styles from './Modal.module.css';
 
-function RestaurantDetailModal() {
+const RestaurantDetailModal = () => {
   return (
     <div className={`${styles.modal} ${styles['modal--open']}`}>
       <div className={styles['modal-backdrop']} />
       <div className={styles['modal-container']}>
         <h2 className={`${styles['modal-title']} text-title`}>음식점 이름</h2>
         <div className={styles['restaurant-info']}>
-          <p className={`${styles['restaurant-info__description']} text-body`}>음식점 소개 문구</p>
+          <p className={`${styles['restaurant-info__description']} text-body`}>
+            음식점 소개 문구
+          </p>
         </div>
         <div className={styles['button-container']}>
           <button
@@ -20,6 +22,6 @@ function RestaurantDetailModal() {
       </div>
     </div>
   );
-}
+};
 
 export default RestaurantDetailModal;
