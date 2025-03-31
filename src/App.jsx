@@ -20,7 +20,7 @@ function App() {
       <Gnb />
       <RestaurantCategoryFilter
         selectedCategory={selectedCategory}
-        onCategoryChange={setSelectedCategory}
+        setSelectedCategory={setSelectedCategory}
       />
       <RestaurantList restaurants={filteredRestaurants} />
       <RestaurantInfoModal />
