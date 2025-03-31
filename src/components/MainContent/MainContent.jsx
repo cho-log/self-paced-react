@@ -5,9 +5,11 @@ import restaurants from "../../Data/Data.jsx";
 
 function MainContent() {
   const [category, setCategory] = useState("전체");
+
   const handleCategoryChange = (newCategory) => {
     setCategory(newCategory);
   };
+
   const filteredRestaurants =
     category === "전체"
       ? restaurants
