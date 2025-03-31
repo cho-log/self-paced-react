@@ -8,27 +8,20 @@ import AddRestaurantModal from './components/aside/AddRestaurantModal';
 import restaurants from './data/restaurants';
 
 const App = () => {
-  const [selectedCategory, setCategory] = useState('전체');
-  const [filteredRestaurants, setFilteredRestaurants] = useState(restaurants);
-
-  const handleCategoryChange = (changedCategory) => {
-    setCategory(changedCategory);
-    if (changedCategory === '전체') {
-      setFilteredRestaurants(restaurants);
-    } else {
-      const filtered = restaurants.filter(
-        (restaurant) => restaurant.category === changedCategory
-      );
-      setFilteredRestaurants(filtered);
-    }
-  };
+  const [selectedCategory, setSelectedCategory] = useState('전체');
+  const filteredRestaurants =
+    selectedCategory === '전체'
+      ? restaurants
+      : restaurants.filter(
+          (restaurant) => restaurant.category === selectedCategory
+        );
   return (
     <>
       <Header />
       <main>
         <CategoryFilter
           selectedCategory={selectedCategory}
-          onChangeCategory={handleCategoryChange}
+          onChangeCategory={setSelectedCategory}
         />
         <RestaurantList restaurants={filteredRestaurants} />
       </main>
