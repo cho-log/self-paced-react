@@ -12,7 +12,7 @@ const restaurants = [
   {
     id: 1,
     category: "한식",
-    imgSrc: "templates/category-asian.png",
+    imgSrc: "/templates/category-asian.png",
     imgAlt: "한식",
     name: "피양콩할머니",
     description: `평양 출신의 할머니가 수십 년간 운영해온 비지 전문점 피양콩 할마니.
@@ -27,7 +27,7 @@ const restaurants = [
   {
     id: 2,
     category: "중식",
-    imgSrc: "templates/category-chinese.png",
+    imgSrc: "/templates/category-chinese.png",
     imgAlt: "중식",
     name: "친친",
     description: `Since 2004 편리한 교통과 주차, 그리고 관록만큼 깊은 맛과
@@ -36,7 +36,7 @@ const restaurants = [
   {
     id: 3,
     category: "일식",
-    imgSrc: "templates/category-japanese.png",
+    imgSrc: "/templates/category-japanese.png",
     imgAlt: "일식",
     name: "잇쇼우",
     description: `잇쇼우는 정통 자가제면 사누끼 우동이 대표메뉴입니다. 기술은
@@ -46,7 +46,7 @@ const restaurants = [
   {
     id: 4,
     category: "양식",
-    imgSrc: "templates/category-western.png",
+    imgSrc: "/templates/category-western.png",
     imgAlt: "양식",
     name: "이태리키친",
     description: `늘 변화를 추구하는 이태리키친입니다.`,
@@ -54,7 +54,7 @@ const restaurants = [
   {
     id: 5,
     category: "아시안",
-    imgSrc: "templates/category-asian.png",
+    imgSrc: "/templates/category-asian.png",
     imgAlt: "아시안",
     name: "호아빈 삼성점",
     description: `푸짐한 양에 국물이 일품인 쌀국수`,
@@ -62,7 +62,7 @@ const restaurants = [
   {
     id: 6,
     category: "기타",
-    imgSrc: "templates/category-etc.png",
+    imgSrc: "/templates/category-etc.png",
     imgAlt: "기타",
     name: "도스타코스 선릉점",
     description: `멕시칸 캐주얼 그릴`,
