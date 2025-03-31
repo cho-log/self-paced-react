@@ -10,7 +10,9 @@ function App() {
       <main>
         <MainContent />
       </main>
-      <aside>{/* <Sidebar /> */}</aside>
+      <aside>
+        <Sidebar />
+      </aside>
     </>
   );
 }
