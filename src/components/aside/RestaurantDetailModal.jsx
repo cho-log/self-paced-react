@@ -3,7 +3,7 @@ import styles from './Modal.module.css';
 const RestaurantDetailModal = () => {
   return (
     <div className={`${styles.modal} ${styles['modal--open']}`}>
-      <div className={styles['modal-backdrop']}></div>
+      <div className={styles['modal-backdrop']} />
       <div className={styles['modal-container']}>
         <h2 className={`${styles['modal-title']} text-title`}>음식점 이름</h2>
         <div className={styles['restaurant-info']}>
@@ -13,6 +13,7 @@ const RestaurantDetailModal = () => {
         </div>
         <div className={styles['button-container']}>
           <button
+            type="button"
             className={`${styles.button} ${styles['button--primary']} text-caption`}
           >
             닫기

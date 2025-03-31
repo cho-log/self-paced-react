@@ -4,7 +4,7 @@ import categories from '../../data/categories';
 const AddRestaurantModal = () => {
   return (
     <div className={`${styles.modal} ${styles['modal--open']}`}>
-      <div className={styles['modal-backdrop']}></div>
+      <div className={styles['modal-backdrop']} />
       <div className={styles['modal-container']}>
         <h2 className={`${styles['modal-title']} text-title`}>새로운 음식점</h2>
         <form>
@@ -35,12 +35,7 @@ const AddRestaurantModal = () => {
             <label htmlFor="description" className="text-caption">
               설명
             </label>
-            <textarea
-              name="description"
-              id="description"
-              cols="30"
-              rows="5"
-            ></textarea>
+            <textarea name="description" id="description" cols="30" rows="5" />
             <span className={`${styles['help-text']} text-caption`}>
               메뉴 등 추가 정보를 입력해 주세요.
             </span>
@@ -48,6 +43,7 @@ const AddRestaurantModal = () => {
 
           <div className={styles['button-container']}>
             <button
+              type="button"
               className={`${styles.button} ${styles['button--primary']} text-caption`}
             >
               추가하기
