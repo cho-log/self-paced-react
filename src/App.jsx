@@ -1,21 +1,21 @@
-import "./App.css";
-import Header from "./components/header/Header";
-import CategoryFilter from "./components/main/CategoryFilter";
-import RestaurantList from "./components/main/RestaurantList";
-import RestaurantDetailModal from "./components/aside/RestaurantDetailModal";
-import AddRestaurantModal from "./components/aside/AddRestaurantModal";
-import restaurants from "./data/restaurants";
-import { useState } from "react";
+import { useState } from 'react';
+import './App.css';
+import Header from './components/header/Header';
+import CategoryFilter from './components/main/CategoryFilter';
+import RestaurantList from './components/main/RestaurantList';
+import RestaurantDetailModal from './components/aside/RestaurantDetailModal';
+import AddRestaurantModal from './components/aside/AddRestaurantModal';
+import restaurants from './data/restaurants';
 
 const App = () => {
-  const [selectedCategory, setCategory] = useState("전체");
+  const [selectedCategory, setCategory] = useState('전체');
   const [filteredRestaurants, setFilteredRestaurants] = useState(restaurants);
 
   const handleCategoryChange = (changedCategory) => {
     setCategory(changedCategory);
-    if (changedCategory === "전체") {
+    if (changedCategory === '전체') {
       setFilteredRestaurants(restaurants);
-    }else{
+    } else {
       const filtered = restaurants.filter(
         (restaurant) => restaurant.category === changedCategory
       );
@@ -27,11 +27,10 @@ const App = () => {
       <Header />
       <main>
         <CategoryFilter
-        selectedCategory = {selectedCategory}
-        onChangeCategory = {handleCategoryChange}
+          selectedCategory={selectedCategory}
+          onChangeCategory={handleCategoryChange}
         />
-        <RestaurantList 
-        restaurants = {filteredRestaurants} />
+        <RestaurantList restaurants={filteredRestaurants} />
       </main>
       <aside>
         <RestaurantDetailModal />
