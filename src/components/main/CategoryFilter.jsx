@@ -1,5 +1,5 @@
 import styles from './css/CategoryFilter.module.css';
-import categories from '../../data/constant/constant';
+import categories from '../../constant/constant';
 
 const CategoryFilter = ({ selectedCategory, onChangeCategory }) => {
   return (

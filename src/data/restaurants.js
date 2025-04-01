@@ -1,9 +1,11 @@
-import koreanIcon from '../assets/category-korean.png';
-import chineseIcon from '../assets/category-chinese.png';
-import japaneseIcon from '../assets/category-japanese.png';
-import westernIcon from '../assets/category-western.png';
-import asianIcon from '../assets/category-asian.png';
-import etcIcon from '../assets/category-etc.png';
+import {
+  koreanIcon,
+  chineseIcon,
+  japaneseIcon,
+  westernIcon,
+  asianIcon,
+  etcIcon,
+} from '../assets/categoryIcons';
 
 const restaurants = [
   {
