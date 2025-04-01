@@ -1,5 +1,5 @@
 import styles from './Modal.module.css';
-import categories from '../../data/categories';
+import categories from '../../constants/categories';
 
 const AddRestaurantModal = () => {
   return (
