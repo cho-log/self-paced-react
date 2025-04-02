@@ -5,7 +5,8 @@ import {
   westernIcon,
   asianIcon,
   etcIcon,
-} from '../assets/categoryIcon';
+} from '../assets/categoryIcons';
+
 
 const restaurants = [
   {

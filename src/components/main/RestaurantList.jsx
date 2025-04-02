@@ -1,8 +1,7 @@
 import styles from './css/RestaurantList.module.css';
-import restaurants from '../../data/restaurants';
 import RestaurantListItem from './RestaurantListItem';
 
-const RestaurantList = () => {
+const RestaurantList = ({ restaurants }) => {
   return (
     <section className={styles['restaurant-list-container']}>
       <ul className={styles['restaurant-list']}>
