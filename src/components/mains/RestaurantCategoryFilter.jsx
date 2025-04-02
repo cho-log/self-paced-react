@@ -25,7 +25,7 @@ function RestaurantCategoryFilter({
           <option key={category} value={category}>
             {category}
           </option>
-        ))}{" "}
+        ))}
       </select>
     </section>
   );
