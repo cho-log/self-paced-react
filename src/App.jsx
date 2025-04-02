@@ -6,9 +6,9 @@ import Header from "./pages/Header";
 function App() {
   return(
     <>
-      <Header></Header>
-      <Body></Body>
-      <Aside></Aside>
+      <Header />
+      <Body />
+      <Aside />
     </>
   )
 }
