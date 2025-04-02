@@ -9,7 +9,7 @@ function Header() {
         className={styles.gnb__button}
         aria-label="음식점 추가"
       >
-        <img src="templates/add-button.png" alt="음식점 추가" />
+        <img src="/templates/add-button.png" alt="음식점 추가" />
       </button>
     </header>
   );
