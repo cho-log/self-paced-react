@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import Gnb from "./components/headers/Gnb.jsx";
 import RestaurantCategoryFilter from "./components/mains/RestaurantCategoryFilter.jsx";
@@ -7,16 +8,28 @@ import AddRestaurantModal from "./components/asides/AddRestaurantModal.jsx";
 import restaurants from "./data/restaurants.js";
 import categoryIcons from "./data/categoryIcons.js";
 import categoryOptions from "./data/categoryOptions.js";
-import categoryFilters from "./data/categoryFilters.js";
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState("전체");
+
+  const filteredRestaurants =
+    selectedCategory === "전체"
+      ? restaurants
+      : restaurants.filter(
+          (restaurant) => restaurant.category === selectedCategory
+        );
+
   return (
     <>
       <Gnb />
       <main>
-        <RestaurantCategoryFilter categoryFilters={categoryFilters} />
-        <RestaurantList
+        <RestaurantCategoryFilter
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
           restaurants={restaurants}
+        />
+        <RestaurantList
+          restaurants={filteredRestaurants}
           categoryIcons={categoryIcons}
         />
       </main>
