@@ -6,6 +6,8 @@ import RestaurantList from "./components/mains/RestaurantList.jsx";
 import RestaurantInfoModal from "./components/asides/RestaurantInfoModal.jsx";
 import AddRestaurantModal from "./components/asides/AddRestaurantModal.jsx";
 import restaurants from "./data/restaurants.js";
+import categoryIcons from "./data/categoryIcons.js";
+import categoryOptions from "./data/categoryOptions.js";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("전체");
@@ -13,18 +15,28 @@ function App() {
   const filteredRestaurants =
     selectedCategory === "전체"
       ? restaurants
-      : restaurants.filter((restaurant) => restaurant.category === selectedCategory);
+      : restaurants.filter(
+          (restaurant) => restaurant.category === selectedCategory
+        );
 
   return (
     <>
       <Gnb />
-      <RestaurantCategoryFilter
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-      />
-      <RestaurantList restaurants={filteredRestaurants} />
-      <RestaurantInfoModal />
-      <AddRestaurantModal />
+      <main>
+        <RestaurantCategoryFilter
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          restaurants={restaurants}
+        />
+        <RestaurantList
+          restaurants={filteredRestaurants}
+          categoryIcons={categoryIcons}
+        />
+      </main>
+      <aside>
+        <RestaurantInfoModal />
+        <AddRestaurantModal categoryOptions={categoryOptions} />
+      </aside>
     </>
   );
 }
