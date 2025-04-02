@@ -13,7 +13,7 @@ const AddRestaurantModal = () => {
           <div
             className={`${styles['form-item']} ${styles['form-item--required']}`}
           >
-            <label htmlFor="category" className={styles['text-caption']}>
+            <label htmlFor={`${styles['category']} ${styles['text-caption']}`}>
               카테고리
             </label>
             <select className={styles['category']} id="category" required>

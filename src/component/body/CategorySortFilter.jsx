@@ -1,7 +1,10 @@
-import React from 'react';
 import styles from '../../css/Body.module.css';
 
-const CategorySortFilter = () => {
+const CategorySortFilter = ({ selectedCategory, onChangeCategory }) => {
+  const handleChange = (e) => {
+    onChangeCategory(e.target.value);
+  };
+
   return (
     <section className={styles['restaurant-filter-container']}>
       <select
@@ -9,6 +12,8 @@ const CategorySortFilter = () => {
         id="category-filter"
         className={`${styles['restaurant-filter']} ${styles['restaurant-filter-container-select']}`}
         aria-label="음식점 카테고리 필터"
+        value={selectedCategory}
+        onChange={handleChange}
       >
         <option value="전체">전체</option>
         <option value="한식">한식</option>
