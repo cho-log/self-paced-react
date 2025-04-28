@@ -9,6 +9,8 @@ import restaurants from './data/restaurants';
 
 const App = () => {
   const [selectedCategory, setSelectedCategory] = useState('전체');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const filteredRestaurants =
     selectedCategory === '전체'
       ? restaurants
@@ -23,11 +25,21 @@ const App = () => {
           selectedCategory={selectedCategory}
           onChangeCategory={setSelectedCategory}
         />
-        <RestaurantList restaurants={filteredRestaurants} />
+        <RestaurantList
+          restaurants={filteredRestaurants}
+          onRestaurantClick={setIsModalOpen}
+          onChangeSelectedRestaurant={setSelectedRestaurant}
+        />
       </main>
       <aside>
-        <RestaurantDetailModal />
-        <AddRestaurantModal />
+        {' '}
+        {isModalOpen && (
+          <RestaurantDetailModal
+            onCancelClick={setIsModalOpen}
+            selectedRestaurant={selectedRestaurant}
+          />
+        )}
+        {/* <AddRestaurantModal /> */}
       </aside>
     </>
   );

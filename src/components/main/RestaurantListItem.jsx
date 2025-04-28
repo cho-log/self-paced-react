@@ -1,8 +1,16 @@
 import styles from './css/RestaurantList.module.css';
 
-const RestaurantListItem = ({ restaurant }) => {
+const RestaurantListItem = ({
+  restaurant,
+  onRestaurantClick,
+  onChangeSelectedRestaurant,
+}) => {
+  const handleRestaurantClick = () => {
+    onRestaurantClick(true);
+    onChangeSelectedRestaurant(restaurant);
+  };
   return (
-    <li className={styles.restaurant}>
+    <li className={styles.restaurant} onClick={handleRestaurantClick}>
       <div className={styles.restaurant__category}>
         <img
           src={restaurant.image}
