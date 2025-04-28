@@ -1,15 +1,15 @@
 import { useState } from "react";
 import RestaurantFilter from "./RestaurantFilter";
 import RestaurantList from "./RestaurantList";
-import { restaurants } from "./restaurants";
+import { RESTAURANTS } from "./restaurants";
 
-export default function MainContainer() {
+export default function RestaurantContainer() {
     const [selectedCategory, setSelectedCategory] = useState('전체');
 
     return (
         <main>
             <RestaurantFilter selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-            <RestaurantList restaurants={restaurants} selectedCategory={selectedCategory} />
+            <RestaurantList restaurants={RESTAURANTS} selectedCategory={selectedCategory} />
         </main>
     )
 }
