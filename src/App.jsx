@@ -13,7 +13,7 @@ function App() {
     <>
       <Header setIsAddModalOpen={setIsAddModalOpen} />
       <Body setIsModalOpen={setIsModalOpen} />
-      {isModalOpen && <RestaurantInfoModal setIsModalOpen={setIsModalOpen} />}
+      {isModalOpen && <RestaurantInfoModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
       {isAddModalOpen && <AddRestaurantModal setIsAddModalOpen={setIsAddModalOpen} />}
     </>
   )
