@@ -3,20 +3,20 @@ import styles from '../../css/Aside.module.css';
 import Modal from './Modal';
 
 const RestaurantInfoModal = ({isOpen, setIsModalOpen, restaurants }) => {  
-  const restaurant = restaurants[isOpen - 1];
+  const selectedRestaurant = restaurants.find(restaurant => restaurant.name === isOpen);
 
   return (
     <Modal isOpen={isOpen} onClose={() => setIsModalOpen(false)}>
-      {restaurant && (
+      {selectedRestaurant && (
         <>
           <h2 className={`${styles['modal-title']} ${styles['text-title']}`}>
-            {restaurant.name}
+            {selectedRestaurant.name}
           </h2>
           <div className={styles['restaurant-info']}>
             <p
               className={`${styles['restaurant-info__description']} text-body`}
             >
-              {restaurant.description}
+              {selectedRestaurant.description}
             </p>
           </div>
           <div className={styles['button-container']}>

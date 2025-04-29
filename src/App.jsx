@@ -16,7 +16,7 @@ function App() {
       <Header setIsAddModalOpen={setIsAddModalOpen} />
       <Body restaurants={restaurants} setIsModalOpen={setIsModalOpen} />
       <RestaurantInfoModal
-        isOpen={isModalOpen}  // isAddModalOpen과 달리 레스토랑 id를 넘겨주어야함.
+        isOpen={isModalOpen}  // isAddModalOpen과 달리 레스토랑 이름을을 넘겨주어야함.
         setIsModalOpen={setIsModalOpen}
         restaurants={restaurants}
       />

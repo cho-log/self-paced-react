@@ -5,7 +5,7 @@ const RestaurantList = ({ restaurants, setIsModalOpen }) => {
     <section className={styles['restaurant-list-container']}>
       <ul className={styles['restaurant-list']}>
         {restaurants.map((restaurant) => (
-          <li key={restaurant.id} className={styles.restaurant} onClick={() => setIsModalOpen(restaurant.id)}>
+          <li key={restaurant.id} className={styles.restaurant} onClick={() => setIsModalOpen(restaurant.name)}>
             <div className={styles.restaurant__category}>
               <img
                 src={restaurant.imgSrc}
