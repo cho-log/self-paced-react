@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import CategorySortFilter from '../component/body/CategorySortFilter';
 import RestaurantList from '../component/body/RestaurantList.jsx';
-import restaurants from '../const/restaurantList';
 
-const Body = ({ setIsModalOpen }) => {
+const Body = ({ restaurants, setIsModalOpen }) => {
   const [category, setCategory] = useState('전체');
-
+console.log(restaurants);
   const filteredRestaurants =
     category === '전체'
       ? restaurants

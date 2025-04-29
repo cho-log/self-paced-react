@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
 import styles from '../../css/Aside.module.css';
+import insertImgSrc from './insertImgSrc';
 
-const AddRestaurantModal = ({ setIsAddModalOpen }) => {
+const AddRestaurantModal = ({ setRestaurants, setIsAddModalOpen }) => {
   const [form, setForm] = useState({
     category: "",
     name: "",
     description: "",
+    imgSrc: null,
   });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    
+    if (name === "category") {
+      setForm({ ...form, category: value, imgSrc: insertImgSrc[value] });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
   };
 
   const handleUploadForm = () => {
-
+    setRestaurants(prev => [
+      ...prev,
+      { ...form, id: Date.now() }
+    ]);
     setIsAddModalOpen(false);
   }
 
