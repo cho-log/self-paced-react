@@ -1,10 +1,12 @@
 import React from 'react';
-import styles from '../../css/Modal.module.css';
+import styles from '../../css/Aside.module.css';
 
-const RestaurantInfoModal = () => {
+const RestaurantInfoModal = ({ setIsModalOpen }) => {
   return (
-    <div className={`${styles['modal']} ${styles['modal--open']}`}>
-      <div className={styles['modal-backdrop']}></div>
+    <div
+      className={`${styles['modal']} ${styles['modal--open']}`}
+    >
+      <div className={styles['modal-backdrop']} onClick={() => setIsModalOpen(null)}></div>
       <div className={styles['modal-container']}>
         <h2 className={`${styles['modal-title']} ${styles['text-title']}`}>
           음식점 이름
@@ -17,6 +19,7 @@ const RestaurantInfoModal = () => {
         <div className={styles['button-container']}>
           <button
             className={`${styles['button']} ${styles['button--primary']} text-caption`}
+            onClick={() => setIsModalOpen(null)}
           >
             닫기
           </button>

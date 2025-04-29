@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../css/Modal.module.css';
+import styles from '../../css/Aside.module.css';
 
 const AddRestaurantModal = () => {
   return (
