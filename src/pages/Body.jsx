@@ -4,7 +4,7 @@ import RestaurantList from '../component/body/RestaurantList.jsx';
 
 const Body = ({ restaurants, setIsModalOpen }) => {
   const [category, setCategory] = useState('전체');
-console.log(restaurants);
+
   const filteredRestaurants =
     category === '전체'
       ? restaurants

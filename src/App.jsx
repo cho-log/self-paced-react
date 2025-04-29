@@ -15,8 +15,16 @@ function App() {
     <>
       <Header setIsAddModalOpen={setIsAddModalOpen} />
       <Body restaurants={restaurants} setIsModalOpen={setIsModalOpen} />
-      {isModalOpen && <RestaurantInfoModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
-      {isAddModalOpen && <AddRestaurantModal setRestaurants={setRestaurants} setIsAddModalOpen={setIsAddModalOpen} />}
+      <RestaurantInfoModal
+        isOpen={isModalOpen}  // isAddModalOpen과 달리 레스토랑 id를 넘겨주어야함.
+        setIsModalOpen={setIsModalOpen}
+        restaurants={restaurants}
+      />
+      <AddRestaurantModal
+        isOpen={isAddModalOpen}
+        setIsAddModalOpen={setIsAddModalOpen}
+        setRestaurants={setRestaurants}
+      />
     </>
   )
 }
