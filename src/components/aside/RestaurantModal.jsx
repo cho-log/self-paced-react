@@ -1,11 +1,11 @@
-import RestaurantInformationModal from "./RestaurantInformationModal.jsx";
 import RestaurantAddModal from "./RestaurantAddModal.jsx";
+import RestaurantDetailModal from "./RestaurantDetailModal.jsx"
 
-export default function RestaurantModal() {
+export default function RestaurantModal({ setModalState, restaurantValue }) {
     return (
         <>
-            <RestaurantInformationModal />
-            <RestaurantAddModal />
+            <RestaurantDetailModal setModalState={setModalState} restaurantValue={restaurantValue} />
+            {/* <RestaurantAddModal /> */}
         </>
     );
 }
