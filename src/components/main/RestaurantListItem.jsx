@@ -2,15 +2,15 @@ import styles from './css/RestaurantList.module.css';
 
 const RestaurantListItem = ({
   restaurant,
-  onRestaurantClick,
-  onChangeSelectedRestaurant,
+  setIsModalOpen,
+  setSelectedRestaurant,
 }) => {
-  const handleRestaurantClick = () => {
-    onRestaurantClick(true);
-    onChangeSelectedRestaurant(restaurant);
+  const onRestaurantClick = () => {
+    setIsModalOpen(true);
+    setSelectedRestaurant(restaurant);
   };
   return (
-    <li className={styles.restaurant} onClick={handleRestaurantClick}>
+    <li className={styles.restaurant} onClick={onRestaurantClick}>
       <div className={styles.restaurant__category}>
         <img
           src={restaurant.image}

@@ -27,15 +27,14 @@ const App = () => {
         />
         <RestaurantList
           restaurants={filteredRestaurants}
-          onRestaurantClick={setIsModalOpen}
-          onChangeSelectedRestaurant={setSelectedRestaurant}
+          setIsModalOpen={setIsModalOpen}
+          setSelectedRestaurant={setSelectedRestaurant}
         />
       </main>
       <aside>
-        {' '}
         {isModalOpen && (
           <RestaurantDetailModal
-            onCancelClick={setIsModalOpen}
+            setIsModalOpen={setIsModalOpen}
             selectedRestaurant={selectedRestaurant}
           />
         )}

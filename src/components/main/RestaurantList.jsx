@@ -3,8 +3,8 @@ import RestaurantListItem from './RestaurantListItem';
 
 const RestaurantList = ({
   restaurants,
-  onRestaurantClick,
-  onChangeSelectedRestaurant,
+  setIsModalOpen,
+  setSelectedRestaurant,
 }) => {
   return (
     <section className={styles['restaurant-list-container']}>
@@ -13,8 +13,8 @@ const RestaurantList = ({
           <RestaurantListItem
             key={restaurant.id}
             restaurant={restaurant}
-            onRestaurantClick={onRestaurantClick}
-            onChangeSelectedRestaurant={onChangeSelectedRestaurant}
+            setIsModalOpen={setIsModalOpen}
+            setSelectedRestaurant={setSelectedRestaurant}
           />
         ))}
       </ul>
