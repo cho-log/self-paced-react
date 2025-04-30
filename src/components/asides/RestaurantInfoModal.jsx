@@ -1,31 +1,32 @@
+import Modal from "../../modals/Modal";
 import styles from "./RestaurantModal.module.css";
 
-function RestaurantInfoModal() {
+function RestaurantInfoModal({ isOpen, onClose, restaurant }) {
+  if(!restaurant) return null;
+
   return (
-    <div className={`${styles["modal"]} ${styles["modal--open"]}`}>
-      <div className={styles["modal-backdrop"]}></div>
-      <div className={styles["modal-container"]}>
-        <h2 className={`${styles["modal-title"]} ${styles["text-title"]}`}>
-          음식점 이름
-        </h2>
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <h2 className={`${styles["modal-title"]} ${styles["text-title"]}`}>
+        {restaurant.name}
+      </h2>
 
-        <div className={styles["restaurant-info"]}>
-          <p
-            className={`${styles["restaurant-info__description"]} ${styles["text-body"]}`}
-          >
-            음식점 소개 문구
-          </p>
-        </div>
-
-        <div className={styles["button-container"]}>
-          <button
-            className={`${styles["button"]} ${styles["button--primary"]} ${styles["text-caption"]}`}
-          >
-            닫기
-          </button>
-        </div>
+      <div className={styles["restaurant-info"]}>
+        <p
+          className={`${styles["restaurant-info__description"]} ${styles["text-body"]}`}
+        >
+          {restaurant.description}
+        </p>
       </div>
-    </div>
+
+      <div className={styles["button-container"]}>
+        <button
+          className={`${styles["button"]} ${styles["button--primary"]} ${styles["text-caption"]}`}
+          onClick={onClose}
+        >
+          닫기
+        </button>
+      </div>
+    </Modal>
   );
 }
 
