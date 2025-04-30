@@ -17,6 +17,7 @@ function MainContent() {
       : restaurants.filter((restaurant) => restaurant.category === category);
 
   const [clickedRestaurantInfo, setClickedRestaurantInfo] = useState(null);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleClickedRestaurant = (name, description) => {
     const restaurant = {
@@ -24,6 +25,11 @@ function MainContent() {
       description,
     };
     setClickedRestaurantInfo(restaurant);
+    setIsModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
   };
 
   return (
@@ -36,10 +42,11 @@ function MainContent() {
         restaurants={filteredRestaurants}
         onClickedRestaurant={handleClickedRestaurant}
       />
-      {clickedRestaurantInfo != null && (
+      {isModalVisible === true && (
         <RestaurantDetailModal
           restaurantName={clickedRestaurantInfo.name}
           restaurantDescription={clickedRestaurantInfo.description}
+          onClose={handleCloseModal}
         />
       )}
     </>

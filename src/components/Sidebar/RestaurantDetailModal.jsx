@@ -1,6 +1,10 @@
 import styles from "./Sidebar.module.css";
 
-function RestaurantDetailModal({ restaurantName, restaurantDescription }) {
+function RestaurantDetailModal({
+  restaurantName,
+  restaurantDescription,
+  onClose,
+}) {
   return (
     <div className={`${styles.modal} ${styles["modal"]}`}>
       <div className={styles["modal-backdrop"]}></div>
@@ -17,6 +21,7 @@ function RestaurantDetailModal({ restaurantName, restaurantDescription }) {
         <div className={styles["button-container"]}>
           <button
             className={`${styles.button} ${styles["button--primary"]} text-caption`}
+            onClick={onClose}
           >
             닫기
           </button>
