@@ -1,11 +1,17 @@
 import styles from "./RestaurantList.module.css";
 
-function RestaurantList({ restaurants }) {
+function RestaurantList({ restaurants, onClickedRestaurant }) {
   return (
     <section className={styles["restaurant-list-container"]}>
       <ul className={styles["restaurant-list"]}>
         {restaurants.map((restaurant) => (
-          <li key={restaurant.id} className={styles.restaurant}>
+          <li
+            key={restaurant.id}
+            className={styles.restaurant}
+            onClick={() =>
+              onClickedRestaurant(restaurant.name, restaurant.description)
+            }
+          >
             <div className={styles.restaurant__category}>
               <img
                 src={restaurant.imgSrc}
