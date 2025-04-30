@@ -1,14 +1,16 @@
 import styles from "./Sidebar.module.css";
 
-function RestaurantDetailModal() {
+function RestaurantDetailModal({ restaurantName, restaurantDescription }) {
   return (
     <div className={`${styles.modal} ${styles["modal"]}`}>
       <div className={styles["modal-backdrop"]}></div>
       <div className={styles["modal-container"]}>
-        <h2 className={`${styles["modal-title"]} text-title`}>음식점 이름</h2>
+        <h2 className={`${styles["modal-title"]} text-title`}>
+          {restaurantName}
+        </h2>
         <div className={styles["restaurant-info"]}>
           <p className="restaurant-info__description text-body">
-            음식점 소개 문구
+            {restaurantDescription}
           </p>
         </div>
         {/* 닫기버튼 */}

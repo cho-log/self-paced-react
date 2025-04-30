@@ -36,7 +36,12 @@ function MainContent() {
         restaurants={filteredRestaurants}
         onClickedRestaurant={handleClickedRestaurant}
       />
-      {clickedRestaurantInfo != null && <RestaurantDetailModal />}
+      {clickedRestaurantInfo != null && (
+        <RestaurantDetailModal
+          restaurantName={clickedRestaurantInfo.name}
+          restaurantDescription={clickedRestaurantInfo.description}
+        />
+      )}
     </>
   );
 }
