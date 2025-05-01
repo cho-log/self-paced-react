@@ -1,3 +1,4 @@
+import categoryIcon from '../../assets/categoryIcons';
 import styles from './css/RestaurantList.module.css';
 
 const RestaurantListItem = ({
@@ -13,7 +14,7 @@ const RestaurantListItem = ({
     <li className={styles.restaurant} onClick={onRestaurantClick}>
       <div className={styles.restaurant__category}>
         <img
-          src={restaurant.image}
+          src={categoryIcon[restaurant.category]}
           alt={restaurant.category}
           className={styles['category-icon']}
         />

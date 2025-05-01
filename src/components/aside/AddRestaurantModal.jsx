@@ -1,13 +1,33 @@
 import styles from './Modal.module.css';
 import categories from '../../constant/constant';
 
-const AddRestaurantModal = () => {
+const AddRestaurantModal = ({
+  setIsRestaurantAddModalOpen,
+  restaurants,
+  setRestaurants,
+}) => {
+  const onBackdropClick = () => {
+    setIsRestaurantAddModalOpen(false);
+  };
+
+  const onSubmitButtonClick = (e) => {
+    e.preventDefault();
+    const newRestaurant = {
+      id: e.target.name.value,
+      category: e.target.category.value,
+      name: e.target.name.value,
+      description: e.target.description.value,
+    };
+    setRestaurants([...restaurants, newRestaurant]);
+    setIsRestaurantAddModalOpen(false);
+  };
+
   return (
     <div className={`${styles.modal} ${styles['modal--open']}`}>
-      <div className={styles['modal-backdrop']} />
+      <div className={styles['modal-backdrop']} onClick={onBackdropClick} />
       <div className={styles['modal-container']}>
         <h2 className={`${styles['modal-title']} text-title`}>새로운 음식점</h2>
-        <form>
+        <form onSubmit={onSubmitButtonClick}>
           <div
             className={`${styles['form-item']} ${styles['form-item--required']}`}
           >
@@ -43,7 +63,7 @@ const AddRestaurantModal = () => {
 
           <div className={styles['button-container']}>
             <button
-              type="button"
+              type="submit"
               className={`${styles.button} ${styles['button--primary']} text-caption`}
             >
               추가하기
