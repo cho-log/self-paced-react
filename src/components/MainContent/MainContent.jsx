@@ -42,7 +42,7 @@ function MainContent() {
         restaurants={filteredRestaurants}
         onClickedRestaurant={handleClickedRestaurant}
       />
-      {isModalVisible === true && (
+      {isModalVisible && (
         <RestaurantDetailModal
           restaurantName={clickedRestaurantInfo.name}
           restaurantDescription={clickedRestaurantInfo.description}
