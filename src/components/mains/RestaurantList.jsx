@@ -17,6 +17,7 @@ function RestaurantList({ restaurants, categoryIcons, onRestaurantClick }) {
                 className={styles["category-icon"]}
               />
             </div>
+
             <div className={styles["restaurant__info"]}>
               <h3 className={styles["restaurant__name text-subtitle"]}>
                 {restaurant.name}
