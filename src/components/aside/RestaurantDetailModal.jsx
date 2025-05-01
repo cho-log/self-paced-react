@@ -1,20 +1,21 @@
 import styles from './Modal.module.css';
 
-const RestaurantDetailModal = ({ setIsModalOpen, selectedRestaurant }) => {
-  const onBackdropClick = () => {
+const RestaurantDetailModal = ({
+  setIsModalOpen,
+  selectedRestaurant,
+  setSelectedRestaurant,
+}) => {
+  const closeRestaurantDetailModal = () => {
     setIsModalOpen(false);
+    setSelectedRestaurant(null);
   };
 
-  const onCancelClick = () => {
-    setIsModalOpen(false);
-  };
-
-  if (!selectedRestaurant) {
-    return null;
-  }
   return (
     <div className={`${styles.modal} ${styles['modal--open']}`}>
-      <div className={styles['modal-backdrop']} onClick={onBackdropClick} />
+      <div
+        className={styles['modal-backdrop']}
+        onClick={closeRestaurantDetailModal}
+      />
       <div className={styles['modal-container']}>
         <h2 className={`${styles['modal-title']} text-title`}>
           {selectedRestaurant.name}
@@ -28,7 +29,7 @@ const RestaurantDetailModal = ({ setIsModalOpen, selectedRestaurant }) => {
           <button
             type="button"
             className={`${styles.button} ${styles['button--primary']} text-caption`}
-            onClick={onCancelClick}
+            onClick={closeRestaurantDetailModal}
           >
             닫기
           </button>

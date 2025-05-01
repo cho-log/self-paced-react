@@ -32,10 +32,11 @@ const App = () => {
         />
       </main>
       <aside>
-        {isModalOpen && (
+        {isModalOpen && selectedRestaurant != null && (
           <RestaurantDetailModal
             setIsModalOpen={setIsModalOpen}
             selectedRestaurant={selectedRestaurant}
+            setSelectedRestaurant={setSelectedRestaurant}
           />
         )}
         {/* <AddRestaurantModal /> */}
