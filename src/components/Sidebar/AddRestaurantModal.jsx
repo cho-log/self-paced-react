@@ -1,9 +1,9 @@
 import styles from "./Sidebar.module.css";
 
-function AddRestaurantModal() {
+function AddRestaurantModal({ onClose }) {
   return (
     <div className={`${styles.modal} ${styles["modal--open"]}`}>
-      <div className={styles["modal-backdrop"]}></div>
+      <div className={styles["modal-backdrop"]} onClick={() => onClose()}></div>
       <div className={styles["modal-container"]}>
         <h2 className={styles["modal-title"]}>새로운 음식점</h2>
         <form>

@@ -6,8 +6,8 @@ function RestaurantDetailModal({
   onClose,
 }) {
   return (
-    <div className={`${styles.modal} ${styles["modal"]}`}>
-      <div className={styles["modal-backdrop"]} onClick={onClose}></div>
+    <div className={`${styles.modal} ${styles["modal--open"]}`}>
+      <div className={styles["modal-backdrop"]} onClick={() => onClose()}></div>
       <div className={styles["modal-container"]}>
         <h2 className={`${styles["modal-title"]} text-title`}>
           {restaurantName}
