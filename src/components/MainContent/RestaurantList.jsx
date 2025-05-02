@@ -1,5 +1,6 @@
 import styles from "./RestaurantList.module.css";
 
+
 function RestaurantList({ restaurants, onClickedRestaurant }) {
   return (
     <section className={styles["restaurant-list-container"]}>
