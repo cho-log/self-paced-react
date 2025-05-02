@@ -17,7 +17,7 @@ function App() {
     <>
       <Header onAddRestaurant={handleAddRestaurantList} />
       <main>
-        <MainContent />
+        <MainContent restaurants={restaurantsList} />
       </main>
       <aside>
         <Sidebar />
