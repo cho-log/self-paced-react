@@ -1,12 +1,35 @@
 import styles from "./Sidebar.module.css";
 
-function AddRestaurantModal({ onClose }) {
+function AddRestaurantModal({ onAddRestaurant, onClose }) {
   return (
     <div className={`${styles.modal} ${styles["modal--open"]}`}>
       <div className={styles["modal-backdrop"]} onClick={() => onClose()}></div>
       <div className={styles["modal-container"]}>
         <h2 className={styles["modal-title"]}>새로운 음식점</h2>
-        <form>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+
+            const newRestaurant = {
+              id: Date.now(),
+              category: event.target.category.value,
+              name: event.target.name.value,
+              description: event.target.description.value,
+            };
+
+            // console.log(
+            //   newRestaurant.id,
+            //   newRestaurant.category,
+            //   newRestaurant.name,
+            //   newRestaurant.description,
+            //   event.target.category.value,
+            //   event.target.name.value,
+            //   event.target.description.value
+            // );
+            onAddRestaurant(newRestaurant);
+            onClose();
+          }}
+        >
           {/* <!-- 카테고리 --> */}
           <div
             className={`${styles["form-item"]} ${styles["form-item--required"]}`}
