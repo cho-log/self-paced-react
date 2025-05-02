@@ -1,11 +1,27 @@
 import RestaurantDetailModal from "./RestaurantDetailModal";
 import AddRestaurantModal from "./AddRestaurantModal";
 
-function Sidebar() {
+function Sidebar({
+  openModalType,
+  onAddRestaurant,
+  clickedRestaurantInfo,
+  onCloseModal,
+}) {
   return (
     <>
-      {/* <RestaurantDetailModal /> */}
-      {/* <AddRestaurantModal /> */}
+      {openModalType === "add" && (
+        <AddRestaurantModal
+          onAddRestaurant={(restaurant) => onAddRestaurant(restaurant)}
+          onClose={onCloseModal}
+        />
+      )}
+      {openModalType === "detail" && (
+        <RestaurantDetailModal
+          restaurantName={clickedRestaurantInfo.name}
+          restaurantDescription={clickedRestaurantInfo.description}
+          onClose={onCloseModal}
+        />
+      )}
     </>
   );
 }

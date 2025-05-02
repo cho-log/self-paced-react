@@ -6,21 +6,40 @@ import restaurants from "./Data/Data.jsx";
 import { useState } from "react";
 
 function App() {
-  const [restaurantsList, setRestaurantsList] = useState(restaurants);
+  const [openModalType, setOpenModalType] = useState(null);
 
+  const [restaurantsList, setRestaurantsList] = useState(restaurants);
   const handleAddRestaurantList = (restaurant) => {
     setRestaurantsList((prev) => [...prev, restaurant]);
   };
-  // console.log(restaurantsList);
 
+  const [clickedRestaurantInfo, setClickedRestaurantInfo] = useState(null);
+  const handleClickedRestaurant = (name, description) => {
+    const restaurant = {
+      name,
+      description,
+    };
+    setClickedRestaurantInfo(restaurant);
+    setOpenModalType("detail");
+  };
+
+  const onCloseModal = () => setOpenModalType(null);
   return (
     <>
-      <Header onAddRestaurant={handleAddRestaurantList} />
+      <Header onClickAdd={() => setOpenModalType("add")} />
       <main>
-        <MainContent restaurants={restaurantsList} />
+        <MainContent
+          onClickedDetail={handleClickedRestaurant}
+          restaurants={restaurantsList}
+        />
       </main>
       <aside>
-        <Sidebar />
+        <Sidebar
+          openModalType={openModalType}
+          onAddRestaurant={handleAddRestaurantList}
+          clickedRestaurantInfo={clickedRestaurantInfo}
+          onCloseModal={onCloseModal}
+        />
       </aside>
     </>
   );

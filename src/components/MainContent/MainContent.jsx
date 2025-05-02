@@ -3,7 +3,7 @@ import CategoryFilter from "./CategoryFilter.jsx";
 import RestaurantList from "./RestaurantList.jsx";
 import RestaurantDetailModal from "../Sidebar/RestaurantDetailModal.jsx";
 
-function MainContent({ restaurants }) {
+function MainContent({ onClickedDetail, restaurants }) {
   const [category, setCategory] = useState("전체");
 
   const handleCategoryChange = (newCategory) => {
@@ -14,23 +14,6 @@ function MainContent({ restaurants }) {
     category === "전체"
       ? restaurants
       : restaurants.filter((restaurant) => restaurant.category === category);
-
-  const [clickedRestaurantInfo, setClickedRestaurantInfo] = useState(null);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const handleClickedRestaurant = (name, description) => {
-    const restaurant = {
-      name,
-      description,
-    };
-    setClickedRestaurantInfo(restaurant);
-    setIsModalVisible(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalVisible(false);
-  };
-
   return (
     <>
       <CategoryFilter
@@ -39,15 +22,8 @@ function MainContent({ restaurants }) {
       />
       <RestaurantList
         restaurants={filteredRestaurants}
-        onClickedRestaurant={handleClickedRestaurant}
+        onClickedRestaurant={onClickedDetail}
       />
-      {isModalVisible && (
-        <RestaurantDetailModal
-          restaurantName={clickedRestaurantInfo.name}
-          restaurantDescription={clickedRestaurantInfo.description}
-          onClose={handleCloseModal}
-        />
-      )}
     </>
   );
 }

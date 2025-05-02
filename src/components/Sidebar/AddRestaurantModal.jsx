@@ -17,15 +17,6 @@ function AddRestaurantModal({ onAddRestaurant, onClose }) {
               description: event.target.description.value,
             };
 
-            // console.log(
-            //   newRestaurant.id,
-            //   newRestaurant.category,
-            //   newRestaurant.name,
-            //   newRestaurant.description,
-            //   event.target.category.value,
-            //   event.target.name.value,
-            //   event.target.description.value
-            // );
             onAddRestaurant(newRestaurant);
             onClose();
           }}

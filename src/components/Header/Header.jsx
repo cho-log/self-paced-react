@@ -2,15 +2,7 @@ import { useState } from "react";
 import styles from "./Header.module.css";
 import AddRestaurantModal from "../Sidebar/AddRestaurantModal";
 
-function Header({ onAddRestaurant }) {
-  const [isAddModalVisible, setIsAddModalVisible] = useState(false);
-  const handleClickedAddModalButton = () => {
-    setIsAddModalVisible(true);
-  };
-  const handleCloseModal = () => {
-    setIsAddModalVisible(false);
-  };
-
+function Header({ onClickAdd }) {
   return (
     <>
       <header className={styles.gnb}>
@@ -19,17 +11,11 @@ function Header({ onAddRestaurant }) {
           type="button"
           className={styles.gnb__button}
           aria-label="음식점 추가"
-          onClick={handleClickedAddModalButton}
+          onClick={onClickAdd}
         >
           <img src="/templates/add-button.png" alt="음식점 추가" />
         </button>
       </header>
-      {isAddModalVisible && (
-        <AddRestaurantModal
-          onAddRestaurant={(restaurant) => onAddRestaurant(restaurant)}
-          onClose={handleCloseModal}
-        />
-      )}
     </>
   );
 }

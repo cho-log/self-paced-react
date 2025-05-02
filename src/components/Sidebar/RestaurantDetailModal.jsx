@@ -21,7 +21,7 @@ function RestaurantDetailModal({
         <div className={styles["button-container"]}>
           <button
             className={`${styles.button} ${styles["button--primary"]} text-caption`}
-            onClick={onClose}
+            onClick={() => onClose()}
           >
             닫기
           </button>
