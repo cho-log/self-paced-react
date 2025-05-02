@@ -4,6 +4,7 @@ import RestaurantList from "./RestaurantList.jsx";
 import restaurants from "../../Data/Data.jsx";
 import RestaurantDetailModal from "../Sidebar/RestaurantDetailModal.jsx";
 
+
 function MainContent() {
   const [category, setCategory] = useState("전체");
 
@@ -31,13 +32,13 @@ function MainContent() {
   const handleCloseModal = () => {
     setIsModalVisible(false);
   };
-
   return (
     <>
       <CategoryFilter
         category={category}
         onChangeCategory={handleCategoryChange}
       />
+
       <RestaurantList
         restaurants={filteredRestaurants}
         onClickedRestaurant={handleClickedRestaurant}
