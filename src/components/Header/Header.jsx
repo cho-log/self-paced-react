@@ -1,6 +1,4 @@
-import { useState } from "react";
 import styles from "./Header.module.css";
-import AddRestaurantModal from "../Sidebar/AddRestaurantModal";
 
 function Header({ onClickAdd }) {
   return (

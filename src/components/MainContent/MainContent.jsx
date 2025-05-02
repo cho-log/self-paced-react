@@ -1,7 +1,6 @@
 import { useState } from "react";
 import CategoryFilter from "./CategoryFilter.jsx";
 import RestaurantList from "./RestaurantList.jsx";
-import RestaurantDetailModal from "../Sidebar/RestaurantDetailModal.jsx";
 
 function MainContent({ onClickedDetail, restaurants }) {
   const [category, setCategory] = useState("전체");
