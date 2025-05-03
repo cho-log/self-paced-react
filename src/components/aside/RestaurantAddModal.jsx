@@ -18,7 +18,7 @@ export default function RestaurantAddModal({ restaurantList, setActiveIndex, set
         const id = restaurantList.length + 1;
         const alt = e.target.category.value;
         const category = categoryMap[alt];
-        const icon = `src/assets/images/category/category-${category}.png`;
+        const icon = `/assets/images/category/category-${category}.png`;
         const name = e.target.name.value;
         const description = e.target.description.value;
 
