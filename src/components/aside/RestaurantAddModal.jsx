@@ -1,5 +1,5 @@
 import Modal from "./modal/Modal";
-import styles from "/src/styles/Aside.module.css";
+import styles from "/src/styles/RestaurantAddModal.module.css";
 import RestaurantCategory from "../category/RestaurantCategory";
 
 const categoryMap = {
@@ -36,8 +36,13 @@ export default function RestaurantAddModal({ restaurantList, setActiveIndex, set
         setIsModalOpen(false);
     };
 
+    const addModalClose = () => {
+        setActiveIndex(0);
+        setIsModalOpen(false);
+    }
+
     return (
-        <Modal title="새로운 음식점" onClose={() => setModalState(false)} onSubmit={handleSubmit}>
+        <Modal title="새로운 음식점" onClose={addModalClose} onSubmit={handleSubmit}>
             <div className={`${styles["form-item"]} ${styles["form-item--required"]}`}>
                 <label htmlFor="category" className="text-caption">카테고리</label>
                 <select name="category" id="category" required>
