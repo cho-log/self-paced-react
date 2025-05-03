@@ -1,9 +1,9 @@
 import RestaurantModal from "./RestaurantModal.jsx"
 
-export default function AsideContainer({ setModalState, restaurantValue, activeIndex, restaurantList, setActiveIndex, setRestaurantList }) {
+export default function AsideContainer({ setIsModalOpen, restaurantValue, activeIndex, restaurantList, setActiveIndex, setRestaurantList }) {
     return (
         <aside>
-            <RestaurantModal setModalState={setModalState} 
+            <RestaurantModal setIsModalOpen={setIsModalOpen} 
                              restaurantValue={restaurantValue} 
                              activeIndex={activeIndex}
                              restaurantList={restaurantList}

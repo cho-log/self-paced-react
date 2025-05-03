@@ -1,10 +1,10 @@
 import Modal from "./modal/Modal";
 
-export default function RestaurantDetailModal({ setModalState, restaurantValue }) {
+export default function RestaurantDetailModal({ setIsModalOpen, restaurantValue }) {
     return (
-        <Modal title={restaurantValue.name} onClose={() => setModalState(false)} showCloseButton>
             <div className="text-body" style={{ marginTop: "1rem" }}>
                 <p>{restaurantValue.description}</p>
+        <Modal title={restaurantValue.name} onClose={() => setIsModalOpen(false)} showCloseButton>
             </div>
         </Modal>
     );

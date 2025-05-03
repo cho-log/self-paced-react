@@ -11,7 +11,7 @@ const categoryMap = {
     '기타': 'etc',
 };
 
-export default function RestaurantAddModal({ restaurantList, setActiveIndex, setModalState, setRestaurantList }) {
+export default function RestaurantAddModal({ restaurantList, setActiveIndex, setIsModalOpen, setRestaurantList }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -33,7 +33,7 @@ export default function RestaurantAddModal({ restaurantList, setActiveIndex, set
 
         setRestaurantList((prev) => [...prev, newRestaurant]);
         setActiveIndex(0);
-        setModalState(false);
+        setIsModalOpen(false);
     };
 
     return (

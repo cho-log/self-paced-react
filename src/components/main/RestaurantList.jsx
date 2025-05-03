@@ -1,8 +1,8 @@
 import styles from "/src/styles/Main.module.css"
 import RestaurantValue from "./RestaurantValue";
 
-export default function RestaurantList({ restaurants, selectedCategory, setModalState, setRestaurantValue }) {
   const filteredRestaurants = selectedCategory === '전체' ? restaurants : restaurants.filter(restaurant => restaurant.alt === selectedCategory);
+export default function RestaurantList({ restaurants, selectedCategory, setIsModalOpen, setRestaurantValue }) {
 
   return (
     <section className={styles["restaurant-list-container"]}>
@@ -14,7 +14,7 @@ export default function RestaurantList({ restaurants, selectedCategory, setModal
             categoryAlt={restaurant.alt}
             name={restaurant.name}
             description={restaurant.description}
-            setModalState={setModalState}
+            setIsModalOpen={setIsModalOpen}
             setRestaurantValue={setRestaurantValue}
           />
         ))}

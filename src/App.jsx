@@ -6,7 +6,7 @@ import { RESTAURANTS } from "./components/main/restaurants.js";
 import { useState } from "react";
 
 function App() {
-  const [modalState, setModalState] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [restaurantList, setRestaurantList] = useState(RESTAURANTS);
   const [restaurantValue, setRestaurantValue] = useState({
@@ -16,12 +16,12 @@ function App() {
 
   return (
     <>
-      <Header setModalState={setModalState} 
+      <Header setIsModalOpen={setIsModalOpen} 
               setActiveIndex={setActiveIndex} />
-      <RestaurantContainer setModalState={setModalState} 
+      <RestaurantContainer setIsModalOpen={setIsModalOpen} 
                            setRestaurantValue={setRestaurantValue}
                            restaurantList={restaurantList} />
-      {modalState && <AsideContainer setModalState={setModalState} 
+      {isModalOpen && <AsideContainer setIsModalOpen={setIsModalOpen} 
                                      restaurantValue={restaurantValue}
                                      activeIndex={activeIndex} 
                                      restaurantList={restaurantList}

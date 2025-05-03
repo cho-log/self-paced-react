@@ -1,10 +1,10 @@
-import styles from "/src/styles/Main.module.css"
+import styles from "/src/styles/RestaurantListItem.module.css"
 
-export default function RestaurantValue({ categoryIcon, categoryAlt, name, description, setModalState, setRestaurantValue }) {
+export default function RestaurantListItem({ categoryIcon, categoryAlt, name, description, setIsModalOpen, setRestaurantValue }) {
     const handleClick = () => {
-        setModalState(true);
+        setIsModalOpen(true);
         setRestaurantValue((prevRestaurantState) => {
-            return {...prevRestaurantState, name, description}
+            return { ...prevRestaurantState, name, description }
         })
     }
 

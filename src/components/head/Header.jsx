@@ -1,8 +1,8 @@
 import styles from "/src/styles/Head.module.css"
 
-export default function Header( {setModalState, setActiveIndex} ) {
+export default function Header({ setIsModalOpen, setActiveIndex }) {
     const handleClick = () => {
-        setModalState(true);
+        setIsModalOpen(true);
         setActiveIndex(1);
     }
 
