@@ -1,14 +1,14 @@
-import RestaurantValue from "./RestaurantValue";
 import styles from "/src/styles/RestaurantList.module.css"
+import RestaurantListItem from "./RestaurantListItem";
 
-  const filteredRestaurants = selectedCategory === '전체' ? restaurants : restaurants.filter(restaurant => restaurant.alt === selectedCategory);
 export default function RestaurantList({ restaurants, selectedCategory, setIsModalOpen, setRestaurantValue }) {
+  const filteredRestaurants = selectedCategory === "all" ? restaurants : restaurants.filter(restaurant => restaurant.category === selectedCategory);
 
   return (
     <section className={`${styles["restaurant-list-container"]}`}>
       <ul className={`${styles["restaurant-list"]}`}>
         {filteredRestaurants.map((restaurant) => (
-          <RestaurantValue
+          <RestaurantListItem
             key={restaurant.id}
             categoryIcon={restaurant.icon}
             categoryAlt={restaurant.alt}

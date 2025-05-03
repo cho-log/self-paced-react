@@ -3,35 +3,43 @@ import CategoryModal from "./CategoryModal"
 const categoryList = [
     {
         id: "00",
-        name: "선택해 주세요"
+        name: "선택해 주세요",
+        category: "select"
     },
     {
         id: "01",
-        name: "전체"
+        name: "전체",
+        category: "all"
     },
     {
         id: "02",
-        name: "한식"
+        name: "한식",
+        category: "korean"
     },
     {
         id: "03",
-        name: "중식"
+        name: "중식",
+        category: "chinese"
     },
     {
         id: "04",
-        name: "일식"
+        name: "일식",
+        category: "japanese"
     },
     {
         id: "05",
-        name: "양식"
+        name: "양식",
+        category: "western"
     },
     {
         id: "06",
-        name: "아시안"
+        name: "아시안",
+        category: "asian"
     },
     {
         id: "07",
-        name: "기타"
+        name: "기타",
+        category: "etc"
     }
 ]
 
@@ -43,6 +51,7 @@ export default function RestaurantCategory({ excludedCategories }) {
                 <CategoryModal
                     key={category.id}
                     name={category.name}
+                    category={category.category}
                 />
             )
     );
