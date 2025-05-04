@@ -1,6 +1,6 @@
 import CategoryModal from "./CategoryModal"
 
-const categoryList = [
+const CATEGORYLIST = [
     {
         id: "00",
         name: "선택해 주세요",
@@ -45,7 +45,7 @@ const categoryList = [
 
 export default function RestaurantCategory({ excludedCategories }) {
     return (
-        categoryList
+        CATEGORYLIST
             .filter((category) => !excludedCategories.includes(category.name))
             .map((category) =>
                 <CategoryModal
