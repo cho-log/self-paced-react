@@ -7,17 +7,23 @@ import AddRestaurantModal from "./component/aside/AddRestaurantModal";
 import restaurantList from './const/restaurantList';
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [selectedRestaurant, setSelectedRestaurant] = useState("");
   const [restaurants, setRestaurants] = useState(restaurantList);
 
-  return(
+  return (
     <>
       <Header setIsAddModalOpen={setIsAddModalOpen} />
-      <Body restaurants={restaurants} setIsModalOpen={setIsModalOpen} />
-      <RestaurantInfoModal
-        isOpen={isModalOpen}  // isAddModalOpen과 달리 레스토랑 이름을을 넘겨주어야함.
+      <Body
+        restaurants={restaurants}
         setIsModalOpen={setIsModalOpen}
+        setSelectedRestaurant={setSelectedRestaurant}
+      />
+      <RestaurantInfoModal
+        isOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        selectedRestaurant={selectedRestaurant}
         restaurants={restaurants}
       />
       <AddRestaurantModal
@@ -26,7 +32,7 @@ function App() {
         setRestaurants={setRestaurants}
       />
     </>
-  )
+  );
 }
 
 export default App;
