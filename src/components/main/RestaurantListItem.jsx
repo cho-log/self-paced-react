@@ -10,7 +10,10 @@ const RestaurantListItem = ({
     setSelectedRestaurant(restaurant);
   };
   return (
-    <li className={styles.restaurant} onClick={onRestaurantClick}>
+    <li
+      className={`${styles.restaurant} clickable`}
+      onClick={onRestaurantClick}
+    >
       <div className={styles.restaurant__category}>
         <img
           src={restaurant.image}
