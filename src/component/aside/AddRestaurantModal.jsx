@@ -4,12 +4,14 @@ import insertImgSrc from './insertImgSrc';
 import Modal from './Modal';
 
 const AddRestaurantModal = ({ isOpen, setRestaurants, setIsAddModalOpen }) => {
-  const [form, setForm] = useState({
+  const initForm = {
     category: "",
     name: "",
     description: "",
     imgSrc: null,
-  });
+  };
+
+  const [form, setForm] = useState(initForm);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,6 +28,7 @@ const AddRestaurantModal = ({ isOpen, setRestaurants, setIsAddModalOpen }) => {
       ...prev,
       { ...form, id: Date.now() }
     ]);
+    setForm(initialForm);
     setIsAddModalOpen(false);
   }
 
