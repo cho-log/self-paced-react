@@ -1,6 +1,6 @@
 import styles from './Modal.module.css';
-import categories from '../../constant/constant';
-import Modal from './modal/modal';
+import { selectableCategories } from '../../constant/constant';
+import Modal from './modal/Modal';
 
 const AddRestaurantModal = ({
   setIsRestaurantAddModalOpen,
@@ -33,7 +33,7 @@ const AddRestaurantModal = ({
             카테고리
           </label>
           <select name="category" id="category" required>
-            {categories.map((category) => (
+            {selectableCategories.map((category) => (
               <option key={category} value={category}>
                 {category}
               </option>
@@ -46,7 +46,7 @@ const AddRestaurantModal = ({
           <label htmlFor="name" className="text-caption">
             이름
           </label>
-          <input type="text" name="name" id="name" required />
+          <input type="text" name="name" id="name" required pattern=".*\S.*" />
         </div>
 
         <div className={styles['form-item']}>

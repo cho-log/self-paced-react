@@ -1,5 +1,5 @@
 import styles from './Modal.module.css';
-import Modal from './modal/modal';
+import Modal from './modal/Modal';
 
 const RestaurantDetailModal = ({
   setIsModalOpen,
