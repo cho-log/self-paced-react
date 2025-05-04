@@ -24,7 +24,7 @@ const AddRestaurantModal = ({ isOpen, setRestaurants, setIsAddModalOpen }) => {
   };
 
   const handleUploadForm = () => {
-    if (!form.name && !form.description) {
+    if (!form.category && !form.name && !form.description) {
       alert("가게 이름과 설명을 모두 입력해주세요!");
       return;
     }
