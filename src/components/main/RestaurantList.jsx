@@ -6,6 +6,10 @@ const RestaurantList = ({
   setIsModalOpen,
   setSelectedRestaurant,
 }) => {
+  const onRestaurantClick = (restaurant) => {
+    setSelectedRestaurant(restaurant);
+    setIsModalOpen(true);
+  };
   return (
     <section className={styles['restaurant-list-container']}>
       <ul className={styles['restaurant-list']}>
@@ -13,8 +17,7 @@ const RestaurantList = ({
           <RestaurantListItem
             key={restaurant.id}
             restaurant={restaurant}
-            setIsModalOpen={setIsModalOpen}
-            setSelectedRestaurant={setSelectedRestaurant}
+            onRestaurantClick={onRestaurantClick}
           />
         ))}
       </ul>

@@ -1,17 +1,15 @@
 import categoryIcon from '../../assets/categoryIcons';
 import styles from './css/RestaurantList.module.css';
 
-const RestaurantListItem = ({
-  restaurant,
-  setIsModalOpen,
-  setSelectedRestaurant,
-}) => {
-  const onRestaurantClick = () => {
-    setIsModalOpen(true);
-    setSelectedRestaurant(restaurant);
+const RestaurantListItem = ({ restaurant, onRestaurantClick }) => {
+  const handleRestaurantClick = () => {
+    onRestaurantClick(restaurant);
   };
   return (
-    <li className={styles.restaurant} onClick={onRestaurantClick}>
+    <li
+      className={`${styles.restaurant} clickable`}
+      onClick={handleRestaurantClick}
+    >
       <div className={styles.restaurant__category}>
         <img
           src={categoryIcon[restaurant.category]}
