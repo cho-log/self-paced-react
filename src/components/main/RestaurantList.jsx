@@ -1,14 +1,10 @@
 import styles from './css/RestaurantList.module.css';
 import RestaurantListItem from './RestaurantListItem';
 
-const RestaurantList = ({
-  restaurants,
-  setIsModalOpen,
-  setSelectedRestaurant,
-}) => {
+const RestaurantList = ({ restaurants, onOpenModal, onSelectRestaurant }) => {
   const onRestaurantClick = (restaurant) => {
-    setSelectedRestaurant(restaurant);
-    setIsModalOpen(true);
+    onSelectRestaurant(restaurant);
+    onOpenModal(true);
   };
   return (
     <section className={styles['restaurant-list-container']}>

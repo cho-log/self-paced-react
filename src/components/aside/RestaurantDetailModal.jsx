@@ -2,17 +2,20 @@ import styles from './Modal.module.css';
 import Modal from './modal/Modal';
 
 const RestaurantDetailModal = ({
-  setIsModalOpen,
+  onCloseRestaurantDetailModal,
   selectedRestaurant,
-  setSelectedRestaurant,
+  onDeselectRestaurant,
 }) => {
-  const closeRestaurantDetailModal = () => {
-    setIsModalOpen(false);
-    setSelectedRestaurant(null);
+  const handleRestaurantDetailModalClose = () => {
+    onCloseRestaurantDetailModal();
+    onDeselectRestaurant();
   };
 
   return (
-    <Modal title={selectedRestaurant.name} onClose={closeRestaurantDetailModal}>
+    <Modal
+      title={selectedRestaurant.name}
+      onClose={handleRestaurantDetailModalClose}
+    >
       <div className={styles['restaurant-info']}>
         <p className={`${styles['restaurant-info__description']} text-body`}>
           {selectedRestaurant.description}
@@ -22,7 +25,7 @@ const RestaurantDetailModal = ({
         <button
           type="button"
           className={`${styles.button} ${styles['button--primary']} text-caption`}
-          onClick={closeRestaurantDetailModal}
+          onClick={handleRestaurantDetailModalClose}
         >
           닫기
         </button>

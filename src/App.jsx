@@ -10,7 +10,8 @@ import originalRestaurants from './data/restaurants';
 const App = () => {
   const [restaurants, setRestaurants] = useState(originalRestaurants);
   const [selectedCategory, setSelectedCategory] = useState('전체');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isRestaurantDetailModalOpen, setIsRestaurantDetailModalOpen] =
+    useState(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [isRestaurantAddModalOpen, setIsRestaurantAddModalOpen] =
     useState(false);
@@ -30,23 +31,25 @@ const App = () => {
         />
         <RestaurantList
           restaurants={filteredRestaurants}
-          setIsModalOpen={setIsModalOpen}
-          setSelectedRestaurant={setSelectedRestaurant}
+          onOpenModal={() => setIsRestaurantDetailModalOpen(true)}
+          onSelectRestaurant={setSelectedRestaurant}
         />
       </main>
       <aside>
-        {isModalOpen && selectedRestaurant !== null && (
+        {isRestaurantDetailModalOpen && selectedRestaurant !== null && (
           <RestaurantDetailModal
-            setIsModalOpen={setIsModalOpen}
+            onCloseRestaurantDetailModal={() =>
+              setIsRestaurantDetailModalOpen(false)
+            }
             selectedRestaurant={selectedRestaurant}
-            setSelectedRestaurant={setSelectedRestaurant}
+            onDeselectRestaurant={() => setSelectedRestaurant(null)}
           />
         )}
         {isRestaurantAddModalOpen && (
           <AddRestaurantModal
-            setIsRestaurantAddModalOpen={setIsRestaurantAddModalOpen}
+            onCloseAddRestaurantModal={() => setIsRestaurantAddModalOpen(false)}
             restaurants={restaurants}
-            setRestaurants={setRestaurants}
+            onAddRestaurant={setRestaurants}
           />
         )}
       </aside>

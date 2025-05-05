@@ -3,15 +3,15 @@ import { selectableCategories } from '../../constant/constant';
 import Modal from './modal/Modal';
 
 const AddRestaurantModal = ({
-  setIsRestaurantAddModalOpen,
+  onCloseAddRestaurantModal,
   restaurants,
-  setRestaurants,
+  onAddRestaurant,
 }) => {
-  const closeAddRestaurantModal = () => {
-    setIsRestaurantAddModalOpen(false);
+  const handleAddRestaurantModalClose = () => {
+    onCloseAddRestaurantModal();
   };
 
-  const onSubmitButtonClick = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
     const newRestaurant = {
       id: e.target.name.value,
@@ -19,13 +19,13 @@ const AddRestaurantModal = ({
       name: e.target.name.value,
       description: e.target.description.value,
     };
-    setRestaurants([...restaurants, newRestaurant]);
-    closeAddRestaurantModal();
+    onAddRestaurant([...restaurants, newRestaurant]);
+    handleAddRestaurantModalClose();
   };
 
   return (
-    <Modal title="새로운 음식점" onClose={closeAddRestaurantModal}>
-      <form onSubmit={onSubmitButtonClick}>
+    <Modal title="새로운 음식점" onClose={handleAddRestaurantModalClose}>
+      <form onSubmit={handleFormSubmit}>
         <div
           className={`${styles['form-item']} ${styles['form-item--required']}`}
         >
