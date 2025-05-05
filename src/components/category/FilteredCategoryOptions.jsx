@@ -1,4 +1,4 @@
-import CategoryModal from "./CategoryModal"
+import CategoryOption from "./CategoryOption"
 
 const CATEGORYLIST = [
     {
@@ -43,12 +43,12 @@ const CATEGORYLIST = [
     }
 ]
 
-export default function RestaurantCategory({ excludedCategories }) {
+export default function FilteredCategoryOptions({ excludedCategories }) {
     return (
         CATEGORYLIST
             .filter((category) => !excludedCategories.includes(category.name))
             .map((category) =>
-                <CategoryModal
+                <CategoryOption
                     key={category.id}
                     name={category.name}
                     category={category.category}

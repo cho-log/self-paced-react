@@ -1,4 +1,4 @@
-export default function CategoryModal({ name, category }) {
+export default function CategoryOption({ name, category }) {
     return (
         <option value={category} >
             {name}

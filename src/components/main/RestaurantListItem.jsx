@@ -1,12 +1,13 @@
-import styles from "/src/styles/RestaurantListItem.module.css"
+import styles from "/src/styles/RestaurantListItem.module.css";
+import { useRestaurantContext } from "../../context/RestaurantContext.jsx";
 
-export default function RestaurantListItem({ categoryIcon, categoryAlt, name, description, setIsModalOpen, setRestaurantValue }) {
+export default function RestaurantListItem({ categoryIcon, categoryAlt, name, description }) {
+    const { setRestaurantItem, openModal } = useRestaurantContext();
+
     const handleClick = () => {
-        setIsModalOpen(true);
-        setRestaurantValue((prevRestaurantState) => {
-            return { ...prevRestaurantState, name, description }
-        })
-    }
+        setRestaurantItem({ name, description });
+        openModal(0); // 0은 상세 모달
+    };
 
     return (
         <li className={styles["restaurant"]} onClick={handleClick}>

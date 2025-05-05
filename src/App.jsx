@@ -1,34 +1,39 @@
 import "./App.css";
-import Header from "./components/head/Header.jsx"
-import RestaurantContainer from "./components/main/RestaurantContainer.jsx";
-import AsideContainer from "./components/aside/AsideContainer.jsx";
-import { RESTAURANTS } from "./components/main/restaurants.js";
-import { useState } from "react";
+import Header from "./components/head/Header.jsx";
+import RestaurantList from "./components/main/RestaurantList.jsx";
+import RestaurantFilter from "./components/main/RestaurantFilter.jsx";
+import RestaurantDetailModal from "./components/aside/RestaurantDetailModal.jsx";
+import RestaurantAddModal from "./components/aside/RestaurantAddModal.jsx";
+import { RestaurantProvider, useRestaurantContext } from "./context/RestaurantContext.jsx";
 
-function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [restaurantList, setRestaurantList] = useState(RESTAURANTS);
-  const [restaurantValue, setRestaurantValue] = useState({
-    name : "",
-    description : ""
-  });
+function ModalContainer() {
+  const { isModalOpen, activeModalIndex } = useRestaurantContext();
 
   return (
-    <>
-      <Header setIsModalOpen={setIsModalOpen} 
-              setActiveIndex={setActiveIndex} />
-      <RestaurantContainer setIsModalOpen={setIsModalOpen} 
-                           setRestaurantValue={setRestaurantValue}
-                           restaurantList={restaurantList} />
-      {isModalOpen && <AsideContainer setIsModalOpen={setIsModalOpen} 
-                                     restaurantValue={restaurantValue}
-                                     activeIndex={activeIndex} 
-                                     restaurantList={restaurantList}
-                                     setActiveIndex={setActiveIndex} 
-                                     setRestaurantList={setRestaurantList} />}
-    </>
-  )
+    <aside>
+      {(activeModalIndex === 0) && isModalOpen && <RestaurantDetailModal />}
+      {(activeModalIndex === 1) && isModalOpen && <RestaurantAddModal />}
+    </aside>
+  );
+}
+
+function RestaurantContainer() {
+  return (
+    <main>
+      <RestaurantFilter />
+      <RestaurantList />
+    </main>
+  );
+}
+
+function App() {
+  return (
+    <RestaurantProvider>
+      <Header />
+      <RestaurantContainer />
+      <ModalContainer />
+    </RestaurantProvider>
+  );
 }
 
 export default App;
