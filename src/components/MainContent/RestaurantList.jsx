@@ -1,6 +1,6 @@
 import styles from "./RestaurantList.module.css";
 
-function RestaurantList({ restaurants, onClickedRestaurant }) {
+function RestaurantList({ restaurants, onRestaurantClick }) {
   return (
     <section className={styles["restaurant-list-container"]}>
       <ul className={styles["restaurant-list"]}>
@@ -9,7 +9,7 @@ function RestaurantList({ restaurants, onClickedRestaurant }) {
             key={restaurant.id}
             className={styles.restaurant}
             onClick={() =>
-              onClickedRestaurant(restaurant.name, restaurant.description)
+              onRestaurantClick(restaurant.name, restaurant.description)
             }
           >
             <div className={styles.restaurant__category}>

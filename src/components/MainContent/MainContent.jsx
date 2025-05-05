@@ -21,7 +21,7 @@ function MainContent({ onClickedDetailModal, restaurants }) {
       />
       <RestaurantList
         restaurants={filteredRestaurants}
-        onClickedRestaurant={onClickedDetailModal}
+        onRestaurantClick={onClickedDetailModal}
       />
     </>
   );
