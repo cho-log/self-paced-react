@@ -2,43 +2,44 @@ import "./App.css";
 import Header from "./components/Header/Header.jsx";
 import MainContent from "./components/MainContent/MainContent.jsx";
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
-import restaurants from "./Data/Data.jsx";
+import baseRestaurants from "./data/data.js";
 import { useState } from "react";
 
 function App() {
-  const [openModalType, setOpenModalType] = useState(null);
+  const [modalTypeToOpen, setModalTypeToOpen] = useState(null);
 
-  const [restaurantsList, setRestaurantsList] = useState(restaurants);
-  const handleAddRestaurantList = (restaurant) => {
-    setRestaurantsList((prev) => [...prev, restaurant]);
+  const [updatedRestaurants, setUpdatedRestaurants] = useState(baseRestaurants);
+  const handleUpdatedRestaurants = (restaurant) => {
+    setUpdatedRestaurants((prev) => [...prev, restaurant]);
   };
 
   const [clickedRestaurantInfo, setClickedRestaurantInfo] = useState(null);
-  const handleClickedRestaurant = (name, description) => {
+  const handleClickedRestaurantInfo = (name, description) => {
     const restaurant = {
       name,
       description,
     };
     setClickedRestaurantInfo(restaurant);
-    setOpenModalType("detail");
+    setModalTypeToOpen("detail");
   };
 
-  const onCloseModal = () => setOpenModalType(null);
+  const handleCloseModal = () => setModalTypeToOpen(null);
+
   return (
     <>
-      <Header onClickAdd={() => setOpenModalType("add")} />
+      <Header openAddRestaurantModal={() => setModalTypeToOpen("add")} />
       <main>
         <MainContent
-          onClickedDetail={handleClickedRestaurant}
-          restaurants={restaurantsList}
+          onClickedDetailModal={handleClickedRestaurantInfo}
+          restaurants={updatedRestaurants}
         />
       </main>
       <aside>
         <Sidebar
-          openModalType={openModalType}
-          onAddRestaurant={handleAddRestaurantList}
+          modalTypeToOpen={modalTypeToOpen}
+          onSubmitRestaurant={handleUpdatedRestaurants}
           clickedRestaurantInfo={clickedRestaurantInfo}
-          onCloseModal={onCloseModal}
+          onCloseModal={handleCloseModal}
         />
       </aside>
     </>

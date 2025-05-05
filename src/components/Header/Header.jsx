@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
 
-function Header({ onClickAdd }) {
+function Header({ openAddRestaurantModal }) {
   return (
     <>
       <header className={styles.gnb}>
@@ -9,7 +9,7 @@ function Header({ onClickAdd }) {
           type="button"
           className={styles.gnb__button}
           aria-label="음식점 추가"
-          onClick={onClickAdd}
+          onClick={openAddRestaurantModal}
         >
           <img src="/templates/add-button.png" alt="음식점 추가" />
         </button>

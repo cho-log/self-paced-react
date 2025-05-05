@@ -8,7 +8,7 @@ export const categories = [
   { id: 7, value: "기타" },
 ];
 
-const restaurants = [
+const baseRestaurants = [
   {
     id: 1,
     category: "한식",
@@ -69,4 +69,4 @@ const restaurants = [
   },
 ];
 
-export default restaurants;
+export default baseRestaurants;

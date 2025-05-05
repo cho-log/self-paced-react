@@ -2,7 +2,7 @@ import { useState } from "react";
 import CategoryFilter from "./CategoryFilter.jsx";
 import RestaurantList from "./RestaurantList.jsx";
 
-function MainContent({ onClickedDetail, restaurants }) {
+function MainContent({ onClickedDetailModal, restaurants }) {
   const [category, setCategory] = useState("전체");
 
   const handleCategoryChange = (newCategory) => {
@@ -21,7 +21,7 @@ function MainContent({ onClickedDetail, restaurants }) {
       />
       <RestaurantList
         restaurants={filteredRestaurants}
-        onClickedRestaurant={onClickedDetail}
+        onClickedRestaurant={onClickedDetailModal}
       />
     </>
   );

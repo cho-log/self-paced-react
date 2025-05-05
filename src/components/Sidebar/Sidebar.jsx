@@ -2,24 +2,24 @@ import RestaurantDetailModal from "./RestaurantDetailModal";
 import AddRestaurantModal from "./AddRestaurantModal";
 
 function Sidebar({
-  openModalType,
-  onAddRestaurant,
+  modalTypeToOpen,
+  onSubmitRestaurant,
   clickedRestaurantInfo,
   onCloseModal,
 }) {
   return (
     <>
-      {openModalType === "add" && (
+      {modalTypeToOpen === "add" && (
         <AddRestaurantModal
-          onAddRestaurant={(restaurant) => onAddRestaurant(restaurant)}
-          onClose={onCloseModal}
+          onSubmitRestaurant={(restaurant) => onSubmitRestaurant(restaurant)}
+          onCloseModal={onCloseModal}
         />
       )}
-      {openModalType === "detail" && (
+      {modalTypeToOpen === "detail" && (
         <RestaurantDetailModal
           restaurantName={clickedRestaurantInfo.name}
           restaurantDescription={clickedRestaurantInfo.description}
-          onClose={onCloseModal}
+          onCloseModal={onCloseModal}
         />
       )}
     </>

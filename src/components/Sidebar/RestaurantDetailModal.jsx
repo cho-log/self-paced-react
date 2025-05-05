@@ -3,11 +3,14 @@ import styles from "./Sidebar.module.css";
 function RestaurantDetailModal({
   restaurantName,
   restaurantDescription,
-  onClose,
+  onCloseModal,
 }) {
   return (
     <div className={`${styles.modal} ${styles["modal--open"]}`}>
-      <div className={styles["modal-backdrop"]} onClick={() => onClose()}></div>
+      <div
+        className={styles["modal-backdrop"]}
+        onClick={() => onCloseModal()}
+      ></div>
       <div className={styles["modal-container"]}>
         <h2 className={`${styles["modal-title"]} text-title`}>
           {restaurantName}
@@ -21,7 +24,7 @@ function RestaurantDetailModal({
         <div className={styles["button-container"]}>
           <button
             className={`${styles.button} ${styles["button--primary"]} text-caption`}
-            onClick={() => onClose()}
+            onClick={() => onCloseModal()}
           >
             닫기
           </button>
