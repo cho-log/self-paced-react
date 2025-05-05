@@ -1,6 +1,6 @@
 import styles from "./Sidebar.module.css";
 
-function AddRestaurantModal({ onAddRestaurant, onCloseModal }) {
+function AddRestaurantModal({ onSubmitRestaurant, onCloseModal }) {
   return (
     <div className={`${styles.modal} ${styles["modal--open"]}`}>
       <div
@@ -20,7 +20,7 @@ function AddRestaurantModal({ onAddRestaurant, onCloseModal }) {
               description: event.target.description.value,
             };
 
-            onAddRestaurant(newRestaurant);
+            onSubmitRestaurant(newRestaurant);
             onCloseModal();
           }}
         >
