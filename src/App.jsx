@@ -66,7 +66,7 @@ function App() {
           isOpen={openModal === ModalTypes.ADD}
           onClose={() => setOpenModal(null)}
           categoryOptions={categoryOptions}
-          onAdd={handleAddRestaurant}
+          onAddRestaurant={handleAddRestaurant}
         />
       </aside>
     </>

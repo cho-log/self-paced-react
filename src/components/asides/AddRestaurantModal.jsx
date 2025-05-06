@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "../../modals/Modal";
 import styles from "./RestaurantModal.module.css";
 
-function AddRestaurantModal({ isOpen, onClose, categoryOptions, onAdd }) {
+function AddRestaurantModal({ isOpen, onClose, categoryOptions, onAddRestaurant }) {
   if (!categoryOptions) return null;
 
   const [formData, setFormData] = useState({
@@ -21,7 +21,7 @@ function AddRestaurantModal({ isOpen, onClose, categoryOptions, onAdd }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAdd(formData);
+    onAddRestaurant(formData);
     setFormData({
       category: categoryOptions[0]?.value || "",
       name: "",
