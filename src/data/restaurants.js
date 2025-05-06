@@ -7,7 +7,6 @@ import {
   etcIcon,
 } from '../assets/categoryIcons';
 
-
 const restaurants = [
   {
     id: 'a01',
