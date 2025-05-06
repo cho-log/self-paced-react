@@ -18,10 +18,10 @@ function RestaurantList({ restaurants, categoryIcons, onRestaurantClick }) {
               />
             </div>
             <div className={styles["restaurant__info"]}>
-              <h3 className={styles["restaurant__name text-subtitle"]}>
+              <h3 className={`${styles["restaurant__name"]} text-subtitle`}>
                 {restaurant.name}
               </h3>
-              <p className={styles["restaurant__description text-body"]}>
+              <p className={`${styles["restaurant__description"]} text-body`}>
                 {restaurant.description}
               </p>
             </div>
