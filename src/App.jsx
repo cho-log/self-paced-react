@@ -11,6 +11,8 @@ import categoryOptions from "./data/categoryOptions.js";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("전체");
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
   const filteredRestaurants =
     selectedCategory === "전체"
@@ -31,10 +33,21 @@ function App() {
         <RestaurantList
           restaurants={filteredRestaurants}
           categoryIcons={categoryIcons}
+          onRestaurantClick={(restaurant) => {
+            setSelectedRestaurant(restaurant);
+            setIsInfoModalOpen(true);
+          }}
         />
       </main>
       <aside>
-        <RestaurantInfoModal />
+        <RestaurantInfoModal
+          isOpen={isInfoModalOpen}
+          onClose={() => {
+            setIsInfoModalOpen(false);
+            setSelectedRestaurant(null);
+          }}
+          restaurant={selectedRestaurant}
+        />
         <AddRestaurantModal categoryOptions={categoryOptions} />
       </aside>
     </>
