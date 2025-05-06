@@ -2,7 +2,7 @@ import Modal from "../../modals/Modal";
 import styles from "./RestaurantModal.module.css";
 
 function RestaurantInfoModal({ isOpen, onClose, restaurant }) {
-  if (!restaurant) return null;
+  if(!isOpen) return null;
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
