@@ -1,57 +1,74 @@
 import styles from './Modal.module.css';
-import categories from '../../constant/constant';
+import { selectableCategories } from '../../constant/constant';
+import Modal from './modal/Modal';
 
-const AddRestaurantModal = () => {
+const AddRestaurantModal = ({
+  onCloseAddRestaurantModal,
+  restaurants,
+  onAddRestaurant,
+}) => {
+  const handleAddRestaurantModalClose = () => {
+    onCloseAddRestaurantModal();
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const newRestaurant = {
+      id: e.target.name.value,
+      category: e.target.category.value,
+      name: e.target.name.value,
+      description: e.target.description.value,
+    };
+    onAddRestaurant([...restaurants, newRestaurant]);
+    handleAddRestaurantModalClose();
+  };
+
   return (
-    <div className={`${styles.modal} ${styles['modal--open']}`}>
-      <div className={styles['modal-backdrop']} />
-      <div className={styles['modal-container']}>
-        <h2 className={`${styles['modal-title']} text-title`}>새로운 음식점</h2>
-        <form>
-          <div
-            className={`${styles['form-item']} ${styles['form-item--required']}`}
-          >
-            <label htmlFor="category" className="text-caption">
-              카테고리
-            </label>
-            <select name="category" id="category" required>
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div
-            className={`${styles['form-item']} ${styles['form-item--required']}`}
-          >
-            <label htmlFor="name" className="text-caption">
-              이름
-            </label>
-            <input type="text" name="name" id="name" required />
-          </div>
+    <Modal title="새로운 음식점" onClose={handleAddRestaurantModalClose}>
+      <form onSubmit={handleFormSubmit}>
+        <div
+          className={`${styles['form-item']} ${styles['form-item--required']}`}
+        >
+          <label htmlFor="category" className="text-caption">
+            카테고리
+          </label>
+          <select name="category" id="category" required>
+            {selectableCategories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div
+          className={`${styles['form-item']} ${styles['form-item--required']}`}
+        >
+          <label htmlFor="name" className="text-caption">
+            이름
+          </label>
+          <input type="text" name="name" id="name" required pattern=".*\S.*" />
+        </div>
 
-          <div className={styles['form-item']}>
-            <label htmlFor="description" className="text-caption">
-              설명
-            </label>
-            <textarea name="description" id="description" cols="30" rows="5" />
-            <span className={`${styles['help-text']} text-caption`}>
-              메뉴 등 추가 정보를 입력해 주세요.
-            </span>
-          </div>
+        <div className={styles['form-item']}>
+          <label htmlFor="description" className="text-caption">
+            설명
+          </label>
+          <textarea name="description" id="description" cols="30" rows="5" />
+          <span className={`${styles['help-text']} text-caption`}>
+            메뉴 등 추가 정보를 입력해 주세요.
+          </span>
+        </div>
 
-          <div className={styles['button-container']}>
-            <button
-              type="button"
-              className={`${styles.button} ${styles['button--primary']} text-caption`}
-            >
-              추가하기
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+        <div className={styles['button-container']}>
+          <button
+            type="submit"
+            className={`${styles.button} ${styles['button--primary']} text-caption`}
+          >
+            추가하기
+          </button>
+        </div>
+      </form>
+    </Modal>
   );
 };
 

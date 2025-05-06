@@ -5,12 +5,16 @@ import CategoryFilter from './components/main/CategoryFilter';
 import RestaurantList from './components/main/RestaurantList';
 import RestaurantDetailModal from './components/aside/RestaurantDetailModal';
 import AddRestaurantModal from './components/aside/AddRestaurantModal';
-import restaurants from './data/restaurants';
+import originalRestaurants from './data/restaurants';
 
 const App = () => {
+  const [restaurants, setRestaurants] = useState(originalRestaurants);
   const [selectedCategory, setSelectedCategory] = useState('전체');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isRestaurantDetailModalOpen, setIsRestaurantDetailModalOpen] =
+    useState(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const [isRestaurantAddModalOpen, setIsRestaurantAddModalOpen] =
+    useState(false);
   const filteredRestaurants =
     selectedCategory === '전체'
       ? restaurants
@@ -19,7 +23,7 @@ const App = () => {
         );
   return (
     <>
-      <Header />
+      <Header setIsRestaurantAddModalOpen={setIsRestaurantAddModalOpen} />
       <main>
         <CategoryFilter
           selectedCategory={selectedCategory}
@@ -27,19 +31,27 @@ const App = () => {
         />
         <RestaurantList
           restaurants={filteredRestaurants}
-          setIsModalOpen={setIsModalOpen}
-          setSelectedRestaurant={setSelectedRestaurant}
+          onOpenModal={() => setIsRestaurantDetailModalOpen(true)}
+          onSelectRestaurant={setSelectedRestaurant}
         />
       </main>
       <aside>
-        {isModalOpen && selectedRestaurant !== null && (
+        {isRestaurantDetailModalOpen && selectedRestaurant !== null && (
           <RestaurantDetailModal
-            setIsModalOpen={setIsModalOpen}
+            onCloseRestaurantDetailModal={() =>
+              setIsRestaurantDetailModalOpen(false)
+            }
             selectedRestaurant={selectedRestaurant}
-            setSelectedRestaurant={setSelectedRestaurant}
+            onDeselectRestaurant={() => setSelectedRestaurant(null)}
           />
         )}
-        {/* <AddRestaurantModal /> */}
+        {isRestaurantAddModalOpen && (
+          <AddRestaurantModal
+            onCloseAddRestaurantModal={() => setIsRestaurantAddModalOpen(false)}
+            restaurants={restaurants}
+            onAddRestaurant={setRestaurants}
+          />
+        )}
       </aside>
     </>
   );

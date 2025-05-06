@@ -1,10 +1,10 @@
+import categoryIcon from '../../assets/categoryIcons';
 import styles from './css/RestaurantList.module.css';
 
 const RestaurantListItem = ({ restaurant, onRestaurantClick }) => {
   const handleRestaurantClick = () => {
     onRestaurantClick(restaurant);
   };
-
   return (
     <li
       className={`${styles.restaurant} clickable`}
@@ -12,7 +12,7 @@ const RestaurantListItem = ({ restaurant, onRestaurantClick }) => {
     >
       <div className={styles.restaurant__category}>
         <img
-          src={restaurant.image}
+          src={categoryIcon[restaurant.category]}
           alt={restaurant.category}
           className={styles['category-icon']}
         />
