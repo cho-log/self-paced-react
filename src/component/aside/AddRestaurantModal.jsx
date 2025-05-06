@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from '../../css/Modal.module.css';
+import styles from '../../css/Aside.module.css';
 
-const AddRestaurantModal = () => {
+const AddRestaurantModal = ({ setIsAddModalOpen }) => {
   return (
     <div className={`${styles['modal']} ${styles['modal--open']}`}>
-      <div className={styles['modal-backdrop']}></div>
+      <div className={styles['modal-backdrop']} onClick={() => setIsAddModalOpen(false)}></div>
       <div className={styles['modal-container']}>
         <h2 className={`${styles['modal-title']} ${styles['text-title']}`}>
           새로운 음식점
@@ -50,6 +50,7 @@ const AddRestaurantModal = () => {
           <div className={styles['button-container']}>
             <button
               className={`${styles['button']} ${styles['button--primary']} text-caption`}
+              onClick={() => setIsAddModalOpen(false)}
             >
               추가하기
             </button>

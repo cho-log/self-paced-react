@@ -1,11 +1,11 @@
 import styles from '../../css/Body.module.css';
 
-const RestaurantList = ({ restaurants }) => {
+const RestaurantList = ({ restaurants, setIsModalOpen }) => {
   return (
     <section className={styles['restaurant-list-container']}>
       <ul className={styles['restaurant-list']}>
         {restaurants.map((restaurant) => (
-          <li key={restaurant.id} className={styles.restaurant}>
+          <li key={restaurant.id} className={styles.restaurant} onClick={() => setIsModalOpen(restaurant.id)}>
             <div className={styles.restaurant__category}>
               <img
                 src={restaurant.imgSrc}
