@@ -4,8 +4,8 @@ import AddRestaurantModal from "./AddRestaurantModal";
 function Sidebar() {
   return (
     <>
-      <RestaurantDetailModal />
-      <AddRestaurantModal />
+      {/* <RestaurantDetailModal /> */}
+      {/* <AddRestaurantModal /> */}
     </>
   );
 }

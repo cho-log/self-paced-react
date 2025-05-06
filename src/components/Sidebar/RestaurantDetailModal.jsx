@@ -1,20 +1,27 @@
 import styles from "./Sidebar.module.css";
 
-function RestaurantDetailModal() {
+function RestaurantDetailModal({
+  restaurantName,
+  restaurantDescription,
+  onClose,
+}) {
   return (
-    <div className={`${styles.modal} ${styles["modal--open"]}`}>
-      <div className={styles["modal-backdrop"]}></div>
+    <div className={`${styles.modal} ${styles["modal"]}`}>
+      <div className={styles["modal-backdrop"]} onClick={onClose}></div>
       <div className={styles["modal-container"]}>
-        <h2 className={`${styles["modal-title"]} text-title`}>음식점 이름</h2>
+        <h2 className={`${styles["modal-title"]} text-title`}>
+          {restaurantName}
+        </h2>
         <div className={styles["restaurant-info"]}>
           <p className="restaurant-info__description text-body">
-            음식점 소개 문구
+            {restaurantDescription}
           </p>
         </div>
         {/* 닫기버튼 */}
         <div className={styles["button-container"]}>
           <button
             className={`${styles.button} ${styles["button--primary"]} text-caption`}
+            onClick={onClose}
           >
             닫기
           </button>
