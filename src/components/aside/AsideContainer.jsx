@@ -1,9 +1,9 @@
 import RestaurantModal from "./RestaurantModal.jsx"
 
-export default function AsideContainer() {
+export default function AsideContainer({ setModalState, restaurantValue }) {
     return (
         <aside>
-            <RestaurantModal />
+            <RestaurantModal setModalState={setModalState} restaurantValue={restaurantValue} />
         </aside>
     );
 }

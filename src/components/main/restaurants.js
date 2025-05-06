@@ -1,4 +1,4 @@
-export const restaurants = [
+export const RESTAURANTS = [
     {
       id: '01',
       category: 'korean',
