@@ -3,7 +3,7 @@ import Modal from "../../modals/Modal";
 import styles from "./RestaurantModal.module.css";
 
 function AddRestaurantModal({ isOpen, onClose, categoryOptions, onAddRestaurant }) {
-  if (!categoryOptions) return null;
+  if (!isOpen) return null;
 
   const [formData, setFormData] = useState({
     category: categoryOptions[0]?.value || "",
