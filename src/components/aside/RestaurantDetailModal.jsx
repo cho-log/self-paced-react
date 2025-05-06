@@ -29,6 +29,7 @@ const RestaurantDetailModal = ({
         >
           닫기
         </button>
+
       </div>
     </Modal>
   );
