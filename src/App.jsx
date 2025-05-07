@@ -5,6 +5,7 @@ import CategoryFilter from './components/main/CategoryFilter';
 import RestaurantList from './components/main/RestaurantList';
 import RestaurantDetailModal from './components/aside/RestaurantDetailModal';
 import AddRestaurantModal from './components/aside/AddRestaurantModal';
+import { getRestaurants, addNewRestaurant } from './api/api';
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -16,26 +17,15 @@ const App = () => {
     useState(false);
 
   const updateRestaurants = async () => {
-    const response = await fetch('http://localhost:3000/restaurants');
-    const data = await response.json();
+    const data = await getRestaurants();
     setRestaurants(data);
   };
 
-  const addNewRestaurant = async (newRestaurant) => {
-    await fetch('http://localhost:3000/restaurants', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newRestaurant),
-    });
-  };
-
   useEffect(() => {
-    const getData = async () => {
+    const initializeRestaurants = async () => {
       await updateRestaurants();
     };
-    getData();
+    initializeRestaurants();
   }, []);
 
   const filteredRestaurants =
