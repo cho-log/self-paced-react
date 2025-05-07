@@ -3,6 +3,7 @@ import styles from "./Sidebar.module.css";
 function RestaurantDetailModal({
   restaurantName,
   restaurantDescription,
+
   onCloseModal,
 }) {
   return (
@@ -11,6 +12,7 @@ function RestaurantDetailModal({
         className={styles["modal-backdrop"]}
         onClick={() => onCloseModal()}
       ></div>
+
       <div className={styles["modal-container"]}>
         <h2 className={`${styles["modal-title"]} text-title`}>
           {restaurantName}

@@ -23,6 +23,7 @@ function MainContent({ onClickedDetailModal, restaurants }) {
         restaurants={filteredRestaurants}
         onRestaurantClick={onClickedDetailModal}
       />
+
     </>
   );
 }
