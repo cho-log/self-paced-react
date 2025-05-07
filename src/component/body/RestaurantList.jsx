@@ -1,11 +1,16 @@
 import styles from '../../css/Body.module.css';
 
-const RestaurantList = ({ restaurants, setIsModalOpen }) => {
+const RestaurantList = ({ restaurants, setIsModalOpen, setSelectedRestaurant }) => {
+  const handleRestaurantCilck = (restaurant) => {
+    setIsModalOpen(true);
+    setSelectedRestaurant(restaurant)
+  };
+
   return (
     <section className={styles['restaurant-list-container']}>
       <ul className={styles['restaurant-list']}>
         {restaurants.map((restaurant) => (
-          <li key={restaurant.id} className={styles.restaurant} onClick={() => setIsModalOpen(restaurant.id)}>
+          <li key={restaurant.id} className={styles.restaurant} onClick={() => handleRestaurantCilck(restaurant.id)}>
             <div className={styles.restaurant__category}>
               <img
                 src={restaurant.imgSrc}

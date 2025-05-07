@@ -4,19 +4,35 @@ import Body from "./pages/Body";
 import Header from "./pages/Header";
 import RestaurantInfoModal from "./component/aside/RestaurantInfoModal";
 import AddRestaurantModal from "./component/aside/AddRestaurantModal";
+import restaurantList from './const/restaurantList';
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [selectedRestaurant, setSelectedRestaurant] = useState("");
+  const [restaurants, setRestaurants] = useState(restaurantList);
 
-  return(
+  return (
     <>
       <Header setIsAddModalOpen={setIsAddModalOpen} />
-      <Body setIsModalOpen={setIsModalOpen} />
-      {isModalOpen && <RestaurantInfoModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
-      {isAddModalOpen && <AddRestaurantModal setIsAddModalOpen={setIsAddModalOpen} />}
+      <Body
+        restaurants={restaurants}
+        setIsModalOpen={setIsModalOpen}
+        setSelectedRestaurant={setSelectedRestaurant}
+      />
+      <RestaurantInfoModal
+        isOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        selectedRestaurant={selectedRestaurant}
+        restaurants={restaurants}
+      />
+      <AddRestaurantModal
+        isOpen={isAddModalOpen}
+        setIsAddModalOpen={setIsAddModalOpen}
+        setRestaurants={setRestaurants}
+      />
     </>
-  )
+  );
 }
 
 export default App;

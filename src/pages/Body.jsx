@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import CategorySortFilter from '../component/body/CategorySortFilter';
 import RestaurantList from '../component/body/RestaurantList.jsx';
-import restaurants from '../const/restaurantList';
 
-const Body = ({ setIsModalOpen }) => {
+const Body = ({ restaurants, setIsModalOpen, setSelectedRestaurant }) => {
   const [category, setCategory] = useState('전체');
 
   const filteredRestaurants =
@@ -21,7 +20,11 @@ const Body = ({ setIsModalOpen }) => {
         category={category}
         onChangeCategory={handleChangeCategory}
       />
-      <RestaurantList restaurants={filteredRestaurants} setIsModalOpen={setIsModalOpen} />
+      <RestaurantList
+        restaurants={filteredRestaurants}
+        setIsModalOpen={setIsModalOpen}
+        setSelectedRestaurant={setSelectedRestaurant}
+      />
     </>
   );
 };
