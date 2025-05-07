@@ -3,15 +3,15 @@ import { selectableCategories } from '../../constant/constant';
 import Modal from './modal/Modal';
 
 const AddRestaurantModal = ({
-  onCloseAddRestaurantModal,
-  restaurants,
   onAddRestaurant,
+  onUpdateRestaurantList,
+  onCloseAddRestaurantModal,
 }) => {
   const handleAddRestaurantModalClose = () => {
     onCloseAddRestaurantModal();
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     const newRestaurant = {
       id: e.target.name.value,
@@ -19,7 +19,8 @@ const AddRestaurantModal = ({
       name: e.target.name.value,
       description: e.target.description.value,
     };
-    onAddRestaurant([...restaurants, newRestaurant]);
+    await onAddRestaurant(newRestaurant);
+    await onUpdateRestaurantList();
     handleAddRestaurantModalClose();
   };
 
