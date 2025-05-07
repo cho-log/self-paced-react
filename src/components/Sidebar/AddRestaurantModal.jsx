@@ -1,12 +1,34 @@
+import { useState } from "react";
 import styles from "./Sidebar.module.css";
 
-function AddRestaurantModal() {
+function AddRestaurantModal({ onSubmitRestaurant, onCloseModal }) {
+  const [category, setCategory] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+
   return (
     <div className={`${styles.modal} ${styles["modal--open"]}`}>
-      <div className={styles["modal-backdrop"]}></div>
+      <div
+        className={styles["modal-backdrop"]}
+        onClick={() => onCloseModal()}
+      ></div>
       <div className={styles["modal-container"]}>
         <h2 className={styles["modal-title"]}>새로운 음식점</h2>
-        <form>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+
+            const newRestaurant = {
+              id: Date.now(),
+              category,
+              name,
+              description,
+            };
+
+            onSubmitRestaurant(newRestaurant);
+            onCloseModal();
+          }}
+        >
           {/* <!-- 카테고리 --> */}
           <div
             className={`${styles["form-item"]} ${styles["form-item--required"]}`}
@@ -14,7 +36,13 @@ function AddRestaurantModal() {
             <label htmlFor="category" className="text-caption">
               카테고리
             </label>
-            <select name="category" id="category" required>
+            <select
+              name="category"
+              id="category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              required
+            >
               <option value="">선택해 주세요</option>
               <option value="한식">한식</option>
               <option value="중식">중식</option>
@@ -31,7 +59,14 @@ function AddRestaurantModal() {
             <label htmlFor="name" className="text-caption">
               이름
             </label>
-            <input type="text" name="name" id="name" required />
+            <input
+              type="text"
+              name="name"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
           </div>
 
           {/* <!-- 설명 --> */}
@@ -44,6 +79,8 @@ function AddRestaurantModal() {
               id="description"
               cols="30"
               rows="5"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             ></textarea>
             <span className={`${styles["help-text"]} text-caption`}>
               메뉴 등 추가 정보를 입력해 주세요.

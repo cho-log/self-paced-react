@@ -8,7 +8,40 @@ export const categories = [
   { id: 7, value: "기타" },
 ];
 
-const restaurants = [
+export const selectedCategories = [
+  {
+    category: "한식",
+    imgSrc: "/templates/category-asian.png",
+    imgAlt: "한식",
+  },
+  {
+    category: "중식",
+    imgSrc: "/templates/category-chinese.png",
+    imgAlt: "중식",
+  },
+  {
+    category: "일식",
+    imgSrc: "/templates/category-japanese.png",
+    imgAlt: "일식",
+  },
+  {
+    category: "양식",
+    imgSrc: "/templates/category-western.png",
+    imgAlt: "양식",
+  },
+  {
+    category: "아시안",
+    imgSrc: "/templates/category-asian.png",
+    imgAlt: "아시안",
+  },
+  {
+    category: "기타",
+    imgSrc: "/templates/category-etc.png",
+    imgAlt: "기타",
+  },
+];
+
+const baseRestaurants = [
   {
     id: 1,
     category: "한식",
@@ -69,4 +102,4 @@ const restaurants = [
   },
 ];
 
-export default restaurants;
+export default baseRestaurants;

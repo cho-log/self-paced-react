@@ -15,6 +15,10 @@
   border-bottom: 1px solid #e9eaed;
 }
 
+.restaurant:hover {
+  background-color: #f5f5f5;
+}
+
 .restaurant__category {
   display: flex;
   justify-content: center;
