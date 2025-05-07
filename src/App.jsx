@@ -62,6 +62,7 @@ function App() {
           }}
           restaurant={selectedRestaurant}
         />
+
         <AddRestaurantModal
           isOpen={openModal === ModalTypes.ADD}
           onClose={() => setOpenModal(null)}
