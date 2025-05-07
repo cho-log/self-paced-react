@@ -5,14 +5,16 @@ import RestaurantCategoryFilter from "./components/mains/RestaurantCategoryFilte
 import RestaurantList from "./components/mains/RestaurantList.jsx";
 import RestaurantInfoModal from "./components/asides/RestaurantInfoModal.jsx";
 import AddRestaurantModal from "./components/asides/AddRestaurantModal.jsx";
-import restaurants from "./data/restaurants.js";
+import initialRestaurants from "./data/restaurants.js";
 import categoryIcons from "./data/categoryIcons.js";
 import categoryOptions from "./data/categoryOptions.js";
+import ModalTypes from "./constants/modalTypes.js";
 
 function App() {
+  const [openModal, setOpenModal] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("전체");
-  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const [restaurants, setRestaurants] = useState(initialRestaurants);
 
   const filteredRestaurants =
     selectedCategory === "전체"
@@ -21,9 +23,21 @@ function App() {
           (restaurant) => restaurant.category === selectedCategory
         );
 
+  const handleAddRestaurant = (newRestaurant) => {
+    const restaurantWithId = {
+      id: Date.now(),
+      ...newRestaurant,
+    };
+    setRestaurants((prev) => [...prev, restaurantWithId]);
+  };
+
   return (
     <>
-      <Gnb />
+      <Gnb
+        onAddInfoClick={() => {
+          setOpenModal(ModalTypes.ADD);
+        }}
+      />
       <main>
         <RestaurantCategoryFilter
           selectedCategory={selectedCategory}
@@ -35,20 +49,26 @@ function App() {
           categoryIcons={categoryIcons}
           onRestaurantClick={(restaurant) => {
             setSelectedRestaurant(restaurant);
-            setIsInfoModalOpen(true);
+            setOpenModal(ModalTypes.INFO);
           }}
         />
       </main>
       <aside>
         <RestaurantInfoModal
-          isOpen={isInfoModalOpen}
+          isOpen={openModal === ModalTypes.INFO}
           onClose={() => {
-            setIsInfoModalOpen(false);
+            setOpenModal(null);
             setSelectedRestaurant(null);
           }}
           restaurant={selectedRestaurant}
         />
-        <AddRestaurantModal categoryOptions={categoryOptions} />
+
+        <AddRestaurantModal
+          isOpen={openModal === ModalTypes.ADD}
+          onClose={() => setOpenModal(null)}
+          categoryOptions={categoryOptions}
+          onAddRestaurant={handleAddRestaurant}
+        />
       </aside>
     </>
   );
