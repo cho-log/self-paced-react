@@ -1,19 +1,17 @@
-import styles from "/src/styles/Aside.module.css"
+import Modal from "./modal/Modal.jsx";
+import styles from "../../styles/RestaurantDetailModal.module.css";
+import { useRestaurantContext } from "../../context/RestaurantContext.jsx";
 
-export default function RestaurantDetailModal({setModalState, restaurantValue}) {
+export default function RestaurantDetailModal() {
+    const { restaurantItem, closeModal } = useRestaurantContext();
+
     return (
-        <div className={`${styles["modal"]} ${styles["modal--open"]}`}>
-            <div className={styles["modal-backdrop"]} onClick={()=>setModalState(false)}></div>
-            <div className={styles["modal-container"]}>
-                <h2 className={`${styles["modal-title"]} text-title`}>{restaurantValue.name}</h2>
-                <div className={styles["restaurant-info"]}>
-                    <p className={`${styles["restaurant-info__description"]} text-body`}>{restaurantValue.description}</p>
-                </div>
-
-                <div className={styles["button-container"]}>
-                    <button className={`${styles.button} ${styles["button--primary"]} text-caption`} onClick={()=>setModalState(false)}>닫기</button>
-                </div>
+        <Modal title={restaurantItem.name} onClose={closeModal} isButtonOpen>
+            <div className={`${styles["restaurant-info"]}`}>
+                <p className={`${styles["restaurant-info__description"]} text-body`}>
+                    {restaurantItem.description}
+                </p>
             </div>
-        </div >
+        </Modal>
     );
 }

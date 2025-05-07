@@ -1,14 +1,19 @@
-import styles from "/src/styles/Main.module.css"
-import RestaurantValue from "./RestaurantValue";
+import styles from "/src/styles/RestaurantList.module.css";
+import RestaurantListItem from "./RestaurantListItem.jsx";
+import { useRestaurantContext } from "../../context/RestaurantContext.jsx";
 
-export default function RestaurantList({ restaurants, selectedCategory, setModalState, setRestaurantValue }) {
-  const filteredRestaurants = selectedCategory === '전체' ? restaurants : restaurants.filter(restaurant => restaurant.alt === selectedCategory);
+export default function RestaurantList() {
+  const { restaurants, selectedCategory } = useRestaurantContext();
+
+  const filteredRestaurants = selectedCategory === "all"
+    ? restaurants
+    : restaurants.filter(restaurant => restaurant.category === selectedCategory);
 
   return (
-    <section className={styles["restaurant-list-container"]}>
-      <ul className={styles["restaurant-list"]}>
+    <section className={`${styles["restaurant-list-container"]}`}>
+      <ul className={`${styles["restaurant-list"]}`}>
         {filteredRestaurants.map((restaurant) => (
-          <RestaurantValue
+          <RestaurantListItem
             key={restaurant.id}
             categoryIcon={restaurant.icon}
             categoryAlt={restaurant.alt}
@@ -20,5 +25,5 @@ export default function RestaurantList({ restaurants, selectedCategory, setModal
         ))}
       </ul>
     </section>
-   );
+  );
 }
