@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 const RestaurantContext = createContext();
 
-export function RestaurantProvider({ children }) {
+export function RestaurantContext({ children }) {
     const [restaurants, setRestaurants] = useState([]);
     const [restaurantItem, setRestaurantItem] = useState({
         name: "",

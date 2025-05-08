@@ -4,7 +4,7 @@ import RestaurantList from "./components/main/RestaurantList.jsx";
 import RestaurantFilter from "./components/main/RestaurantFilter.jsx";
 import RestaurantDetailModal from "./components/aside/RestaurantDetailModal.jsx";
 import RestaurantAddModal from "./components/aside/RestaurantAddModal.jsx";
-import { RestaurantProvider, useRestaurantContext } from "./context/RestaurantContext.jsx";
+import { RestaurantContext, useRestaurantContext } from "./context/RestaurantContext.jsx";
 
 function ModalContainer() {
   const { isModalOpen, activeModalIndex } = useRestaurantContext();
@@ -28,11 +28,11 @@ function RestaurantContainer() {
 
 function App() {
   return (
-    <RestaurantProvider>
+    <RestaurantContext>
       <Header />
       <RestaurantContainer />
       <ModalContainer />
-    </RestaurantProvider>
+    </RestaurantContext>
   );
 }
 
