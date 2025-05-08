@@ -1,3 +1,4 @@
+<<<<<<<< HEAD:src/styles/RestaurantListItem.module.css
 .restaurant {
     display: flex;
     align-items: flex-start;
@@ -51,3 +52,5 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
+========
+>>>>>>>> gxuoo:src/styles/Main.module.css
