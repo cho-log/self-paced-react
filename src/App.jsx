@@ -9,6 +9,7 @@ import { getRestaurants, addNewRestaurant } from './api/api';
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([]);
+
   const [selectedCategory, setSelectedCategory] = useState('전체');
   const [isRestaurantDetailModalOpen, setIsRestaurantDetailModalOpen] =
     useState(false);
