@@ -1,10 +1,9 @@
-import { createContext, useContext, useState } from "react";
-import { RESTAURANTS } from "../components/main/restaurants.js";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const RestaurantContext = createContext();
 
 export function RestaurantProvider({ children }) {
-    const [restaurants, setRestaurants] = useState(RESTAURANTS);
+    const [restaurants, setRestaurants] = useState([]);
     const [restaurantItem, setRestaurantItem] = useState({
         name: "",
         description: ""
@@ -21,6 +20,19 @@ export function RestaurantProvider({ children }) {
     const closeModal = () => {
         setIsModalOpen(false);
     };
+
+    useEffect(() => {
+        async function getRestaurants() {
+            try {
+                const response = await fetch("http://localhost:3000/restaurants");
+                const data = await response.json();
+                setRestaurants(data);
+            } catch (err) {
+                console.error("레스토랑 데이터를 불러오는 데 실패했습니다:", err);
+            }
+        }
+        getRestaurants();
+    }, []);
 
     return (
         <RestaurantContext.Provider value={{
