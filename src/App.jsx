@@ -7,11 +7,7 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [modalTypeToOpen, setModalTypeToOpen] = useState(null);
-
-  // const [updatedRestaurants, setUpdatedRestaurants] = useState(baseRestaurants);
-  // const handleUpdatedRestaurants = (restaurant) => {
-  //   setUpdatedRestaurants((prev) => [...prev, restaurant]);
-  // };
+  const handleCloseModal = () => setModalTypeToOpen(null);
 
   const [clickedRestaurantInfo, setClickedRestaurantInfo] = useState(null);
   const handleClickedRestaurantInfo = (name, description) => {
@@ -22,8 +18,6 @@ function App() {
     setClickedRestaurantInfo(restaurant);
     setModalTypeToOpen("detail");
   };
-
-  const handleCloseModal = () => setModalTypeToOpen(null);
 
   const [restaurants, setRestaurants] = useState([]);
   useEffect(() => {
