@@ -15,6 +15,7 @@ const App = () => {
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [isRestaurantAddModalOpen, setIsRestaurantAddModalOpen] =
     useState(false);
+  const [newRestaurant, setNewRestaurant] = useState(null);
 
   const updateRestaurants = async () => {
     const data = await getRestaurants();
@@ -22,11 +23,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    const initializeRestaurants = async () => {
-      await updateRestaurants();
-    };
-    initializeRestaurants();
-  }, []);
+    updateRestaurants();
+  }, [newRestaurant]);
 
   const filteredRestaurants =
     selectedCategory === '전체'
@@ -62,7 +60,7 @@ const App = () => {
         {isRestaurantAddModalOpen && (
           <AddRestaurantModal
             onAddRestaurant={addNewRestaurant}
-            onUpdateRestaurantList={updateRestaurants}
+            onRestaurantAdded={setNewRestaurant}
             onCloseAddRestaurantModal={() => setIsRestaurantAddModalOpen(false)}
           />
         )}
