@@ -21,16 +21,17 @@ export function RestaurantProvider({ children }) {
         setIsModalOpen(false);
     };
 
-    useEffect(() => {
-        async function getRestaurants() {
-            try {
-                const response = await fetch("http://localhost:3000/restaurants");
-                const data = await response.json();
-                setRestaurants(data);
-            } catch (err) {
-                console.error("레스토랑 데이터를 불러오는 데 실패했습니다:", err);
-            }
+    const getRestaurants = async () => {
+        try {
+            const response = await fetch("http://localhost:3000/restaurants");
+            const data = await response.json();
+            setRestaurants(data);
+        } catch (err) {
+            console.error("레스토랑 데이터를 불러오는 데 실패했습니다:", err);
         }
+    }
+
+    useEffect(() => {
         getRestaurants();
     }, []);
 
@@ -40,7 +41,8 @@ export function RestaurantProvider({ children }) {
             restaurantItem, setRestaurantItem,
             isModalOpen, openModal, closeModal,
             activeModalIndex, setActiveModalIndex,
-            selectedCategory, setSelectedCategory
+            selectedCategory, setSelectedCategory,
+            getRestaurants
         }}>
             {children}
         </RestaurantContext.Provider>

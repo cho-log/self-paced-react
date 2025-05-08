@@ -15,15 +15,15 @@ const CATEGORYMAP = {
 export default function RestaurantAddModal() {
     const {
         restaurants,
-        setRestaurants,
         setActiveModalIndex,
         closeModal,
+        getRestaurants
     } = useRestaurantContext();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const id = restaurants.length + 1;
+        const id = (restaurants.length + 1).toString().padStart(2, "0");
         const category = e.target.category.value;
         const alt = CATEGORYMAP[category];
         const icon = `/assets/images/category/category-${category}.png`;
@@ -31,15 +31,31 @@ export default function RestaurantAddModal() {
         const description = e.target.description.value;
 
         const newRestaurant = {
-            id,
-            category,
-            icon,
-            alt,
-            name,
-            description,
+            id: id,
+            category: category,
+            icon: icon,
+            alt: alt,
+            name: name,
+            description: description,
         };
 
-        setRestaurants((prev) => [...prev, newRestaurant]);
+        try {
+            const response = await fetch("http://localhost:3000/restaurants", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newRestaurant),
+            });
+
+            if (!response.ok) {
+                throw new Error("서버 응답 오류");
+            }
+        } catch (error) {
+            console.error("실패:", error);
+        }
+
+        getRestaurants();
         setActiveModalIndex(0);
         closeModal();
     };
