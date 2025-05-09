@@ -3,7 +3,7 @@ import styles from '../../css/Aside.module.css';
 import insertImgSrc from '../utils/insertImgSrc';
 import Modal from './Modal';
 
-const AddRestaurantModal = ({ isOpen, setRestaurants, setIsAddModalOpen }) => {
+const AddRestaurantModal = ({ isOpen, setIsAddModalOpen }) => {
   const initForm = {
     category: "",
     name: "",
@@ -23,17 +23,26 @@ const AddRestaurantModal = ({ isOpen, setRestaurants, setIsAddModalOpen }) => {
     }
   };
 
-  const handleUploadForm = () => {
+  const handleUploadForm = async (e) => {
+    e.preventDefault();
     if (!form.category && !form.name && !form.description) {
       alert("가게 이름과 설명을 모두 입력해주세요!");
       return;
     }
-    setRestaurants(prev => [
-      ...prev,
-      { ...form, id: Date.now() }
-    ]);
-    setForm(initForm);
-    setIsAddModalOpen(false);
+    try {
+      await fetch("http://localhost:3000/restaurants", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      setForm(initForm);
+      setIsAddModalOpen(false);
+    } catch (error) {
+      console.error('레스토랑 추가 실패:', error);
+    }
   }
 
   return (

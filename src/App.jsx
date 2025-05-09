@@ -23,7 +23,7 @@ function App() {
     }
 
     fetchRestaurant();
-  }, [])
+  }, [isAddModalOpen])
 
   return (
     <>
@@ -42,7 +42,6 @@ function App() {
       <AddRestaurantModal
         isOpen={isAddModalOpen}
         setIsAddModalOpen={setIsAddModalOpen}
-        setRestaurants={setRestaurants}
       />
     </>
   );
