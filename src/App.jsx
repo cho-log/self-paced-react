@@ -33,6 +33,23 @@ function App() {
       });
   }, []);
 
+  const handleAddRestaurant = async (restaurant) => {
+    try {
+      const response = await fetch(RESTAURANT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(restaurant),
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const created = await response.json();
+      setRestaurants((prev) => [...prev, created]);
+      setOpenModal(null);
+    } catch (err) {
+      console.error("POST 에러:", err);
+    }
+  };
+
   const filteredRestaurants =
     selectedCategory === "전체"
       ? restaurants
