@@ -1,4 +1,5 @@
 import styles from '../../css/Body.module.css';
+import insertImgSrc from '../utils/insertImgSrc';
 
 const RestaurantList = ({ restaurants, setIsModalOpen, setSelectedRestaurant }) => {
   const handleRestaurantCilck = (restaurant) => {
@@ -13,7 +14,7 @@ const RestaurantList = ({ restaurants, setIsModalOpen, setSelectedRestaurant }) 
           <li key={restaurant.id} className={styles.restaurant} onClick={() => handleRestaurantCilck(restaurant.id)}>
             <div className={styles.restaurant__category}>
               <img
-                src={restaurant.imgSrc}
+                src={insertImgSrc[restaurant.category]}
                 alt={restaurant.category}
                 className={styles['category-icon']}
               />

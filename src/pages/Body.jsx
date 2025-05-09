@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import CategorySortFilter from '../component/body/CategorySortFilter';
-import RestaurantList from '../component/body/RestaurantList.jsx';
+import RestaurantList from '../component/body/RestaurantList';
 
 const Body = ({ restaurants, setIsModalOpen, setSelectedRestaurant }) => {
   const [category, setCategory] = useState('전체');

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../../css/Aside.module.css';
-import insertImgSrc from './insertImgSrc';
+import insertImgSrc from '../utils/insertImgSrc';
 import Modal from './Modal';
 
 const AddRestaurantModal = ({ isOpen, setRestaurants, setIsAddModalOpen }) => {
