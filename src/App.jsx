@@ -5,7 +5,7 @@ import CategoryFilter from './components/main/CategoryFilter';
 import RestaurantList from './components/main/RestaurantList';
 import RestaurantDetailModal from './components/aside/RestaurantDetailModal';
 import AddRestaurantModal from './components/aside/AddRestaurantModal';
-import { getRestaurants, addNewRestaurant } from './api/api';
+import { getRestaurants } from './api/api';
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -60,7 +60,6 @@ const App = () => {
         )}
         {isRestaurantAddModalOpen && (
           <AddRestaurantModal
-            onAddRestaurant={addNewRestaurant}
             onRestaurantAdded={setNewRestaurant}
             onCloseAddRestaurantModal={() => setIsRestaurantAddModalOpen(false)}
           />

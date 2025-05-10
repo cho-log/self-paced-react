@@ -1,9 +1,9 @@
 import styles from './Modal.module.css';
 import { selectableCategories } from '../../constant/constant';
 import Modal from './modal/Modal';
+import { addNewRestaurant } from '../../api/api';
 
 const AddRestaurantModal = ({
-  onAddRestaurant,
   onRestaurantAdded,
   onCloseAddRestaurantModal,
 }) => {
@@ -19,7 +19,7 @@ const AddRestaurantModal = ({
       name: e.target.name.value,
       description: e.target.description.value,
     };
-    await onAddRestaurant(newRestaurant);
+    await addNewRestaurant(newRestaurant);
     onRestaurantAdded(newRestaurant);
     handleAddRestaurantModalClose();
   };
