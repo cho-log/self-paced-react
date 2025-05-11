@@ -4,7 +4,7 @@ import Modal from './modal/Modal';
 import { addNewRestaurant } from '../../api/api';
 
 const AddRestaurantModal = ({
-  onRestaurantAdded,
+  onUpdateRestaurants,
   onCloseAddRestaurantModal,
 }) => {
   const handleAddRestaurantModalClose = () => {
@@ -20,7 +20,7 @@ const AddRestaurantModal = ({
       description: e.target.description.value,
     };
     await addNewRestaurant(newRestaurant);
-    onRestaurantAdded(newRestaurant);
+    onUpdateRestaurants();
     handleAddRestaurantModalClose();
   };
 
