@@ -5,6 +5,11 @@ import Sidebar from "./components/Sidebar/Sidebar.jsx";
 import { useState, useEffect } from "react";
 
 function App() {
+  const MODAL_TYPES = {
+    ADD: "add",
+    DETAIL: "detail",
+  };
+
   const [modalTypeToOpen, setModalTypeToOpen] = useState(null);
   const handleCloseModal = () => setModalTypeToOpen(null);
 
@@ -15,7 +20,7 @@ function App() {
       description,
     };
     setClickedRestaurantInfo(restaurant);
-    setModalTypeToOpen("detail");
+    setModalTypeToOpen(MODAL_TYPES.DETAIL);
   };
 
   const [restaurants, setRestaurants] = useState([]);
@@ -45,29 +50,11 @@ function App() {
     setRestaurants((prev) => [...prev, newRestaurant]);
   };
 
-  // useEffect(() => {
-  //   const fetchRestaurants = async () => {
-  //     const response = await fetch("http://localhost:3000/restaurants");
-  //     const data = await response.json();
-  //     setRestaurants(data);
-  //   };
-
-  //   fetchRestaurants();
-  // }, []);
-
-  // const handleUpdatedRestaurants = async (restaurant) => {
-  //   const response = await fetch("http://localhost:3000/restaurants", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(restaurant),
-  //   });
-  //   const newRestaurant = await response.json();
-  //   setRestaurants((prev) => [...prev, newRestaurant]);
-  // };
-
   return (
     <>
-      <Header openAddRestaurantModal={() => setModalTypeToOpen("add")} />
+      <Header
+        openAddRestaurantModal={() => setModalTypeToOpen(MODAL_TYPES.ADD)}
+      />
       <main>
         <MainContent
           onClickedDetailModal={handleClickedRestaurantInfo}
