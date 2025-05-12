@@ -36,7 +36,6 @@ function App() {
       body: JSON.stringify(restaurant),
     });
     const newRestaurant = await response.json();
-    console.log(newRestaurant);
     setRestaurants((prev) => [...prev, newRestaurant]);
   };
 
