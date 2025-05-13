@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 import { useEffect, useState } from "react";
-=======
-import { useState } from "react";
->>>>>>> upstream/changwooj
 import "./App.css";
 import Body from "./pages/Body";
 import Header from "./pages/Header";
 import RestaurantInfoModal from "./component/aside/RestaurantInfoModal";
 import AddRestaurantModal from "./component/aside/AddRestaurantModal";
-<<<<<<< HEAD
-=======
-import restaurantList from './const/restaurantList';
->>>>>>> upstream/changwooj
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
