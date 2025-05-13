@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
 import styles from '../../css/Aside.module.css';
-<<<<<<< HEAD
 import insertImgSrc from '../utils/insertImgSrc';
 import Modal from './Modal';
 
 const AddRestaurantModal = ({ isOpen, setIsAddModalOpen }) => {
-=======
-import insertImgSrc from './insertImgSrc';
-import Modal from './Modal';
-
-const AddRestaurantModal = ({ isOpen, setRestaurants, setIsAddModalOpen }) => {
->>>>>>> upstream/changwooj
   const initForm = {
     category: "",
     name: "",
@@ -119,10 +112,7 @@ const AddRestaurantModal = ({ isOpen, setRestaurants, setIsAddModalOpen }) => {
           <button
             className={`${styles['button']} ${styles['button--primary']} text-caption`}
             onClick={handleUploadForm}
-<<<<<<< HEAD
             disabled={loading}
-=======
->>>>>>> upstream/changwooj
           >
             추가하기
           </button>

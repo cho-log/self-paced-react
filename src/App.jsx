@@ -50,10 +50,7 @@ function App() {
       <AddRestaurantModal
         isOpen={isAddModalOpen}
         setIsAddModalOpen={setIsAddModalOpen}
-<<<<<<< HEAD
-=======
-        setRestaurants={setRestaurants}
->>>>>>> upstream/changwooj
+
       />
     </>
   );
