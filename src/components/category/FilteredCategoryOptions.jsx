@@ -1,6 +1,6 @@
 import CategoryOption from "./CategoryOption"
 
-const CATEGORYLIST = [
+const CATEGORY_LIST = [
     {
         id: "00",
         name: "선택해 주세요",
@@ -45,7 +45,7 @@ const CATEGORYLIST = [
 
 export default function FilteredCategoryOptions({ excludedCategories }) {
     return (
-        CATEGORYLIST
+        CATEGORY_LIST
             .filter((category) => !excludedCategories.includes(category.name))
             .map((category) =>
                 <CategoryOption

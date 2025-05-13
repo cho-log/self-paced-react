@@ -19,8 +19,6 @@ export default function RestaurantList() {
             categoryAlt={restaurant.alt}
             name={restaurant.name}
             description={restaurant.description}
-            setModalState={setModalState}
-            setRestaurantValue={setRestaurantValue}
           />
         ))}
       </ul>
