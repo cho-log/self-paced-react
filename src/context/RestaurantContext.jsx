@@ -8,18 +8,8 @@ export function RestaurantProvider({ children }) {
         name: "",
         description: ""
     });
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [activeModalIndex, setActiveModalIndex] = useState(0);
+    const [modalState, setModalState] = useState('list');   // detail, add, list 3가지로 관리
     const [selectedCategory, setSelectedCategory] = useState("all");
-
-    const openModal = (index) => {
-        setActiveModalIndex(index);
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-    };
 
     const getRestaurants = async () => {
         try {
@@ -37,10 +27,9 @@ export function RestaurantProvider({ children }) {
 
     return (
         <RestaurantContext.Provider value={{
+            modalState, setModalState,
             restaurants, setRestaurants,
             restaurantItem, setRestaurantItem,
-            isModalOpen, openModal, closeModal,
-            activeModalIndex, setActiveModalIndex,
             selectedCategory, setSelectedCategory,
             getRestaurants
         }}>

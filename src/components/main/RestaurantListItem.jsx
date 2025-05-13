@@ -2,11 +2,11 @@ import styles from "/src/styles/RestaurantListItem.module.css";
 import { useRestaurantContext } from "../../context/RestaurantContext.jsx";
 
 export default function RestaurantListItem({ categoryIcon, categoryAlt, name, description }) {
-    const { setRestaurantItem, openModal } = useRestaurantContext();
+    const { setRestaurantItem, setModalState } = useRestaurantContext();
 
     const handleClick = () => {
         setRestaurantItem({ name, description });
-        openModal(0); // 0은 상세 모달
+        setModalState('detail');
     };
 
     return (

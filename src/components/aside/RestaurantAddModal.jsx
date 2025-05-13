@@ -14,9 +14,7 @@ const CATEGORY_MAP = {
 
 export default function RestaurantAddModal() {
     const {
-        restaurants,
-        setActiveModalIndex,
-        closeModal,
+        setModalState,
         getRestaurants
     } = useRestaurantContext();
 
@@ -56,12 +54,11 @@ export default function RestaurantAddModal() {
         }
 
         getRestaurants();
-        setActiveModalIndex(0);
-        closeModal();
+        setModalState('list');
     };
 
     return (
-        <Modal title="새로운 음식점" onClose={closeModal} onSubmit={handleSubmit}>
+        <Modal title="새로운 음식점" onClose={() => setModalState('list')} onSubmit={handleSubmit}>
             <div className={`${styles["form-item"]} ${styles["form-item--required"]}`}>
                 <label htmlFor="category" className="text-caption">카테고리</label>
                 <select name="category" id="category" required>

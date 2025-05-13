@@ -7,12 +7,12 @@ import RestaurantAddModal from "./components/aside/RestaurantAddModal.jsx";
 import { RestaurantProvider, useRestaurantContext } from "./context/RestaurantContext.jsx";
 
 function ModalContainer() {
-  const { isModalOpen, activeModalIndex } = useRestaurantContext();
+  const { modalState } = useRestaurantContext();
 
   return (
     <aside>
-      {(activeModalIndex === 0) && isModalOpen && <RestaurantDetailModal />}
-      {(activeModalIndex === 1) && isModalOpen && <RestaurantAddModal />}
+      {modalState === 'detail' && <RestaurantDetailModal />}
+      {modalState === 'add' && <RestaurantAddModal />}
     </aside>
   );
 }

@@ -47,6 +47,30 @@
       "alt": "기타",
       "name": "도스타코스 선릉점",
       "description": "멕시칸 캐주얼 그릴"
+    },
+    {
+      "id": "1747133038888-45061",
+      "category": "japanese",
+      "icon": "/assets/images/category/category-japanese.png",
+      "alt": "일식",
+      "name": "멘츠루",
+      "description": "일식 맛집"
+    },
+    {
+      "id": "1747133062016-3804",
+      "category": "japanese",
+      "icon": "/assets/images/category/category-japanese.png",
+      "alt": "일식",
+      "name": "멘츠루",
+      "description": "일식 맛집"
+    },
+    {
+      "id": "1747133074797-43568",
+      "category": "chinese",
+      "icon": "/assets/images/category/category-chinese.png",
+      "alt": "중식",
+      "name": "마라봉",
+      "description": "중식 맛집"
     }
   ]
 }
