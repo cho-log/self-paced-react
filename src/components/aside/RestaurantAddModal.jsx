@@ -12,6 +12,10 @@ const CATEGORY_MAP = {
     etc: "기타",
 };
 
+function generateId() {
+    return `${Date.now()}-${Math.floor(Math.random() * 100000)}`;
+}
+
 export default function RestaurantAddModal() {
     const {
         setModalState,
@@ -21,9 +25,9 @@ export default function RestaurantAddModal() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const id = (restaurants.length + 1).toString().padStart(2, "0");
+        const id = generateId();
         const category = e.target.category.value;
-        const alt = CATEGORYMAP[category];
+        const alt = CATEGORY_MAP[category];
         const icon = `/assets/images/category/category-${category}.png`;
         const name = e.target.name.value;
         const description = e.target.description.value;
@@ -49,6 +53,10 @@ export default function RestaurantAddModal() {
             if (!response.ok) {
                 throw new Error("서버 응답 오류");
             }
+
+            const data = await response.json();
+            // 서버에서 생성된 ID를 포함한 응답 데이터를 받아옵니다
+            console.log("새로운 음식점이 추가되었습니다:", data);
         } catch (error) {
             console.error("실패:", error);
         }
