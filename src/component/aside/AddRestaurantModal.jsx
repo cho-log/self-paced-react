@@ -23,9 +23,9 @@ const AddRestaurantModal = ({ isOpen, setIsAddModalOpen }) => {
     }
   };
 
-  const handleUploadForm = async (e) => {
-    if (!form.category && !form.name && !form.description) {
-      alert("가게 이름과 설명을 모두 입력해주세요!");
+  const handleUploadForm = async () => {
+    if (!form.category || !form.name) {
+      alert("레스토랑의 카테고리와 이름을 모두 입력해주세요!");
       return;
     }
     setLoading(true);
@@ -44,6 +44,7 @@ const AddRestaurantModal = ({ isOpen, setIsAddModalOpen }) => {
       setLoading(false);
     } catch (error) {
       console.error('레스토랑 추가 실패:', error);
+      alert("레스토랑 추가에 실패했습니다.");
     }
   }
 
