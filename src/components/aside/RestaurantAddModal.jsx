@@ -3,7 +3,7 @@ import styles from "/src/styles/RestaurantAddModal.module.css";
 import RestaurantCategory from "../category/FilteredCategoryOptions";
 import { useRestaurantContext } from "../../context/RestaurantContext.jsx";
 
-const CATEGORYMAP = {
+const CATEGORY_MAP = {
     korean: "한식",
     chinese: "중식",
     japanese: "일식",
