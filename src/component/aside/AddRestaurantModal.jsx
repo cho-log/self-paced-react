@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import styles from '../../css/Aside.module.css';
-import insertImgSrc from './insertImgSrc';
+import insertImgSrc from '../utils/insertImgSrc';
 import Modal from './Modal';
 
-const AddRestaurantModal = ({ isOpen, setRestaurants, setIsAddModalOpen }) => {
+const AddRestaurantModal = ({ isOpen, setIsAddModalOpen }) => {
   const initForm = {
     category: "",
     name: "",
     description: "",
     imgSrc: null,
   };
-
   const [form, setForm] = useState(initForm);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,17 +23,29 @@ const AddRestaurantModal = ({ isOpen, setRestaurants, setIsAddModalOpen }) => {
     }
   };
 
-  const handleUploadForm = () => {
-    if (!form.category && !form.name && !form.description) {
-      alert("가게 이름과 설명을 모두 입력해주세요!");
+  const handleUploadForm = async () => {
+    if (!form.category || !form.name) {
+      alert("레스토랑의 카테고리와 이름을 모두 입력해주세요!");
       return;
     }
-    setRestaurants(prev => [
-      ...prev,
-      { ...form, id: Date.now() }
-    ]);
-    setForm(initForm);
-    setIsAddModalOpen(false);
+    setLoading(true);
+
+    try {
+      await fetch("http://localhost:3000/restaurants", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      setForm(initForm);
+      setIsAddModalOpen(false);
+      setLoading(false);
+    } catch (error) {
+      console.error('레스토랑 추가 실패:', error);
+      alert("레스토랑 추가에 실패했습니다.");
+    }
   }
 
   return (
@@ -100,6 +112,7 @@ const AddRestaurantModal = ({ isOpen, setRestaurants, setIsAddModalOpen }) => {
           <button
             className={`${styles['button']} ${styles['button--primary']} text-caption`}
             onClick={handleUploadForm}
+            disabled={loading}
           >
             추가하기
           </button>
