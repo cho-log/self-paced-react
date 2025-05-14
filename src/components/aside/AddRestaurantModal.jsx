@@ -1,17 +1,17 @@
 import styles from './Modal.module.css';
 import { selectableCategories } from '../../constant/constant';
 import Modal from './modal/Modal';
+import { addNewRestaurant } from '../../api/api';
 
 const AddRestaurantModal = ({
+  onUpdateRestaurants,
   onCloseAddRestaurantModal,
-  restaurants,
-  onAddRestaurant,
 }) => {
   const handleAddRestaurantModalClose = () => {
     onCloseAddRestaurantModal();
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     const newRestaurant = {
       id: e.target.name.value,
@@ -19,7 +19,8 @@ const AddRestaurantModal = ({
       name: e.target.name.value,
       description: e.target.description.value,
     };
-    onAddRestaurant([...restaurants, newRestaurant]);
+    await addNewRestaurant(newRestaurant);
+    onUpdateRestaurants();
     handleAddRestaurantModalClose();
   };
 
