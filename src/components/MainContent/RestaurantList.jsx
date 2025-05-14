@@ -1,7 +1,6 @@
 import styles from "./RestaurantList.module.css";
 import { selectedCategories } from "../../data/data";
 
-
 function RestaurantList({ restaurants, onRestaurantClick }) {
   return (
     <section className={styles["restaurant-list-container"]}>
@@ -34,7 +33,6 @@ function RestaurantList({ restaurants, onRestaurantClick }) {
             </li>
           );
         })}
-
       </ul>
     </section>
   );
