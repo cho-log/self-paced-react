@@ -1,11 +1,9 @@
 .modal {
-  display: none;
+  display: flex;
 }
 
 .modalOpen {
-
-  display: none;
-
+  display: flex;
 }
 
 .modalBackdrop {

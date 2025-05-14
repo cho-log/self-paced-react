@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import RestaurantList from "../components/Main/RestaurantList/RestaurantList";
 import CategoryFilter from "../components/Main/CategoryFilter";
@@ -35,4 +34,3 @@ function MainContainer({
 }
 
 export default MainContainer;
-
