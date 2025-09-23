@@ -32,6 +32,26 @@ function App() {
 2. 분리한 컴포넌트의 계층 트리 작성
 3. 하위 컴포넌트 부터 상위 컴포넌트 까지 차례 차례 구현하기
 
+컴포넌트 이름
+Header
+Body
+GlobalNavigationBar
+CategoryFilter
+RestaurantList
+RestaurantItem
+RestaurantDetailModal
+AddRestaurantModal
+
+컴포넌트 계층구조
+Header
+Body
+  GlobalNavigationBar
+  CategoryFilter
+  RestaurantList
+    RestaurantItem
+  RestaurantDetailModal
+  AddRestaurantModal
+
 ## ✅ 키워드
 - JSX
   - `class` -> `className`
