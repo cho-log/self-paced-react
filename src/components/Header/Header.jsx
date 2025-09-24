@@ -1,0 +1,10 @@
+export default function Header() {
+  return (
+    <head>
+      <meta charset="utf-8" />
+      <title>점심 뭐 먹지</title>
+      <link rel="stylesheet" href="style.css" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+  );
+}

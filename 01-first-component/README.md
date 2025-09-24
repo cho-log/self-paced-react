@@ -30,11 +30,16 @@ function App() {
 ### 진행 순서
 1. index.html를 분석해서 어떤 컴포넌트 단위로 분리가 가능할지 생각하여 이름 짓기
 2. 분리한 컴포넌트의 계층 트리 작성
-3. 하위 컴포넌트 부터 상위 컴포넌트 까지 차례 차례 구현하기 - 현재 html를 보면 각 식당 요소들이 전부 따로 존재하므로 다음 step에서 레스트로랑 배열을 받기 전이기에 이번엔 각 식당을 하나 하나 컴포넌트로 구현한다.
+3. 하위 컴포넌트 부터 상위 컴포넌트 까지 차례 차례 구현하기 
+4. 하나의 파일에 구현한 컴포넌트를 분리하기
+5. module.css 를 사용하여 css 파일을 분리하기
 
 컴포넌트 이름
+App
 Header
 Content
+MainContent
+AsideContent
 GlobalNavigationBar
 CategoryFilter
 RestaurantList
@@ -43,14 +48,17 @@ RestaurantDetailModal
 AddRestaurantModal
 
 컴포넌트 계층구조
-Header
-Content
-  GlobalNavigationBar
-  CategoryFilter
-  RestaurantList
-    RestaurantElement
-  RestaurantDetailModal
-  AddRestaurantModal
+App
+  Header
+  Content
+    MainContent
+      GlobalNavigationBar
+      CategoryFilter
+      RestaurantList
+        RestaurantElement
+    AsideContent
+      RestaurantDetailModal
+      AddRestaurantModal
 
 ## ✅ 키워드
 - JSX
