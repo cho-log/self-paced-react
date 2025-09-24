@@ -5,9 +5,9 @@ import RestaurantList from "./RestaurantList/RestaurentList.jsx";
 export default function MainContent() {
   return (
     <main>
-        <GlobalNavigationBar />
-        <CategoryFilter />
-        <RestaurantList />
-      </main>
+      <GlobalNavigationBar />
+      <CategoryFilter />
+      <RestaurantList />
+    </main>
   );
 }

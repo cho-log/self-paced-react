@@ -5,12 +5,14 @@ import {
   WesternRestaurant,
   AsianRestaurant,
   OtherRestaurant
-} from "./RestaurantElement/RestaurantElemet.jsx";
+} from "./RestaurantElement/RestaurantElement.jsx";
+
+import styles from "./RestaurantList.module.css"
 
 export default function RestaurantList() {
   return (
-    <section className="restaurant-list-container">
-      <ul className="restaurant-list">
+    <section className={styles.restaurantListContainer}>
+      <ul className={styles.restaurantList}>
         <KoreanRestaurant />
         <ChineseRestaurant />
         <JapaneseRestaurant />
