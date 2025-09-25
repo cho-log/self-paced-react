@@ -1,4 +1,4 @@
-export const restaurants = [
+export const restaurantInfoList = [
   {
     id: 'a01',
     name: '피양콩할마니',
