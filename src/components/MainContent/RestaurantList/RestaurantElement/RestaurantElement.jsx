@@ -1,4 +1,4 @@
-import styles from "./RestaurantElement.module.css"
+import styles from './RestaurantElement.module.css'
 
 export default function RestaurantElement({key, restaurantInfo}) {
   return(

@@ -1,6 +1,6 @@
-import GlobalNavigationBar from "./GlobalNavigationBar/GlobalNavigationBar.jsx";
-import CategoryFilter from "./CategoryFilter/CategoryFilter.jsx";
-import RestaurantList from "./RestaurantList/RestaurantList.jsx";
+import GlobalNavigationBar from './GlobalNavigationBar/GlobalNavigationBar.jsx';
+import CategoryFilter from './CategoryFilter/CategoryFilter.jsx';
+import RestaurantList from './RestaurantList/RestaurantList.jsx';
 import { useState } from 'react';
 import restaurants from '../../Data/restaurantData.js';
 
@@ -10,7 +10,7 @@ export default function MainContent() {
   const filteredRestaurants = [];
 
   restaurants.forEach((restaurant) => {
-    if(category === "전체" || restaurant.category === category)
+    if(category === '전체' || restaurant.category === category)
       filteredRestaurants.push(restaurant);
   });
   

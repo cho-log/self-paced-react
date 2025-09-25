@@ -1,4 +1,4 @@
-import styles from "../RestaurantModal.module.css"
+import styles from '../RestaurantModal.module.css'
 
 export default function AddRestaurantModal() {
   return (
