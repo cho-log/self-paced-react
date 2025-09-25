@@ -36,8 +36,6 @@ function App() {
 
 컴포넌트 이름
 App
-Header
-Content
 MainContent
 AsideContent
 GlobalNavigationBar
@@ -49,16 +47,14 @@ AddRestaurantModal
 
 컴포넌트 계층구조
 App
-  Header
-  Content
-    MainContent
-      GlobalNavigationBar
-      CategoryFilter
-      RestaurantList
-        RestaurantElement
-    AsideContent
-      RestaurantDetailModal
-      AddRestaurantModal
+  MainContent
+    GlobalNavigationBar
+    CategoryFilter
+    RestaurantList
+      RestaurantElement
+  AsideContent
+    RestaurantDetailModal
+    AddRestaurantModal
 
 ## ✅ 키워드
 - JSX

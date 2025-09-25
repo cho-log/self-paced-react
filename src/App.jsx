@@ -1,12 +1,12 @@
-import Header from "./components/Header/Header.jsx";
-import Content from "./components/Content/Content.jsx";
+import MainContent from "./components/MainContent/MainContent.jsx";
+import AsideContent from "./components/AsideContent/AsideContent.jsx"
 import "./App.css";
 
 function App() {
   return (
     <div>
-      <Header />
-      <Content />
+      <MainContent />
+      <AsideContent />
     </div>
   );
 }
