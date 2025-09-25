@@ -2,7 +2,7 @@ import GlobalNavigationBar from './GlobalNavigationBar/GlobalNavigationBar.jsx';
 import CategoryFilter from './CategoryFilter/CategoryFilter.jsx';
 import RestaurantList from './RestaurantList/RestaurantList.jsx';
 import { useState } from 'react';
-import restaurants from '../../Data/restaurantData.js';
+import { restaurants } from '../../Data/restaurantData.js';
 
 
 export default function MainContent() {
