@@ -5,6 +5,9 @@
   - restaurants 배열을 `RestaurantList` 의 props로 내려받도록 변경해 보세요.
 - 카테고리 필터에 따라 필터된 음식점 목록을 보여줄 수 있도록 변경해 보세요. 
 
+## 진행 순서
+1. RestaurantElement 컴포넌트 작성 - step1에 각자 구현되어 있는 식당 컴포넌트들을 하나의 컴포넌트로 구현하게 끔 하기. 
+
 ### 구현 결과 예시
 ```javascript
 // App.jsx
