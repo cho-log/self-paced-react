@@ -7,6 +7,8 @@
 
 ## 진행 순서
 1. RestaurantElement 컴포넌트 작성 - step1에 각자 구현되어 있는 식당 컴포넌트들을 하나의 컴포넌트로 구현하게 끔 하기. 
+2. restaurantInfoList 와 categoryList 를 props를 사용해 필요한 위치로 전달.
+3. 선택한 카테고리에 따라 보여주는 음식점 목록 필터해서 보여주기. 
 
 ### 구현 결과 예시
 ```javascript
