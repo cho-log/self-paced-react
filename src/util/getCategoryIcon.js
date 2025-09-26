@@ -6,18 +6,14 @@ import koreanFoodIcon from "../assets/category-korean.png";
 import westernFoodIcon from "../assets/category-western.png";
 
 export default function getCategoryIcon(category) {
-  switch (category) {
-    case "아시안":
-      return asianFoodIcon;
-    case "중식":
-      return chineseFoodIcon;
-    case "일식":
-      return japaneseFoodIcon;
-    case "한식":
-      return koreanFoodIcon;
-    case "양식":
-      return westernFoodIcon;
-    default:
-      return etcFoodIcon;
-  }
+  const iconMap = {
+    아시안: asianFoodIcon,
+    중식: chineseFoodIcon,
+    일식: japaneseFoodIcon,
+    한식: koreanFoodIcon,
+    양식: westernFoodIcon,
+    기타: etcFoodIcon,
+  };
+
+  return iconMap[category] || etcFoodIcon;
 }
