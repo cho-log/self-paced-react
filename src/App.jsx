@@ -4,6 +4,7 @@ import RestaurantCategoryFilter from "./components/Restaurant/RestaurantCategory
 import RestaurantList from "./components/Restaurant/RestaurantList/RestaurantList";
 import RestaurantDetailModal from "./components/Modal/RestaurantDetailModal";
 import AddRestaurantModal from "./components/Modal/AddRestaurantModal";
+import restaurants from "./data/restaurant";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       </main>
       <aside>
         <RestaurantDetailModal />
-        <AddRestaurantModal /> 
+        <AddRestaurantModal />
       </aside>
     </>
   );
