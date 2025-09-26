@@ -9,7 +9,7 @@ export default function getCategoryIcon(category) {
   switch (category) {
     case "아시안":
       return asianFoodIcon;
-    case " 중식":
+    case "중식":
       return chineseFoodIcon;
     case "일식":
       return japaneseFoodIcon;
