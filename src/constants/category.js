@@ -1,4 +1,4 @@
-const categorys = [
+const categories = [
   { key: "all", value: "전체" },
   { key: "korean", value: "한식" },
   { key: "chinese", value: "중식" },
@@ -8,4 +8,4 @@ const categorys = [
   { key: "etc", value: "기타" },
 ];
 
-export default categorys;
+export default categories;

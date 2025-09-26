@@ -1,7 +1,10 @@
 import styles from "./RestaurantCategoryFilter.module.css";
-import categorys from "../../../constants/category";
+import categories from "../../../constants/category";
 
-export default function CategoryFilter({ category, onChangeCategory }) {
+export default function RestaurantCategoryFilter({
+  category,
+  onChangeCategory,
+}) {
   return (
     <section className={`${styles["restaurant-filter-container"]}`}>
       <select
@@ -11,7 +14,7 @@ export default function CategoryFilter({ category, onChangeCategory }) {
         value={category}
         onInput={(event) => onChangeCategory(event.target.value)}
       >
-        {categorys.map((categoryItem) => (
+        {categories.map((categoryItem) => (
           <option key={categoryItem.key} value={categoryItem.value}>
             {categoryItem.value}
           </option>
