@@ -22,8 +22,8 @@ function App() {
         <RestaurantList filteredRestaurants={filteredRestaurants} />
       </main>
       <aside>
-        {/* <RestaurantDetailModal />
-        <AddRestaurantModal /> */}
+        <RestaurantDetailModal />
+        <AddRestaurantModal />
       </aside>
     </>
   );
