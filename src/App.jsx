@@ -8,15 +8,15 @@ import AddRestaurantModal from "./components/Modal/AddRestaurantModal";
 import getFilteredRestaurant from "./util/getFilteredRestaurant";
 
 function App() {
-  const [category, setCategory] = useState("전체");
-  const filteredRestaurants = getFilteredRestaurant(category);
+  const [selectedCategory, setCategory] = useState("전체");
+  const filteredRestaurants = getFilteredRestaurant(selectedCategory);
 
   return (
     <>
       <Header />
       <main>
         <RestaurantCategoryFilter
-          category={category}
+          category={selectedCategory}
           onChangeCategory={setCategory}
         />
         <RestaurantList filteredRestaurants={filteredRestaurants} />
