@@ -9,7 +9,8 @@ const restaurants = [
   {
     id: "a02",
     name: "친친",
-    description: "Since 2004 편리한 교통과 주차, 그리고 관록만큼 깊은 맛과 정성으로 정통 중식의 세계를 펼쳐갑니다",
+    description:
+      "Since 2004 편리한 교통과 주차, 그리고 관록만큼 깊은 맛과 정성으로 정통 중식의 세계를 펼쳐갑니다",
     category: "중식",
   },
   {
