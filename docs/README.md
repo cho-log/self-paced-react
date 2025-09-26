@@ -1,38 +1,22 @@
 ## Things to do:
 
-- Make Each Component
+- Make directory for restaurant data
+- Change component to receive data from props
 
-  - Header
-  - Category filter
-  - Restaurant List
-  - Restaurant Detail Modal
-  - AddRestaurant Modal
+## During the process:
 
-- Make FigmaJam for project architecture design
+- I've made util functions for getting getCategory and getFilteredRestaurant.
 
-- Result Image/Video
+- Made a directory for restaurant data and category data.
 
-## Things that just peaked my interest:
+- Decided to make RestaurantListItem as a seperate component since it's a repeating element.
 
-- What is vite?
-  - a faster and leaner development experience for modern web projects.
-- Why vite?
-  - Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects. It consists of two major parts: a development server that provides rich feature enhancements over native ES modules, and a build command that bundles your code with Rollup, pre-configured to output optimized static assets for production.
+- Sort of had a issue where I was wondering how to change filtered restaurants when category changes. I've realized that I don't need to make filteredRestaurants into a state. I just set it a const and use it through that.
 
-# During the process
+- I've also decided not to change anything in the Modal for this step since it wasn't in the requirements. I plan to do it in the next step where we modify the modals.
 
-First thing I'm going to make is this Header Component. Personally feel like this is the easiest one to start with.
+## Things that made me confused:
 
-The approach was simple. I take sections that are divded and make them as a component. Then I just needed to rename from class to className and use the css module for styling.
+- Im not sure if the naming for category and restaurant is correct. The name `data` seems too generic. Im wondering if using constants for category is a bit better.
 
-I also added some of the css that seems to be used in multiple places in the global.css file.
-
-This was the first time I used CSS modules. Had to look at some examples to figure out how to use it.
-
-Had to use {`${style['class-name']}'} due to some of the css being named in kebab-case. I've taken this approach with the help of the docs.
-
-Another issue was where to put the image files. I heard that some people put it in the public folder, but I found out that things that are used in the components should probably go in the src folder.
-
-One of the problems I had was deciding how I should structure my components. I was wondering if I should make a component folder for each component or gather similar components in one folder. In the end I went for the latter.
-
-Found out that my prettier wasn't working properly. After setting prettier as the default formatter for vscode, it formatted the code.
+- Another thing that I had in mind is whether to use category as a array or a json object. The first approach I did was making it into a json object array but realized that since it only has one value, it might just be simpler to use it as a string array. But then I didn't really like the fact that the key for the category was the samme as the value. So I reverted back to an object array and added keys into the object.
