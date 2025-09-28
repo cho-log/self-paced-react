@@ -16,7 +16,6 @@ function App() {
     category === "전체"
       ? restaurants
       : restaurants.filter((restaurant) => restaurant.category === category);
-
   return (
     <>
       <Header />
