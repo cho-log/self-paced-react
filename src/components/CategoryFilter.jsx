@@ -1,10 +1,14 @@
+import { useId } from "react";
 import "../styles/components/CategoryFilter.css";
 
-export default function CategoryFilter() {
+export default function CategoryFilter({ id }) {
+  const autoId = useId();
+  const selectId = id ?? `category-filter-${autoId}`;
+
   return (
     <select
       name="category"
-      id="category-filter"
+      id={selectId}
       className="restaurant-filter"
       aria-label="음식점 카테고리 필터"
       defaultValue="전체"
