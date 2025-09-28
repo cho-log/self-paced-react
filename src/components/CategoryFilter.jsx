@@ -1,6 +1,8 @@
 import { useId } from "react";
 import "../styles/components/CategoryFilter.css";
 
+const OPTIONS = ["전체", "한식", "중식", "일식", "양식", "아시안", "기타"];
+
 export default function CategoryFilter({ id }) {
   const autoId = useId();
   const selectId = id ?? `category-filter-${autoId}`;
@@ -14,13 +16,11 @@ export default function CategoryFilter({ id }) {
       defaultValue="전체"
       onChange={() => {}}
     >
-      <option value="전체">전체</option>
-      <option value="한식">한식</option>
-      <option value="중식">중식</option>
-      <option value="일식">일식</option>
-      <option value="양식">양식</option>
-      <option value="아시안">아시안</option>
-      <option value="기타">기타</option>
+      {OPTIONS.map((opt) => (
+        <option key={opt} value={opt}>
+          {opt}
+        </option>
+      ))}
     </select>
   );
 }
