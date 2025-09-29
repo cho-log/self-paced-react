@@ -12,7 +12,7 @@ export default function RestaurantCategoryFilter({
         id="category-filter"
         className={`${styles["restaurant-filter"]}`}
         value={category}
-        onInput={(event) => onChangeCategory(event.target.value)}
+        onChange={(event) => onChangeCategory(event.target.value)}
       >
         {categories.map((categoryItem) => (
           <option key={categoryItem.key} value={categoryItem.value}>
