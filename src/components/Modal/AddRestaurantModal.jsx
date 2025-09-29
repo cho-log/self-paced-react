@@ -3,7 +3,7 @@ import style from "./Modal.module.css";
 export default function AddRestaurantModal() {
   return (
     <div className={`${style.modal} ${style["modal--open"]}`}>
-      <div className={style["modal-backdrop"]}></div>
+      <div className={style["modal-backdrop"]} />
       <div className={style["modal-container"]}>
         <h2 className={`${style["modal-title"]} text-title`}>새로운 음식점</h2>
         <form>
