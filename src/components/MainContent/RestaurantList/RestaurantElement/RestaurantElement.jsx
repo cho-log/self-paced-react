@@ -1,8 +1,8 @@
 import styles from './RestaurantElement.module.css'
 
-export default function RestaurantElement({key, restaurantInfo}) {
+export default function RestaurantElement({restaurantInfo}) {
   return(
-    <li className={styles.restaurant} key = {key}>
+    <li className={styles.restaurant}>
       <div className={styles.restaurantCategory}>
         <img src={restaurantInfo.imgSrc} alt={restaurantInfo.category} className={styles.categoryIcon} />
       </div>

@@ -7,17 +7,21 @@ import { restaurantInfoList } from '../../Data/restaurantInfoList.js';
 
 export default function MainContent() {
   const [category, setCategory] = useState('전체');
-  const filteredRestaurantInfoList = [];
 
-  restaurantInfoList.forEach((restaurantInfo) => {
-    if(category === '전체' || restaurantInfo.category === category)
-      filteredRestaurantInfoList.push(restaurantInfo);
-  });
+  const updateCatergory = (categoryToSet) => {
+    setCategory(categoryToSet);
+  };
+
+  const filteredRestaurantInfoList = (
+    category === '전체' ? restaurantInfoList : restaurantInfoList.filter(
+      (restaurantInfo) => (restaurantInfo.category === category)
+    )
+  );
   
   return (
     <main>
       <GlobalNavigationBar />
-      <CategoryFilter category={category} onChangeCategory={setCategory} />
+      <CategoryFilter category={category} onChangeCategory={updateCatergory} />
       <RestaurantList restaurantInfoList={filteredRestaurantInfoList} />
     </main>
   );
