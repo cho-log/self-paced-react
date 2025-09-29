@@ -1,14 +1,14 @@
-import style from "./Modal.module.css";
+import styles from "./Modal.module.css";
 
 export default function AddRestaurantModal() {
   return (
-    <div className={`${style.modal} ${style["modal--open"]}`}>
-      <div className={style["modal-backdrop"]} />
-      <div className={style["modal-container"]}>
-        <h2 className={`${style["modal-title"]} text-title`}>새로운 음식점</h2>
+    <div className={`${styles.modal} ${styles["modal--open"]}`}>
+      <div className={styles["modal-backdrop"]} />
+      <div className={styles["modal-container"]}>
+        <h2 className={`${styles["modal-title"]} text-title`}>새로운 음식점</h2>
         <form>
           <div
-            className={`${style["form-item"]} ${style["form-item--required"]}`}
+            className={`${styles["form-item"]} ${styles["form-item--required"]}`}
           >
             <label htmlFor="category" className="text-caption">
               카테고리
@@ -25,7 +25,7 @@ export default function AddRestaurantModal() {
           </div>
 
           <div
-            className={`${style["form-item"]} ${style["form-item--required"]}`}
+            className={`${styles["form-item"]} ${styles["form-item--required"]}`}
           >
             <label htmlFor="name" className="text-caption">
               이름
@@ -33,7 +33,7 @@ export default function AddRestaurantModal() {
             <input type="text" name="name" id="name" required />
           </div>
 
-          <div className={style["form-item"]}>
+          <div className={styles["form-item"]}>
             <label htmlFor="description" className="text-caption">
               설명
             </label>
@@ -48,9 +48,9 @@ export default function AddRestaurantModal() {
             </span>
           </div>
 
-          <div className={style["button-container"]}>
+          <div className={styles["button-container"]}>
             <button
-              className={`${style.button} ${style["button--primary"]} text-caption`}
+              className={`${styles.button} ${styles["button--primary"]} text-caption`}
             >
               추가하기
             </button>
