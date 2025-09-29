@@ -1,5 +1,6 @@
 import styles from '../RestaurantModal.module.css'
 
+
 export default function AddRestaurantModal() {
   return (
     <div className={`${styles.modal} ${styles.modalOpen}`}>
