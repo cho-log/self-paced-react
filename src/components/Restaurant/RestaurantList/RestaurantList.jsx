@@ -1,6 +1,6 @@
 import styles from "./RestaurantList.module.css";
 import RestaurantListItem from "./RestaurantListItem";
-import getCategoryIcon from "../../../util/getCategoryIcon";
+import getCategoryIcon from "../../../utils/getCategoryIcon";
 
 export default function RestaurantList({ filteredRestaurants }) {
   return (
