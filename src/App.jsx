@@ -21,7 +21,12 @@ function App() {
       <Header />
       <main>
         <section className="restaurant-filter-container">
-          <CategoryFilter category={category} onChangeCategory={setCategory} />
+          <CategoryFilter
+            id="main-category-filter"
+            label="음식점 카테고리 필터"
+            category={category}
+            onChangeCategory={setCategory}
+          />
         </section>
         <section className="restaurant-list-container">
           <RestaurantList restaurants={filteredRestaurants} />
