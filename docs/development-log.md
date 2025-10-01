@@ -48,3 +48,4 @@
 - Im not sure if the naming for category and restaurant is correct. The name `data` seems too generic. Im wondering if using constants for category is a bit better.
 
 - Another thing that I had in mind is whether to use category as a array or a json object. The first approach I did was making it into a json object array but realized that since it only has one value, it might just be simpler to use it as a string array. But then I didn't really like the fact that the key for the category was the same as the value. So I reverted back to an object array and added keys into the object.
+
