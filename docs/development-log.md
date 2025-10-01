@@ -1,72 +1,51 @@
-# Development Log - step 1 (kor)
+# Development Log - Step 2 (kor)
 
-## 프로젝트중 궁금해진 점
+## 해야 할 일:
 
-- What is vite?
-  - Vite를 사용해 본 적이 없어서 무슨 역할을 하는지 궁금하게 되었습니다.
-    > a faster and leaner development experience for modern web projects.
-- Why vite?
-  - Vite를 들어 본 적은 있는데 사용하지 않다 보니까 "왜 vite를 사용할까?"라는 생각이 조금 들었습니다. 이전까지 하던 프로젝트는 다 NextJs를 사용하다 보니까 찾아본 적이 없던 것 같습니다. 그래서 이번 기회로 조금 찾아보니 React 를 처음 사용하는 사람들에게 Vite가 nextjs 보다 적합하다는 것을 알게 되었습니다.
-    > Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects. It consists of two major parts: a development server that provides rich feature enhancements over native ES modules, and a build command that bundles your code with Rollup, pre-configured to output optimized static assets for production.
-- <React.Fragment> and <></>
-  - 이 기능도 사용해 보았지만, 두 개의차이점을 생각해 본 적이 없었던 것 같습니다. 이번에 `Fragment`가 keyword에 들어가 있어서 알아보게 되었습니다.
-    > You can use <></> the same way you’d use any other element except that it doesn’t support keys or attributes.
+- 레스토랑 데이터용 디렉토리 만들기
 
-## 진행방식/느낀점 및 시행착오
+- 컴포넌트가 props로부터 데이터를 받도록 수정하기
 
-- 항상 리엑트 프로젝트를 할 때 Header 컴포넌트를 먼저 만들었던 것 같습니다. 다른 컴포넌트들보다 쉽게 만들 수 있고 깔끔한 헤더가 있으면 마음이 편해지는 느낌도 드는 것 같습니다.
+## 작업 과정 중:
 
-- 이번 미션의 접근 방식은 다음과 같습니다. index.html과 README.md를 한번 훑어보고, 어느 부분들을 컴포넌트로 나눠야 할지 정했습니다. 이들을 각각 파일에 만들고 `class` 태그를 `ClassName`으로 바꾸고, CSS module을 사용해서 스타일링도 해주기로 했습니다.
+- getCategory와 getFilteredRestaurant을 위한 유틸 함수를 만들었습니다.
 
-- CSS가 여러 컴포넌트에 나타나는 경우에는 이를 global.css에 사용했습니다.
+- 레스토랑 데이터와 카테고리 데이터용 디렉토리를 만들었습니다.
 
-- CSS module을 처음 사용해 보는 것이어서 예시를 참고하면서 사용했습니다. CSS module을 새로운 파일을 만들어서 할지 고민하다가 오히려 파일 구성이 복잡해질 것 같아서 컴포넌트와 같은 파일에 놓기로 했습니다
+- RestaurantListItem이 반복되는 요소이므로 별도의 컴포넌트로 만들기로 결정했습니다.
 
-- 처음에는 CSS module을 사용할 때 `style.styleName`을 사용했었지만, 여러 CSS가 kebab-case로 작성된것을 보고 `${style['style-name']`으로 변경해서 사용하게 되었습니다.
+- 카테고리가 변경될 때 필터링된 레스토랑을 어떻게 변경해야 할지 고민하는 문제가 있었습니다. filteredRestaurants를 상태(state)로 만들 필요가 없다는 것을 깨달았습니다. 그냥 상수로 설정하고 그것을 통해 사용하면 됩니다.
 
-- 또 다른 문제는 image 파일들을 어디에 배치해 놓을지 고민하게 되었습니다. 찾아보니 public 파일에 넣으라는 얘기와 src 파일에 넣으라는 입장들이 있었습니다. 이중 제 이미지는 컴포넌트에 사용되기 때문에 src 파일에 assets를 만들어서 image들을 배치 해놓았습니다.
+- 또한, 이번 단계의 요구 사항에 없었기 때문에 Modal에서는 아무것도 변경하지 않기로 결정했습니다. 모달을 수정하는 다음 단계에서 진행할 계획입니다.
 
-- 비슷한 문제로는 컴포넌트의 파일 구성을 어떻게 할지도 고민을 많이 했습니다. 각각 컴포넌트를 다른 파일에 넣어서 할지, 아니면 비슷한 컴포넌트는 묶어서 할지 고민했습니다. 두 가지의 방식을 다 해본 결과 묶어서 넣는 게 조금 더 보기 편하다고 생각해서 현재 파일 구성으로 진행해 왔습니다.
+## 헷갈렸던 점:
 
-- Prettier가 처음에는 적용이 안 되다가 Vscode의 default formatter를 prettier로 설정하니 파일을 포매팅하는 것을 볼 수 있었습니다.
+- 카테고리와 레스토랑의 명명이 올바른지 확실하지 않습니다. data라는 이름이 너무 일반적인 것 같습니다. 카테고리에 상수를 사용하는 것이 더 나은지 궁금합니다.
 
-# Development Log - Step 1 (eng)
+- 또 다른 생각했던 것은 카테고리를 배열로 사용할지 아니면 JSON 객체로 사용할지에 대한 것입니다. 처음 시도한 방식은 JSON 객체 배열로 만드는 것이었지만, 값이 하나뿐이므로 단순히 문자열 배열로 사용하는 것이 더 간단할 수도 있다는 것을 깨달았습니다. 하지만 카테고리의 키가 값과 동일하다는 점이 마음에 들지 않았습니다. 그래서 객체 배열로 되돌아가서 객체에 키를 추가했습니다.
+
+# Development Log - Step 2 (eng)
 
 ## Things to do:
 
-- Make Each Component
+- Make directory for restaurant data
+- Change component to receive data from props
 
-  - Header
-  - Category filter
-  - Restaurant List
-  - Restaurant Detail Modal
-  - AddRestaurant Modal
+## During the process:
 
-- Make FigmaJam for project architecture design
+- I've made util functions for getting getCategory and getFilteredRestaurant.
 
-- Result Image/Video
+- Made a directory for restaurant data and category data.
 
-## Things that just peaked my interest:
+- Decided to make RestaurantListItem as a seperate component since it's a repeating element.
 
-- What is vite?
-  - a faster and leaner development experience for modern web projects.
-- Why vite?
-  - Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects. It consists of two major parts: a development server that provides rich feature enhancements over native ES modules, and a build command that bundles your code with Rollup, pre-configured to output optimized static assets for production.
+- Sort of had a issue where I was wondering how to change filtered restaurants when category changes. I've realized that I don't need to make filteredRestaurants into a state. I just set it a const and use it through that.
 
-# During the process
+- I've also decided not to change anything in the Modal for this step since it wasn't in the requirements. I plan to do it in the next step where we modify the modals.
 
-First thing I'm going to make is this Header Component. Personally feel like this is the easiest one to start with.
+## Things that made me confused:
 
-The approach was simple. I take sections that are divded and make them as a component. Then I just needed to rename from class to className and use the css module for styling.
+- Im not sure if the naming for category and restaurant is correct. The name `data` seems too generic. Im wondering if using constants for category is a bit better.
 
-I also added some of the css that seems to be used in multiple places in the global.css file.
+- Another thing that I had in mind is whether to use category as a array or a json object. The first approach I did was making it into a json object array but realized that since it only has one value, it might just be simpler to use it as a string array. But then I didn't really like the fact that the key for the category was the same as the value. So I reverted back to an object array and added keys into the object.
 
-This was the first time I used CSS modules. Had to look at some examples to figure out how to use it.
-
-Had to use {`${style['class-name']}'} due to some of the css being named in kebab-case. I've taken this approach with the help of the docs.
-
-Another issue was where to put the image files. I heard that some people put it in the public folder, but I found out that things that are used in the components should probably go in the src folder.
-
-One of the problems I had was deciding how I should structure my components. I was wondering if I should make a component folder for each component or gather similar components in one folder. In the end I went for the latter.
-
-Found out that my prettier wasn't working properly. After setting prettier as the default formatter for vscode, it formatted the code.
