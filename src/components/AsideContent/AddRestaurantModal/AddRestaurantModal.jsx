@@ -1,4 +1,5 @@
-import styles from "../RestaurantModal.module.css"
+import styles from '../RestaurantModal.module.css'
+
 
 export default function AddRestaurantModal() {
   return (
@@ -8,7 +9,7 @@ export default function AddRestaurantModal() {
         <h2 className={`${styles.modalTitle} text-title`}>새로운 음식점</h2>
         <form>
           <div className={`${styles.formItem} ${styles.formItemRequired}`}>
-            <label htmlFor="category text-caption">카테고리</label>
+            <label htmlFor="category" className ="text-caption">카테고리</label>
             <select name="category" id="category" required>
               <option value="">선택해 주세요</option>
               <option value="한식">한식</option>
@@ -26,7 +27,7 @@ export default function AddRestaurantModal() {
           </div>
 
           <div className={styles.formItem}>
-            <label htmlFor="description text-caption">설명</label>
+            <label htmlFor="description" className="text-caption">설명</label>
             <textarea name="description" id="description" cols="30" rows="5"></textarea>
             <span className={`${styles.helpText} text-caption`}>메뉴 등 추가 정보를 입력해 주세요.</span>
           </div>
