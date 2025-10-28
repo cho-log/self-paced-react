@@ -1,8 +1,8 @@
 import styles from './RestaurantElement.module.css'
 
-export default function RestaurantElement({restaurantInfo , onClickRestaurantElement}) {
+export default function RestaurantElement({restaurantInfo , updateClickedRestaurantID}) {
   return(
-    <li className={styles.restaurant} onClick ={onClickRestaurantElement(restaurantInfo.id)}>
+    <li className={styles.restaurant} onClick ={()=>(updateClickedRestaurantID(restaurantInfo.id))}>
       <div className={styles.restaurantCategory}>
         <img src={restaurantInfo.imgSrc} alt={restaurantInfo.category} className={styles.categoryIcon} />
       </div>

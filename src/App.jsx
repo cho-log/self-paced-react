@@ -6,14 +6,14 @@ import { useState } from 'react';
 function App() {
   const [clickedRestaurantID, setClickedRestaurantID] = useState('None');
 
-  const onClickRestaurantElement = (restaurantID)=>{
+  const updateClickedRestaurantID = (restaurantID)=>{
     setClickedRestaurantID(restaurantID);
   };
 
   return (
     <div>
-      <MainContent onClickRestaurantElement={onClickRestaurantElement}/>
-      <AsideContent clickedRestaurentID={clickedRestaurantID}/>
+      <MainContent updateClickedRestaurantID={updateClickedRestaurantID}/>
+      <AsideContent clickedRestaurentID={clickedRestaurantID} updateClickedRestaurantID={updateClickedRestaurantID}/>
     </div>
   );
 }

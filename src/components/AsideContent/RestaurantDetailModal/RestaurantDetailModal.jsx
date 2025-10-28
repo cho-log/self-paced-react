@@ -1,6 +1,6 @@
 import styles from "../RestaurantModal.module.css"
 
-export default function RestaurantDetailModal() {
+export default function RestaurantDetailModal({updateClickedRestaurantID}) {
   return (
     <div className={`${styles.modal} ${styles.modalOpen}`}>
       <div className={styles.modalBackdrop}></div>
@@ -11,7 +11,7 @@ export default function RestaurantDetailModal() {
         </div>
 
         <div className={styles.buttonContainer}>
-          <button className={`${styles.button} ${styles.buttonPrimary} text-caption`}>닫기</button>
+          <button className={`${styles.button} ${styles.buttonPrimary} text-caption`} onClick={()=>{updateClickedRestaurantID('None')}}>닫기</button>
         </div>
       </div>
     </div>
