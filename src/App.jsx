@@ -3,7 +3,6 @@ import HomeHeader from './components/Header/HomeHeader';
 import RestaurantCategoryFilter from './components/Main/RestaurantCategoryFilter';
 import RestaurantList from './components/Main/RestaurantList';
 import RestaurantDetailModal from './components/Aside/RestaurantDetailModal';
-import AddRestaurantModal from './components/Aside/AddRestaurantModal';
 import restaurants from './data/restaurantsData';
 
 function App() {
@@ -13,6 +12,7 @@ function App() {
     ? restaurants
     : restaurants.filter((e) => e.category === selectedCategory);
 
+  const [showRestaurantDetailModal, setShowRestaurantDetailModal] = useState(false);
   return (
     <div>
 
@@ -22,11 +22,13 @@ function App() {
         <RestaurantCategoryFilter
           setSelectedCategory={setSelectedCategory}
         />
-        <RestaurantList restaurants={filteredRestaurants} />
+        <RestaurantList
+          restaurants={filteredRestaurants}
+          onRestaurantClick={() => setShowRestaurantDetailModal(true)}
+        />
       </main>
 
-      <RestaurantDetailModal />
-      <AddRestaurantModal />
+      {showRestaurantDetailModal && <RestaurantDetailModal />}
 
     </div>
   );

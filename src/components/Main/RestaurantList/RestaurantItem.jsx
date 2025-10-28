@@ -1,8 +1,8 @@
 import styles from './RestaurantItem.module.css';
 
-function RestaurantItem({ restaurant }) {
+function RestaurantItem({ restaurant, onRestaurantClick }) {
   return (
-    <li className={styles.restaurant}>
+    <li className={styles.restaurant} onClick={onRestaurantClick}>
       <div className={styles.restaurantCategory}>
         <img
           src={restaurant.image}
