@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { restaurantInfoList } from '../../Data/restaurantInfoList.js';
 
 
-export default function MainContent() {
+export default function MainContent({onClickRestaurantElement}) {
   const [category, setCategory] = useState('전체');
 
   const updateCatergory = (categoryToSet) => {
@@ -22,7 +22,7 @@ export default function MainContent() {
     <main>
       <GlobalNavigationBar />
       <CategoryFilter category={category} onChangeCategory={updateCatergory} />
-      <RestaurantList restaurantInfoList={filteredRestaurantInfoList} />
+      <RestaurantList restaurantInfoList={filteredRestaurantInfoList} onClickRestaurantElement={onClickRestaurantElement} />
     </main>
   );
 }
