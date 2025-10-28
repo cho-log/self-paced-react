@@ -2,7 +2,7 @@ import { useState } from 'react';
 import GlobalNavigationBar from './GlobalNavigationBar/GlobalNavigationBar';
 import CategoryFilter from './CategoryFilter/CategoryFilter';
 import RestaurantList from './RestaurantList/RestaurantList';
-import { restaurantInfoList } from '../../Data/restaurantInfoList';
+import restaurantInfoList from '../../Data/restaurantInfoList';
 
 export default function MainContent({ updateClickedRestaurantID }) {
   const [category, setCategory] = useState('전체');

@@ -1,5 +1,5 @@
 import styles from './CategoryFilter.module.css';
-import { categoryList } from '../../../Data/categoryList';
+import categoryList from '../../../Data/categoryList';
 
 export default function CategoryFilter({ category, onChangeCategory }) {
   const optionList = categoryList.map((value) => (

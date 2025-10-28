@@ -1,6 +1,6 @@
 import RestaurantDetailModal from './RestaurantDetailModal/RestaurantDetailModal';
 import AddRestaurantModal from './AddRestaurantModal/AddRestaurantModal';
-import { restaurantInfoList } from '../../Data/restaurantInfoList';
+import restaurantInfoList from '../../Data/restaurantInfoList';
 
 export default function AsideContent({ clickedRestaurentID, updateClickedRestaurantID }) {
   const restaurantInfo = restaurantInfoList.find((Info) => Info.id === clickedRestaurentID);
