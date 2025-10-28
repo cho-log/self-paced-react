@@ -18,7 +18,7 @@ export default function AsideContent({ clickedRestaurentID, updateClickedRestaur
           updateClickedRestaurantID={updateClickedRestaurantID}
         />
       )}
-      {true && <AddRestaurantModal />}
+      {false && <AddRestaurantModal />}
     </aside>
   );
 }
