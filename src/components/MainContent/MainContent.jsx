@@ -1,11 +1,10 @@
-import GlobalNavigationBar from './GlobalNavigationBar/GlobalNavigationBar.jsx';
-import CategoryFilter from './CategoryFilter/CategoryFilter.jsx';
-import RestaurantList from './RestaurantList/RestaurantList.jsx';
 import { useState } from 'react';
-import { restaurantInfoList } from '../../Data/restaurantInfoList.js';
+import GlobalNavigationBar from './GlobalNavigationBar/GlobalNavigationBar';
+import CategoryFilter from './CategoryFilter/CategoryFilter';
+import RestaurantList from './RestaurantList/RestaurantList';
+import { restaurantInfoList } from '../../Data/restaurantInfoList';
 
-
-export default function MainContent({updateClickedRestaurantID}) {
+export default function MainContent({ updateClickedRestaurantID }) {
   const [category, setCategory] = useState('전체');
 
   const updateCatergory = (categoryToSet) => {
@@ -14,15 +13,18 @@ export default function MainContent({updateClickedRestaurantID}) {
 
   const filteredRestaurantInfoList = (
     category === '전체' ? restaurantInfoList : restaurantInfoList.filter(
-      (restaurantInfo) => (restaurantInfo.category === category)
+      (restaurantInfo) => (restaurantInfo.category === category),
     )
   );
-  
+
   return (
     <main>
       <GlobalNavigationBar />
       <CategoryFilter category={category} onChangeCategory={updateCatergory} />
-      <RestaurantList restaurantInfoList={filteredRestaurantInfoList} updateClickedRestaurantID={updateClickedRestaurantID} />
+      <RestaurantList
+        restaurantInfoList={filteredRestaurantInfoList}
+        updateClickedRestaurantID={updateClickedRestaurantID}
+      />
     </main>
   );
 }

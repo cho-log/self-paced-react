@@ -1,4 +1,4 @@
-import styles from './GlobalNavigationBar.module.css'
+import styles from './GlobalNavigationBar.module.css';
 
 export default function GlobalNavigationBar() {
   return (

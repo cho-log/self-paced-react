@@ -1,15 +1,24 @@
-import RestaurantDetailModal from './RestaurantDetailModal/RestaurantDetailModal.jsx'
-import AddRestaurantModal from './AddRestaurantModal/AddRestaurantModal.jsx'
+import RestaurantDetailModal from './RestaurantDetailModal/RestaurantDetailModal';
+import AddRestaurantModal from './AddRestaurantModal/AddRestaurantModal';
+import { restaurantInfoList } from '../../Data/restaurantInfoList';
 
-export default function AsideContent({clickedRestaurentID, updateClickedRestaurantID}) {
+export default function AsideContent({ clickedRestaurentID, updateClickedRestaurantID }) {
+  const restaurantInfo = restaurantInfoList.find((Info) => Info.id === clickedRestaurentID);
+
   let showRestaurantDetailModal = false;
-  if(clickedRestaurentID !== 'None')
+  if (restaurantInfo !== undefined) {
     showRestaurantDetailModal = true;
+  }
 
   return (
     <aside>
-      {showRestaurantDetailModal && <RestaurantDetailModal updateClickedRestaurantID={updateClickedRestaurantID}/>}
-      {false && <AddRestaurantModal />}
+      {showRestaurantDetailModal && (
+        <RestaurantDetailModal
+          restaurantInfo={restaurantInfo}
+          updateClickedRestaurantID={updateClickedRestaurantID}
+        />
+      )}
+      {true && <AddRestaurantModal />}
     </aside>
   );
 }
