@@ -1,10 +1,9 @@
 import styles from './RestaurantModal.module.css';
 import Modal from '../UI/Modal';
 
-function AddRestaurantModal() {
+function AddRestaurantModal({ onClose }) {
   return (
-
-    <Modal>
+    <Modal onClose={onClose}>
       <h2 className={`${styles.modalTitle} text-title`}>새로운 음식점</h2>
       <form>
         <div className={`${styles.formItem} ${styles.formItemRequired}`}>
