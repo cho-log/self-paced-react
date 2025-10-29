@@ -7,12 +7,19 @@ import restaurants from './data/restaurantsData';
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('전체');
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
   const filteredRestaurants = selectedCategory === '전체'
     ? restaurants
     : restaurants.filter((e) => e.category === selectedCategory);
 
   const [showRestaurantDetailModal, setShowRestaurantDetailModal] = useState(false);
+
+  const handleRestaurantClick = (restaurant) => {
+    setShowRestaurantDetailModal(true);
+    setSelectedRestaurant(restaurant);
+  };
+
   return (
     <div>
 
@@ -24,11 +31,11 @@ function App() {
         />
         <RestaurantList
           restaurants={filteredRestaurants}
-          onRestaurantClick={() => setShowRestaurantDetailModal(true)}
+          onRestaurantClick={handleRestaurantClick}
         />
       </main>
 
-      {showRestaurantDetailModal && <RestaurantDetailModal />}
+      {showRestaurantDetailModal && <RestaurantDetailModal restaurant={selectedRestaurant} />}
 
     </div>
   );

@@ -9,7 +9,7 @@ function RestaurantList({ restaurants, onRestaurantClick }) {
           <RestaurantItem
             key={restaurant.id}
             restaurant={restaurant}
-            onRestaurantClick={onRestaurantClick}
+            onRestaurantClick={() => onRestaurantClick(restaurant)}
           />
         ))}
       </ul>

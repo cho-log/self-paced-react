@@ -1,12 +1,12 @@
 import Modal from '../UI/Modal';
 import styles from './RestaurantModal.module.css';
 
-function RestaurantDetailModal() {
+function RestaurantDetailModal({ restaurant }) {
   return (
     <Modal>
-      <h2 className={`${styles.modalTitle} text-title`}>음식점 이름</h2>
+      <h2 className={`${styles.modalTitle} text-title`}>{restaurant.name}</h2>
       <div className={styles.restaurantInfo}>
-        <p className={`${styles.restaurantInfodescription} text-body`}>음식점 소개 문구</p>
+        <p className={`${styles.restaurantInfodescription} text-body`}>{restaurant.description}</p>
       </div>
 
       <div className={styles.buttonContainer}>
