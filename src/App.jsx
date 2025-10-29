@@ -35,7 +35,12 @@ function App() {
         />
       </main>
 
-      {showRestaurantDetailModal && <RestaurantDetailModal restaurant={selectedRestaurant} />}
+      {showRestaurantDetailModal && (
+      <RestaurantDetailModal
+        restaurant={selectedRestaurant}
+        onClose={() => setShowRestaurantDetailModal(false)}
+      />
+      )}
 
     </div>
   );
