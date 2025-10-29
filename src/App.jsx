@@ -14,11 +14,11 @@ function App() {
     ? restaurants
     : restaurants.filter((e) => e.category === selectedCategory);
 
-  const [showRestaurantDetailModal, setShowRestaurantDetailModal] = useState(false);
-  const [showAddRestaurantModal, setShowAddRestaurantModal] = useState(false);
+  const [isRestaurantDetailModalOpen, setIsRestaurantDetailModalOpen] = useState(false);
+  const [isAddRestaurantModalOpen, setIsAddRestaurantModalOpen] = useState(false);
 
   const handleRestaurantClick = (restaurant) => {
-    setShowRestaurantDetailModal(true);
+    setIsRestaurantDetailModalOpen(true);
     setSelectedRestaurant(restaurant);
   };
 
@@ -26,7 +26,7 @@ function App() {
     <div>
 
       <HomeHeader onRestaurantAddButtonClick={() => {
-        setShowAddRestaurantModal(true);
+        setIsAddRestaurantModalOpen(true);
       }}
       />
 
@@ -40,15 +40,17 @@ function App() {
         />
       </main>
 
-      {showRestaurantDetailModal && (
+      {isRestaurantDetailModalOpen && (
       <RestaurantDetailModal
         restaurant={selectedRestaurant}
-        onClose={() => setShowRestaurantDetailModal(false)}
+        onClose={() => setIsRestaurantDetailModalOpen(false)}
       />
       )}
       {
-        showAddRestaurantModal && (
-          <AddRestaurantModal onClose={() => setShowAddRestaurantModal(false)} />
+        isAddRestaurantModalOpen && (
+          <AddRestaurantModal
+            onClose={() => setIsAddRestaurantModalOpen(false)}
+          />
         )
       }
     </div>
