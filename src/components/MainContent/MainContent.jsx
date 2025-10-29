@@ -2,9 +2,10 @@ import { useState } from 'react';
 import GlobalNavigationBar from './GlobalNavigationBar/GlobalNavigationBar';
 import CategoryFilter from './CategoryFilter/CategoryFilter';
 import RestaurantList from './RestaurantList/RestaurantList';
-import restaurantInfoList from '../../Data/restaurantInfoList';
 
-export default function MainContent({ updateClickedRestaurantID }) {
+export default function MainContent(
+  { restaurantInfoList, updateShowAddRestaurantModal, updateClickedRestaurantID },
+) {
   const [category, setCategory] = useState('전체');
 
   const updateCatergory = (categoryToSet) => {
@@ -19,7 +20,7 @@ export default function MainContent({ updateClickedRestaurantID }) {
 
   return (
     <main>
-      <GlobalNavigationBar />
+      <GlobalNavigationBar updateShowAddRestaurantModal={updateShowAddRestaurantModal} />
       <CategoryFilter category={category} onChangeCategory={updateCatergory} />
       <RestaurantList
         restaurantInfoList={filteredRestaurantInfoList}
