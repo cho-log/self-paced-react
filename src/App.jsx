@@ -4,10 +4,11 @@ import RestaurantCategoryFilter from './components/Main/RestaurantCategoryFilter
 import RestaurantList from './components/Main/RestaurantList';
 import RestaurantDetailModal from './components/Aside/RestaurantDetailModal';
 import AddRestaurantModal from './components/Aside/AddRestaurantModal';
-import restaurants from './data/restaurantsData';
+import restaurantData from './data/restaurantsData';
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('전체');
+  const [restaurants, setRestaurants] = useState(restaurantData);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
   const filteredRestaurants = selectedCategory === '전체'
@@ -20,6 +21,10 @@ function App() {
   const handleRestaurantClick = (restaurant) => {
     setIsRestaurantDetailModalOpen(true);
     setSelectedRestaurant(restaurant);
+  };
+
+  const handleAddRestaurant = (addedRestaurant) => {
+    setRestaurants((restaurantList) => [addedRestaurant, ...restaurantList]);
   };
 
   return (
@@ -49,6 +54,7 @@ function App() {
       {
         isAddRestaurantModalOpen && (
           <AddRestaurantModal
+            onAddRestaurant={handleAddRestaurant}
             onClose={() => setIsAddRestaurantModalOpen(false)}
           />
         )
