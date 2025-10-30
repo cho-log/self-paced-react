@@ -10,7 +10,6 @@ import getFilteredRestaurant from "./utils/getFilteredRestaurant";
 function App() {
   const [selectedCategory, setCategory] = useState("전체");
   const filteredRestaurants = getFilteredRestaurant(selectedCategory);
-
   return (
     <>
       <Header />
