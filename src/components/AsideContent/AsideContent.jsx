@@ -15,18 +15,16 @@ export default function AsideContent({
 
   return (
     <aside>
-      {showRestaurantDetailModal && (
-        <RestaurantDetailModal
-          restaurantInfo={restaurantInfo}
-          updateClickedRestaurantID={updateClickedRestaurantID}
-        />
-      )}
-      {showAddRestaurantModal && (
-        <AddRestaurantModal
-          updateShowAddRestaurantModal={updateShowAddRestaurantModal}
-          addRestaurantInfo={addRestaurantInfo}
-        />
-      )}
+      <AddRestaurantModal
+        shouldShow={showAddRestaurantModal}
+        closeModal={() => { updateShowAddRestaurantModal(false); }}
+        addRestaurantInfo={addRestaurantInfo}
+      />
+      <RestaurantDetailModal
+        shouldShow={showRestaurantDetailModal}
+        closeModal={() => { updateClickedRestaurantID('None'); }}
+        restaurantInfo={restaurantInfo}
+      />
     </aside>
   );
 }

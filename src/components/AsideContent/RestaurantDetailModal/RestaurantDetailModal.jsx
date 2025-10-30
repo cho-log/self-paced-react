@@ -1,23 +1,18 @@
 import styles from '../RestaurantModal.module.css';
+import Modal from '../Modal/Modal';
 
-export default function RestaurantDetailModal({ restaurantInfo, updateClickedRestaurantID }) {
+export default function RestaurantDetailModal({ shouldShow, closeModal, restaurantInfo }) {
+  if (!shouldShow) return null;
   return (
-    <div className={`${styles.modal} ${styles.modalOpen}`}>
-      <div
-        className={styles.modalBackdrop}
-        role="presentation"
-        onClick={() => { updateClickedRestaurantID('None'); }}
-      />
-      <div className={styles.modalContainer}>
-        <h2 className={`${styles.modalTitle} text-title`}>{restaurantInfo.name}</h2>
-        <div className={styles.restaurantInfo}>
-          <p className={`${styles.restaurantInfoDescription} text-body`}>{restaurantInfo.description}</p>
-        </div>
-
-        <div className={styles.buttonContainer}>
-          <button type="button" className={`${styles.button} ${styles.buttonPrimary} text-caption`} onClick={() => { updateClickedRestaurantID('None'); }}>닫기</button>
-        </div>
+    <Modal onClickBackdrop={closeModal}>
+      <h2 className={`${styles.modalTitle} text-title`}>{restaurantInfo.name}</h2>
+      <div className={styles.restaurantInfo}>
+        <p className={`${styles.restaurantInfoDescription} text-body`}>{restaurantInfo.description}</p>
       </div>
-    </div>
+
+      <div className={styles.buttonContainer}>
+        <button type="button" className={`${styles.button} ${styles.buttonPrimary} text-caption`} onClick={closeModal}>닫기</button>
+      </div>
+    </Modal>
   );
 }
