@@ -1,9 +1,9 @@
 import styles from "./Modal.module.css";
 import categories from "../../constants/category";
 
-export default function AddRestaurantModal({ setIsAddRestaurantModalOpen }) {
+export default function AddRestaurantModal({ toggleModal }) {
   function handleClose() {
-    setIsAddRestaurantModalOpen(false);
+    toggleModal("isAddRestaurantModalOpen", false);
   }
 
   return (

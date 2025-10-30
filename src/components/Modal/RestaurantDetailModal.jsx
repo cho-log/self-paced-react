@@ -1,10 +1,8 @@
 import style from "./Modal.module.css";
 
-export default function RestaurantDetailModal({
-  setIsRestaurantDetailModalOpen,
-}) {
+export default function RestaurantDetailModal({ toggleModal }) {
   function handleClose() {
-    setIsRestaurantDetailModalOpen(false);
+    toggleModal("isRestaurantDetailModalOpen", false);
   }
 
   return (

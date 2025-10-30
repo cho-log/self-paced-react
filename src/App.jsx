@@ -9,14 +9,22 @@ import getFilteredRestaurant from "./utils/getFilteredRestaurant";
 
 function App() {
   const [selectedCategory, setCategory] = useState("전체");
-  const [isRestaurantDetailModalOpen, setIsRestaurantDetailModalOpen] =
-    useState(false);
-  const [isAddRestaurantModalOpen, setIsAddRestaurantModalOpen] =
-    useState(false);
+  const [modalState, setModalState] = useState({
+    isRestaurantDetailModalOpen: false,
+    isAddRestaurantModalOpen: false,
+  });
   const filteredRestaurants = getFilteredRestaurant(selectedCategory);
+
+  const toggleModal = (modalName, isOpen) => {
+    setModalState((prevState) => ({
+      ...prevState,
+      [modalName]: isOpen,
+    }));
+  };
+
   return (
     <>
-      <Header setIsAddRestaurantModalOpen={setIsAddRestaurantModalOpen} />
+      <Header toggleModal={toggleModal} />
       <main>
         <RestaurantCategoryFilter
           category={selectedCategory}
@@ -24,11 +32,17 @@ function App() {
         />
         <RestaurantList
           filteredRestaurants={filteredRestaurants}
-          setIsRestaurantDetailModalOpen={setIsRestaurantDetailModalOpen}
+          toggleModal={toggleModal}
         />
       </main>
       <aside>
-        {isRestaurantDetailModalOpen && (
+        {modalState.isRestaurantDetailModalOpen && (
+          <RestaurantDetailModal toggleModal={toggleModal} />
+        )}
+        {modalState.isAddRestaurantModalOpen && (
+          <AddRestaurantModal toggleModal={toggleModal} />
+        )}
+        {/* {isRestaurantDetailModalOpen && (
           <RestaurantDetailModal
             setIsRestaurantDetailModalOpen={setIsRestaurantDetailModalOpen}
           />
@@ -37,7 +51,7 @@ function App() {
           <AddRestaurantModal
             setIsAddRestaurantModalOpen={setIsAddRestaurantModalOpen}
           />
-        )}
+        )} */}
       </aside>
     </>
   );
