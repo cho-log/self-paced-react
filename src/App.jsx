@@ -13,6 +13,7 @@ function App() {
     isRestaurantDetailModalOpen: false,
     isAddRestaurantModalOpen: false,
   });
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const filteredRestaurants = getFilteredRestaurant(selectedCategory);
 
   const toggleModal = (modalName, isOpen) => {
@@ -32,26 +33,20 @@ function App() {
         />
         <RestaurantList
           filteredRestaurants={filteredRestaurants}
+          setSelectedRestaurant={setSelectedRestaurant}
           toggleModal={toggleModal}
         />
       </main>
       <aside>
         {modalState.isRestaurantDetailModalOpen && (
-          <RestaurantDetailModal toggleModal={toggleModal} />
+          <RestaurantDetailModal
+            toggleModal={toggleModal}
+            restaurantInfo={selectedRestaurant}
+          />
         )}
         {modalState.isAddRestaurantModalOpen && (
           <AddRestaurantModal toggleModal={toggleModal} />
         )}
-        {/* {isRestaurantDetailModalOpen && (
-          <RestaurantDetailModal
-            setIsRestaurantDetailModalOpen={setIsRestaurantDetailModalOpen}
-          />
-        )}
-        {isAddRestaurantModalOpen && (
-          <AddRestaurantModal
-            setIsAddRestaurantModalOpen={setIsAddRestaurantModalOpen}
-          />
-        )} */}
       </aside>
     </>
   );

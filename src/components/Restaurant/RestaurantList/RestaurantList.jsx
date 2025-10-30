@@ -2,7 +2,16 @@ import styles from "./RestaurantList.module.css";
 import RestaurantListItem from "./RestaurantListItem";
 import getCategoryIcon from "../../../utils/getCategoryIcon";
 
-export default function RestaurantList({ filteredRestaurants, toggleModal }) {
+export default function RestaurantList({
+  filteredRestaurants,
+  toggleModal,
+  setSelectedRestaurant,
+}) {
+  const handleSelect = (restaurant) => {
+    toggleModal("isRestaurantDetailModalOpen", true);
+    setSelectedRestaurant(restaurant);
+  };
+
   return (
     <section className={`${styles["restaurant-list-container"]}`}>
       <ul className={`${styles["restaurant-list"]}`}>
@@ -11,7 +20,7 @@ export default function RestaurantList({ filteredRestaurants, toggleModal }) {
             key={restaurant.id}
             restaurant={restaurant}
             icon={getCategoryIcon(restaurant.category)}
-            onClick={() => toggleModal("isRestaurantDetailModalOpen", true)}
+            onClick={() => handleSelect(restaurant)}
           />
         ))}
       </ul>

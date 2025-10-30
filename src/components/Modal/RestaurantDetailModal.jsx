@@ -1,6 +1,6 @@
 import style from "./Modal.module.css";
 
-export default function RestaurantDetailModal({ toggleModal }) {
+export default function RestaurantDetailModal({ restaurantInfo, toggleModal }) {
   function handleClose() {
     toggleModal("isRestaurantDetailModalOpen", false);
   }
@@ -9,10 +9,12 @@ export default function RestaurantDetailModal({ toggleModal }) {
     <div className={`${style.modal} ${style["modal--open"]}`}>
       <div className={style["modal-backdrop"]} onClick={handleClose} />
       <div className={style["modal-container"]}>
-        <h2 className={`${style["modal-title"]} text-title`}>음식점 이름</h2>
+        <h2 className={`${style["modal-title"]} text-title`}>
+          {restaurantInfo?.name}
+        </h2>
         <div className={style["restaurant-info"]}>
           <p className={`${style["restaurant-info__description"]} text-body`}>
-            음식점 소개 문구
+            {restaurantInfo?.description}
           </p>
         </div>
         <div className={style["button-container"]}>
