@@ -20,6 +20,8 @@ function App() {
     setClickedRestaurantID(restaurantID);
   };
 
+  const restaurantInfo = restaurantInfoList.find((Info) => Info.id === clickedRestaurantID);
+
   return (
     <div>
       <MainContent
@@ -28,12 +30,11 @@ function App() {
         updateClickedRestaurantID={updateClickedRestaurantID}
       />
       <AsideContent
-        restaurantInfoList={restaurantInfoList}
-        addRestaurantInfo={addRestaurantInfo}
         showAddRestaurantModal={showAddRestaurantModal}
         updateShowAddRestaurantModal={updateShowAddRestaurantModal}
-        clickedRestaurentID={clickedRestaurantID}
+        addRestaurantInfo={addRestaurantInfo}
         updateClickedRestaurantID={updateClickedRestaurantID}
+        restaurantInfo={restaurantInfo}
       />
     </div>
   );
