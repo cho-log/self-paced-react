@@ -2,7 +2,10 @@ import styles from "./RestaurantList.module.css";
 import RestaurantListItem from "./RestaurantListItem";
 import getCategoryIcon from "../../../utils/getCategoryIcon";
 
-export default function RestaurantList({ filteredRestaurants }) {
+export default function RestaurantList({
+  filteredRestaurants,
+  setIsRestaurantDetailModalOpen,
+}) {
   return (
     <section className={`${styles["restaurant-list-container"]}`}>
       <ul className={`${styles["restaurant-list"]}`}>
@@ -11,6 +14,7 @@ export default function RestaurantList({ filteredRestaurants }) {
             key={restaurant.id}
             restaurant={restaurant}
             icon={getCategoryIcon(restaurant.category)}
+            onClick={() => setIsRestaurantDetailModalOpen(true)}
           />
         ))}
       </ul>

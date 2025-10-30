@@ -9,20 +9,35 @@ import getFilteredRestaurant from "./utils/getFilteredRestaurant";
 
 function App() {
   const [selectedCategory, setCategory] = useState("전체");
+  const [isRestaurantDetailModalOpen, setIsRestaurantDetailModalOpen] =
+    useState(false);
+  const [isAddRestaurantModalOpen, setIsAddRestaurantModalOpen] =
+    useState(false);
   const filteredRestaurants = getFilteredRestaurant(selectedCategory);
   return (
     <>
-      <Header />
+      <Header setIsAddRestaurantModalOpen={setIsAddRestaurantModalOpen} />
       <main>
         <RestaurantCategoryFilter
           category={selectedCategory}
           onChangeCategory={setCategory}
         />
-        <RestaurantList filteredRestaurants={filteredRestaurants} />
+        <RestaurantList
+          filteredRestaurants={filteredRestaurants}
+          setIsRestaurantDetailModalOpen={setIsRestaurantDetailModalOpen}
+        />
       </main>
       <aside>
-        <RestaurantDetailModal />
-        <AddRestaurantModal />
+        {isRestaurantDetailModalOpen && (
+          <RestaurantDetailModal
+            setIsRestaurantDetailModalOpen={setIsRestaurantDetailModalOpen}
+          />
+        )}
+        {isAddRestaurantModalOpen && (
+          <AddRestaurantModal
+            setIsAddRestaurantModalOpen={setIsAddRestaurantModalOpen}
+          />
+        )}
       </aside>
     </>
   );

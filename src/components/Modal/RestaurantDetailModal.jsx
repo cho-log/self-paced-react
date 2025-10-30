@@ -1,9 +1,15 @@
 import style from "./Modal.module.css";
 
-export default function RestaurantDetailModal() {
+export default function RestaurantDetailModal({
+  setIsRestaurantDetailModalOpen,
+}) {
+  function handleClose() {
+    setIsRestaurantDetailModalOpen(false);
+  }
+
   return (
     <div className={`${style.modal} ${style["modal--open"]}`}>
-      <div className={style["modal-backdrop"]}></div>
+      <div className={style["modal-backdrop"]} onClick={handleClose} />
       <div className={style["modal-container"]}>
         <h2 className={`${style["modal-title"]} text-title`}>음식점 이름</h2>
         <div className={style["restaurant-info"]}>
@@ -14,6 +20,7 @@ export default function RestaurantDetailModal() {
         <div className={style["button-container"]}>
           <button
             className={`${style.button} ${style["button--primary"]} text-caption`}
+            onClick={handleClose}
           >
             닫기
           </button>

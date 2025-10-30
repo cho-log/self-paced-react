@@ -1,10 +1,14 @@
 import styles from "./Modal.module.css";
 import categories from "../../constants/category";
 
-export default function AddRestaurantModal() {
+export default function AddRestaurantModal({ setIsAddRestaurantModalOpen }) {
+  function handleClose() {
+    setIsAddRestaurantModalOpen(false);
+  }
+
   return (
     <div className={`${styles.modal} ${styles["modal--open"]}`}>
-      <div className={styles["modal-backdrop"]} />
+      <div className={styles["modal-backdrop"]} onClick={handleClose} />
       <div className={styles["modal-container"]}>
         <h2 className={`${styles["modal-title"]} text-title`}>새로운 음식점</h2>
         <form>
@@ -53,6 +57,7 @@ export default function AddRestaurantModal() {
           <div className={styles["button-container"]}>
             <button
               className={`${styles.button} ${styles["button--primary"]} text-caption`}
+              onClick={handleClose}
             >
               추가하기
             </button>
