@@ -1,3 +1,4 @@
+import Modal from "./Modal";
 import style from "./Modal.module.css";
 
 export default function RestaurantDetailModal({ restaurantInfo, toggleModal }) {
@@ -6,26 +7,20 @@ export default function RestaurantDetailModal({ restaurantInfo, toggleModal }) {
   }
 
   return (
-    <div className={`${style.modal} ${style["modal--open"]}`}>
-      <div className={style["modal-backdrop"]} onClick={handleClose} />
-      <div className={style["modal-container"]}>
-        <h2 className={`${style["modal-title"]} text-title`}>
-          {restaurantInfo?.name}
-        </h2>
-        <div className={style["restaurant-info"]}>
-          <p className={`${style["restaurant-info__description"]} text-body`}>
-            {restaurantInfo?.description}
-          </p>
-        </div>
-        <div className={style["button-container"]}>
-          <button
-            className={`${style.button} ${style["button--primary"]} text-caption`}
-            onClick={handleClose}
-          >
-            닫기
-          </button>
-        </div>
+    <Modal title={restaurantInfo?.name} toggleModal={toggleModal}>
+      <div className={style["restaurant-info"]}>
+        <p className={`${style["restaurant-info__description"]} text-body`}>
+          {restaurantInfo?.description}
+        </p>
       </div>
-    </div>
+      <div className={style["button-container"]}>
+        <button
+          className={`${style.button} ${style["button--primary"]} text-caption`}
+          onClick={handleClose}
+        >
+          닫기
+        </button>
+      </div>
+    </Modal>
   );
 }
