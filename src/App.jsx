@@ -7,22 +7,21 @@ import AddRestaurantModal from './components/Aside/AddRestaurantModal';
 import restaurantData from './data/restaurantsData';
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState('전체');
   const [restaurants, setRestaurants] = useState(restaurantData);
-  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
+  const [selectedCategory, setSelectedCategory] = useState('전체');
   const filteredRestaurants = selectedCategory === '전체'
     ? restaurants
     : restaurants.filter((e) => e.category === selectedCategory);
 
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [isRestaurantDetailModalOpen, setIsRestaurantDetailModalOpen] = useState(false);
-  const [isAddRestaurantModalOpen, setIsAddRestaurantModalOpen] = useState(false);
-
   const handleRestaurantClick = (restaurant) => {
     setIsRestaurantDetailModalOpen(true);
     setSelectedRestaurant(restaurant);
   };
 
+  const [isAddRestaurantModalOpen, setIsAddRestaurantModalOpen] = useState(false);
   const handleAddRestaurant = (addedRestaurant) => {
     setRestaurants((restaurantList) => [addedRestaurant, ...restaurantList]);
   };
