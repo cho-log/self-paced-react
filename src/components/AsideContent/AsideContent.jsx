@@ -5,10 +5,7 @@ export default function AsideContent({
   showAddRestaurantModal, updateShowAddRestaurantModal, addRestaurantInfo,
   updateClickedRestaurantID, restaurantInfo,
 }) {
-  let showRestaurantDetailModal = false;
-  if (restaurantInfo !== undefined) {
-    showRestaurantDetailModal = true;
-  }
+  const showRestaurantDetailModal = restaurantInfo !== undefined;
 
   return (
     <aside>
@@ -19,7 +16,7 @@ export default function AsideContent({
       />
       <RestaurantDetailModal
         shouldShow={showRestaurantDetailModal}
-        closeModal={() => { updateClickedRestaurantID('None'); }}
+        closeModal={() => { updateClickedRestaurantID(null); }}
         restaurantInfo={restaurantInfo}
       />
     </aside>

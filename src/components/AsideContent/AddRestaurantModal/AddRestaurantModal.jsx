@@ -1,22 +1,23 @@
 import styles from '../RestaurantModal.module.css';
 import Modal from '../Modal/Modal';
+import categoryList from '../../../Data/categoryList';
+
+const categoryImgMap = {
+  한식: 'templates/category-korean.png',
+  중식: 'templates/category-chinese.png',
+  일식: 'templates/category-japanese.png',
+  양식: 'templates/category-western.png',
+  아시안: 'templates/category-asian.png',
+  기타: 'templates/category-etc.png',
+};
 
 export default function AddRestaurantModal({ shouldShow, closeModal, addRestaurantInfo }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const categoryImgMap = {
-      한식: 'templates/category-korean.png',
-      중식: 'templates/category-chinese.png',
-      일식: 'templates/category-japanese.png',
-      양식: 'templates/category-western.png',
-      아시안: 'templates/category-asian.png',
-      기타: 'templates/category-etc.png',
-    };
-
     const formData = new FormData(e.target);
     const newRestaurant = {
-      id: Date.now(),
+      id: String(Date.now()),
       name: formData.get('name'),
       description: formData.get('description'),
       category: formData.get('category'),
@@ -26,6 +27,10 @@ export default function AddRestaurantModal({ shouldShow, closeModal, addRestaura
     closeModal();
   };
 
+  const optionList = categoryList.map((value) => (
+    <option value={value} key={value}>{value}</option>
+  ));
+
   if (!shouldShow) return null;
   return (
     <Modal onClickBackdrop={closeModal}>
@@ -34,13 +39,7 @@ export default function AddRestaurantModal({ shouldShow, closeModal, addRestaura
         <div className={`${styles.formItem} ${styles.formItemRequired}`}>
           <label htmlFor="category" className="text-caption">카테고리</label>
           <select name="category" id="category" required>
-            <option value="">선택해 주세요</option>
-            <option value="한식">한식</option>
-            <option value="중식">중식</option>
-            <option value="일식">일식</option>
-            <option value="양식">양식</option>
-            <option value="아시안">아시안</option>
-            <option value="기타">기타</option>
+            {optionList}
           </select>
         </div>
 

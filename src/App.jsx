@@ -15,7 +15,7 @@ function App() {
     setShowAddRestaurantModal(showModal);
   };
 
-  const [clickedRestaurantID, setClickedRestaurantID] = useState('None');
+  const [clickedRestaurantID, setClickedRestaurantID] = useState(null);
   const updateClickedRestaurantID = (restaurantID) => {
     setClickedRestaurantID(restaurantID);
   };

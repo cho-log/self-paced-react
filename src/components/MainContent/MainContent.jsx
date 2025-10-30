@@ -8,7 +8,7 @@ export default function MainContent(
 ) {
   const [category, setCategory] = useState('전체');
 
-  const updateCatergory = (categoryToSet) => {
+  const updateCategory = (categoryToSet) => {
     setCategory(categoryToSet);
   };
 
@@ -21,7 +21,7 @@ export default function MainContent(
   return (
     <main>
       <GlobalNavigationBar updateShowAddRestaurantModal={updateShowAddRestaurantModal} />
-      <CategoryFilter category={category} onChangeCategory={updateCatergory} />
+      <CategoryFilter category={category} onChangeCategory={updateCategory} />
       <RestaurantList
         restaurantInfoList={filteredRestaurantInfoList}
         updateClickedRestaurantID={updateClickedRestaurantID}

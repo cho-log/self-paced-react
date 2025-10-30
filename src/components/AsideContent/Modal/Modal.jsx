@@ -5,8 +5,15 @@ export default function Modal({ children, onClickBackdrop }) {
     <div className={`${styles.modal} ${styles.modalOpen}`}>
       <div
         className={styles.modalBackdrop}
-        role="presentation"
+        role="button"
+        tabIndex={0}
         onClick={onClickBackdrop}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            onClickBackdrop();
+          }
+        }}
+        aria-label="모달 백드롭"
       />
       <div className={styles.modalContainer}>
         { children }
