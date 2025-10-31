@@ -1,14 +1,29 @@
 import "../styles/components/Modal.css";
 import "../styles/components/Form.css";
 
-export default function AddRestaurantModal() {
+export default function AddRestaurantModal({ onAdd, onClose }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    onAdd({
+      category: String(fd.get("category") || ""),
+      name: String(fd.get("name") || ""),
+      description: String(fd.get("description") || ""),
+    });
+  };
+
   return (
     <div className="modal modal--open">
-      <div className="modal-backdrop" />
-      <div className="modal-container" role="dialog" aria-modal="true">
+      <div className="modal-backdrop" onClick={onClose} />
+      <div
+        className="modal-container"
+        role="dialog"
+        aria-modal="true"
+        onClick={(e) => e.stopPropagation()}
+      >
         <h2 className="modal-title text-title">새로운 음식점</h2>
 
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form onSubmit={handleSubmit}>
           <div className="form-item form-item--required">
             <label className="text-caption" htmlFor="category">
               카테고리
@@ -30,7 +45,7 @@ export default function AddRestaurantModal() {
             <label className="text-caption" htmlFor="name">
               이름
             </label>
-            <input type="text" id="name" required />
+            <input id="name" type="text" name="name" required />
           </div>
 
           <div className="form-item">
@@ -38,8 +53,8 @@ export default function AddRestaurantModal() {
               설명
             </label>
             <textarea
-              name="description"
               id="description"
+              name="description"
               cols={30}
               rows={5}
               placeholder="메뉴 등 추가 정보를 입력해 주세요."
