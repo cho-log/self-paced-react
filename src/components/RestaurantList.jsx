@@ -9,11 +9,15 @@ const categoryIcon = {
   기타: "/category-etc.png",
 };
 
-export default function RestaurantList({ restaurants = [] }) {
+export default function RestaurantList({ restaurants = [], onSelect }) {
   return (
     <ul className="restaurant-list">
       {restaurants.map((restaurant) => (
-        <li className="restaurant" key={restaurant.id}>
+        <li
+          className="restaurant"
+          key={restaurant.id}
+          onClick={() => onSelect?.(restaurant)}
+        >
           <div className="restaurant__category">
             <img
               src={categoryIcon[restaurant.category] ?? "/category-etc.png"}
