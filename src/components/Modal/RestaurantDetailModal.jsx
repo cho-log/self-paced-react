@@ -7,7 +7,7 @@ export default function RestaurantDetailModal({ restaurantInfo, toggleModal }) {
   }
 
   return (
-    <Modal title={restaurantInfo?.name} toggleModal={toggleModal}>
+    <Modal title={restaurantInfo?.name} toggleModal={handleClose}>
       <div className={style["restaurant-info"]}>
         <p className={`${style["restaurant-info__description"]} text-body`}>
           {restaurantInfo?.description}

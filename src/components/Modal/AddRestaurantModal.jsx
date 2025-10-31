@@ -25,7 +25,7 @@ export default function AddRestaurantModal({ toggleModal }) {
   };
 
   return (
-    <Modal title="새로운 음식점" toggleModal={toggleModal}>
+    <Modal title="새로운 음식점" toggleModal={handleClose}>
       <form method="post" onSubmit={handleSubmit}>
         <div
           className={`${styles["form-item"]} ${styles["form-item--required"]}`}
