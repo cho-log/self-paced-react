@@ -8,14 +8,27 @@ import Header from "./components/Header";
 import CategoryFilter from "./components/CategoryFilter";
 import RestaurantList from "./components/RestaurantList";
 import RestaurantDetailModal from "./components/RestaurantDetailModal";
-import AddRestaurantModal from "./components/AddRestaurantModal";
+// import AddRestaurantModal from "./components/AddRestaurantModal";
 
 function App() {
   const [category, setCategory] = useState("전체");
+
   const filteredRestaurants =
     category === "전체"
       ? restaurants
       : restaurants.filter((restaurant) => restaurant.category === category);
+
+  const [selected, setSelected] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleSelectRestaurant = (restaurant) => {
+    setSelected(restaurant);
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelected(null);
+  };
+
   return (
     <>
       <Header />
@@ -29,12 +42,20 @@ function App() {
           />
         </section>
         <section className="restaurant-list-container">
-          <RestaurantList restaurants={filteredRestaurants} />
+          <RestaurantList
+            restaurants={filteredRestaurants}
+            onSelect={handleSelectRestaurant}
+          />
         </section>
       </main>
       <aside>
-        <RestaurantDetailModal />
-        <AddRestaurantModal />
+        {isModalOpen && (
+          <RestaurantDetailModal
+            restaurant={selected}
+            onClose={handleCloseModal}
+          />
+        )}
+        {/* <AddRestaurantModal /> */}
       </aside>
     </>
   );
