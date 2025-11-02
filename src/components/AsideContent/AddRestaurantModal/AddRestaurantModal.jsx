@@ -11,7 +11,7 @@ const categoryImgMap = {
   기타: 'templates/category-etc.png',
 };
 
-export default function AddRestaurantModal({ shouldShow, closeModal, addRestaurantInfo }) {
+export default function AddRestaurantModal({ isVisible, closeModal, addRestaurantInfo }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -31,7 +31,7 @@ export default function AddRestaurantModal({ shouldShow, closeModal, addRestaura
     <option value={value} key={value}>{value}</option>
   ));
 
-  if (!shouldShow) return null;
+  if (!isVisible) return null;
   return (
     <Modal onClickBackdrop={closeModal}>
       <h2 className={`${styles.modalTitle} text-title`}>새로운 음식점</h2>

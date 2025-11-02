@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import MainContent from './components/MainContent/MainContent';
 import AsideContent from './components/AsideContent/AsideContent';
+import RestaurantDetailModal from './components/AsideContent/RestaurantDetailModal/RestaurantDetailModal';
+import AddRestaurantModal from './components/AsideContent/AddRestaurantModal/AddRestaurantModal';
 import defaultRestaurantInfoList from './Data/restaurantInfoList';
 import './App.css';
 
@@ -26,6 +28,7 @@ function App() {
   const restaurantInfo = restaurantInfoList.find(
     (restaurant) => restaurant.id === clickedRestaurantID,
   );
+  const isVisibleRestaurantDetailModal = restaurantInfo !== undefined;
 
   return (
     <div>
@@ -34,13 +37,18 @@ function App() {
         showAddRestaurantModal={showAddRestaurantModal}
         updateClickedRestaurantID={updateClickedRestaurantID}
       />
-      <AsideContent
-        isVisibleAddRestaurantModal={isVisibleAddRestaurantModal}
-        closeAddRestaurantModal={closeAddRestaurantModal}
-        addRestaurantInfo={addRestaurantInfo}
-        updateClickedRestaurantID={updateClickedRestaurantID}
-        restaurantInfo={restaurantInfo}
-      />
+      <AsideContent>
+        <AddRestaurantModal
+          isVisible={isVisibleAddRestaurantModal}
+          closeModal={closeAddRestaurantModal}
+          addRestaurantInfo={addRestaurantInfo}
+        />
+        <RestaurantDetailModal
+          isVisible={isVisibleRestaurantDetailModal}
+          closeModal={() => { updateClickedRestaurantID(null); }}
+          restaurantInfo={restaurantInfo}
+        />
+      </AsideContent>
     </div>
   );
 }
