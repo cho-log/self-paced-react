@@ -10,9 +10,12 @@ function App() {
     setRestaurantInfoList([...restaurantInfoList, restaurantInfo]);
   };
 
-  const [showAddRestaurantModal, setShowAddRestaurantModal] = useState(false);
-  const updateShowAddRestaurantModal = (showModal) => {
-    setShowAddRestaurantModal(showModal);
+  const [isVisibleAddRestaurantModal, setIsVisibleAddRestaurantModal] = useState(false);
+  const showAddRestaurantModal = () => {
+    setIsVisibleAddRestaurantModal(true);
+  };
+  const closeAddRestaurantModal = () => {
+    setIsVisibleAddRestaurantModal(false);
   };
 
   const [clickedRestaurantID, setClickedRestaurantID] = useState(null);
@@ -20,18 +23,20 @@ function App() {
     setClickedRestaurantID(restaurantID);
   };
 
-  const restaurantInfo = restaurantInfoList.find((Info) => Info.id === clickedRestaurantID);
+  const restaurantInfo = restaurantInfoList.find(
+    (restaurant) => restaurant.id === clickedRestaurantID,
+  );
 
   return (
     <div>
       <MainContent
         restaurantInfoList={restaurantInfoList}
-        updateShowAddRestaurantModal={updateShowAddRestaurantModal}
+        showAddRestaurantModal={showAddRestaurantModal}
         updateClickedRestaurantID={updateClickedRestaurantID}
       />
       <AsideContent
-        showAddRestaurantModal={showAddRestaurantModal}
-        updateShowAddRestaurantModal={updateShowAddRestaurantModal}
+        isVisibleAddRestaurantModal={isVisibleAddRestaurantModal}
+        closeAddRestaurantModal={closeAddRestaurantModal}
         addRestaurantInfo={addRestaurantInfo}
         updateClickedRestaurantID={updateClickedRestaurantID}
         restaurantInfo={restaurantInfo}

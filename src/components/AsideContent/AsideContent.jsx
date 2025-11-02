@@ -2,20 +2,20 @@ import RestaurantDetailModal from './RestaurantDetailModal/RestaurantDetailModal
 import AddRestaurantModal from './AddRestaurantModal/AddRestaurantModal';
 
 export default function AsideContent({
-  showAddRestaurantModal, updateShowAddRestaurantModal, addRestaurantInfo,
+  isVisibleAddRestaurantModal, closeAddRestaurantModal, addRestaurantInfo,
   updateClickedRestaurantID, restaurantInfo,
 }) {
-  const showRestaurantDetailModal = restaurantInfo !== undefined;
+  const isVisibleRestaurantDetailModal = restaurantInfo !== undefined;
 
   return (
     <aside>
       <AddRestaurantModal
-        shouldShow={showAddRestaurantModal}
-        closeModal={() => { updateShowAddRestaurantModal(false); }}
+        shouldShow={isVisibleAddRestaurantModal}
+        closeModal={closeAddRestaurantModal}
         addRestaurantInfo={addRestaurantInfo}
       />
       <RestaurantDetailModal
-        shouldShow={showRestaurantDetailModal}
+        shouldShow={isVisibleRestaurantDetailModal}
         closeModal={() => { updateClickedRestaurantID(null); }}
         restaurantInfo={restaurantInfo}
       />

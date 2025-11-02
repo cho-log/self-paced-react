@@ -1,6 +1,6 @@
-import styles from './RestaurantElement.module.css';
+import styles from './RestaurantItem.module.css';
 
-export default function RestaurantElement({ restaurantInfo, updateClickedRestaurantID }) {
+export default function RestaurantItem({ restaurantInfo, updateClickedRestaurantID }) {
   return (
     <li className={styles.restaurant}>
       <button

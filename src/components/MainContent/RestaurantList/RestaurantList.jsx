@@ -1,4 +1,4 @@
-import RestaurantElement from './RestaurantElement/RestaurantElement';
+import RestaurantItem from './RestaurantItem/RestaurantItem';
 import styles from './RestaurantList.module.css';
 
 export default function RestaurantList({ restaurantInfoList, updateClickedRestaurantID }) {
@@ -6,7 +6,7 @@ export default function RestaurantList({ restaurantInfoList, updateClickedRestau
     <section className={styles.restaurantListContainer}>
       <ul className={styles.restaurantList}>
         {restaurantInfoList.map((restaurantInfo) => (
-          <RestaurantElement
+          <RestaurantItem
             key={restaurantInfo.id}
             restaurantInfo={restaurantInfo}
             updateClickedRestaurantID={updateClickedRestaurantID}
