@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./Modal.module.css";
 import Modal from "./Modal";
 import categories from "../../constants/category";
@@ -6,16 +7,25 @@ import categories from "../../constants/category";
 import restaurants from "../../data/restaurant";
 
 export default function AddRestaurantModal({ closeModal }) {
+  const [restaurantInfo, setRestaurantInfo] = useState({
+    category: "",
+    name: "",
+    description: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setRestaurantInfo((prev) => ({ ...prev, [name]: value }));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const form = event.target;
-    const formData = new FormData(form);
+    const newRestaurant = {
+      ...restaurantInfo,
+      id: Date.now(),
+    };
 
-    const newRestaurant = Object.fromEntries(formData.entries());
-    newRestaurant.id = Date.now();
-
-    //Todo : Replace with API Call for step 5
     restaurants.push(newRestaurant);
     closeModal();
   };
@@ -29,7 +39,13 @@ export default function AddRestaurantModal({ closeModal }) {
           <label htmlFor="category" className="text-caption">
             카테고리
           </label>
-          <select name="category" id="category" required>
+          <select
+            name="category"
+            id="category"
+            required
+            value={restaurantInfo.category}
+            onChange={handleChange}
+          >
             <option value="">선택해 주세요</option>
             {categories
               .filter((category) => category.key !== "all")
@@ -47,7 +63,14 @@ export default function AddRestaurantModal({ closeModal }) {
           <label htmlFor="name" className="text-caption">
             이름
           </label>
-          <input type="text" name="name" id="name" required />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            required
+            value={restaurantInfo.name}
+            onChange={handleChange}
+          />
         </div>
 
         <div className={styles["form-item"]}>
@@ -59,6 +82,8 @@ export default function AddRestaurantModal({ closeModal }) {
             id="description"
             cols="30"
             rows="5"
+            value={restaurantInfo.description}
+            onChange={handleChange}
           ></textarea>
           <span className="help-text text-caption">
             메뉴 등 추가 정보를 입력해 주세요.
