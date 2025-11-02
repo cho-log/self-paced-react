@@ -5,11 +5,7 @@ import categories from "../../constants/category";
 // Temporary for step 4
 import restaurants from "../../data/restaurant";
 
-export default function AddRestaurantModal({ toggleModal }) {
-  const handleClose = () => {
-    toggleModal("isAddRestaurantModalOpen", false);
-  };
-
+export default function AddRestaurantModal({ closeModal }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -21,11 +17,11 @@ export default function AddRestaurantModal({ toggleModal }) {
 
     //Todo : Replace with API Call for step 5
     restaurants.push(newRestaurant);
-    handleClose();
+    closeModal();
   };
 
   return (
-    <Modal title="새로운 음식점" toggleModal={handleClose}>
+    <Modal title="새로운 음식점" onBackdropClick={closeModal}>
       <form method="post" onSubmit={handleSubmit}>
         <div
           className={`${styles["form-item"]} ${styles["form-item--required"]}`}

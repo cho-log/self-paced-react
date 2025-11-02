@@ -6,26 +6,18 @@ import RestaurantList from "./components/restaurant/RestaurantList/RestaurantLis
 import RestaurantDetailModal from "./components/modal/RestaurantDetailModal";
 import AddRestaurantModal from "./components/modal/AddRestaurantModal";
 import getFilteredRestaurant from "./utils/getFilteredRestaurant";
+import useModal from "./hooks/useModal";
 
 function App() {
   const [selectedCategory, setCategory] = useState("전체");
-  const [modalState, setModalState] = useState({
-    isRestaurantDetailModalOpen: false,
-    isAddRestaurantModalOpen: false,
-  });
+  const RestaurantDetailModalState = useModal(false);
+  const AddRestaurantModalState = useModal(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const filteredRestaurants = getFilteredRestaurant(selectedCategory);
 
-  const toggleModal = (modalName, isOpen) => {
-    setModalState((prevState) => ({
-      ...prevState,
-      [modalName]: isOpen,
-    }));
-  };
-
   return (
     <>
-      <Header toggleModal={toggleModal} />
+      <Header openModal={AddRestaurantModalState.open} />
       <main>
         <RestaurantCategoryFilter
           category={selectedCategory}
@@ -34,18 +26,18 @@ function App() {
         <RestaurantList
           filteredRestaurants={filteredRestaurants}
           setSelectedRestaurant={setSelectedRestaurant}
-          toggleModal={toggleModal}
+          openModal={RestaurantDetailModalState.open}
         />
       </main>
       <aside>
-        {modalState.isRestaurantDetailModalOpen && (
+        {RestaurantDetailModalState.modalState && (
           <RestaurantDetailModal
-            toggleModal={toggleModal}
+            closeModal={RestaurantDetailModalState.close}
             restaurantInfo={selectedRestaurant}
           />
         )}
-        {modalState.isAddRestaurantModalOpen && (
-          <AddRestaurantModal toggleModal={toggleModal} />
+        {AddRestaurantModalState.modalState && (
+          <AddRestaurantModal closeModal={AddRestaurantModalState.close} />
         )}
       </aside>
     </>

@@ -4,11 +4,11 @@ import getCategoryIcon from "../../../utils/getCategoryIcon";
 
 export default function RestaurantList({
   filteredRestaurants,
-  toggleModal,
+  openModal,
   setSelectedRestaurant,
 }) {
   const handleSelect = (restaurant) => {
-    toggleModal("isRestaurantDetailModalOpen", true);
+    openModal();
     setSelectedRestaurant(restaurant);
   };
 
