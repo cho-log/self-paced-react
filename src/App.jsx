@@ -10,14 +10,14 @@ import useModal from "./hooks/useModal";
 
 function App() {
   const [selectedCategory, setCategory] = useState("전체");
-  const restaurantDetailModalState = useModal(false);
-  const addRestaurantModalState = useModal(false);
+  const restaurantDetailModal = useModal(false);
+  const addRestaurantModal = useModal(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const filteredRestaurants = getFilteredRestaurant(selectedCategory);
 
   return (
     <>
-      <Header openModal={addRestaurantModalState.open} />
+      <Header openModal={addRestaurantModal.open} />
       <main>
         <RestaurantCategoryFilter
           category={selectedCategory}
@@ -26,18 +26,18 @@ function App() {
         <RestaurantList
           filteredRestaurants={filteredRestaurants}
           setSelectedRestaurant={setSelectedRestaurant}
-          openModal={restaurantDetailModalState.open}
+          openModal={restaurantDetailModal.open}
         />
       </main>
       <aside>
-        {restaurantDetailModalState.modalState && (
+        {restaurantDetailModal.modalState && (
           <RestaurantDetailModal
-            closeModal={restaurantDetailModalState.close}
+            closeModal={restaurantDetailModal.close}
             restaurantInfo={selectedRestaurant}
           />
         )}
-        {addRestaurantModalState.modalState && (
-          <AddRestaurantModal closeModal={addRestaurantModalState.close} />
+        {addRestaurantModal.modalState && (
+          <AddRestaurantModal closeModal={addRestaurantModal.close} />
         )}
       </aside>
     </>
