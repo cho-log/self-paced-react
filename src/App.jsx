@@ -11,13 +11,13 @@ import RestaurantDetailModal from "./components/RestaurantDetailModal";
 import AddRestaurantModal from "./components/AddRestaurantModal";
 
 function App() {
-  const [items, setItems] = useState(restaurants);
+  const [restaurantList, setrestaurantList] = useState(restaurants);
   const [category, setCategory] = useState("전체");
 
   const filteredRestaurants =
     category === "전체"
-      ? items
-      : items.filter((restaurant) => restaurant.category === category);
+      ? restaurantList
+      : restaurantList.filter((restaurant) => restaurant.category === category);
 
   const [selected, setSelected] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,7 +41,7 @@ function App() {
       description,
       category,
     };
-    setItems((prevItems) => [newRestaurant, ...prevItems]);
+    setrestaurantList((prev) => [newRestaurant, ...prev]);
     setIsAddModalOpen(false);
   };
 
