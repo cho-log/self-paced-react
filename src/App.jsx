@@ -20,15 +20,8 @@ function App() {
       : restaurantList.filter((restaurant) => restaurant.category === category);
 
   const [selected, setSelected] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleSelectRestaurant = (restaurant) => {
-    setSelected(restaurant);
-    setIsModalOpen(true);
-  };
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelected(null);
-  };
+  const handleSelectRestaurant = (restaurant) => setSelected(restaurant);
+  const handleCloseModal = () => setSelected(null);
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const handleOpenAddModal = () => setIsAddModalOpen(true);
@@ -65,7 +58,7 @@ function App() {
         </section>
       </main>
       <aside>
-        {isModalOpen && (
+        {selected && (
           <RestaurantDetailModal
             restaurant={selected}
             onClose={handleCloseModal}
