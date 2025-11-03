@@ -22,8 +22,8 @@ function App() {
   };
 
   const [isAddRestaurantModalOpen, setIsAddRestaurantModalOpen] = useState(false);
-  const handleAddRestaurant = (addedRestaurant) => {
-    setRestaurants((restaurantList) => [addedRestaurant, ...restaurantList]);
+  const handleAddRestaurant = (newRestaurant) => {
+    setRestaurants((restaurantList) => [newRestaurant, ...restaurantList]);
   };
 
   return (
