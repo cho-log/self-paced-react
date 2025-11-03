@@ -1,4 +1,4 @@
-import Modal from '../UI/Modal';
+import Modal from '../ui/Modal';
 import styles from './RestaurantModal.module.css';
 
 function RestaurantDetailModal({ restaurant, onClose }) {

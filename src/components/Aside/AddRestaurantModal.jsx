@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './RestaurantModal.module.css';
-import Modal from '../UI/Modal';
+import Modal from '../ui/Modal';
 import restaurantsData from '../../data/restaurantsData';
 
 function AddRestaurantModal({ onAddRestaurant, onClose }) {
