@@ -2,8 +2,6 @@ import "../styles/components/Modal.css";
 import "../styles/components/Form.css";
 
 export default function RestaurantDetailModal({ restaurant, onClose }) {
-  if (!restaurant) return null;
-
   return (
     <div className="modal modal--open">
       <div className="modal-backdrop" onClick={onClose} />
