@@ -6,24 +6,45 @@ import RestaurantList from "./components/restaurant/RestaurantList/RestaurantLis
 import RestaurantDetailModal from "./components/modal/RestaurantDetailModal";
 import AddRestaurantModal from "./components/modal/AddRestaurantModal";
 import getFilteredRestaurant from "./utils/getFilteredRestaurant";
+import useModal from "./hooks/useModal";
 
 function App() {
   const [selectedCategory, setCategory] = useState("전체");
+  const {
+    isOpen: isDetailModalOpen,
+    open: openDetailModal,
+    close: closeModalDetail,
+  } = useModal(false);
+  const {
+    isOpen: isAddModalOpen,
+    open: openAddModal,
+    close: closeAddModal,
+  } = useModal(false);
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const filteredRestaurants = getFilteredRestaurant(selectedCategory);
-  
+
   return (
     <>
-      <Header />
+      <Header openModal={openAddModal} />
       <main>
         <RestaurantCategoryFilter
           category={selectedCategory}
           onChangeCategory={setCategory}
         />
-        <RestaurantList filteredRestaurants={filteredRestaurants} />
+        <RestaurantList
+          filteredRestaurants={filteredRestaurants}
+          setSelectedRestaurant={setSelectedRestaurant}
+          openModal={openDetailModal}
+        />
       </main>
       <aside>
-        <RestaurantDetailModal />
-        <AddRestaurantModal />
+        {isDetailModalOpen && (
+          <RestaurantDetailModal
+            closeModal={closeModalDetail}
+            restaurantInfo={selectedRestaurant}
+          />
+        )}
+        {isAddModalOpen && <AddRestaurantModal closeModal={closeAddModal} />}
       </aside>
     </>
   );

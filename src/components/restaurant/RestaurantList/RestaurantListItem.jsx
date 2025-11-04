@@ -1,8 +1,8 @@
 import styles from "./RestaurantList.module.css";
 
-export default function RestaurantListItem({ restaurant, icon }) {
+export default function RestaurantListItem({ restaurant, icon, onClick }) {
   return (
-    <li className={`${styles["restaurant"]}`}>
+    <li className={`${styles["restaurant"]}`} onClick={onClick}>
       <div className={`${styles["restaurant__category"]}`}>
         <img
           src={icon}
