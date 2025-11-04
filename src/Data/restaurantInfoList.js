@@ -1,4 +1,4 @@
-export const restaurantInfoList = [
+const restaurantInfoList = [
   {
     id: 'a01',
     name: '피양콩할마니',
@@ -44,3 +44,4 @@ export const restaurantInfoList = [
     imgSrc: 'templates/category-etc.png',
   },
 ];
+export default restaurantInfoList;

@@ -10,7 +10,6 @@
 // App.jsx
 {isModalOpen && <RestaurantDetailModal {/** 적절한 props */}/>}
 ```    
-
 ## ✅ 키워드
 - event handler (feat. side effect)
 - conditional rendering

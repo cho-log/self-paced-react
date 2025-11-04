@@ -1,11 +1,7 @@
-import RestaurantDetailModal from './RestaurantDetailModal/RestaurantDetailModal.jsx'
-import AddRestaurantModal from './AddRestaurantModal/AddRestaurantModal.jsx'
-
-export default function AsideContent() {
+export default function AsideContent({ children }) {
   return (
     <aside>
-      <RestaurantDetailModal />
-      <AddRestaurantModal />
+      {children}
     </aside>
   );
 }
