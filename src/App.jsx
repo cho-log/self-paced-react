@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import RestaurantCategoryFilter from "./components/restaurant/RestaurantCategoryFilter/RestaurantCategoryFilter";
@@ -7,6 +7,7 @@ import RestaurantDetailModal from "./components/modal/RestaurantDetailModal";
 import AddRestaurantModal from "./components/modal/AddRestaurantModal";
 import getFilteredRestaurant from "./utils/getFilteredRestaurant";
 import useModal from "./hooks/useModal";
+import useRestaurants from "./hooks/useRestaurants";
 
 function App() {
   const [selectedCategory, setCategory] = useState("전체");
@@ -20,8 +21,11 @@ function App() {
     open: openAddModal,
     close: closeAddModal,
   } = useModal(false);
+  const { restaurants, postRestaurant } = useRestaurants();
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
-  const filteredRestaurants = getFilteredRestaurant(selectedCategory);
+  const filteredRestaurants = useMemo(() => {
+    return getFilteredRestaurant(restaurants, selectedCategory);
+  }, [restaurants, selectedCategory]);
 
   return (
     <>
@@ -44,7 +48,12 @@ function App() {
             restaurantInfo={selectedRestaurant}
           />
         )}
-        {isAddModalOpen && <AddRestaurantModal closeModal={closeAddModal} />}
+        {isAddModalOpen && (
+          <AddRestaurantModal
+            closeModal={closeAddModal}
+            postRestaurant={postRestaurant}
+          />
+        )}
       </aside>
     </>
   );

@@ -3,10 +3,7 @@ import styles from "./Modal.module.css";
 import Modal from "./Modal";
 import categories from "../../constants/category";
 
-// Temporary for step 4
-import restaurants from "../../data/restaurant";
-
-export default function AddRestaurantModal({ closeModal }) {
+export default function AddRestaurantModal({ closeModal, postRestaurant }) {
   const [restaurantInfo, setRestaurantInfo] = useState({
     category: "",
     name: "",
@@ -18,7 +15,7 @@ export default function AddRestaurantModal({ closeModal }) {
     setRestaurantInfo((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const newRestaurant = {
@@ -26,7 +23,7 @@ export default function AddRestaurantModal({ closeModal }) {
       id: Date.now(),
     };
 
-    restaurants.push(newRestaurant);
+    await postRestaurant(newRestaurant);
     closeModal();
   };
 
