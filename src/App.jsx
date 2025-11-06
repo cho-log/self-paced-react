@@ -16,7 +16,7 @@ function App() {
     }
   };
   const addRestaurantInfo = async (restaurantInfo) => {
-    const isSuccess = addNewRestaurantInfo(restaurantInfo);
+    const isSuccess = await addNewRestaurantInfo(restaurantInfo);
 
     if (isSuccess) {
       fetchRestaurantInfoList();

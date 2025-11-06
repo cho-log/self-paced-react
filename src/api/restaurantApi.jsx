@@ -18,6 +18,5 @@ export const addNewRestaurantInfo = async (restaurantInfo) => {
     body: JSON.stringify(restaurantInfo),
   });
 
-  if (response.ok) return true;
-  return false;
+  return response.ok;
 };
