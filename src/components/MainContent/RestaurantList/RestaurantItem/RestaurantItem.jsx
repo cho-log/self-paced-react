@@ -1,5 +1,14 @@
 import styles from './RestaurantItem.module.css';
 
+const categoryImgMap = {
+  한식: 'templates/category-korean.png',
+  중식: 'templates/category-chinese.png',
+  일식: 'templates/category-japanese.png',
+  양식: 'templates/category-western.png',
+  아시안: 'templates/category-asian.png',
+  기타: 'templates/category-etc.png',
+};
+
 export default function RestaurantItem({ restaurantInfo, updateClickedRestaurantID }) {
   return (
     <li className={styles.restaurant}>
@@ -10,7 +19,7 @@ export default function RestaurantItem({ restaurantInfo, updateClickedRestaurant
       >
         <div className={styles.restaurantCategory}>
           <img
-            src={restaurantInfo.imgSrc}
+            src={categoryImgMap[restaurantInfo.category]}
             alt={restaurantInfo.category}
             className={styles.categoryIcon}
           />

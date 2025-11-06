@@ -2,15 +2,6 @@ import styles from '../RestaurantModal.module.css';
 import Modal from '../Modal/Modal';
 import categoryList from '../../../Data/categoryList';
 
-const categoryImgMap = {
-  한식: 'templates/category-korean.png',
-  중식: 'templates/category-chinese.png',
-  일식: 'templates/category-japanese.png',
-  양식: 'templates/category-western.png',
-  아시안: 'templates/category-asian.png',
-  기타: 'templates/category-etc.png',
-};
-
 export default function AddRestaurantModal({ isVisible, closeModal, addRestaurantInfo }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,13 +12,12 @@ export default function AddRestaurantModal({ isVisible, closeModal, addRestauran
       name: formData.get('name'),
       description: formData.get('description'),
       category: formData.get('category'),
-      imgSrc: categoryImgMap[formData.get('category')],
     };
     addRestaurantInfo(newRestaurant);
     closeModal();
   };
 
-  const optionList = categoryList.map((value) => (
+  const optionList = categoryList.filter((value) => (value !== '전체')).map((value) => (
     <option value={value} key={value}>{value}</option>
   ));
 
