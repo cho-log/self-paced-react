@@ -91,6 +91,7 @@ export default function AddRestaurantModal({ closeModal, postRestaurant }) {
           <button
             type="submit"
             className={`${styles.button} ${styles["button--primary"]} text-caption`}
+            aria-label="추가하기"
           >
             추가하기
           </button>

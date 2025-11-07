@@ -11,7 +11,7 @@ export default function Header({ openModal }) {
         aria-label="음식점 추가"
         onClick={openModal}
       >
-        <img src={addButton} alt="음식점 추가" />
+        <img src={addButton} alt="" />
       </button>
     </header>
   );

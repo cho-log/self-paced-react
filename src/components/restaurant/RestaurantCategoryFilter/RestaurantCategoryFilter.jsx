@@ -13,6 +13,7 @@ export default function RestaurantCategoryFilter({
         className={`${styles["restaurant-filter"]}`}
         value={category}
         onChange={(event) => onChangeCategory(event.target.value)}
+        aria-label="카테고리 필터"
       >
         {categories.map((categoryItem) => (
           <option key={categoryItem.key} value={categoryItem.value}>
