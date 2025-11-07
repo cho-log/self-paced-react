@@ -12,7 +12,7 @@ import AddRestaurantModal from "./components/AddRestaurantModal";
 const API_URL = "http://localhost:3000/restaurants";
 
 function App() {
-  const [restaurantList, setrestaurantList] = useState([]);
+  const [restaurantList, setRestaurantList] = useState([]);
   const [category, setCategory] = useState("전체");
 
   const filteredRestaurants =
@@ -31,7 +31,7 @@ function App() {
   const fetchRestaurants = async () => {
     const response = await fetch(API_URL);
     const data = await response.json();
-    setrestaurantList(data);
+    setRestaurantList(data);
   };
 
   useEffect(() => {
@@ -54,8 +54,8 @@ function App() {
       body: JSON.stringify(newRestaurant),
     });
 
-    await fetchRestaurants();
     setIsAddModalOpen(false);
+    await fetchRestaurants();
   };
 
   return (
