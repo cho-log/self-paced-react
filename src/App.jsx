@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./styles/global.css";
 import "./styles/layout.css";
@@ -8,6 +8,8 @@ import CategoryFilter from "./components/CategoryFilter";
 import RestaurantList from "./components/RestaurantList";
 import RestaurantDetailModal from "./components/RestaurantDetailModal";
 import AddRestaurantModal from "./components/AddRestaurantModal";
+
+const API_URL = "https://localhost:3000/restaurants";
 
 function App() {
   const [restaurantList, setrestaurantList] = useState([]);
@@ -25,6 +27,16 @@ function App() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const handleOpenAddModal = () => setIsAddModalOpen(true);
   const handleCloseAddModal = () => setIsAddModalOpen(false);
+
+  const fetchRestaurants = async () => {
+    const response = await fetch(API_URL);
+    const data = await response.json();
+    setrestaurantList(data);
+  };
+
+  useEffect(() => {
+    fetchRestaurants();
+  }, []);
 
   const handleAddRestaurant = ({ name, description, category }) => {
     const newRestaurant = {
