@@ -38,14 +38,23 @@ function App() {
     fetchRestaurants();
   }, []);
 
-  const handleAddRestaurant = ({ name, description, category }) => {
+  const handleAddRestaurant = async ({ name, description, category }) => {
     const newRestaurant = {
-      id: String(Date.now()),
+      id: `a${Date.now()}`,
       name,
       description,
       category,
     };
-    setrestaurantList((prev) => [newRestaurant, ...prev]);
+
+    await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newRestaurant),
+    });
+
+    await fetchRestaurants();
     setIsAddModalOpen(false);
   };
 
