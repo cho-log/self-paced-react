@@ -9,7 +9,7 @@ import RestaurantList from "./components/RestaurantList";
 import RestaurantDetailModal from "./components/RestaurantDetailModal";
 import AddRestaurantModal from "./components/AddRestaurantModal";
 
-const API_URL = "https://localhost:3000/restaurants";
+const API_URL = "http://localhost:3000/restaurants";
 
 function App() {
   const [restaurantList, setrestaurantList] = useState([]);
