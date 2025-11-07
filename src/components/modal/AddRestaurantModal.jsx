@@ -42,6 +42,7 @@ export default function AddRestaurantModal({ closeModal, postRestaurant }) {
             required
             value={restaurantInfo.category}
             onChange={handleChange}
+            autoFocus
           >
             <option value="">선택해 주세요</option>
             {categories

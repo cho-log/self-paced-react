@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import styles from "./Modal.module.css";
 
 export default function Modal({ title, children, onBackdropClick }) {
@@ -10,14 +10,6 @@ export default function Modal({ title, children, onBackdropClick }) {
       onBackdropClick();
     }
   };
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-    const focusable = containerRef.current.querySelector(
-      'button, input, select, [tabindex]:not([tabindex="-1"])'
-    );
-    (focusable ?? containerRef.current).focus();
-  }, []);
 
   return (
     <div className={`${styles.modal} ${styles["modal--open"]}`}>
