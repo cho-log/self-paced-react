@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { restaurants } from "./data/restaurants.js";
 
 import "./styles/global.css";
 import "./styles/layout.css";
@@ -11,7 +10,7 @@ import RestaurantDetailModal from "./components/RestaurantDetailModal";
 import AddRestaurantModal from "./components/AddRestaurantModal";
 
 function App() {
-  const [restaurantList, setrestaurantList] = useState(restaurants);
+  const [restaurantList, setrestaurantList] = useState([]);
   const [category, setCategory] = useState("전체");
 
   const filteredRestaurants =
