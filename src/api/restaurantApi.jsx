@@ -1,22 +1,31 @@
-const SERVER_URL = 'http://localhost:3000/restaurants';
+const SERVER_URL = 'http://localhost:3000';
 
 export const getRestaurantInfoList = async () => {
-  const response = await fetch(SERVER_URL);
-
-  if (!response.ok) return null;
-  const data = await response.json();
-
-  return data;
+  try {
+    const response = await fetch(`${SERVER_URL}/restaurants`);
+    if (!response.ok) {
+      throw new Error();
+    }
+    return response.json();
+  } catch (error) {
+    return null;
+  }
 };
 
 export const addNewRestaurantInfo = async (restaurantInfo) => {
-  const response = await fetch(SERVER_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(restaurantInfo),
-  });
-
-  return response.ok;
+  try {
+    const response = await fetch(`${SERVER_URL}/restaurants`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(restaurantInfo),
+    });
+    if (!response.ok) {
+      throw new Error();
+    }
+    return true;
+  } catch (error) {
+    return false;
+  }
 };
