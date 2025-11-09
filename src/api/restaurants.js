@@ -5,7 +5,7 @@ export const getRestaurants = async () => {
   return response.json();
 };
 
-export const addRestaurant = async (restaurant) => {
+export const postRestaurant = async (restaurant) => {
   const response = await fetch(`${API_URL}/restaurants`, {
     method: "POST",
     headers: {

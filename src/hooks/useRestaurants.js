@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getRestaurants, addRestaurant } from "../api/restaurants";
+import { getRestaurants, postRestaurant } from "../api/restaurants";
 
 export default function useRestaurants() {
   const [restaurants, setRestaurants] = useState([]);
@@ -9,8 +9,17 @@ export default function useRestaurants() {
     setRestaurants(data);
   };
 
-  const postRestaurant = async (restaurant) => {
-    await addRestaurant(restaurant);
+  const addRestaurant = async (restaurant) => {
+    const newRestaurant = {
+      ...restaurant,
+      id: Date.now(),
+    };
+
+    await postRestaurant(newRestaurant);
+  };
+
+  const onAddRestaurant = async (restaurants) => {
+    await addRestaurant(restaurants);
     await fetchRestaurants();
   };
 
@@ -18,5 +27,5 @@ export default function useRestaurants() {
     fetchRestaurants();
   }, []);
 
-  return { restaurants, fetchRestaurants, postRestaurant };
+  return { restaurants, onAddRestaurant };
 }

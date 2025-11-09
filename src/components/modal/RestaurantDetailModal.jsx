@@ -13,7 +13,6 @@ export default function RestaurantDetailModal({ restaurantInfo, closeModal }) {
         <button
           className={`${style.button} ${style["button--primary"]} text-caption`}
           onClick={closeModal}
-          aria-label="닫기"
           autoFocus
         >
           닫기

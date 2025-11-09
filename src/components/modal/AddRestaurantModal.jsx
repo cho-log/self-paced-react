@@ -3,7 +3,7 @@ import styles from "./Modal.module.css";
 import Modal from "./Modal";
 import categories from "../../constants/category";
 
-export default function AddRestaurantModal({ closeModal, postRestaurant }) {
+export default function AddRestaurantModal({ closeModal, onAddRestaurant }) {
   const [restaurantInfo, setRestaurantInfo] = useState({
     category: "",
     name: "",
@@ -18,12 +18,7 @@ export default function AddRestaurantModal({ closeModal, postRestaurant }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const newRestaurant = {
-      ...restaurantInfo,
-      id: Date.now(),
-    };
-
-    await postRestaurant(newRestaurant);
+    await onAddRestaurant(restaurantInfo);
     closeModal();
   };
 
@@ -92,7 +87,6 @@ export default function AddRestaurantModal({ closeModal, postRestaurant }) {
           <button
             type="submit"
             className={`${styles.button} ${styles["button--primary"]} text-caption`}
-            aria-label="추가하기"
           >
             추가하기
           </button>

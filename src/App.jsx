@@ -21,7 +21,7 @@ function App() {
     open: openAddModal,
     close: closeAddModal,
   } = useModal(false);
-  const { restaurants, postRestaurant } = useRestaurants();
+  const { restaurants, onAddRestaurant } = useRestaurants();
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const filteredRestaurants = useMemo(() => {
     return getFilteredRestaurant(restaurants, selectedCategory);
@@ -51,7 +51,7 @@ function App() {
         {isAddModalOpen && (
           <AddRestaurantModal
             closeModal={closeAddModal}
-            postRestaurant={postRestaurant}
+            onAddRestaurant={onAddRestaurant}
           />
         )}
       </aside>
