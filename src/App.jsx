@@ -1,13 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import HomeHeader from './components/header/HomeHeader';
 import RestaurantCategoryFilter from './components/main/RestaurantCategoryFilter';
 import RestaurantList from './components/main/restaurantList';
 import RestaurantDetailModal from './components/aside/RestaurantDetailModal';
 import AddRestaurantModal from './components/aside/AddRestaurantModal';
-import restaurantData from './data/restaurantsData';
 
 function App() {
-  const [restaurants, setRestaurants] = useState(restaurantData);
+  const [restaurants, setRestaurants] = useState([]);
+
+  const LOCAL_SERVER_URL = 'http://localhost:3000';
+
+  const fetchRestaurants = async () => {
+    const restaurantsResponse = await fetch(`${LOCAL_SERVER_URL}/restaurants`);
+    const fetchedRestaurants = await restaurantsResponse.json();
+    setRestaurants(fetchedRestaurants);
+  };
+
+  useEffect(() => {
+    fetchRestaurants();
+  }, []);
 
   const [selectedCategory, setSelectedCategory] = useState('전체');
   const filteredRestaurants = selectedCategory === '전체'
@@ -22,8 +33,14 @@ function App() {
   };
 
   const [isAddRestaurantModalOpen, setIsAddRestaurantModalOpen] = useState(false);
-  const handleAddRestaurant = (newRestaurant) => {
-    setRestaurants((restaurantList) => [newRestaurant, ...restaurantList]);
+
+  const handleAddRestaurant = async (restaurant) => {
+    await fetch(`${LOCAL_SERVER_URL}/restaurants`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(restaurant),
+    });
+    fetchRestaurants();
   };
 
   return (
