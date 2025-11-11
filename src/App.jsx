@@ -39,19 +39,12 @@ function App() {
   }, [fetchRestaurants]);
 
   const handleAddRestaurant = async ({ name, description, category }) => {
-    const newRestaurant = {
-      id: `a${Date.now()}`,
-      name,
-      description,
-      category,
-    };
-
     await fetch(API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newRestaurant),
+      body: JSON.stringify({ name, description, category }),
     });
 
     setIsAddModalOpen(false);
