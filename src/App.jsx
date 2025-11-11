@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import "./styles/global.css";
 import "./styles/layout.css";
@@ -28,15 +28,15 @@ function App() {
   const handleOpenAddModal = () => setIsAddModalOpen(true);
   const handleCloseAddModal = () => setIsAddModalOpen(false);
 
-  const fetchRestaurants = async () => {
+  const fetchRestaurants = useCallback(async () => {
     const response = await fetch(API_URL);
     const data = await response.json();
     setRestaurantList(data);
-  };
+  }, []);
 
   useEffect(() => {
     fetchRestaurants();
-  }, []);
+  }, [fetchRestaurants]);
 
   const handleAddRestaurant = async ({ name, description, category }) => {
     const newRestaurant = {
