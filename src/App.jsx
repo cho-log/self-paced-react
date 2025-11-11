@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { restaurants } from "./data/restaurants.js";
+import { useCallback, useEffect, useState } from "react";
 
 import "./styles/global.css";
 import "./styles/layout.css";
@@ -10,8 +9,10 @@ import RestaurantList from "./components/RestaurantList";
 import RestaurantDetailModal from "./components/RestaurantDetailModal";
 import AddRestaurantModal from "./components/AddRestaurantModal";
 
+const API_URL = "http://localhost:3000/restaurants";
+
 function App() {
-  const [restaurantList, setrestaurantList] = useState(restaurants);
+  const [restaurantList, setRestaurantList] = useState([]);
   const [category, setCategory] = useState("전체");
 
   const filteredRestaurants =
@@ -27,15 +28,27 @@ function App() {
   const handleOpenAddModal = () => setIsAddModalOpen(true);
   const handleCloseAddModal = () => setIsAddModalOpen(false);
 
-  const handleAddRestaurant = ({ name, description, category }) => {
-    const newRestaurant = {
-      id: String(Date.now()),
-      name,
-      description,
-      category,
-    };
-    setrestaurantList((prev) => [newRestaurant, ...prev]);
+  const fetchRestaurants = useCallback(async () => {
+    const response = await fetch(API_URL);
+    const data = await response.json();
+    setRestaurantList(data);
+  }, []);
+
+  useEffect(() => {
+    fetchRestaurants();
+  }, [fetchRestaurants]);
+
+  const handleAddRestaurant = async ({ name, description, category }) => {
+    await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, description, category }),
+    });
+
     setIsAddModalOpen(false);
+    await fetchRestaurants();
   };
 
   return (
