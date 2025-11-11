@@ -2,6 +2,10 @@ import styles from '../RestaurantModal.module.css';
 import Modal from '../Modal/Modal';
 import categoryList from '../../../Data/categoryList';
 
+const optionList = categoryList.filter((value) => (value !== '전체')).map((value) => (
+  <option value={value} key={value}>{value}</option>
+));
+
 export default function AddRestaurantModal({ isVisible, closeModal, addRestaurantInfo }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,10 +20,6 @@ export default function AddRestaurantModal({ isVisible, closeModal, addRestauran
     addRestaurantInfo(newRestaurant);
     closeModal();
   };
-
-  const optionList = categoryList.filter((value) => (value !== '전체')).map((value) => (
-    <option value={value} key={value}>{value}</option>
-  ));
 
   if (!isVisible) return null;
   return (

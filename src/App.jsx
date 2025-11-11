@@ -10,16 +10,20 @@ function App() {
   const [restaurantInfoList, setRestaurantInfoList] = useState([]);
 
   const fetchRestaurantInfoList = async () => {
-    const data = await getRestaurantInfoList();
-    if (data) {
-      setRestaurantInfoList(data);
+    const response = await getRestaurantInfoList();
+    if (response.success) {
+      setRestaurantInfoList(response.data);
+    } else {
+      alert(response.error);
     }
   };
   const addRestaurantInfo = async (restaurantInfo) => {
-    const isSuccess = await addNewRestaurantInfo(restaurantInfo);
+    const response = await addNewRestaurantInfo(restaurantInfo);
 
-    if (isSuccess) {
+    if (response.success) {
       fetchRestaurantInfoList();
+    } else {
+      alert(response.error);
     }
   };
 

@@ -3,12 +3,25 @@ const SERVER_URL = 'http://localhost:3000';
 export const getRestaurantInfoList = async () => {
   try {
     const response = await fetch(`${SERVER_URL}/restaurants`);
+    const data = await response.json();
     if (!response.ok) {
-      throw new Error();
+      return {
+        success: false,
+        data: null,
+        error: response.status,
+      };
     }
-    return response.json();
+    return {
+      success: true,
+      data,
+      error: null,
+    };
   } catch (error) {
-    return null;
+    return {
+      success: false,
+      data: null,
+      erorr: 'Network Error',
+    };
   }
 };
 
@@ -21,11 +34,21 @@ export const addNewRestaurantInfo = async (restaurantInfo) => {
       },
       body: JSON.stringify(restaurantInfo),
     });
+
     if (!response.ok) {
-      throw new Error();
+      return {
+        success: false,
+        error: response.status,
+      };
     }
-    return true;
+    return {
+      success: true,
+      error: null,
+    };
   } catch (error) {
-    return false;
+    return {
+      success: false,
+      error: 'Network Error',
+    };
   }
 };
