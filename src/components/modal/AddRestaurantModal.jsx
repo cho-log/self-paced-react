@@ -3,10 +3,7 @@ import styles from "./Modal.module.css";
 import Modal from "./Modal";
 import categories from "../../constants/category";
 
-// Temporary for step 4
-import restaurants from "../../data/restaurant";
-
-export default function AddRestaurantModal({ closeModal }) {
+export default function AddRestaurantModal({ closeModal, onAddRestaurant }) {
   const [restaurantInfo, setRestaurantInfo] = useState({
     category: "",
     name: "",
@@ -18,15 +15,10 @@ export default function AddRestaurantModal({ closeModal }) {
     setRestaurantInfo((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const newRestaurant = {
-      ...restaurantInfo,
-      id: Date.now(),
-    };
-
-    restaurants.push(newRestaurant);
+    await onAddRestaurant(restaurantInfo);
     closeModal();
   };
 
@@ -45,6 +37,7 @@ export default function AddRestaurantModal({ closeModal }) {
             required
             value={restaurantInfo.category}
             onChange={handleChange}
+            autoFocus
           >
             <option value="">선택해 주세요</option>
             {categories
