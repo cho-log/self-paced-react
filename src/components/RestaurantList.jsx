@@ -1,7 +1,7 @@
 import "./styles/default.css";
 import "./styles/RestaurantList.css";
 
-function RestaurantList({ restaurants }) {
+function RestaurantList({ restaurants, setOpen }) {
   const categoryImage = {
     한식: "../templates/category-korean.png",
     중식: "../templates/category-chinese.png",
@@ -14,7 +14,7 @@ function RestaurantList({ restaurants }) {
     <section className="restaurant-list-container">
       <ul className="restaurant-list">
         {restaurants.map((r) => (
-          <li key={r.id} className="restaurant">
+          <li key={r.id} onClick={()=>setOpen(true)} className="restaurant">
             <div className="restaurant__category">
               <img
                 src={categoryImage[r.category]}

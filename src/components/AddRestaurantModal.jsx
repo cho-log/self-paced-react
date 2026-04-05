@@ -1,7 +1,8 @@
 import "./styles/default.css"
 import "./styles/AddRestaurantModal.css"
 
-function AddRestaurantModal() {
+function AddRestaurantModal({isOpen}) {
+  if(!isOpen) return null;
   return (
     <div className="modal modal--open">
       <div className="modal-backdrop"></div>

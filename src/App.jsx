@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import CategoryFilter from "./components/CategoryFilter";
 import RestaurantList from "./components/RestaurantList";
 import RestaurantDetailModal from "./components/RestaurantDetailModal";
-import AddRestaurantModal from "./components/AddRestaurantModal.jsx";
+//import AddRestaurantModal from "./components/AddRestaurantModal.jsx";
 import { useState } from "react";
 
 const restaurants = [
@@ -49,7 +49,7 @@ const restaurants = [
 
 function App() {
   const [category, setCategory] = useState("전체");
-
+  const [isOpen, setOpen]=useState(false);
   const filteredRestaurants =
     category === "전체"
       ? restaurants
@@ -60,11 +60,11 @@ function App() {
       <Header />
       <main>
         <CategoryFilter category={category} onChangeCategory={setCategory} />
-        <RestaurantList restaurants={filteredRestaurants} />
+        <RestaurantList restaurants={filteredRestaurants} setOpen={setOpen}/>
       </main>
       <aside>
-        <RestaurantDetailModal />
-        <AddRestaurantModal />
+        <RestaurantDetailModal isOpen={isOpen}/>
+        {/* <AddRestaurantModal /> */}
       </aside>
     </>
   );
