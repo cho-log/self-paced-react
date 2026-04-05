@@ -1,7 +1,7 @@
 import "./styles/default.css"
 import "./styles/CategoryFilter.css"
 
-function CategoryFilter() {
+function CategoryFilter({category, onChangeCategory}) {
   return (
     <section className="restaurant-filter-container">
       <select
@@ -9,6 +9,7 @@ function CategoryFilter() {
         id="category-filter"
         className="restaurant-filter"
         aria-label="음식점 카테고리 필터"
+        value={category} onChange={(e) => onChangeCategory(e.target.value)} 
       >
         <option value="전체">전체</option>
         <option value="한식">한식</option>
