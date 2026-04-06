@@ -4,6 +4,8 @@ import CategoryFilter from "./components/CategoryFilter";
 import RestaurantList from "./components/RestaurantList";
 import RestaurantDetailModal from "./components/RestaurantDetailModal";
 import AddRestaurantModal from "./components/AddRestaurantModal";
+import { restaurants } from "./constants/restaurants";
+
 function App() {
   return (
     <>
