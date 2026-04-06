@@ -1,8 +1,8 @@
-import Header from "./components/Header";
-import CategoryFilter from "./components/CategoryFilter";
-import RestaurantList from "./components/RestaurantList";
-import RestaurantDetailModal from "./components/RestaurantDetailModal";
-import AddRestaurantModal from "./components/AddRestaurantModal.jsx";
+import Header from "./components/Header/Header.jsx";
+import CategoryFilter from "./components/Main/CategoryFilter.jsx";
+import RestaurantList from "./components/Main/RestaurantList.jsx";
+import RestaurantDetailModal from "./components/Aside/RestaurantDetailModal.jsx";
+import AddRestaurantModal from "./components/Aside/AddRestaurantModal.jsx";
 import { useState } from "react";
 
 const restaurants = [

@@ -1,5 +1,5 @@
-import "./styles/default.css";
-import "./styles/CategoryFilter.css";
+import "../styles/default.css";
+import "../styles/CategoryFilter.css";
 
 function CategoryFilter({ category, setCategory }) {
   return (

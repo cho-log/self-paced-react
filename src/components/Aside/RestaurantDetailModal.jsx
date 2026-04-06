@@ -1,5 +1,5 @@
-import "./styles/default.css";
-import "./styles/AddRestaurantModal.css";
+import "../styles/default.css";
+import "../styles/AddRestaurantModal.css";
 
 function RestaurantDetailModal({ isOpen, setOpen,selectedRestaurant }) {
   if (!isOpen) return null;
