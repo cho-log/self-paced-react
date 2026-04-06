@@ -1,12 +1,10 @@
+import categoryAsian from "../assets/category-asian.png";
+
 export default function RestaurantItem() {
   return (
     <li className="restaurant">
       <div className="restaurant__category">
-        <img
-          src="./category-asian.png"
-          alt="아시안"
-          className="category-icon"
-        />
+        <img src={categoryAsian} alt="아시안" className="category-icon" />
       </div>
       <div className="restaurant__info">
         <h3 className="restaurant__name text-subtitle">호아빈 삼성점</h3>
