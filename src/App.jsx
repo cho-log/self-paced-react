@@ -50,20 +50,21 @@ const restaurants = [
 function App() {
   const [category, setCategory] = useState("전체");
   const [isOpen, setOpen]=useState(false);
+  const [restaurantDetail,setDetail]=useState(" ");
   const filteredRestaurants =
     category === "전체"
       ? restaurants
       : restaurants.filter((r) => r.category === category);
-
+  const selectedRestaurant= restaurants.find((r)=>r.id===restaurantDetail);
   return (
     <>
       <Header />
       <main>
-        <CategoryFilter category={category} onChangeCategory={setCategory} />
-        <RestaurantList restaurants={filteredRestaurants} setOpen={setOpen}/>
+        <CategoryFilter category={category} setCategory={setCategory} />
+        <RestaurantList restaurants={filteredRestaurants} setOpen={setOpen} setDetail={setDetail}/>
       </main>
       <aside>
-        <RestaurantDetailModal isOpen={isOpen}/>
+        <RestaurantDetailModal isOpen={isOpen} setOpen={setOpen} selectedRestaurant={selectedRestaurant}/>
         {/* <AddRestaurantModal /> */}
       </aside>
     </>

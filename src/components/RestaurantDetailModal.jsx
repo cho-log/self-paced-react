@@ -1,21 +1,26 @@
-import "./styles/default.css"
-import "./styles/AddRestaurantModal.css"
+import "./styles/default.css";
+import "./styles/AddRestaurantModal.css";
 
-
-function RestaurantDetailModal({isOpen}) {
-  if(!isOpen) return null;
+function RestaurantDetailModal({ isOpen, setOpen,selectedRestaurant }) {
+  if (!isOpen) return null;
+  
   return (
     <div className="modal modal--open">
-      <div className="modal-backdrop"></div>
+      <div className="modal-backdrop" onClick={() => setOpen(false)}></div>
       <div className="modal-container">
-        <h2 className="modal-title text-title">음식점 이름</h2>
+        <h2 className="modal-title text-title">{selectedRestaurant.name}</h2>
         <div className="restaurant-info">
           <p className="restaurant-info__description text-body">
-            음식점 소개 문구
+           {selectedRestaurant.description}
           </p>
         </div>
         <div className="button-container">
-          <button className="button button--primary text-caption">닫기</button>
+          <button
+            className="button button--primary text-caption"
+            onClick={() => setOpen(false)}
+          >
+            닫기
+          </button>
         </div>
       </div>
     </div>
