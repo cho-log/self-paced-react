@@ -1,12 +1,12 @@
 import RestaurantItem from "./RestaurantItem";
 
-export default function RestaurantList() {
+export default function RestaurantList({ restaurants }) {
   return (
     <section className="restaurant-list-container">
       <ul className="restaurant-list">
-        <RestaurantItem />
-        <RestaurantItem />
-        <RestaurantItem />
+        {restaurants.map((restaurant) => (
+          <RestaurantItem key={restaurant.id} restaurant={restaurant} />
+        ))}
       </ul>
     </section>
   );

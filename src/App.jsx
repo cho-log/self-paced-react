@@ -12,7 +12,7 @@ function App() {
       <Header />
       <main>
         <CategoryFilter />
-        <RestaurantList />
+        <RestaurantList restaurants={restaurants} />
       </main>
       <aside>
         <RestaurantDetailModal />

@@ -1,15 +1,33 @@
 import categoryAsian from "../assets/category-asian.png";
+import categoryChinese from "../assets/category-chinese.png";
+import categoryEtc from "../assets/category-etc.png";
+import categoryJapanese from "../assets/category-japanese.png";
+import categoryKorean from "../assets/category-korean.png";
+import categoryWestern from "../assets/category-western.png";
 
-export default function RestaurantItem() {
+const categoryImages = {
+  한식: categoryKorean,
+  중식: categoryChinese,
+  일식: categoryJapanese,
+  양식: categoryWestern,
+  아시안: categoryAsian,
+  기타: categoryEtc,
+};
+
+export default function RestaurantItem({ restaurant }) {
   return (
     <li className="restaurant">
       <div className="restaurant__category">
-        <img src={categoryAsian} alt="아시안" className="category-icon" />
+        <img
+          src={categoryImages[restaurant.category]}
+          alt={restaurant.category}
+          className="category-icon"
+        />
       </div>
       <div className="restaurant__info">
-        <h3 className="restaurant__name text-subtitle">호아빈 삼성점</h3>
+        <h3 className="restaurant__name text-subtitle">{restaurant.name}</h3>
         <p className="restaurant__description text-body">
-          푸짐한 양에 국물이 일품인 쌀국수
+          {restaurant.description}
         </p>
       </div>
     </li>
