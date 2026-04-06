@@ -14,9 +14,9 @@ const categoryImages = {
   기타: categoryEtc,
 };
 
-export default function RestaurantItem({ restaurant }) {
+export default function RestaurantItem({ restaurant, onClick }) {
   return (
-    <li className="restaurant">
+    <li className="restaurant" onClick={onClick}>
       <div className="restaurant__category">
         <img
           src={categoryImages[restaurant.category]}
@@ -33,13 +33,3 @@ export default function RestaurantItem({ restaurant }) {
     </li>
   );
 }
-
-// <li class="restaurant">
-//   <div class="restaurant__category">
-//     <img src="./category-western.png" alt="양식" class="category-icon">
-//   </div>
-//   <div class="restaurant__info">
-//     <h3 class="restaurant__name text-subtitle">이태리키친</h3>
-//     <p class="restaurant__description text-body">늘 변화를 추구하는 이태리키친입니다.</p>
-//   </div>
-// </li>
