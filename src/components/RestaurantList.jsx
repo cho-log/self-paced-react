@@ -7,7 +7,7 @@ function RestaurantList({ restaurants, setOpen, setDetail }) {
     중식: "../templates/category-chinese.png",
     일식: "../templates/category-japanese.png",
     양식: "../templates/category-western.png",
-    아시안: "../templates/asian.png",
+    아시안: "../templates/category-asian.png",
     기타: "../templates/category-etc.png",
   };
   return (

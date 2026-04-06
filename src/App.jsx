@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import CategoryFilter from "./components/CategoryFilter";
 import RestaurantList from "./components/RestaurantList";
 import RestaurantDetailModal from "./components/RestaurantDetailModal";
-//import AddRestaurantModal from "./components/AddRestaurantModal.jsx";
+import AddRestaurantModal from "./components/AddRestaurantModal.jsx";
 import { useState } from "react";
 
 const restaurants = [
@@ -51,6 +51,7 @@ function App() {
   const [category, setCategory] = useState("전체");
   const [isOpen, setOpen]=useState(false);
   const [restaurantDetail,setDetail]=useState(" ");
+  const [addRestaurantOn,setAddBtnOn]=useState(false);
   const filteredRestaurants =
     category === "전체"
       ? restaurants
@@ -58,17 +59,17 @@ function App() {
   const selectedRestaurant= restaurants.find((r)=>r.id===restaurantDetail);
   return (
     <>
-      <Header />
+      <Header setAddBtnOn={setAddBtnOn}/>
       <main>
         <CategoryFilter category={category} setCategory={setCategory} />
         <RestaurantList restaurants={filteredRestaurants} setOpen={setOpen} setDetail={setDetail}/>
       </main>
       <aside>
         <RestaurantDetailModal isOpen={isOpen} setOpen={setOpen} selectedRestaurant={selectedRestaurant}/>
-        {/* <AddRestaurantModal /> */}
+        <AddRestaurantModal setAddBtnOn={setAddBtnOn} addRestaurantOn={addRestaurantOn} />
       </aside>
     </>
   );
 }
 
-export default App;
+export default  App;

@@ -1,8 +1,10 @@
 import "./styles/default.css"
 import "./styles/AddRestaurantModal.css"
 
-function AddRestaurantModal({isOpen}) {
-  if(!isOpen) return null;
+function AddRestaurantModal({addRestaurantOn, setAddBtnOn}) {
+  if(!addRestaurantOn){
+    return null;
+  }
   return (
     <div className="modal modal--open">
       <div className="modal-backdrop"></div>
@@ -39,7 +41,7 @@ function AddRestaurantModal({isOpen}) {
           </div>
 
           <div className="button-container"> 
-            <button className="button button--primary text-caption">추가하기</button>
+            <button onClick={()=> setAddBtnOn(false)}className="button button--primary text-caption">추가하기</button>
           </div>
         </form>
       </div>
