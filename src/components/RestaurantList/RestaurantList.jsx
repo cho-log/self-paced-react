@@ -14,7 +14,7 @@ export default function RestaurantList({restaurants, onOpenModal}){
         <section className="restaurant-list-container">
             <ul className="restaurant-list">
                 {restaurants.map((item) => (
-                    <li key={item.id} className="restaurant" onClick={onOpenModal}>
+                    <li key={item.id} className="restaurant" onClick={()=>onOpenModal(item)}>
                         <div className="restaurant__category">
                         <img
                             src={categoryImage[item.category]}
