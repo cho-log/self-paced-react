@@ -51,6 +51,8 @@ function App() {
 
   const [category, setCategory]=useState("전체");
 
+  const [isModalOpen, setIsModalOpen]=useState(false);
+
   const filteredRestaurants=INIT_RESTAURANT.filter((restaurant)=>{
     if(category==="전체")return true;
     return restaurant.category===category;
@@ -61,10 +63,11 @@ function App() {
       <Header />
       <main>
         <CategoryFilter category={category} onChangeCategory={setCategory} />
-        <RestaurantList restaurants={filteredRestaurants} category={category} />
+        <RestaurantList restaurants={filteredRestaurants} category={category} 
+          onOpenModal={()=>setIsModalOpen(true)} />
       </main>
       <aside>
-        <RestaurantDetailModal />
+        {isModalOpen && <RestaurantDetailModal onCloseModal={()=>setIsModalOpen(false)}/>}
         <AddRestaurantModal />
       </aside>
     </>

@@ -9,12 +9,12 @@ const categoryImage = {
     기타: "/category-etc.png",
 };
 
-export default function RestaurantList(props){
+export default function RestaurantList({restaurants, onOpenModal}){
     return(
         <section className="restaurant-list-container">
             <ul className="restaurant-list">
-                {props.restaurants.map((item) => (
-                    <li key={item.id} className="restaurant">
+                {restaurants.map((item) => (
+                    <li key={item.id} className="restaurant" onClick={onOpenModal}>
                         <div className="restaurant__category">
                         <img
                             src={categoryImage[item.category]}
