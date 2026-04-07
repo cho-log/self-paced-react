@@ -1,7 +1,7 @@
 
 export default function RestaurantDetailModal(){
     return(
-        <div className="modal modal--open">
+        <div className="modal">
             <div className="modal-backdrop"></div>
             <div className="modal-container">
                 <h2 className="modal-title text-title">음식점 이름</h2>
