@@ -103,10 +103,6 @@ input[name="link"] {
   cursor: pointer;
 }
 
-.button:last-child {
-  margin-right: 0;
-}
-
 .button--secondary {
   border: 1px solid var(--grey-300);
   background: transparent;
@@ -120,6 +116,3 @@ input[name="link"] {
   color: var(--grey-100);
 }
 
-.restaurant-info {
-  margin-bottom: 24px;
-}

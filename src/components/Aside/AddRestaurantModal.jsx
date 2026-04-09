@@ -1,18 +1,20 @@
-import "../styles/default.css"
-import "../styles/AddRestaurantModal.css"
+import '../styles/default.css';
+import '../styles/AddRestaurantModal.css';
 
-function AddRestaurantModal({addRestaurantOn, setAddBtnOn}) {
-  if(!addRestaurantOn){
+function AddRestaurantModal({ addRestaurantOn, setAddBtnOn }) {
+  if (!addRestaurantOn) {
     return null;
   }
   return (
     <div className="modal modal--open">
-      <div className="modal-backdrop"></div>
+      <div className="modal-backdrop" />
       <div className="modal-container">
         <h2 className="modal-title text-title">새로운 음식점</h2>
-        <form >
+        <form>
           <div className="form-item form-item--required">
-            <label htmlFor="category text-caption">카테고리</label>
+            <label htmlFor="category" className="text-caption">
+              카테고리
+            </label>
             <select name="category" id="category" required>
               <option value="">선택해 주세요</option>
               <option value="한식">한식</option>
@@ -25,23 +27,28 @@ function AddRestaurantModal({addRestaurantOn, setAddBtnOn}) {
           </div>
 
           <div className="form-item form-item--required">
-            <label htmlFor="name text-caption">이름</label>
-            <input type="text" name="name" id="name" required></input>
+            <label htmlFor="name" className="text-caption">
+              이름
+            </label>
+            <input type="text" name="name" id="name" required />
           </div>
 
           <div className="form-item">
-            <label htmlFor="description text-caption">설명</label>
-            <textarea
-              name="description"
-              id="description"
-              cols="30"
-              rows="5"
-            ></textarea>
+            <label htmlFor="description" className="text-caption">
+              설명
+            </label>
+            <textarea name="description" id="description" cols="30" rows="5" />
             <span className="help-text text-caption">메뉴 등 추가 정보를 입력해 주세요.</span>
           </div>
 
-          <div className="button-container"> 
-            <button onClick={()=> setAddBtnOn(false)}className="button button--primary text-caption">추가하기</button>
+          <div className="button-container">
+            <button
+              type="button"
+              onClick={() => setAddBtnOn(false)}
+              className="button button--primary text-caption"
+            >
+              추가하기
+            </button>
           </div>
         </form>
       </div>
@@ -49,4 +56,4 @@ function AddRestaurantModal({addRestaurantOn, setAddBtnOn}) {
   );
 }
 
-export default AddRestaurantModal
+export default AddRestaurantModal;
