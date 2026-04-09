@@ -8,10 +8,10 @@ function RestaurantDetailModal({ isOpen, setOpen,selectedRestaurant }) {
     <div className="modal modal--open">
       <div className="modal-backdrop" onClick={() => setOpen(false)}></div>
       <div className="modal-container">
-        <h2 className="modal-title text-title">{selectedRestaurant.name}</h2>
+        <h2 className="modal-title text-title">{selectedRestaurant?.name}</h2>
         <div className="restaurant-info">
           <p className="restaurant-info__description text-body">
-           {selectedRestaurant.description}
+           {selectedRestaurant?.description}
           </p>
         </div>
         <div className="button-container">
