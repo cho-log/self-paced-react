@@ -1,12 +1,12 @@
 import '../styles/default.css';
 import '../styles/RestaurantDetailModal.css';
 
-function RestaurantDetailModal({ isOpen, setOpen, selectedRestaurant }) {
-  if (!isOpen) return null;
+function RestaurantDetailModal({ openDetailModal, handleCloseDetailModal, selectedRestaurant }) {
+  if (!openDetailModal) return null;
 
   return (
     <div className="modal modal--open">
-      <div className="modal-backdrop" onClick={() => setOpen(false)} />
+      <div className="modal-backdrop" onClick={() => handleCloseDetailModal()} />
       <div className="modal-container">
         <h2 className="modal-title text-title">{selectedRestaurant.name}</h2>
         <div className="restaurant-info">
@@ -16,7 +16,7 @@ function RestaurantDetailModal({ isOpen, setOpen, selectedRestaurant }) {
           <button
             type="button"
             className="button button--primary text-caption"
-            onClick={() => setOpen(false)}
+            onClick={() => handleCloseDetailModal()}
           >
             닫기
           </button>

@@ -10,7 +10,7 @@ const categoryImage = {
   기타: '../../../templates/category-etc.png',
 };
 
-function RestaurantList({ restaurants, setOpen, setDetail }) {
+function RestaurantList({ restaurants, handleOpenDetailModal, handleFilteredREstaurantDetail }) {
   return (
     <section className="restaurant-list-container">
       <ul className="restaurant-list">
@@ -18,8 +18,8 @@ function RestaurantList({ restaurants, setOpen, setDetail }) {
           <li
             key={r.id}
             onClick={() => {
-              setOpen(true);
-              setDetail(r.id);
+              handleOpenDetailModal();
+              handleFilteredREstaurantDetail(r.id);
             }}
             className="restaurant"
           >

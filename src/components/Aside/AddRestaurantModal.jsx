@@ -1,8 +1,8 @@
 import '../styles/default.css';
 import '../styles/AddRestaurantModal.css';
 
-function AddRestaurantModal({ addRestaurantOn, setAddBtnOn }) {
-  if (!addRestaurantOn) {
+function AddRestaurantModal({ handleCloseAddRestaurantModal, addRestaurantModal }) {
+  if (!addRestaurantModal) {
     return null;
   }
   return (
@@ -44,7 +44,7 @@ function AddRestaurantModal({ addRestaurantOn, setAddBtnOn }) {
           <div className="button-container">
             <button
               type="button"
-              onClick={() => setAddBtnOn(false)}
+              onClick={() => handleCloseAddRestaurantModal()}
               className="button button--primary text-caption"
             >
               추가하기

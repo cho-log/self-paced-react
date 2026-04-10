@@ -8,30 +8,55 @@ import AddRestaurantModal from './components/Aside/AddRestaurantModal';
 
 function App() {
   const [category, setCategory] = useState('전체');
-  const [openDetailModal, setOpenDetailModal] = useState(false);
-  const [filteredRestaurantDetail, setFilteredRestaurantDetail] = useState(null);
-  const [addBtnOn, setAddBtnOn] = useState(false);
+  const handleSetCategory = (filter) => {
+    setCategory(filter);
+  };
   const filteredRestaurants =
     category === '전체' ? restaurants : restaurants.filter((r) => r.category === category);
+
+  const [openDetailModal, setOpenDetailModal] = useState(false);
+  const handleOpenDetailModal = () => {
+    setOpenDetailModal(true);
+  };
+  const handleCloseDetailModal = () => {
+    setOpenDetailModal(false);
+  };
+
+  const [filteredRestaurantDetail, setFilteredRestaurantDetail] = useState(null);
+  const handleFilteredREstaurantDetail = (id) => {
+    setFilteredRestaurantDetail(id);
+  };
   const selectedRestaurant = restaurants.find((r) => r.id === filteredRestaurantDetail);
+
+  const [addRestaurantModal, setAddRestaurantModal] = useState(false);
+  const handleOpenAddRestaurantModal = () => {
+    setAddRestaurantModal(true);
+  };
+  const handleCloseAddRestaurantModal = () => {
+    setAddRestaurantModal(false);
+  };
+
   return (
     <>
-      <Header setAddBtnOn={setAddBtnOn} />
+      <Header handleOpenAddRestaurantModal={handleOpenAddRestaurantModal} />
       <main>
-        <CategoryFilter category={category} setCategory={setCategory} />
+        <CategoryFilter category={category} handleSetCategory={handleSetCategory} />
         <RestaurantList
           restaurants={filteredRestaurants}
-          setOpen={setOpenDetailModal}
-          setDetail={setFilteredRestaurantDetail}
+          handleOpenDetailModal={handleOpenDetailModal}
+          handleFilteredREstaurantDetail={handleFilteredREstaurantDetail}
         />
       </main>
       <aside>
         <RestaurantDetailModal
-          isOpen={openDetailModal}
-          setOpen={setOpenDetailModal}
+          openDetailModal={openDetailModal}
+          handleCloseDetailModal={handleCloseDetailModal}
           selectedRestaurant={selectedRestaurant}
         />
-        <AddRestaurantModal setAddBtnOn={setAddBtnOn} addRestaurantOn={addBtnOn} />
+        <AddRestaurantModal
+          handleCloseAddRestaurantModal={handleCloseAddRestaurantModal}
+          addRestaurantModal={addRestaurantModal}
+        />
       </aside>
     </>
   );
