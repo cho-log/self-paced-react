@@ -8,26 +8,30 @@ import AddRestaurantModal from './components/Aside/AddRestaurantModal';
 
 function App() {
   const [category, setCategory] = useState('전체');
-  const [isOpen, setOpen] = useState(false);
-  const [restaurantDetail, setDetail] = useState(null);
-  const [addRestaurantOn, setAddBtnOn] = useState(false);
+  const [openDetailModal, setOpenDetailModal] = useState(false);
+  const [filteredRestaurantDetail, setFilteredRestaurantDetail] = useState(null);
+  const [addBtnOn, setAddBtnOn] = useState(false);
   const filteredRestaurants =
     category === '전체' ? restaurants : restaurants.filter((r) => r.category === category);
-  const selectedRestaurant = restaurants.find((r) => r.id === restaurantDetail);
+  const selectedRestaurant = restaurants.find((r) => r.id === filteredRestaurantDetail);
   return (
     <>
       <Header setAddBtnOn={setAddBtnOn} />
       <main>
         <CategoryFilter category={category} setCategory={setCategory} />
-        <RestaurantList restaurants={filteredRestaurants} setOpen={setOpen} setDetail={setDetail} />
+        <RestaurantList
+          restaurants={filteredRestaurants}
+          setOpen={setOpenDetailModal}
+          setDetail={setFilteredRestaurantDetail}
+        />
       </main>
       <aside>
         <RestaurantDetailModal
-          isOpen={isOpen}
-          setOpen={setOpen}
+          isOpen={openDetailModal}
+          setOpen={setOpenDetailModal}
           selectedRestaurant={selectedRestaurant}
         />
-        <AddRestaurantModal setAddBtnOn={setAddBtnOn} addRestaurantOn={addRestaurantOn} />
+        <AddRestaurantModal setAddBtnOn={setAddBtnOn} addRestaurantOn={addBtnOn} />
       </aside>
     </>
   );
