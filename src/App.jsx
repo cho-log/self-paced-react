@@ -8,9 +8,7 @@ import AddRestaurantModal from './components/Aside/AddRestaurantModal';
 
 function App() {
   const [category, setCategory] = useState('전체');
-  const handleSetCategory = (filter) => {
-    setCategory(filter);
-  };
+
   const filteredRestaurants =
     category === '전체' ? restaurants : restaurants.filter((r) => r.category === category);
 
@@ -23,9 +21,7 @@ function App() {
   };
 
   const [filteredRestaurantDetail, setFilteredRestaurantDetail] = useState(null);
-  const handleFilteredREstaurantDetail = (id) => {
-    setFilteredRestaurantDetail(id);
-  };
+
   const selectedRestaurant = restaurants.find((r) => r.id === filteredRestaurantDetail);
 
   const [addRestaurantModal, setAddRestaurantModal] = useState(false);
@@ -40,11 +36,11 @@ function App() {
     <>
       <Header handleOpenAddRestaurantModal={handleOpenAddRestaurantModal} />
       <main>
-        <CategoryFilter category={category} handleSetCategory={handleSetCategory} />
+        <CategoryFilter category={category} setCategory={setCategory} />
         <RestaurantList
           restaurants={filteredRestaurants}
           handleOpenDetailModal={handleOpenDetailModal}
-          handleFilteredREstaurantDetail={handleFilteredREstaurantDetail}
+          handleFilteredREstaurantDetail={setFilteredRestaurantDetail}
         />
       </main>
       <aside>
