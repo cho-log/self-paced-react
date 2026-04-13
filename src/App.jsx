@@ -36,15 +36,13 @@ function App() {
         />
       </main>
       <aside>
-        <RestaurantDetailModal
-          detailModal={detailModal}
-          setDetailModal={setDetailModal}
-          selectedRestaurant={selectedRestaurant}
-        />
-        <AddRestaurantModal
-          setRestaurantModal={setRestaurantModal}
-          restaurantModal={restaurantModal}
-        />
+        {detailModal && (
+          <RestaurantDetailModal
+            setDetailModal={setDetailModal}
+            selectedRestaurant={selectedRestaurant}
+          />
+        )}
+        {restaurantModal && <AddRestaurantModal setRestaurantModal={setRestaurantModal} />}
       </aside>
     </>
   );

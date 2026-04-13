@@ -2,10 +2,7 @@ import PropTypes from 'prop-types';
 import '../styles/default.css';
 import '../styles/AddRestaurantModal.css';
 
-function AddRestaurantModal({ setRestaurantModal, restaurantModal }) {
-  if (!restaurantModal) {
-    return null;
-  }
+function AddRestaurantModal({ setRestaurantModal }) {
   return (
     <div className="modal modal--open">
       <div className="modal-backdrop" />
@@ -58,6 +55,5 @@ function AddRestaurantModal({ setRestaurantModal, restaurantModal }) {
 }
 AddRestaurantModal.propTypes = {
   setRestaurantModal: PropTypes.func.isRequired,
-  restaurantModal: PropTypes.bool.isRequired,
 };
 export default AddRestaurantModal;

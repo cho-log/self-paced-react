@@ -2,9 +2,7 @@ import PropTypes from 'prop-types';
 import '../styles/default.css';
 import '../styles/RestaurantDetailModal.css';
 
-function RestaurantDetailModal({ detailModal, setDetailModal, selectedRestaurant }) {
-  if (!detailModal) return null;
-
+function RestaurantDetailModal({ setDetailModal, selectedRestaurant }) {
   return (
     <div className="modal modal--open">
       <div
@@ -34,7 +32,6 @@ function RestaurantDetailModal({ detailModal, setDetailModal, selectedRestaurant
   );
 }
 RestaurantDetailModal.propTypes = {
-  detailModal: PropTypes.bool.isRequired,
   setDetailModal: PropTypes.func.isRequired,
   selectedRestaurant: PropTypes.shape({
     name: PropTypes.string,
