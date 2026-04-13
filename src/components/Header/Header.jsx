@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import '../styles/default.css';
 import '../styles/Header.css';
 
@@ -17,4 +18,7 @@ function Header({ setRestaurantModal }) {
   );
 }
 
+Header.propTypes = {
+  setRestaurantModal: PropTypes.func.isRequired,
+};
 export default Header;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import '../styles/default.css';
 import '../styles/CategoryFilter.css';
 
@@ -23,5 +24,10 @@ function CategoryFilter({ category, setCategory }) {
     </section>
   );
 }
+
+CategoryFilter.propTypes = {
+  category: PropTypes.string.isRequired,
+  setCategory: PropTypes.func.isRequired,
+};
 
 export default CategoryFilter;

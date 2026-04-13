@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import '../styles/default.css';
 import '../styles/RestaurantDetailModal.css';
 
@@ -6,7 +7,14 @@ function RestaurantDetailModal({ detailModal, setDetailModal, selectedRestaurant
 
   return (
     <div className="modal modal--open">
-      <div className="modal-backdrop" onClick={() => setDetailModal(false)} />
+      <div
+        role="button"
+        tabIndex={0}
+        className="modal-backdrop"
+        aria-label="모달 닫기"
+        onKeyDown={() => setDetailModal(false)}
+        onClick={() => setDetailModal(false)}
+      />
       <div className="modal-container">
         <h2 className="modal-title text-title">{selectedRestaurant.name}</h2>
         <div className="restaurant-info">
@@ -25,5 +33,12 @@ function RestaurantDetailModal({ detailModal, setDetailModal, selectedRestaurant
     </div>
   );
 }
-
+RestaurantDetailModal.propTypes = {
+  detailModal: PropTypes.bool.isRequired,
+  setDetailModal: PropTypes.func.isRequired,
+  selectedRestaurant: PropTypes.shape({
+    name: PropTypes.string,
+    description: PropTypes.string,
+  }).isRequired,
+};
 export default RestaurantDetailModal;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import '../styles/default.css';
 import '../styles/AddRestaurantModal.css';
 
@@ -15,7 +16,7 @@ function AddRestaurantModal({ setRestaurantModal, restaurantModal }) {
             <label htmlFor="category" className="text-caption">
               카테고리
             </label>
-            <select name="category" id="category" required>
+            <select id="category" name="category" required>
               <option value="">선택해 주세요</option>
               <option value="한식">한식</option>
               <option value="중식">중식</option>
@@ -55,5 +56,8 @@ function AddRestaurantModal({ setRestaurantModal, restaurantModal }) {
     </div>
   );
 }
-
+AddRestaurantModal.propTypes = {
+  setRestaurantModal: PropTypes.func.isRequired,
+  restaurantModal: PropTypes.bool.isRequired,
+};
 export default AddRestaurantModal;

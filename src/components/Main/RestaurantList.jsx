@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import '../styles/default.css';
 import '../styles/RestaurantList.css';
 
@@ -15,11 +16,15 @@ function RestaurantList({ filteredRestaurants, handleRestaurantDetailId }) {
     <section className="restaurant-list-container">
       <ul className="restaurant-list">
         {filteredRestaurants.map((r) => (
-          <li
+          <div
             key={r.id}
+            role="button"
+            tabIndex={0}
+            aria-label="상세보기"
             onClick={() => {
               handleRestaurantDetailId(r);
             }}
+            onKeyDown={() => handleRestaurantDetailId(r)}
             className="restaurant"
           >
             <div className="restaurant__category">
@@ -29,11 +34,23 @@ function RestaurantList({ filteredRestaurants, handleRestaurantDetailId }) {
               <h3 className="restaurant__name text-subtitle">{r.name}</h3>
               <p className="restaurant__description text-body">{r.description}</p>
             </div>
-          </li>
+          </div>
         ))}
       </ul>
     </section>
   );
 }
+
+RestaurantList.propTypes = {
+  filteredRestaurants: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      category: PropTypes.string,
+      description: PropTypes.string,
+    }),
+  ).isRequired,
+  handleRestaurantDetailId: PropTypes.func.isRequired,
+};
 
 export default RestaurantList;
