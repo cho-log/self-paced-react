@@ -2,13 +2,20 @@ import PropTypes from 'prop-types';
 import '../styles/default.css';
 import '../styles/RestaurantList.css';
 
+import korean from '../../../templates/category-korean.png';
+import chinese from '../../../templates/category-chinese.png';
+import japanese from '../../../templates/category-japanese.png';
+import western from '../../../templates/category-western.png';
+import asian from '../../../templates/category-asian.png';
+import etc from '../../../templates/category-etc.png';
+
 const categoryImage = {
-  한식: '../../../templates/category-korean.png',
-  중식: '../../../templates/category-chinese.png',
-  일식: '../../../templates/category-japanese.png',
-  양식: '../../../templates/category-western.png',
-  아시안: '../../../templates/category-asian.png',
-  기타: '../../../templates/category-etc.png',
+  한식: korean,
+  중식: chinese,
+  일식: japanese,
+  양식: western,
+  아시안: asian,
+  기타: etc,
 };
 
 function RestaurantList({ filteredRestaurants, handleRestaurantDetailId }) {
