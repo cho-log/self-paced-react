@@ -12,46 +12,38 @@ function App() {
   const filteredRestaurants =
     category === '전체' ? restaurants : restaurants.filter((r) => r.category === category);
 
-  const [openDetailModal, setOpenDetailModal] = useState(false);
-  const handleOpenDetailModal = () => {
-    setOpenDetailModal(true);
-  };
-  const handleCloseDetailModal = () => {
-    setOpenDetailModal(false);
-  };
+  const [detailModal, setDetailModal] = useState(false);
 
   const [filteredRestaurantDetail, setFilteredRestaurantDetail] = useState(null);
 
+  const handleRestaurantDetailId = (r) => {
+    setDetailModal(true);
+    setFilteredRestaurantDetail(r.id);
+  };
+
   const selectedRestaurant = restaurants.find((r) => r.id === filteredRestaurantDetail);
 
-  const [addRestaurantModal, setAddRestaurantModal] = useState(false);
-  const handleOpenAddRestaurantModal = () => {
-    setAddRestaurantModal(true);
-  };
-  const handleCloseAddRestaurantModal = () => {
-    setAddRestaurantModal(false);
-  };
+  const [restaurantModal, setRestaurantModal] = useState(false);
 
   return (
     <>
-      <Header handleOpenAddRestaurantModal={handleOpenAddRestaurantModal} />
+      <Header setRestaurantModal={setRestaurantModal} />
       <main>
         <CategoryFilter category={category} setCategory={setCategory} />
         <RestaurantList
-          restaurants={filteredRestaurants}
-          handleOpenDetailModal={handleOpenDetailModal}
-          handleFilteredREstaurantDetail={setFilteredRestaurantDetail}
+          filteredRestaurants={filteredRestaurants}
+          handleRestaurantDetailId={handleRestaurantDetailId}
         />
       </main>
       <aside>
         <RestaurantDetailModal
-          openDetailModal={openDetailModal}
-          handleCloseDetailModal={handleCloseDetailModal}
+          detailModal={detailModal}
+          setDetailModal={setDetailModal}
           selectedRestaurant={selectedRestaurant}
         />
         <AddRestaurantModal
-          handleCloseAddRestaurantModal={handleCloseAddRestaurantModal}
-          addRestaurantModal={addRestaurantModal}
+          setRestaurantModal={setRestaurantModal}
+          restaurantModal={restaurantModal}
         />
       </aside>
     </>

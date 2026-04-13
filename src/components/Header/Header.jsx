@@ -1,13 +1,13 @@
 import '../styles/default.css';
 import '../styles/Header.css';
 
-function Header({ handleOpenAddRestaurantModal }) {
+function Header({ setRestaurantModal }) {
   return (
     <header className="gnb">
       <h1 className="gnb__title text-title">점심 뭐 먹지</h1>
       <button
         type="button"
-        onClick={() => handleOpenAddRestaurantModal()}
+        onClick={() => setRestaurantModal(true)}
         className="gnb__button"
         aria-label="음식점추가"
       >

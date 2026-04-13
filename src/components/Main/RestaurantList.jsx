@@ -10,16 +10,15 @@ const categoryImage = {
   기타: '../../../templates/category-etc.png',
 };
 
-function RestaurantList({ restaurants, handleOpenDetailModal, handleFilteredREstaurantDetail }) {
+function RestaurantList({ filteredRestaurants, handleRestaurantDetailId }) {
   return (
     <section className="restaurant-list-container">
       <ul className="restaurant-list">
-        {restaurants.map((r) => (
+        {filteredRestaurants.map((r) => (
           <li
             key={r.id}
             onClick={() => {
-              handleOpenDetailModal();
-              handleFilteredREstaurantDetail(r.id);
+              handleRestaurantDetailId(r);
             }}
             className="restaurant"
           >
