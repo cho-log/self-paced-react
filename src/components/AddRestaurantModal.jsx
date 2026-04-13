@@ -6,7 +6,7 @@ export default function AddRestaurantModal() {
       <div className="modal-backdrop"></div>
       <div className="modal-container">
         <h2 className="modal-title text-title">새로운 음식점</h2>
-        <form>
+        <form onSubmit={(e) => e.preventDefault()}>
           <div className="form-item form-item--required">
             <label htmlFor="category" className="text-caption">
               카테고리

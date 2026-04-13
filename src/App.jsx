@@ -19,7 +19,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header category={category} />
       <main>
         <CategoryFilter category={category} onChangeCategory={setCategory} />
         <RestaurantList
