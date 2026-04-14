@@ -23,20 +23,27 @@ function App() {
     return SameCategory;
   })
 
+  const handleOpenModal = (item) => {
+    setSelectedRestaurant(item);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return ( 
     <>
       <Header />
       <main>
         <CategoryFilter category={category} setCategory={setCategory} />
         <RestaurantList restaurants={filteredRestaurants} category={category} 
-          onOpenModal={(item)=>{
-            setSelectedRestaurant(item);
-            setIsModalOpen(true)}} />
+          onOpenModal={handleOpenModal} />
       </main>
       <aside>
         {isModalOpen && <RestaurantDetailModal 
           restaurants={selectedRestaurant}
-          onCloseModal={()=>setIsModalOpen(false)}/>}
+          onCloseModal={handleCloseModal}/>}
         <AddRestaurantModal />
       </aside>
     </>
