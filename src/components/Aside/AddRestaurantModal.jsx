@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import '../styles/default.css';
 import '../styles/AddRestaurantModal.css';
+import foodCategory from '../../data/foodCategory';
 
-const foodCategory = ['한식', '중식', '일식', '양식', '아시안', '기타'];
 function AddRestaurantModal({ setRestaurantModal }) {
   return (
     <div className="modal modal--open">
