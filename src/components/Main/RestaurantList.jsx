@@ -51,7 +51,7 @@ function RestaurantList({ filteredRestaurants, handleRestaurantDetailId }) {
 RestaurantList.propTypes = {
   filteredRestaurants: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
       name: PropTypes.string,
       category: PropTypes.string,
       description: PropTypes.string,
