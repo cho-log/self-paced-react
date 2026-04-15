@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import '../styles/default.css';
 import '../styles/AddRestaurantModal.css';
 
+const foodCategory = ['한식', '중식', '일식', '양식', '아시안', '기타'];
 function AddRestaurantModal({ setRestaurantModal }) {
   return (
     <div className="modal modal--open">
@@ -15,12 +16,9 @@ function AddRestaurantModal({ setRestaurantModal }) {
             </label>
             <select id="category" name="category" required>
               <option value="">선택해 주세요</option>
-              <option value="한식">한식</option>
-              <option value="중식">중식</option>
-              <option value="일식">일식</option>
-              <option value="양식">양식</option>
-              <option value="아시안">아시안</option>
-              <option value="기타">기타</option>
+              {foodCategory.map((r) => (
+                <option value={r}>{r}</option>
+              ))}
             </select>
           </div>
 
