@@ -18,7 +18,7 @@ const categoryImage = {
   기타: etc,
 };
 
-function RestaurantList({ filteredRestaurants, handleRestaurantDetailId }) {
+function RestaurantList({ filteredRestaurants, handleClickRestaurantList }) {
   return (
     <section className="restaurant-list-container">
       <ul className="restaurant-list">
@@ -29,9 +29,9 @@ function RestaurantList({ filteredRestaurants, handleRestaurantDetailId }) {
             tabIndex={0}
             aria-label="상세보기"
             onClick={() => {
-              handleRestaurantDetailId(r);
+              handleClickRestaurantList(r);
             }}
-            onKeyDown={() => handleRestaurantDetailId(r)}
+            onKeyDown={() => handleClickRestaurantList(r)}
             className="restaurant"
           >
             <div className="restaurant__category">
@@ -57,7 +57,7 @@ RestaurantList.propTypes = {
       description: PropTypes.string,
     }),
   ).isRequired,
-  handleRestaurantDetailId: PropTypes.func.isRequired,
+  handleClickRestaurantList: PropTypes.func.isRequired,
 };
 
 export default RestaurantList;

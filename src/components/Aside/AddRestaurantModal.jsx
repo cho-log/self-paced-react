@@ -3,7 +3,7 @@ import '../styles/default.css';
 import '../styles/AddRestaurantModal.css';
 import foodCategory from '../../data/foodCategory';
 
-function AddRestaurantModal({ setRestaurantModal }) {
+function AddRestaurantModal({ setAddModal }) {
   return (
     <div className="modal modal--open">
       <div className="modal-backdrop" />
@@ -40,7 +40,7 @@ function AddRestaurantModal({ setRestaurantModal }) {
           <div className="button-container">
             <button
               type="button"
-              onClick={() => setRestaurantModal(false)}
+              onClick={() => setAddModal(false)}
               className="button button--primary text-caption"
             >
               추가하기
@@ -52,6 +52,6 @@ function AddRestaurantModal({ setRestaurantModal }) {
   );
 }
 AddRestaurantModal.propTypes = {
-  setRestaurantModal: PropTypes.func.isRequired,
+  setAddModal: PropTypes.func.isRequired,
 };
 export default AddRestaurantModal;
