@@ -51,8 +51,9 @@ const restaurants = [
 
 function App() {
 	const [category, setCategory] = useState('전체');
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
 	const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
 	const filteredRestaurants =
 		category === '전체'
@@ -61,19 +62,27 @@ function App() {
 					restaurant => restaurant.category === category,
 				);
 
-	const handleOpenModal = restaurant => {
+	const handleOpenDetailModal = restaurant => {
 		setSelectedRestaurant(restaurant);
-		setIsModalOpen(true);
+		setIsDetailModalOpen(true);
 	};
 
-	const handleCloseModal = () => {
-		setIsModalOpen(false);
+	const handleCloseDetailModal = () => {
+		setIsDetailModalOpen(false);
 		setSelectedRestaurant(null);
+	};
+
+	const handleOpenAddModal = () => {
+		setIsAddModalOpen(true);
+	};
+
+	const handleCloseAddModal = () => {
+		setIsAddModalOpen(false);
 	};
 
 	return (
 		<>
-			<Header />
+			<Header onOpenAddModal={handleOpenAddModal} />
 			<main>
 				<CategoryFilter
 					category={category}
@@ -81,17 +90,21 @@ function App() {
 				/>
 				<RestaurantList
 					restaurants={filteredRestaurants}
-					onClickRestaurant={handleOpenModal}
+					onClickRestaurant={handleOpenDetailModal}
 				/>
 			</main>
 			<aside>
-				{isModalOpen && (
+				{isDetailModalOpen && (
 					<RestaurantDetailModal
 						restaurant={selectedRestaurant}
-						onClose={handleCloseModal}
+						onClose={handleCloseDetailModal}
 					/>
 				)}
-				{/* <AddRestaurantModal /> */}
+				{isAddModalOpen && (
+					<AddRestaurantModal
+						onClose={handleCloseAddModal}
+					/>
+				)}
 			</aside>
 		</>
 	);
