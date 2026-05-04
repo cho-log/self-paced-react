@@ -9,42 +9,47 @@ import AddRestaurantModal from "./components/AddRestaurantModal/AddRestaurantMod
 
 function App() {
 
-  const [category, setCategory]=useState("전체");
+  const [restaurants, setRestaurants] = useState(INIT_RESTAURANT);
 
-  const [isModalOpen, setIsModalOpen]=useState(false);
+  const [category, setCategory]=useState("전체");
+  
+  const [isDetailModalOpen, setIsDetailModalOpen]=useState(false);
+
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
-  const filteredRestaurants=INIT_RESTAURANT.filter((restaurant)=>{
+  const filteredRestaurants=restaurants.filter((restaurant)=>{
     if(category==="전체"){
       return true;
     }
     const SameCategory=restaurant.category===category;
     return SameCategory;
-  })
+  });
+
+  const handleAddRestaurant=(newRestaurant)=>{
+    setRestaurants((prev)=>[...prev, newRestaurant]);
+  };
 
   const handleOpenModal = (item) => {
     setSelectedRestaurant(item);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+    setIsDetailModalOpen(true);
   };
 
   return ( 
     <>
-      <Header />
+      <Header onOpenAdd={()=>setIsAddModalOpen(true)}/>
       <main>
         <CategoryFilter category={category} setCategory={setCategory} />
         <RestaurantList restaurants={filteredRestaurants} category={category} 
           onOpenModal={handleOpenModal} />
       </main>
       <aside>
-        {isModalOpen && <RestaurantDetailModal 
+        {isDetailModalOpen && <RestaurantDetailModal 
           restaurants={selectedRestaurant}
-          onCloseModal={handleCloseModal}/>}
-        <AddRestaurantModal />
+          onCloseModal={()=>setIsDetailModalOpen(false)}/>}
+        {isAddModalOpen && <AddRestaurantModal
+          onClose={()=>setIsAddModalOpen(false)} onAdd={handleAddRestaurant} />}
       </aside>
     </>
   );
