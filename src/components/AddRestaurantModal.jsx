@@ -1,7 +1,6 @@
 export default function AddRestaurantModal() {
   return (
-    // <div className="modal modal--open"> --- IGNORE ---
-    // 개발 단계에서는 모달이 닫흰 상태이므로 modal--open 클래스를 임시제거
+    // <div className="modal modal--open">
     <div className="modal">
       <div className="modal-backdrop"></div>
       <div className="modal-container">
