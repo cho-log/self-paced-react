@@ -1,10 +1,23 @@
-export default function AddRestaurantModal({ onClose }) {
+export default function AddRestaurantModal({ onAddRestaurant, onClose }) {
   return (
     <div className="modal modal--open">
       <div className="modal-backdrop" onClick={onClose}></div>
       <div className="modal-container">
         <h2 className="modal-title text-title">새로운 음식점</h2>
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const restaurant = {
+              id: Date.now(),
+              category: formData.get("category"),
+              name: formData.get("name"),
+              description: formData.get("description"),
+            };
+            onAddRestaurant(restaurant);
+            onClose();
+          }}
+        >
           <div className="form-item form-item--required">
             <label htmlFor="category" className="text-caption">
               카테고리
@@ -45,7 +58,7 @@ export default function AddRestaurantModal({ onClose }) {
           <div className="button-container">
             <button
               className="button button--primary text-caption"
-              onClick={onClose}
+              type="submit"
             >
               추가하기
             </button>
