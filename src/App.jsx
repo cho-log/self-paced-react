@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Header from './Header.jsx';
 import CategoryFilter from './CategoryFilter.jsx';
@@ -56,6 +56,20 @@ function App() {
 	const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
+	useEffect(() => {
+		const fetChRestaurants = async () => {
+			try {
+				const response = await fetch("http://localhost:3000/restaurants");
+				const data = await response.json();
+				setRestaurants(data);
+			} catch (error) {
+				console.error("음식점 데이터를 불러오는 중 오류가 발생했습니다:", error);
+			}
+		};
+
+		fetChRestaurants();
+	}, []);
+
 	const filteredRestaurants =
 		category === '전체'
 			? restaurants
@@ -81,10 +95,28 @@ function App() {
 		setIsAddModalOpen(false);
 	};
 
-	const handleAddRestaurant = restaurant => {
-		setRestaurants([...restaurants, restaurant]);
-	};
+	const handleAddRestaurant = async newRestaurant => {
+		try {
+			const response = await fetch("http://localhost:3000/restaurants", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(newRestaurant),
+			});
 
+			if (!response.ok) {
+				throw new Error("음식점 추가에 실패했습니다.");
+			}
+
+			const createdRestaurant = await response.json();
+			setRestaurants(prevRestaurants => [...prevRestaurants, createdRestaurant]);
+			handleCloseAddModal();
+		} catch (error) {
+			console.error("음식점 추가 중 오류가 발생했습니다:", error);
+		}
+	};
+	
 	return (
 		<>
 			<Header onOpenAddModal={handleOpenAddModal} />
