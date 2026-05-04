@@ -13,6 +13,8 @@ function App() {
   const [category, setCategory] = useState("전체");
   const [isDetailModalOpen, setIsModalOpen] = useState(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const [restaurants, setRestaurants] = useState(restaurants);
+
   const filteredRestaurants =
     category === "전체"
       ? restaurants
@@ -39,7 +41,10 @@ function App() {
           />
         ) : null}
         {isAddModalOpen ? (
-          <AddRestaurantModal onClose={() => setIsAddModalOpen(false)} />
+          <AddRestaurantModal
+            restaurants={restaurants}
+            onClose={() => setIsAddModalOpen(false)}
+          />
         ) : null}
       </aside>
     </>
