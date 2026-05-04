@@ -7,7 +7,7 @@ import RestaurantList from './RestaurantList.jsx';
 import RestaurantDetailModal from './RestaurantDetailModal.jsx';
 import AddRestaurantModal from './AddRestaurantModal.jsx';
 
-const restaurants = [
+const initialRestaurants = [
 	{
 		id: 'a01',
 		name: '피양콩할마니',
@@ -50,6 +50,7 @@ const restaurants = [
 ];
 
 function App() {
+	const [restaurants, setRestaurants] = useState(initialRestaurants);
 	const [category, setCategory] = useState('전체');
 	const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
 	const [selectedRestaurant, setSelectedRestaurant] = useState(null);
@@ -80,6 +81,10 @@ function App() {
 		setIsAddModalOpen(false);
 	};
 
+	const handleAddRestaurant = restaurant => {
+		setRestaurants([...restaurants, restaurant]);
+	};
+
 	return (
 		<>
 			<Header onOpenAddModal={handleOpenAddModal} />
@@ -103,6 +108,7 @@ function App() {
 				{isAddModalOpen && (
 					<AddRestaurantModal
 						onClose={handleCloseAddModal}
+						onAddRestaurant={handleAddRestaurant}
 					/>
 				)}
 			</aside>

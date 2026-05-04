@@ -1,10 +1,35 @@
-export default function AddRestaurantModal() {
+export default function AddRestaurantModal({ onClose, onAddRestaurant }) {
+	const handleAddRestaurant = e => {
+		e.preventDefault();
+		const form = e.target;
+		const category = form.category.value;
+		const name = form.name.value;
+		const description = form.description.value;
+
+		if (!category || !name) {
+			alert('카테고리와 이름은 필수 입력 항목입니다.');
+			return;
+		}
+
+		const newRestaurant = {
+			id: `a${Date.now()}`,
+			category,
+			name,
+			description,
+		};
+
+		onAddRestaurant(newRestaurant);
+		form.reset();
+
+		onClose();
+	};
+
 	return (
 		<div className="modal modal--open">
 			<div className="modal-backdrop"></div>
 			<div className="modal-container">
 				<h2 className="modal-title text-title">새로운 음식점</h2>
-				<form>
+				<form onSubmit={handleAddRestaurant}>
 					<div className="form-item form-item--required">
 						<label htmlFor="category" className="text-caption">
 							카테고리
@@ -35,15 +60,16 @@ export default function AddRestaurantModal() {
 							name="description"
 							id="description"
 							cols="30"
-							rows="5"
-						></textarea>
+							rows="5"></textarea>
 						<span className="help-text text-caption">
 							메뉴 등 추가 정보를 입력해 주세요.
 						</span>
 					</div>
 
 					<div className="button-container">
-						<button className="button button--primary text-caption">
+						<button
+							className="button button--primary text-caption"
+							type="submit">
 							추가하기
 						</button>
 					</div>
