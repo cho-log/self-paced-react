@@ -38,7 +38,9 @@ function App() {
             onClose={() => setIsModalOpen(false)}
           />
         ) : null}
-        {isAddModalOpen ? <AddRestaurantModal /> : null}
+        {isAddModalOpen ? (
+          <AddRestaurantModal onClose={() => setIsAddModalOpen(false)} />
+        ) : null}
       </aside>
     </>
   );
