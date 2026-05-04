@@ -8,7 +8,7 @@ import AddRestaurantModal from "./components/AddRestaurantModal";
 // 5단계 미션 때문에 상수파일 의존성 삭제.
 // import { restaurants as initialRestaurants } from "./constants/restaurants";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 const BASE_URL = "http://localhost:3000/restaurants";
 
 function App() {
