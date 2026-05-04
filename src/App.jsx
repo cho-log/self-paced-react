@@ -18,6 +18,10 @@ function App() {
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [restaurants, setRestaurants] = useState([]);
 
+  useEffect(() => {
+    fetchRestaurants();
+  }, []); //초기만 불러오도록 빈 배열
+
   const fetchRestaurants = async () => {
     try {
       const response = await fetch(BASE_URL);
@@ -28,8 +32,20 @@ function App() {
     }
   };
 
-  const addRestaurant = (restaurant) => {
-    setRestaurants((prev) => [...prev, restaurant]);
+  const addRestaurant = async (restaurant) => {
+    try {
+      const response = await fetch(BASE_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(restaurant),
+      });
+      const newRestaurant = await response.json();
+      setRestaurants((prev) => [...prev, newRestaurant]);
+    } catch (error) {
+      console.error("음식점을 추가하는 중 오류가 발생했습니다.", error);
+    }
   };
 
   const filteredRestaurants =
