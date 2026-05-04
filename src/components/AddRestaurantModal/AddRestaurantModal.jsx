@@ -1,37 +1,76 @@
+import { useState } from "react";
 import { CATEGORY_LIST } from "../../RestaurantData"
-import "./AddRestaurantModal.css"
+import Modal from "../Modal/Modal";
 
-export default function AddRestaurantModal(){
+export default function AddRestaurantModal({onClose,onAdd}){
+
+    const [form,setForm]=useState({
+        category:"",
+        name:"",
+        description:""
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm((prev) => ({
+            ...prev,
+            [name]: value 
+        }));
+    };
+
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        onAdd({
+            ...form,
+            id:Date.now()
+        });
+        onClose();
+    };
+
     return(
-        <div className="modal">
-            <div className="modal-backdrop"></div>
-            <div className="modal-container">
-                <h2 className="modal-title text-title">새로운 음식점</h2>
-                <form>
+        <Modal title="새로운 음식점" onClose={onClose}>
+            <form onSubmit={handleSubmit}>
 
                 <div className="form-item form-item--required">
                     <label htmlFor="category text-caption">카테고리</label>
-                    <select name="category" id="category" required>
+                    <select 
+                        name="category" 
+                        id="category" 
+                        value={form.category} 
+                        onChange={handleChange}
+                        required>
+                    
                     <option value="">선택해 주세요</option>
                     {CATEGORY_LIST.filter(category=>category!=="전체").map((category)=>(
                         <option key={category}value={category}>
                             {category}
                         </option>
                     ))}
-                    
                     </select>
                 </div>
 
 
                 <div className="form-item form-item--required">
                     <label htmlFor="name text-caption">이름</label>
-                    <input type="text" name="name" id="name" required/>
+                    <input 
+                        type="text" 
+                        name="name" 
+                        id="name" 
+                        value={form.name} 
+                        onChange={handleChange}
+                        required/>
                 </div>
 
 
                 <div className="form-item">
                     <label htmlFor="description text-caption">설명</label>
-                    <textarea name="description" id="description" cols="30" rows="5"></textarea>
+                    <textarea 
+                        name="description" 
+                        id="description"
+                        value={form.description} 
+                        onChange={handleChange}
+                        cols="30" 
+                        rows="5"></textarea>
                     <span className="help-text text-caption">메뉴 등 추가 정보를 입력해 주세요.</span>
                 </div>
 
@@ -39,8 +78,7 @@ export default function AddRestaurantModal(){
                 <div className="button-container">
                     <button className="button button--primary text-caption">추가하기</button>
                 </div>
-                </form>
-            </div>
-        </div>
+            </form>
+        </Modal>
     )
 }
