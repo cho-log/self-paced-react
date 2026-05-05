@@ -1,13 +1,13 @@
 
 import "./Header.css"
 
-export default function Header({onOpenAdd}){
+export default function Header({setIsAddModalOpen}){
     return(
         <header className="gnb">
             <h1 className="gnb__title text-title">점심 뭐 먹지</h1>
-            <button type="button" className="gnb__button" onClick={onOpenAdd} aria-label="음식점 추가">
+            <button type="button" className="gnb__button" onClick={setIsAddModalOpen} aria-label="음식점 추가">
             <img src="/add-button.png" alt="음식점 추가" />
             </button>
-    </header>
+        </header>
     )
 }
