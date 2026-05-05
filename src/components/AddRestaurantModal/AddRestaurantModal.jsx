@@ -29,7 +29,7 @@ export default function AddRestaurantModal({setIsAddModalOpen,handleAddRestauran
     };
 
     return(
-        <Modal title="새로운 음식점" onClose={setIsAddModalOpen()}>
+        <Modal title="새로운 음식점" onClose={setIsAddModalOpen}>
             <form onSubmit={handleSubmit}>
 
                 <div className="form-item form-item--required">

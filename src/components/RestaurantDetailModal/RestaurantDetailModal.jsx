@@ -1,9 +1,9 @@
-
-export default function RestaurantDetailModal({restaurants, onCloseModal}){
+export default function RestaurantDetailModal({restaurants, setIsDetailModalOpen}){
     return(
+
         <div className="modal modal--open">
             <div className="modal-backdrop" 
-                onClick={onCloseModal}></div>
+                onClick={setIsDetailModalOpen}></div>
             <div className="modal-container">
                 <h2 className="modal-title text-title">{restaurants.name}</h2>
                 <div className="restaurant-info">
@@ -11,9 +11,9 @@ export default function RestaurantDetailModal({restaurants, onCloseModal}){
                 </div>
                 <div className="button-container">
                 <button className="button button--primary text-caption"
-                    onClick={onCloseModal}>닫기</button>
+                    onClick={setIsDetailModalOpen}>닫기</button>
                 </div>
             </div>
         </div>
-    )
+    );
 }
