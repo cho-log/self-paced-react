@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./AddRestaurantModal.css";
 import { CATEGORY_LIST } from "../../RestaurantData"
 import Modal from "../Modal/Modal";
 
@@ -32,7 +33,7 @@ export default function AddRestaurantModal({onClose,onAdd}){
             <form onSubmit={handleSubmit}>
 
                 <div className="form-item form-item--required">
-                    <label htmlFor="category text-caption">카테고리</label>
+                    <label htmlFor="category" className="text-caption">카테고리</label>
                     <select 
                         name="category" 
                         id="category" 
@@ -51,7 +52,7 @@ export default function AddRestaurantModal({onClose,onAdd}){
 
 
                 <div className="form-item form-item--required">
-                    <label htmlFor="name text-caption">이름</label>
+                    <label htmlFor="name" className= "text-caption">이름</label>
                     <input 
                         type="text" 
                         name="name" 
@@ -63,7 +64,7 @@ export default function AddRestaurantModal({onClose,onAdd}){
 
 
                 <div className="form-item">
-                    <label htmlFor="description text-caption">설명</label>
+                    <label htmlFor="description" className= "text-caption">설명</label>
                     <textarea 
                         name="description" 
                         id="description"
