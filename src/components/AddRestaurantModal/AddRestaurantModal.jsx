@@ -3,7 +3,7 @@ import "./AddRestaurantModal.css";
 import { CATEGORY_LIST } from "../../RestaurantData"
 import Modal from "../Modal/Modal";
 
-export default function AddRestaurantModal({onClose,onAdd}){
+export default function AddRestaurantModal({setIsAddModalOpen,handleAddRestaurant}){
 
     const [form,setForm]=useState({
         category:"",
@@ -21,15 +21,15 @@ export default function AddRestaurantModal({onClose,onAdd}){
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        onAdd({
+        handleAddRestaurant({
             ...form,
             id:Date.now()
         });
-        onClose();
+        setIsAddModalOpen();
     };
 
     return(
-        <Modal title="새로운 음식점" onClose={onClose}>
+        <Modal title="새로운 음식점" onClose={setIsAddModalOpen()}>
             <form onSubmit={handleSubmit}>
 
                 <div className="form-item form-item--required">
