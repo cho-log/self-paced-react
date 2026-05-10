@@ -31,15 +31,14 @@ function App() {
 
   const addRestaurant = async (restaurant) => {
     try {
-      const response = await fetch(BASE_URL, {
+      await fetch(BASE_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(restaurant),
       });
-      const newRestaurant = await response.json();
-      setRestaurants((prev) => [...prev, newRestaurant]);
+      await fetchRestaurants();
     } catch (error) {
       console.error("음식점을 추가하는 중 오류가 발생했습니다.", error);
     }
