@@ -9,7 +9,7 @@ export default function AddRestaurantModal({ onAddRestaurant, onClose }) {
             e.preventDefault();
             const formData = new FormData(e.target);
             const restaurant = {
-              id: Date.now(),
+              id: crypto.randomUUID(),
               category: formData.get("category"),
               name: formData.get("name"),
               description: formData.get("description"),
