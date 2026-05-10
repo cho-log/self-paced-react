@@ -26,7 +26,7 @@ export default function AddRestaurantModal({ onClose, onAddRestaurant }) {
 
 	return (
 		<div className="modal modal--open">
-			<div className="modal-backdrop"></div>
+			<div className="modal-backdrop" onClick={onClose}></div>
 			<div className="modal-container">
 				<h2 className="modal-title text-title">새로운 음식점</h2>
 				<form onSubmit={handleAddRestaurant}>
