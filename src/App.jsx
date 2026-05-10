@@ -71,7 +71,6 @@ function App() {
         ) : null}
         {isAddModalOpen ? (
           <AddRestaurantModal
-            restaurants={restaurants}
             onAddRestaurant={addRestaurant}
             onClose={() => setIsAddModalOpen(false)}
           />
