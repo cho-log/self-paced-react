@@ -45,13 +45,11 @@ export default function AddRestaurantModal({
             required
           >
             <option value="">선택해 주세요</option>
-            {CATEGORY_LIST.filter((category) => category !== "전체").map(
-              (category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ),
-            )}
+            {CATEGORY_LIST.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
           </select>
         </div>
 
