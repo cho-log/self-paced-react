@@ -25,11 +25,11 @@ export default function AddRestaurantModal({ onAddRestaurant, onClose }) {
               카테고리
             </label>
             <select name="category" id="category" required>
-              {ALL_CATEGORIES.map((c) => {
+              {ALL_CATEGORIES.map((c) => (
                 <option key={c} value={c}>
                   {c}
-                </option>;
-              })}
+                </option>
+              ))}
             </select>
           </div>
 
