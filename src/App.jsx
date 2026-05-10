@@ -42,8 +42,18 @@ function App() {
     return SameCategory;
   });
 
-  const handleAddRestaurant = (newRestaurant) => {
-    setRestaurants((prev) => [...prev, newRestaurant]);
+  const handleAddRestaurant = async (newRestaurant) => {
+    const res = await fetch(BASE_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newRestaurant),
+    });
+
+    const data = await res.json();
+
+    setRestaurants((prev) => [...prev, data]);
+
+    setIsAddModalOpen(false);
   };
 
   const handleOpenModal = (item) => {
