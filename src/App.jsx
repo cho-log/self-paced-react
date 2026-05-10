@@ -65,7 +65,7 @@ function App() {
           restaurants={selectedRestaurant}
           setIsDetailModalOpen={()=>setIsDetailModalOpen(false)}/>}
         {isAddModalOpen && <AddRestaurantModal
-          setIsAddModalOpen={()=>setIsAddModalOpen(false)} handleAddRestaurant={handleAddRestaurant} />}
+          setIsAddModalOpen={()=>setIsAddModalOpen(false)} onAdd={handleAddRestaurant} />}
       </aside>
     </>
   );
