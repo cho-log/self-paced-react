@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 
-import Header from './components/Header/Header';
+import Header from "./components/Header/Header";
 import CategoryFilter from "./components/CategoryFilter/CategoryFilter";
 import RestaurantList from "./components/RestaurantList/RestaurantList";
 import RestaurantDetailModal from "./components/RestaurantDetailModal/RestaurantDetailModal";
@@ -10,12 +10,11 @@ import AddRestaurantModal from "./components/AddRestaurantModal/AddRestaurantMod
 const BASE_URL = "http://localhost:3000/restaurants";
 
 function App() {
-
   const [restaurants, setRestaurants] = useState([]);
 
-  const [category, setCategory]=useState("전체");
-  
-  const [isDetailModalOpen, setIsDetailModalOpen]=useState(false);
+  const [category, setCategory] = useState("전체");
+
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
@@ -35,16 +34,16 @@ function App() {
     fetchRestaurants();
   }, []);
 
-  const filteredRestaurants=restaurants.filter((restaurant)=>{
-    if(category==="전체"){
+  const filteredRestaurants = restaurants.filter((restaurant) => {
+    if (category === "전체") {
       return true;
     }
-    const SameCategory=restaurant.category===category;
+    const SameCategory = restaurant.category === category;
     return SameCategory;
   });
 
-  const handleAddRestaurant=(newRestaurant)=>{
-    setRestaurants((prev)=>[...prev, newRestaurant]);
+  const handleAddRestaurant = (newRestaurant) => {
+    setRestaurants((prev) => [...prev, newRestaurant]);
   };
 
   const handleOpenModal = (item) => {
@@ -52,20 +51,30 @@ function App() {
     setIsDetailModalOpen(true);
   };
 
-  return ( 
+  return (
     <>
-      <Header setIsAddModalOpen={()=>setIsAddModalOpen(true)}/>
+      <Header setIsAddModalOpen={() => setIsAddModalOpen(true)} />
       <main>
         <CategoryFilter category={category} setCategory={setCategory} />
-        <RestaurantList restaurants={filteredRestaurants} category={category} 
-          onOpenModal={handleOpenModal} />
+        <RestaurantList
+          restaurants={filteredRestaurants}
+          category={category}
+          onOpenModal={handleOpenModal}
+        />
       </main>
       <aside>
-        {isDetailModalOpen && <RestaurantDetailModal 
-          restaurants={selectedRestaurant}
-          setIsDetailModalOpen={()=>setIsDetailModalOpen(false)}/>}
-        {isAddModalOpen && <AddRestaurantModal
-          setIsAddModalOpen={()=>setIsAddModalOpen(false)} onAdd={handleAddRestaurant} />}
+        {isDetailModalOpen && (
+          <RestaurantDetailModal
+            restaurants={selectedRestaurant}
+            onClose={() => setIsDetailModalOpen(false)}
+          />
+        )}
+        {isAddModalOpen && (
+          <AddRestaurantModal
+            onClose={() => setIsAddModalOpen(false)}
+            onAdd={handleAddRestaurant}
+          />
+        )}
       </aside>
     </>
   );
