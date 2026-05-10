@@ -57,7 +57,7 @@ function App() {
 	const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
 	useEffect(() => {
-		const fetChRestaurants = async () => {
+		const fetchRestaurants = async () => {
 			try {
 				const response = await fetch("http://localhost:3000/restaurants");
 				const data = await response.json();
@@ -67,7 +67,7 @@ function App() {
 			}
 		};
 
-		fetChRestaurants();
+		fetchRestaurants();
 	}, []);
 
 	const filteredRestaurants =
