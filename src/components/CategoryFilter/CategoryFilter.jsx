@@ -1,27 +1,26 @@
+import "./CategoryFilter.css";
 
-import "./CategoryFilter.css"
+import { CATEGORY_LIST } from "../../RestaurantData";
 
-const CATEGORYS=["전체", "한식", "중식", "일식", "양식", "아시안", "기타"];
+export default function CategoryFilter({ category, setCategory }) {
+  const filterCategories = ["전체", ...CATEGORY_LIST];
 
-export default function CategoryFilter({ category, setCategory }){
-    return(
-        <section className="restaurant-filter-container">
-            <select 
-                name="category" 
-                id="category-filter" 
-                className="restaurant-filter"
-                aria-label="음식점 카테고리 필터" 
-                value={category}
-                onChange={(e)=>setCategory(e.target.value)}
-            >
-                {CATEGORYS.map((item)=>(
-                    <option 
-                        key={item} value={item}
-                    >
-                        {item}
-                    </option>
-                ))}
-            </select>
-        </section>
-    )
+  return (
+    <section className="restaurant-filter-container">
+      <select
+        name="category"
+        id="category-filter"
+        className="restaurant-filter"
+        aria-label="음식점 카테고리 필터"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      >
+        {filterCategories.map((item) => (
+          <option key={item} value={item}>
+            {item}
+          </option>
+        ))}
+      </select>
+    </section>
+  );
 }
