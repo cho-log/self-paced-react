@@ -5,16 +5,13 @@ import RestaurantList from "./components/RestaurantList";
 import RestaurantDetailModal from "./components/RestaurantDetailModal";
 import AddRestaurantModal from "./components/AddRestaurantModal";
 
-// 5단계 미션 때문에 상수파일 의존성 삭제.
-// import { restaurants as initialRestaurants } from "./constants/restaurants";
-
 import { useState, useEffect } from "react";
 const BASE_URL = "http://localhost:3000/restaurants";
 
 function App() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [category, setCategory] = useState("전체");
-  const [isDetailModalOpen, setIsModalOpen] = useState(false);
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [restaurants, setRestaurants] = useState([]);
 
@@ -62,7 +59,7 @@ function App() {
           restaurants={filteredRestaurants}
           onRestaurantClick={(restaurant) => {
             setSelectedRestaurant(restaurant);
-            setIsModalOpen(true);
+            setIsDetailModalOpen(true);
           }}
         />
       </main>
@@ -70,7 +67,7 @@ function App() {
         {isDetailModalOpen ? (
           <RestaurantDetailModal
             restaurant={selectedRestaurant}
-            onClose={() => setIsModalOpen(false)}
+            onClose={() => setIsDetailModalOpen(false)}
           />
         ) : null}
         {isAddModalOpen ? (
