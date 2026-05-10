@@ -111,15 +111,6 @@ body {
   padding: 8px;
 }
 
-/* 음식점 목록 */
-.restaurant-list-container {
-  display: flex;
-  flex-direction: column;
-
-  padding: 0 16px;
-  margin: 16px 0;
-}
-
 .restaurant {
   display: flex;
   align-items: flex-start;
