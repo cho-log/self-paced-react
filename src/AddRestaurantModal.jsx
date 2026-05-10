@@ -1,5 +1,5 @@
 export default function AddRestaurantModal({ onClose, onAddRestaurant }) {
-	const handleAddRestaurant = e => {
+	const handleAddRestaurant = (e) => {
 		e.preventDefault();
 		const form = e.target;
 		const category = form.category.value;
