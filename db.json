@@ -41,6 +41,24 @@
       "category": "한식",
       "name": "한식한식한식한식",
       "description": "한식이다한식이다한식이다한식이다한식이다한식이다"
+    },
+    {
+      "id": "5Y-T7h_ObvM",
+      "category": "일식",
+      "name": "니혼식사",
+      "description": "니혼"
+    },
+    {
+      "id": "1eRglS7bbg4",
+      "category": "한식",
+      "name": "비빔비빔비미미미",
+      "description": ""
+    },
+    {
+      "id": "M0wmzadrn60",
+      "category": "기타",
+      "name": "ㄱ기타이기티ㅏ",
+      "description": "기타\n"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
