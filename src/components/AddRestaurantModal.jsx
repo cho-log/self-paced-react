@@ -8,7 +8,7 @@ export default function AddRestaurantModal({ onAddRestaurant, onClose }) {
       <div className={styles.container}>
         <h2 className={`${styles.title} text-title`}>새로운 음식점</h2>
         <form
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
             const formData = new FormData(e.target);
             const restaurant = {
@@ -17,7 +17,7 @@ export default function AddRestaurantModal({ onAddRestaurant, onClose }) {
               name: formData.get("name"),
               description: formData.get("description"),
             };
-            onAddRestaurant(restaurant);
+            await onAddRestaurant(restaurant);
             onClose();
           }}
         >
