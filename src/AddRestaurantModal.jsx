@@ -1,7 +1,14 @@
 import { useState } from 'react';
 
-export default function AddRestaurantModal({ onClose, onAddRestaurant }) {
+export default function AddRestaurantModal({
+	onAddRestaurant,
+	setIsAddModalOpen,
+}) {
 	const [isSubmitting, setIsSubmitting] = useState(false);
+
+	const handleCloseModal = () => {
+		setIsAddModalOpen(false);
+	};
 
 	const handleAddRestaurant = async e => {
 		e.preventDefault();
@@ -29,7 +36,7 @@ export default function AddRestaurantModal({ onClose, onAddRestaurant }) {
 
 			if (isAdded) {
 				form.reset();
-				onClose();
+				handleCloseModal();
 			}
 		} finally {
 			setIsSubmitting(false);
@@ -38,7 +45,7 @@ export default function AddRestaurantModal({ onClose, onAddRestaurant }) {
 
 	return (
 		<div className="modal modal--open">
-			<div className="modal-backdrop" onClick={onClose}></div>
+			<div className="modal-backdrop" onClick={handleCloseModal}></div>
 			<div className="modal-container">
 				<h2 className="modal-title text-title">새로운 음식점</h2>
 				<form onSubmit={handleAddRestaurant}>

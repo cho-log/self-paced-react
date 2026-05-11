@@ -7,7 +7,11 @@ const CATEGORY_ICON_MAP = {
 	기타: '/category-etc.png',
 };
 
-export default function RestaurantList({ restaurants, onClickRestaurant }) {
+export default function RestaurantList({ restaurants, setSelectedRestaurant }) {
+	const handleClickRestaurant = restaurant => {
+		setSelectedRestaurant(restaurant);
+	};
+
 	return (
 		<section className="restaurant-list-container">
 			<ul className="restaurant-list">
@@ -15,7 +19,7 @@ export default function RestaurantList({ restaurants, onClickRestaurant }) {
 					<li
 						key={restaurant.id}
 						className="restaurant"
-						onClick={() => onClickRestaurant(restaurant)}
+						onClick={() => handleClickRestaurant(restaurant)}
 						role="button"
 						tabIndex={0}
 					>
