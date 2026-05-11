@@ -17,11 +17,6 @@ export default function AddRestaurantModal({
 		const name = form.name.value;
 		const description = form.description.value;
 
-		if (!category || !name) {
-			alert('카테고리와 이름은 필수 입력 항목입니다.');
-			return;
-		}
-
 		const newRestaurant = {
 			id: `a${Date.now()}`,
 			category,
