@@ -1,17 +1,18 @@
+import styles from "./RestaurantDetailModal.module.css";
 export default function RestaurantDetailModal({ restaurant, onClose }) {
   return (
-    <div className="modal modal--open">
-      <div className="modal-backdrop" onClick={onClose}></div>
-      <div className="modal-container">
-        <h2 className="modal-title text-title">{restaurant.name}</h2>
-        <div className="restaurant-info">
-          <p className="restaurant-info__description text-body">
+    <div className={`${styles.modal} ${styles.open}`}>
+      <div className={styles.backdrop} onClick={onClose}></div>
+      <div className={styles.container}>
+        <h2 className={`${styles.title} text-title`}>{restaurant.name}</h2>
+        <div className={styles.info}>
+          <p className={`${styles.description} text-body`}>
             {restaurant.description}
           </p>
         </div>
-        <div className="button-container">
+        <div className={styles.buttonContainer}>
           <button
-            className="button button--primary text-caption"
+            className={`${styles.button} ${styles.primary} text-caption`}
             onClick={onClose}
           >
             닫기
