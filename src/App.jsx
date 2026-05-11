@@ -111,9 +111,11 @@ function App() {
 
 			const createdRestaurant = await response.json();
 			setRestaurants(prevRestaurants => [...prevRestaurants, createdRestaurant]);
-			handleCloseAddModal();
+			return true;
 		} catch (error) {
 			console.error("음식점 추가 중 오류가 발생했습니다:", error);
+			alert('음식점 추가 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+			return false;
 		}
 	};
 	

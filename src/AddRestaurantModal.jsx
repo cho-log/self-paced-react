@@ -1,5 +1,9 @@
+import { useState } from 'react';
+
 export default function AddRestaurantModal({ onClose, onAddRestaurant }) {
-	const handleAddRestaurant = (e) => {
+	const [isSubmitting, setIsSubmitting] = useState(false);
+
+	const handleAddRestaurant = async e => {
 		e.preventDefault();
 		const form = e.target;
 		const category = form.category.value;
@@ -18,10 +22,18 @@ export default function AddRestaurantModal({ onClose, onAddRestaurant }) {
 			description,
 		};
 
-		onAddRestaurant(newRestaurant);
-		form.reset();
+		setIsSubmitting(true);
 
-		onClose();
+		try {
+			const isAdded = await onAddRestaurant(newRestaurant);
+
+			if (isAdded) {
+				form.reset();
+				onClose();
+			}
+		} finally {
+			setIsSubmitting(false);
+		}
 	};
 
 	return (
@@ -69,8 +81,9 @@ export default function AddRestaurantModal({ onClose, onAddRestaurant }) {
 					<div className="button-container">
 						<button
 							className="button button--primary text-caption"
-							type="submit">
-							추가하기
+							type="submit"
+							disabled={isSubmitting}>
+							{isSubmitting ? '추가 중...' : '추가하기'}
 						</button>
 					</div>
 				</form>
