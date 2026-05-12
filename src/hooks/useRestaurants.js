@@ -11,8 +11,8 @@ export default function useRestaurants() {
 		const fetchRestaurants = async () => {
 			try {
 				const response = await fetch(RESTAURANTS_API_URL);
-				const data = await response.json();
-				setRestaurants(data);
+				const restaurantData = await response.json();
+				setRestaurants(restaurantData);
 			} catch (error) {
 				console.error(
 					'음식점 데이터를 불러오는 중 오류가 발생했습니다:',
