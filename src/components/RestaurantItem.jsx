@@ -4,10 +4,7 @@ import categoryEtc from "../assets/category-etc.png";
 import categoryJapanese from "../assets/category-japanese.png";
 import categoryKorean from "../assets/category-korean.png";
 import categoryWestern from "../assets/category-western.png";
-<<<<<<< em-h20
 import styles from "./RestaurantItem.module.css";
-=======
->>>>>>> em-h20
 
 const categoryImages = {
   한식: categoryKorean,
@@ -20,7 +17,6 @@ const categoryImages = {
 
 export default function RestaurantItem({ restaurant, onClick }) {
   return (
-<<<<<<< em-h20
     <li className={styles.restaurant} onClick={onClick}>
       <div className={styles.category}>
         <img
@@ -32,19 +28,6 @@ export default function RestaurantItem({ restaurant, onClick }) {
       <div className={styles.info}>
         <h3 className={`${styles.name} text-subtitle`}>{restaurant.name}</h3>
         <p className={`${styles.description} text-body`}>
-=======
-    <li className="restaurant" onClick={onClick}>
-      <div className="restaurant__category">
-        <img
-          src={categoryImages[restaurant.category]}
-          alt={restaurant.category}
-          className="category-icon"
-        />
-      </div>
-      <div className="restaurant__info">
-        <h3 className="restaurant__name text-subtitle">{restaurant.name}</h3>
-        <p className="restaurant__description text-body">
->>>>>>> em-h20
           {restaurant.description}
         </p>
       </div>

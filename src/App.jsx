@@ -4,7 +4,6 @@ import CategoryFilter from "./components/CategoryFilter";
 import RestaurantList from "./components/RestaurantList";
 import RestaurantDetailModal from "./components/RestaurantDetailModal";
 import AddRestaurantModal from "./components/AddRestaurantModal";
-<<<<<<< em-h20
 
 import { useState, useEffect } from "react";
 const BASE_URL = "http://localhost:3000/restaurants";
@@ -45,16 +44,6 @@ function App() {
     }
   };
 
-=======
-import { restaurants } from "./constants/restaurants";
-
-import { useState } from "react";
-
-function App() {
-  const [category, setCategory] = useState("전체");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
->>>>>>> em-h20
   const filteredRestaurants =
     category === "전체"
       ? restaurants
@@ -62,27 +51,18 @@ function App() {
 
   return (
     <>
-<<<<<<< em-h20
       <Header category={category} onAddClick={() => setIsAddModalOpen(true)} />
-=======
-      <Header category={category} />
->>>>>>> em-h20
       <main>
         <CategoryFilter category={category} onChangeCategory={setCategory} />
         <RestaurantList
           restaurants={filteredRestaurants}
           onRestaurantClick={(restaurant) => {
             setSelectedRestaurant(restaurant);
-<<<<<<< em-h20
             setIsDetailModalOpen(true);
-=======
-            setIsModalOpen(true);
->>>>>>> em-h20
           }}
         />
       </main>
       <aside>
-<<<<<<< em-h20
         {isDetailModalOpen ? (
           <RestaurantDetailModal
             restaurant={selectedRestaurant}
@@ -95,15 +75,6 @@ function App() {
             onClose={() => setIsAddModalOpen(false)}
           />
         ) : null}
-=======
-        {isModalOpen && (
-          <RestaurantDetailModal
-            restaurant={selectedRestaurant}
-            onClose={() => setIsModalOpen(false)}
-          />
-        )}
-        <AddRestaurantModal />
->>>>>>> em-h20
       </aside>
     </>
   );

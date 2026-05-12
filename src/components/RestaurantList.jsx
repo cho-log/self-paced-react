@@ -1,16 +1,9 @@
-<<<<<<< em-h20
 import styles from "./RestaurantList.module.css";
-=======
->>>>>>> em-h20
 import RestaurantItem from "./RestaurantItem";
 
 export default function RestaurantList({ restaurants, onRestaurantClick }) {
   return (
-<<<<<<< em-h20
     <section className={styles.container}>
-=======
-    <section className="restaurant-list-container">
->>>>>>> em-h20
       <ul className="restaurant-list">
         {restaurants.map((restaurant) => (
           <RestaurantItem
