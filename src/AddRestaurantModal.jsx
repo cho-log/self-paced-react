@@ -10,7 +10,7 @@ export default function AddRestaurantModal({
 		setIsAddModalOpen(false);
 	};
 
-	const handleAddRestaurant = async e => {
+	const handleAddRestaurant = async (e) => {
 		e.preventDefault();
 		const form = e.target;
 		const category = form.category.value;

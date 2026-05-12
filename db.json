@@ -35,6 +35,19 @@
       "name": "도스타코스 선릉점",
       "description": "멕시칸 캐주얼 그릴",
       "category": "기타"
+    },
+    {
+      "id": "96RigUWR4-A",
+      "category": "중식",
+      "name": "테스트",
+      "description": "테스트"
+    },
+    {
+      "id": "2ufKu95p4_4",
+      "category": "중식",
+      "name": "미식반점",
+      "description": "세종대 대표 맛집"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
