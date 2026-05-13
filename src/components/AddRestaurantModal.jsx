@@ -17,8 +17,12 @@ export default function AddRestaurantModal({ onAddRestaurant, onClose }) {
               name: formData.get("name"),
               description: formData.get("description"),
             };
-            await onAddRestaurant(restaurant);
-            onClose();
+            try {
+              await onAddRestaurant(restaurant);
+              onClose();
+            } catch (error) {
+              alert(error.message);
+            }
           }}
         >
           <div className={`${styles.formItem} ${styles.required}`}>

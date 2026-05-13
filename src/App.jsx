@@ -41,6 +41,7 @@ function App() {
       await fetchRestaurants();
     } catch (error) {
       console.error("음식점을 추가하는 중 오류가 발생했습니다.", error);
+      throw new Error("음식점을 추가하는 중 오류가 발생했습니다.");
     }
   };
 
