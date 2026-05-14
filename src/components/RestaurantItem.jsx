@@ -4,6 +4,7 @@ import categoryEtc from "../assets/category-etc.png";
 import categoryJapanese from "../assets/category-japanese.png";
 import categoryKorean from "../assets/category-korean.png";
 import categoryWestern from "../assets/category-western.png";
+import styles from "./RestaurantItem.module.css";
 
 const categoryImages = {
   한식: categoryKorean,
@@ -16,17 +17,17 @@ const categoryImages = {
 
 export default function RestaurantItem({ restaurant, onClick }) {
   return (
-    <li className="restaurant" onClick={onClick}>
-      <div className="restaurant__category">
+    <li className={styles.restaurant} onClick={onClick}>
+      <div className={styles.category}>
         <img
           src={categoryImages[restaurant.category]}
           alt={restaurant.category}
-          className="category-icon"
+          className={styles.categoryIcon}
         />
       </div>
-      <div className="restaurant__info">
-        <h3 className="restaurant__name text-subtitle">{restaurant.name}</h3>
-        <p className="restaurant__description text-body">
+      <div className={styles.info}>
+        <h3 className={`${styles.name} text-subtitle`}>{restaurant.name}</h3>
+        <p className={`${styles.description} text-body`}>
           {restaurant.description}
         </p>
       </div>
