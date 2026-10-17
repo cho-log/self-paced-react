@@ -1,4 +1,4 @@
-import '../App.css';
+import '../css/CategoryFilter.css';
 
 export default function CategoryFilter() {
   return (

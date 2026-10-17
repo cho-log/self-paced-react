@@ -1,4 +1,4 @@
-import '../App.css';
+import '../css/Header.css';
 
 const IMAGE_DIRECTORY = './templates';
 

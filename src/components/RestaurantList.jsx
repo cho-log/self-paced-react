@@ -1,4 +1,4 @@
-import '../App.css';
+import '../css/RestaurantList.css';
 
 const IMAGE_DIRECTORY = './templates';
 
