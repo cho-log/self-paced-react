@@ -1,9 +1,14 @@
 import './App.css';
 
+const IMAGE_DIRECTORY = './templates';
+
 function Header() {
   return (
-    <header>
-      <title>점심 뭐 먹지</title>
+    <header className="gnb">
+      <h1 className="gnb__title text-title">점심 뭐 먹지</h1>
+      <button type="button" className="gnb__button" aria-label="음식점 추가">
+        <img src={`${IMAGE_DIRECTORY}/add-button.png`} alt="음식점 추가" />
+      </button>
     </header>
   );
 }
@@ -30,7 +35,7 @@ function RestaurantList() {
       <ul className="restaurant-list">
         <li className="restaurant">
           <div className="restaurant__category">
-            <img src="./category-korean.png" alt="한식" className="category-icon" />
+            <img src={`${IMAGE_DIRECTORY}/category-korean.png`} alt="한식" className="category-icon" />
           </div>
           <div className="restaurant__info">
             <h3 className="restaurant__name text-subtitle">피양콩할마니</h3>
@@ -45,7 +50,7 @@ function RestaurantList() {
 
         <li className="restaurant">
           <div className="restaurant__category">
-            <img src="./category-chinese.png" alt="중식" className="category-icon" />
+            <img src={`${IMAGE_DIRECTORY}/category-chinese.png`} alt="중식" className="category-icon" />
           </div>
           <div className="restaurant__info">
             <h3 className="restaurant__name text-subtitle">친친</h3>
@@ -57,7 +62,7 @@ function RestaurantList() {
 
         <li className="restaurant">
           <div className="restaurant__category">
-            <img src="./category-japanese.png" alt="일식" className="category-icon" />
+            <img src={`${IMAGE_DIRECTORY}/category-japanese.png`} alt="일식" className="category-icon" />
           </div>
           <div className="restaurant__info">
             <h3 className="restaurant__name text-subtitle">잇쇼우</h3>
@@ -70,7 +75,7 @@ function RestaurantList() {
 
         <li className="restaurant">
           <div className="restaurant__category">
-            <img src="./category-western.png" alt="양식" className="category-icon" />
+            <img src={`${IMAGE_DIRECTORY}/category-western.png`} alt="양식" className="category-icon" />
           </div>
           <div className="restaurant__info">
             <h3 className="restaurant__name text-subtitle">이태리키친</h3>
@@ -80,7 +85,7 @@ function RestaurantList() {
 
         <li className="restaurant">
           <div className="restaurant__category">
-            <img src="./category-asian.png" alt="아시안" className="category-icon" />
+            <img src={`${IMAGE_DIRECTORY}/category-asian.png`} alt="아시안" className="category-icon" />
           </div>
           <div className="restaurant__info">
             <h3 className="restaurant__name text-subtitle">호아빈 삼성점</h3>
@@ -90,7 +95,7 @@ function RestaurantList() {
 
         <li className="restaurant">
           <div className="restaurant__category">
-            <img src="./category-etc.png" alt="기타" className="category-icon" />
+            <img src={`${IMAGE_DIRECTORY}/category-etc.png`} alt="기타" className="category-icon" />
           </div>
           <div className="restaurant__info">
             <h3 className="restaurant__name text-subtitle">도스타코스 선릉점</h3>
