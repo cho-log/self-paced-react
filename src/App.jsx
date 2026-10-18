@@ -6,13 +6,15 @@ import RestaurantList from './components/RestaurantList';
 import RestaurantDetailModal from './components/RestaurantDetailModal';
 import AddRestaurantModal from './components/AddRestaurantModal';
 
+import restaurantsFlie from '../db.json';
+
 export default function App() {
   return (
     <>
       <Header />
       <main>
         <CategoryFilter />
-        <RestaurantList />
+        <RestaurantList restaurants={restaurantsFlie.restaurants} />
       </main>
       <aside>
         <RestaurantDetailModal />
