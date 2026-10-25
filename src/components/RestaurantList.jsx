@@ -11,10 +11,10 @@ const CATEGORY_NAME = {
   기타: 'etc',
 };
 
-function Restaurant({ restaurant }) {
+function Restaurant({ restaurant, handleModalOpen }) {
   //구조분해할당으로 props에서 바로 restaurant 불러오기
   return (
-    <li className="restaurant">
+    <li className="restaurant" onClick={handleModalOpen}>
       <div className="restaurant__category">
         <img
           src={`${IMAGE_DIRECTORY}/category-${CATEGORY_NAME[restaurant.category]}.png`}
@@ -30,12 +30,12 @@ function Restaurant({ restaurant }) {
   );
 }
 
-export default function RestaurantList({ restaurants }) {
+export default function RestaurantList({ restaurants, handleModalOpen }) {
   //구조분해할당으로 props에서 바로 restaurants 불러오기
   const restaurant_list = [];
 
   for (const restaurant of restaurants) {
-    restaurant_list.push(<Restaurant key={restaurant.id} restaurant={restaurant} />);
+    restaurant_list.push(<Restaurant key={restaurant.id} restaurant={restaurant} handleModalOpen={handleModalOpen} />);
   }
 
   return (

@@ -11,6 +11,8 @@ import restaurantsFile from '../db.json';
 
 export default function App() {
   const [category, setCategory] = useState('전체');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const filteredRestaurants = filteringRestaurants(category);
 
   function filteringRestaurants(category) {
@@ -28,15 +30,23 @@ export default function App() {
     return filteredRestaurants;
   }
 
+  function handleModalOpen() {
+    setIsModalOpen(true);
+  }
+
+  function handleModalClose() {
+    setIsModalOpen(false);
+  }
+
   return (
     <>
       <Header />
       <main>
         <CategoryFilter category={category} onChangeCategory={setCategory} />
-        <RestaurantList restaurants={filteredRestaurants} />
+        <RestaurantList restaurants={filteredRestaurants} handleModalOpen={handleModalOpen} />
       </main>
       <aside>
-        <RestaurantDetailModal />
+        {isModalOpen && <RestaurantDetailModal handleModalClose={handleModalClose} />}
         <AddRestaurantModal />
       </aside>
     </>

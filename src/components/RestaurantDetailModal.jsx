@@ -1,9 +1,9 @@
 import '../css/Modal.css';
 
-export default function RestaurantDetailModal() {
+export default function RestaurantDetailModal({ handleModalClose }) {
   return (
     <div className="modal modal--open">
-      <div className="modal-backdrop"></div>
+      <div className="modal-backdrop" onClick={handleModalClose}></div>
       <div className="modal-container">
         <h2 className="modal-title text-title">음식점 이름</h2>
         <div className="restaurant-info">
@@ -11,7 +11,9 @@ export default function RestaurantDetailModal() {
         </div>
         {/*닫기버튼*/}
         <div className="button-container">
-          <button className="button button--primary text-caption">닫기</button>
+          <button className="button button--primary text-caption" onClick={handleModalClose}>
+            닫기
+          </button>
         </div>
       </div>
     </div>
