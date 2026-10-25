@@ -12,6 +12,7 @@ import restaurantsFile from '../db.json';
 export default function App() {
   const [category, setCategory] = useState('전체');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
   const filteredRestaurants = filteringRestaurants(category);
 
@@ -30,12 +31,13 @@ export default function App() {
     return filteredRestaurants;
   }
 
-  function handleModalOpen() {
-    setIsModalOpen(true);
-  }
-
   function handleModalClose() {
     setIsModalOpen(false);
+  }
+
+  function handleSelectRestaurant(restaurant) {
+    setSelectedRestaurant(restaurant);
+    setIsModalOpen(true);
   }
 
   return (
@@ -43,10 +45,10 @@ export default function App() {
       <Header />
       <main>
         <CategoryFilter category={category} onChangeCategory={setCategory} />
-        <RestaurantList restaurants={filteredRestaurants} handleModalOpen={handleModalOpen} />
+        <RestaurantList restaurants={filteredRestaurants} handleSelectRestaurant={handleSelectRestaurant} />
       </main>
       <aside>
-        {isModalOpen && <RestaurantDetailModal handleModalClose={handleModalClose} />}
+        {isModalOpen && <RestaurantDetailModal restaurant={selectedRestaurant} handleModalClose={handleModalClose} />}
         <AddRestaurantModal />
       </aside>
     </>
