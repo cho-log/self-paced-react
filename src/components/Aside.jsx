@@ -7,6 +7,8 @@ function Aside() {
     );
 }
 
+export default Aside;
+
 function RestaurantDetailModal() {
   return (
     <>
