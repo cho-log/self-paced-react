@@ -1,10 +1,14 @@
-function Aside() {
-    return (
-        <aside>
-            <RestaurantDetailModal />
-            <AddRestaurantModal />
-        </aside>
-    );
+function Aside({ isModalOpen, selectedRestaurant, onCloseModal }) {
+  return (
+    <aside>
+      {isModalOpen && selectedRestaurant && (
+        <RestaurantDetailModal 
+          restaurant={selectedRestaurant}
+          onCloseModal={onCloseModal}
+        />
+      )}
+    </aside>
+  );
 }
 
 export default Aside;
@@ -50,7 +54,7 @@ function AddRestaurantModal() {
             </div>
             <div className="form-item form-item--required">
               <label htmlFor="name text-caption">이름</label>
-              <input type="text" name="name" id="name" required/>
+              <input type="text" name="name" id="name" required />
             </div>
             <div className="form-item">
               <label htmlFor="description text-caption">설명</label>
