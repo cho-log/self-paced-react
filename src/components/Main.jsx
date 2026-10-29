@@ -63,7 +63,7 @@ function RestaurantList({ restaurants, onOpenModal }) {
                         >
                             <div className="restaurant__category">
                                 <img
-                                    src={`./category-${categoryImages[restaurant.category]}.png`}
+                                    src={`/templates/category-${categoryImages[restaurant.category]}.png`}
                                     alt={restaurant.category}
                                     className="category-icon"
                                 />
