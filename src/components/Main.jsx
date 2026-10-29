@@ -1,3 +1,5 @@
+import "./Main.css";
+
 function Main({ category, onChangeCategory, restaurants, onOpenModal }) {
     return (
         <main>

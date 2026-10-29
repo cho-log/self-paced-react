@@ -1,3 +1,5 @@
+import "./Aside.css";
+
 function Aside({ isModalOpen, selectedRestaurant, onCloseModal }) {
   return (
     <aside>
