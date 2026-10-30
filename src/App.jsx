@@ -9,8 +9,9 @@ import restaurants from "./data/restaurants";
 
 function App() {
   const [category, setCategory] = useState("전체");
+  // 선택된 음식점 (null이면 상세 모달이 닫힌 상태)
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
-  // 필터된 목록은 state로 따로 두지 않고, 렌더링할 때마다 계산한다
   const filteredRestaurants =
     category === "전체"
       ? restaurants
@@ -21,10 +22,18 @@ function App() {
       <Header />
       <main>
         <CategoryFilter category={category} onChangeCategory={setCategory} />
-        <RestaurantList restaurants={filteredRestaurants} />
+        <RestaurantList
+          restaurants={filteredRestaurants}
+          onSelectRestaurant={setSelectedRestaurant}
+        />
       </main>
       <aside>
-        <RestaurantDetailModal />
+        {selectedRestaurant && (
+          <RestaurantDetailModal
+            restaurant={selectedRestaurant}
+            onClose={() => setSelectedRestaurant(null)}
+          />
+        )}
         <AddRestaurantModal />
       </aside>
     </>
