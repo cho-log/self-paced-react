@@ -6,7 +6,7 @@ function Aside({ isModalOpen, selectedRestaurant, onCloseModal }) {
       {isModalOpen && selectedRestaurant && (
         <RestaurantDetailModal 
           restaurant={selectedRestaurant}
-          onCloseModal={onCloseModal}
+          onCloseModal={handleCloseModal}
         />
       )}
     </aside>
