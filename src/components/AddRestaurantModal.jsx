@@ -1,8 +1,9 @@
 import "./Modal.css";
 
 function AddRestaurantModal() {
+  // 04단계에서 헤더 버튼으로 열 예정이라 지금은 modal--open 없이 닫아둠
   return (
-    <div className="modal modal--open">
+    <div className="modal">
       <div className="modal-backdrop"></div>
       <div className="modal-container">
         <h2 className="modal-title text-title">새로운 음식점</h2>
