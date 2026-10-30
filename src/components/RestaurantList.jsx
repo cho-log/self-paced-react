@@ -1,12 +1,16 @@
 import "./RestaurantList.css";
 import { CATEGORY_ICONS } from "../constants/categories";
 
-function RestaurantList({ restaurants }) {
+function RestaurantList({ restaurants, onSelectRestaurant }) {
   return (
     <section className="restaurant-list-container">
       <ul className="restaurant-list">
         {restaurants.map((restaurant) => (
-          <li key={restaurant.id} className="restaurant">
+          <li
+            key={restaurant.id}
+            className="restaurant"
+            onClick={() => onSelectRestaurant(restaurant)}
+          >
             <div className="restaurant__category">
               <img
                 src={CATEGORY_ICONS[restaurant.category]}
