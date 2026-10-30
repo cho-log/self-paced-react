@@ -6,7 +6,7 @@ function Aside({ isModalOpen, selectedRestaurant, onCloseModal }) {
       {isModalOpen && selectedRestaurant && (
         <RestaurantDetailModal 
           restaurant={selectedRestaurant}
-          onCloseModal={handleCloseModal}
+          onCloseModal={onCloseModal}
         />
       )}
     </aside>
@@ -15,18 +15,23 @@ function Aside({ isModalOpen, selectedRestaurant, onCloseModal }) {
 
 export default Aside;
 
-function RestaurantDetailModal() {
+function RestaurantDetailModal({restaurant,onCloseModal}) {
   return (
     <>
       <div className="modal modal--open">
-        <div className="modal-backdrop"></div>
+        <div className="modal-backdrop"
+            onClick={onCloseModal}
+        ></div>
         <div className="modal-container">
-          <h2 className="modal-title text-title">음식점 이름</h2>
+          <h2 className="modal-title text-title"
+          >{restaurant.name}</h2>
           <div className="restaurant-info">
-            <p className="restaurant-info__description text-body">음식점 소개 문구</p>
+            <p className="restaurant-info__description text-body">{restaurant.description}</p>
           </div>
           <div className="button-container">
-            <button className="button button--primary text-caption">닫기</button>
+            <button className="button button--primary text-caption"
+                    onClick={onCloseModal}
+            >닫기</button>
           </div>
         </div>
       </div>
