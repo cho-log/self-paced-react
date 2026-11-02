@@ -49,7 +49,8 @@ export default function App() {
       </main>
       <aside>
         {isModalOpen && <RestaurantDetailModal restaurant={selectedRestaurant} handleModalClose={handleModalClose} />}
-        <AddRestaurantModal />
+        {/* 4단계 미션전이므로 주석처리
+        <AddRestaurantModal />*/}
       </aside>
     </>
   );

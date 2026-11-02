@@ -1,5 +1,7 @@
 import '../css/Modal.css';
 
+import { CATEGORY_OPTIONS } from '../constants/categoryOptions';
+
 export default function AddRestaurantModal() {
   return (
     <div className="modal modal--open">
@@ -12,12 +14,7 @@ export default function AddRestaurantModal() {
             <label htmlFor="category text-caption">카테고리</label>
             <select name="category" id="category" required>
               <option value="">선택해 주세요</option>
-              <option value="한식">한식</option>
-              <option value="중식">중식</option>
-              <option value="일식">일식</option>
-              <option value="양식">양식</option>
-              <option value="아시안">아시안</option>
-              <option value="기타">기타</option>
+              {CATEGORY_OPTIONS}
             </select>
           </div>
           {/*음식점이름*/}
