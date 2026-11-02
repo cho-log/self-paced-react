@@ -1,6 +1,6 @@
 import '../css/Header.css';
 
-const IMAGE_DIRECTORY = './templates';
+const IMAGE_DIRECTORY = '/images';
 
 export default function Header() {
   return (

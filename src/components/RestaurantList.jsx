@@ -1,6 +1,6 @@
 import '../css/RestaurantList.css';
 
-const IMAGE_DIRECTORY = './templates';
+const IMAGE_DIRECTORY = '/images';
 
 const CATEGORY_NAME = {
   한식: 'korean',
