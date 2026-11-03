@@ -14,9 +14,9 @@ export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
-  const filteredRestaurants = filteringRestaurants(category);
+  const filteredRestaurants = filterRestaurants(category);
 
-  function filteringRestaurants(category) {
+  function filterRestaurants(category) {
     const restaurantList = restaurantsFile.restaurants;
     const filteredRestaurants = [];
 
@@ -45,10 +45,10 @@ export default function App() {
       <Header />
       <main>
         <CategoryFilter category={category} onChangeCategory={setCategory} />
-        <RestaurantList restaurants={filteredRestaurants} handleSelectRestaurant={handleSelectRestaurant} />
+        <RestaurantList restaurants={filteredRestaurants} onSelectRestaurant={handleSelectRestaurant} />
       </main>
       <aside>
-        {isModalOpen && <RestaurantDetailModal restaurant={selectedRestaurant} handleModalClose={handleModalClose} />}
+        {isModalOpen && <RestaurantDetailModal restaurant={selectedRestaurant} onClose={handleModalClose} />}
         {/* 4단계 미션전이므로 주석처리
         <AddRestaurantModal />*/}
       </aside>

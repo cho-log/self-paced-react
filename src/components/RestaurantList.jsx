@@ -11,10 +11,10 @@ const CATEGORY_NAME = {
   기타: 'etc',
 };
 
-function Restaurant({ restaurant, handleSelectRestaurant }) {
+function Restaurant({ restaurant, onSelectRestaurant }) {
   //구조분해할당으로 props에서 바로 restaurant 불러오기
   return (
-    <li className="restaurant" onClick={() => handleSelectRestaurant(restaurant)}>
+    <li className="restaurant" onClick={() => onSelectRestaurant(restaurant)}>
       <div className="restaurant__category">
         <img
           src={`${IMAGE_DIRECTORY}/category-${CATEGORY_NAME[restaurant.category]}.png`}
@@ -30,17 +30,15 @@ function Restaurant({ restaurant, handleSelectRestaurant }) {
   );
 }
 
-export default function RestaurantList({ restaurants, handleSelectRestaurant }) {
+export default function RestaurantList({ restaurants, onSelectRestaurant }) {
   //구조분해할당으로 props에서 바로 restaurants 불러오기
-  const restaurant_list = [];
-
-  for (const restaurant of restaurants) {
-    restaurant_list.push(<Restaurant key={restaurant.id} restaurant={restaurant} handleSelectRestaurant={handleSelectRestaurant} />);
-  }
-
   return (
     <section className="restaurant-list-container">
-      <ul className="restaurant-list">{restaurant_list}</ul>
+      <ul className="restaurant-list">
+        {restaurants.map((restaurant) => (
+          <Restaurant key={restaurant.id} restaurant={restaurant} onSelectRestaurant={onSelectRestaurant} />
+        ))}
+      </ul>
     </section>
   );
 }

@@ -11,7 +11,7 @@ export default function AddRestaurantModal() {
         <form>
           {/*카테고리*/}
           <div className="form-item form-item--required">
-            <label htmlFor="category text-caption">카테고리</label>
+            <label htmlFor="category">카테고리</label>
             <select name="category" id="category" required>
               <option value="">선택해 주세요</option>
               {CATEGORY_OPTIONS}
@@ -19,12 +19,12 @@ export default function AddRestaurantModal() {
           </div>
           {/*음식점이름*/}
           <div className="form-item form-item--required">
-            <label htmlFor="name text-caption">이름</label>
+            <label htmlFor="name">이름</label>
             <input type="text" name="name" id="name" required />
           </div>
           {/*설명*/}
           <div className="form-item">
-            <label htmlFor="description text-caption">설명</label>
+            <label htmlFor="description">설명</label>
             <textarea name="description" id="description" cols="30" rows="5"></textarea>
             <span className="help-text text-caption">메뉴 등 추가 정보를 입력해 주세요.</span>
           </div>
