@@ -11,7 +11,7 @@ import restaurantsFile from '../db.json';
 
 export default function App() {
   const [category, setCategory] = useState('전체');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState('null');
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
   const filteredRestaurants = filterRestaurants(category);
@@ -32,25 +32,28 @@ export default function App() {
   }
 
   function handleModalClose() {
-    setIsModalOpen(false);
+    setActiveModal('null');
   }
 
   function handleSelectRestaurant(restaurant) {
     setSelectedRestaurant(restaurant);
-    setIsModalOpen(true);
+    setActiveModal('restaurantDetail');
+  }
+
+  function handleOpenAddRestaurant() {
+    setActiveModal('addRestaurant');
   }
 
   return (
     <>
-      <Header />
+      <Header onOpenAddRestaurant={handleOpenAddRestaurant} />
       <main>
         <CategoryFilter category={category} onChangeCategory={setCategory} />
         <RestaurantList restaurants={filteredRestaurants} onSelectRestaurant={handleSelectRestaurant} />
       </main>
       <aside>
-        {isModalOpen && <RestaurantDetailModal restaurant={selectedRestaurant} onClose={handleModalClose} />}
-        {/* 4단계 미션전이므로 주석처리
-        <AddRestaurantModal />*/}
+        {activeModal === 'restaurantDetail' && <RestaurantDetailModal restaurant={selectedRestaurant} onClose={handleModalClose} />}
+        {activeModal === 'addRestaurant' && <AddRestaurantModal onClose={handleModalClose} />}
       </aside>
     </>
   );

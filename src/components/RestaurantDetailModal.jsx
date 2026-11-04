@@ -1,6 +1,6 @@
 import '../css/Modal.css';
 
-export default function RestaurantDetailModal({ onClose, restaurant }) {
+export default function RestaurantDetailModal({ restaurant, onClose }) {
   return (
     <div className="modal modal--open">
       <div className="modal-backdrop" onClick={onClose}></div>
