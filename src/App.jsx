@@ -11,13 +11,13 @@ import restaurantsFile from '../db.json';
 
 export default function App() {
   const [category, setCategory] = useState('전체');
-  const [activeModal, setActiveModal] = useState('null');
+  const [activeModal, setActiveModal] = useState(null);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const [restaurantList, setRestaurantList] = useState(restaurantsFile.restaurants);
 
   const filteredRestaurants = filterRestaurants(category);
 
   function filterRestaurants(category) {
-    const restaurantList = restaurantsFile.restaurants;
     const filteredRestaurants = [];
 
     if (category === '전체') return restaurantList;
@@ -32,7 +32,7 @@ export default function App() {
   }
 
   function handleModalClose() {
-    setActiveModal('null');
+    setActiveModal(null);
   }
 
   function handleSelectRestaurant(restaurant) {
@@ -44,6 +44,11 @@ export default function App() {
     setActiveModal('addRestaurant');
   }
 
+  function handleAddRestaurant(newRestaurant) {
+    setRestaurantList((previous) => [...previous, newRestaurant]);
+    handleModalClose();
+  }
+
   return (
     <>
       <Header onOpenAddRestaurant={handleOpenAddRestaurant} />
@@ -53,7 +58,7 @@ export default function App() {
       </main>
       <aside>
         {activeModal === 'restaurantDetail' && <RestaurantDetailModal restaurant={selectedRestaurant} onClose={handleModalClose} />}
-        {activeModal === 'addRestaurant' && <AddRestaurantModal onClose={handleModalClose} />}
+        {activeModal === 'addRestaurant' && <AddRestaurantModal onAddRestaurant={handleAddRestaurant} onClose={handleModalClose} />}
       </aside>
     </>
   );
