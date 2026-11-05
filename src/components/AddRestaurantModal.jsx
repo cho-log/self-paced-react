@@ -3,10 +3,23 @@ import '../css/Modal.css';
 import { CATEGORY_OPTIONS } from '../constants/categoryOptions';
 import Modal from './Modal';
 
-export default function AddRestaurantModal({ onClose }) {
+export default function AddRestaurantModal({ onAddRestaurant, onClose }) {
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+
+    onAddRestaurant({
+      id: Date.now(),
+      name: formData.get('name'),
+      description: formData.get('description'),
+      category: formData.get('category'),
+    });
+  }
+
   return (
     <Modal title="새로운 음식점" onClose={onClose}>
-      <form>
+      <form onSubmit={(event) => handleSubmit(event)}>
         {/*카테고리*/}
         <div className="form-item form-item--required">
           <label htmlFor="category">카테고리</label>
@@ -28,7 +41,9 @@ export default function AddRestaurantModal({ onClose }) {
         </div>
         {/*추가버튼*/}
         <div className="button-container">
-          <button className="button button--primary text-caption">추가하기</button>
+          <button className="button button--primary text-caption" type="submit">
+            추가하기
+          </button>
         </div>
       </form>
     </Modal>
