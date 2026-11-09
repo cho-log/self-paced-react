@@ -14,14 +14,15 @@ export default function App() {
   const [activeModal, setActiveModal] = useState(null);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [restaurantList, setRestaurantList] = useState([]);
+  const [addingRestaurant, setAddingRestaurant] = useState(false);
 
   const filteredRestaurants = filterRestaurants(category);
 
   useEffect(() => {
-    updateRestaurantList();
+    loadRestaurantList();
   }, []);
 
-  async function updateRestaurantList() {
+  async function loadRestaurantList() {
     const response = await fetch(RESTAURANT_LIST_URL);
     const newRestaurantList = await response.json();
 
@@ -47,16 +48,24 @@ export default function App() {
   }
 
   async function handleAddRestaurant(restaurant) {
-    await fetch(RESTAURANT_LIST_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(restaurant),
-    });
+    if (addingRestaurant) return;
 
-    await updateRestaurantList();
     handleModalClose();
+    setAddingRestaurant(true);
+
+    try {
+      await fetch(RESTAURANT_LIST_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(restaurant),
+      });
+
+      await loadRestaurantList();
+    } finally {
+      setAddingRestaurant(false);
+    }
   }
 
   return (
