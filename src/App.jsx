@@ -16,7 +16,7 @@ export default function App() {
   const [restaurantList, setRestaurantList] = useState([]);
   const [isAddingRestaurant, setIsAddingRestaurant] = useState(false);
 
-  const filteredRestaurants = filterRestaurants(category);
+  const filteredRestaurants = filterRestaurants();
 
   useEffect(() => {
     loadRestaurantList();

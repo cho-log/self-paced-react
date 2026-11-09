@@ -1,12 +1,4 @@
 /* 음식점 정보/추가 모달 *****************************************/
-.modal {
-  display: none;
-}
-
-.modal--open {
-  display: block;
-}
-
 .modal-backdrop {
   position: fixed;
   top: 0;
