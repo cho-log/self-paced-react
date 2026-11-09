@@ -12,26 +12,26 @@ const CATEGORY_NAME = {
 };
 
 function Restaurant({ restaurant, onSelectRestaurant }) {
-  //구조분해할당으로 props에서 바로 restaurant 불러오기
   return (
-    <li className="restaurant" onClick={() => onSelectRestaurant(restaurant)}>
-      <div className="restaurant__category">
-        <img
-          src={`${IMAGE_DIRECTORY}/category-${CATEGORY_NAME[restaurant.category]}.png`}
-          alt={restaurant.category}
-          className="category-icon"
-        />
-      </div>
-      <div className="restaurant__info">
-        <h3 className="restaurant__name text-subtitle">{restaurant.name}</h3>
-        <p className="restaurant__description text-body">{restaurant.description}</p>
-      </div>
+    <li className="restaurant">
+      <button type="button" className="restaurant__button" onClick={() => onSelectRestaurant(restaurant)}>
+        <div className="restaurant__category">
+          <img
+            src={`${IMAGE_DIRECTORY}/category-${CATEGORY_NAME[restaurant.category]}.png`}
+            alt={restaurant.category}
+            className="category-icon"
+          />
+        </div>
+        <div className="restaurant__info">
+          <h3 className="restaurant__name text-subtitle">{restaurant.name}</h3>
+          <p className="restaurant__description text-body">{restaurant.description}</p>
+        </div>
+      </button>
     </li>
   );
 }
 
 export default function RestaurantList({ restaurants, onSelectRestaurant }) {
-  //구조분해할당으로 props에서 바로 restaurants 불러오기
   return (
     <section className="restaurant-list-container">
       <ul className="restaurant-list">

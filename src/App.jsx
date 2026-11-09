@@ -14,7 +14,7 @@ export default function App() {
   const [activeModal, setActiveModal] = useState(null);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [restaurantList, setRestaurantList] = useState([]);
-  const [addingRestaurant, setAddingRestaurant] = useState(false);
+  const [isAddingRestaurant, setIsAddingRestaurant] = useState(false);
 
   const filteredRestaurants = filterRestaurants(category);
 
@@ -48,10 +48,10 @@ export default function App() {
   }
 
   async function handleAddRestaurant(restaurant) {
-    if (addingRestaurant) return;
+    if (isAddingRestaurant) return;
 
     handleModalClose();
-    setAddingRestaurant(true);
+    setIsAddingRestaurant(true);
 
     try {
       await fetch(RESTAURANT_LIST_URL, {
@@ -64,7 +64,7 @@ export default function App() {
 
       await loadRestaurantList();
     } finally {
-      setAddingRestaurant(false);
+      setIsAddingRestaurant(false);
     }
   }
 
