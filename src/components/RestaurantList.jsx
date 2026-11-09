@@ -1,15 +1,8 @@
 import '../css/RestaurantList.css';
 
-const IMAGE_DIRECTORY = '/images';
+import { CATEGORIES } from '../constants/categories';
 
-const CATEGORY_NAME = {
-  한식: 'korean',
-  중식: 'chinese',
-  일식: 'japanese',
-  양식: 'western',
-  아시안: 'asian',
-  기타: 'etc',
-};
+const IMAGE_DIRECTORY = '/images';
 
 function Restaurant({ restaurant, onSelectRestaurant }) {
   return (
@@ -17,7 +10,7 @@ function Restaurant({ restaurant, onSelectRestaurant }) {
       <button type="button" className="restaurant__button" onClick={() => onSelectRestaurant(restaurant)}>
         <div className="restaurant__category">
           <img
-            src={`${IMAGE_DIRECTORY}/category-${CATEGORY_NAME[restaurant.category]}.png`}
+            src={`${IMAGE_DIRECTORY}/category-${CATEGORIES[restaurant.category]}.png`}
             alt={restaurant.category}
             className="category-icon"
           />
