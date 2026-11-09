@@ -19,7 +19,7 @@ export default function App() {
 
   useEffect(() => {
     updateRestaurantList();
-  }, []); //컴포넌트가 처음 화면을 표시할 때 실행
+  }, []);
 
   async function updateRestaurantList() {
     const response = await fetch(RESTAURANT_LIST_URL);
@@ -28,18 +28,8 @@ export default function App() {
     setRestaurantList(newRestaurantList);
   }
 
-  function filterRestaurants(category) {
-    const filteredRestaurants = [];
-
-    if (category === '전체') return restaurantList;
-
-    for (const restaurant of restaurantList) {
-      if (category === restaurant.category) {
-        filteredRestaurants.push(restaurant);
-      }
-    }
-
-    return filteredRestaurants;
+  function filterRestaurants() {
+    return category === '전체' ? restaurantList : restaurantList.filter((restaurant) => restaurant.category === category);
   }
 
   function handleModalClose() {
@@ -65,7 +55,7 @@ export default function App() {
       body: JSON.stringify(restaurant),
     });
 
-    await updateRestaurantList(); //server 응답 대기
+    await updateRestaurantList();
     handleModalClose();
   }
 
