@@ -19,14 +19,26 @@ export default function App() {
   const filteredRestaurants = filterRestaurants();
 
   useEffect(() => {
+    let ignore = false;
+
+    async function loadRestaurantList() {
+      const newRestaurantList = await getRestaurantList();
+
+      if (!ignore) {
+        setRestaurantList(newRestaurantList);
+      }
+    }
+
     loadRestaurantList();
+
+    return () => {
+      ignore = true;
+    };
   }, []);
 
-  async function loadRestaurantList() {
+  async function getRestaurantList() {
     const response = await fetch(RESTAURANT_LIST_URL);
-    const newRestaurantList = await response.json();
-
-    setRestaurantList(newRestaurantList);
+    return await response.json();
   }
 
   function filterRestaurants() {
@@ -65,8 +77,8 @@ export default function App() {
         throw new Error(`음식점 저장 실패: ${response.status}`);
       }
 
+      setRestaurantList(await getRestaurantList());
       handleModalClose();
-      await loadRestaurantList();
     } catch (error) {
       console.error(error);
       alert(`음식점 저장에 실패하였습니다.`);
