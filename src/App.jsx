@@ -50,11 +50,10 @@ export default function App() {
   async function handleAddRestaurant(restaurant) {
     if (isAddingRestaurant) return;
 
-    handleModalClose();
     setIsAddingRestaurant(true);
 
     try {
-      await fetch(RESTAURANT_LIST_URL, {
+      const response = await fetch(RESTAURANT_LIST_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -62,7 +61,15 @@ export default function App() {
         body: JSON.stringify(restaurant),
       });
 
+      if (!response.ok) {
+        throw new Error(`음식점 저장 실패: ${response.status}`);
+      }
+
+      handleModalClose();
       await loadRestaurantList();
+    } catch (error) {
+      console.error(error);
+      alert(`음식점 저장에 실패하였습니다.`);
     } finally {
       setIsAddingRestaurant(false);
     }
