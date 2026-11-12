@@ -14,32 +14,35 @@ export default function App() {
   const [activeModal, setActiveModal] = useState(null);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const [restaurantList, setRestaurantList] = useState([]);
+  const [isAddingRestaurant, setIsAddingRestaurant] = useState(false);
 
-  const filteredRestaurants = filterRestaurants(category);
+  const filteredRestaurants = filterRestaurants();
 
   useEffect(() => {
-    updateRestaurantList();
-  }, []); //컴포넌트가 처음 화면을 표시할 때 실행
+    let ignore = false;
 
-  async function updateRestaurantList() {
-    const response = await fetch(RESTAURANT_LIST_URL);
-    const newRestaurantList = await response.json();
+    async function loadRestaurantList() {
+      const newRestaurantList = await getRestaurantList();
 
-    setRestaurantList(newRestaurantList);
-  }
-
-  function filterRestaurants(category) {
-    const filteredRestaurants = [];
-
-    if (category === '전체') return restaurantList;
-
-    for (const restaurant of restaurantList) {
-      if (category === restaurant.category) {
-        filteredRestaurants.push(restaurant);
+      if (!ignore) {
+        setRestaurantList(newRestaurantList);
       }
     }
 
-    return filteredRestaurants;
+    loadRestaurantList();
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
+  async function getRestaurantList() {
+    const response = await fetch(RESTAURANT_LIST_URL);
+    return await response.json();
+  }
+
+  function filterRestaurants() {
+    return category === '전체' ? restaurantList : restaurantList.filter((restaurant) => restaurant.category === category);
   }
 
   function handleModalClose() {
@@ -57,16 +60,31 @@ export default function App() {
   }
 
   async function handleAddRestaurant(restaurant) {
-    await fetch(RESTAURANT_LIST_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(restaurant),
-    });
+    if (isAddingRestaurant) return;
 
-    await updateRestaurantList(); //server 응답 대기
-    handleModalClose();
+    setIsAddingRestaurant(true);
+
+    try {
+      const response = await fetch(RESTAURANT_LIST_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(restaurant),
+      });
+
+      if (!response.ok) {
+        throw new Error(`음식점 저장 실패: ${response.status}`);
+      }
+
+      setRestaurantList(await getRestaurantList());
+      handleModalClose();
+    } catch (error) {
+      console.error(error);
+      alert(`음식점 저장에 실패하였습니다.`);
+    } finally {
+      setIsAddingRestaurant(false);
+    }
   }
 
   return (

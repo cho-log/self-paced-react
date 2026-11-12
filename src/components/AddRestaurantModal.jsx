@@ -1,6 +1,6 @@
 import '../css/Modal.css';
 
-import { CATEGORY_OPTIONS } from '../constants/categoryOptions';
+import { CATEGORIES } from '../constants/categories';
 import Modal from './Modal';
 
 export default function AddRestaurantModal({ onAddRestaurant, onClose }) {
@@ -19,13 +19,17 @@ export default function AddRestaurantModal({ onAddRestaurant, onClose }) {
 
   return (
     <Modal title="새로운 음식점" onClose={onClose}>
-      <form onSubmit={(event) => handleSubmit(event)}>
+      <form onSubmit={handleSubmit}>
         {/*카테고리*/}
         <div className="form-item form-item--required">
           <label htmlFor="category">카테고리</label>
           <select name="category" id="category" required>
             <option value="">선택해 주세요</option>
-            {CATEGORY_OPTIONS}
+            {Object.keys(CATEGORIES).map((categoryName) => (
+              <option key={categoryName} value={categoryName}>
+                {categoryName}
+              </option>
+            ))}
           </select>
         </div>
         {/*음식점이름*/}

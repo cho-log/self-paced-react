@@ -60,3 +60,16 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+
+.restaurant__button {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
