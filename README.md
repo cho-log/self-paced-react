@@ -46,3 +46,5 @@ React를 처음 접하는 상태에서 모든 단계를 구현해서 동작시�
 ### [04. 폼 UI 구현하기: controlled vs uncontrolled](./04-form/README.md) 
 ### [05. API 연동하기: side-effect(feat. effects)](./05-effects/README.md)
 ### [06. References](./06-references/README.md)
+
+<!-- GitHub Actions PR 빌드 검증용 임시 변경 -->
