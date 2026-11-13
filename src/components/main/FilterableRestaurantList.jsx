@@ -21,7 +21,6 @@ export default FilterableRestaurantList;
 
 function CatagoryFilter({ category, onChangeCategory }) {
     return (
-
         <section className="restaurant-filter-container">
             <select
                 name="category"
@@ -40,7 +39,6 @@ function CatagoryFilter({ category, onChangeCategory }) {
                 ))}
             </select>
         </section>
-
     );
 }
 
